@@ -1,4 +1,5 @@
 package Entities;
+import Entities.Pet;
 
 public class User {
     int Points;
