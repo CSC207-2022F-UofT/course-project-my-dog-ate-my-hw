@@ -4,8 +4,6 @@ import Entities.Pet;
 public class User {
     int Points;
     Pet MyPet;
-    Checklist TODOlist;
-    Checklist DONElist;
 
     public int getPoints(){
         return Points;
@@ -39,11 +37,7 @@ public class User {
         this.MyPet = somePet;
     }
 
-    public void setTODOlist (Checklist someList) {
-        this.TODOlist = someList;
-    }
-
-    public void setDONElist (Checklist someList) {
-        this.DONElist = someList;
+    public String toString () {
+        return "User with points: " + this.Points + ", Pet: " + this.MyPet.getName();
     }
 }
