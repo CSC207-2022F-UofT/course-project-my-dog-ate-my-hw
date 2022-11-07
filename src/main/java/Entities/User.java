@@ -5,6 +5,15 @@ public class User {
     int Points;
     Pet MyPet;
 
+    public User (int points) {
+        this.Points = points;
+    }
+    
+    public User (int points, Pet pet) {
+        this.Points = points;
+        this.MyPet = pet;
+    }
+    
     public int getPoints(){
         return Points;
     }
