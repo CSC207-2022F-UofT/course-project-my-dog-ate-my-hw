@@ -10,7 +10,7 @@ public class GainPoints {
     }
     public void Gain() {
         if (ct.finishedBeforeDDL()) {
-            pr = ct.task.Priority;
+            pr = ct.getTask.Priority;
             if (pr.equals("High")) {
                 user.GainPoints(3);
             }
