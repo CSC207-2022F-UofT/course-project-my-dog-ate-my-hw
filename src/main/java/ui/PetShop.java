@@ -56,8 +56,6 @@ public class PetShop {
         adoptButton.addActionListener(a);
     }
 
-
-
     /* */
 
     public static void main(String[] args) {
