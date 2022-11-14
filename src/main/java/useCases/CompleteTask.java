@@ -4,24 +4,29 @@ import java.time.LocalDateTime;
 public class CompleteTask {
     private Task task;
     /* checklists acquired from DataAccess */
-    private CheckList TODOlist;
-    private Checklist DONElist;
+    private TODOlist todo;
+    private DONEList done;
 
     public CompleteTask (String taskName) {
+        //go through the TODOlist to find the task
 
         this.task = task;
     }
+
+    //Check if the task is finished before studyDeadline
     public Boolean finishedBeforeDDL () {
         LocalDateTime now = LocalDateTime.now();
         deadline = task.StudyDeadline;
         return deadline.compareTo(now);
     }
 
+    //remove the task from TODOlist
     public void removeFromTdl() {
-        TODOlist.remove(task);
+        todo.remove(task);
     }
 
+    //add the task to DONElist
     public void addToDl() {
-        DONElist.add(task);
+        done.add(task);
     }
 }
