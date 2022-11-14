@@ -9,7 +9,6 @@ public class CompleteTask {
 
     public CompleteTask (String taskName) {
         //go through the TODOlist to find the task
-
         this.task = task;
     }
 

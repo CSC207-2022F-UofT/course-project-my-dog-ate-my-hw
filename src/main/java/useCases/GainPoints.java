@@ -5,8 +5,8 @@ public class GainPoints {
     CompleteTask ct;
     User user;
 
-    public GainPoints () {
-
+    public GainPoints (CompleteTask completeTask) {
+        this.ct = completeTask;
     }
     public void Gain() {
         if (ct.finishedBeforeDDL()) {

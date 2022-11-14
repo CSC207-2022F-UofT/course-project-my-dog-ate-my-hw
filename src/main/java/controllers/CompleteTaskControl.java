@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import useCases.CompleteTask;
 import useCases.GainPoints;
@@ -20,7 +20,7 @@ public class CompleteTaskControl {
         CompleteTask completeTask = new CompleteTask(taskName);
         completeTask.addToDl();
         completeTask.removeFromTdl();
-        GainPoints gainPoints = new GainPoints();
+        GainPoints gainPoints = new GainPoints(completeTask);
         gainPoints.Gain();
     }
 }
