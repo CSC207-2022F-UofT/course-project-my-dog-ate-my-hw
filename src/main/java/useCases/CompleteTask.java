@@ -28,4 +28,9 @@ public class CompleteTask {
     public void addToDl() {
         done.add(task);
     }
+    
+    //returns the task
+    public Task getTask() {
+        return this.task;
+    }
 }
