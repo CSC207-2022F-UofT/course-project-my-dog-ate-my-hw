@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Customization {
 
+    public static ArrayList<Item> customizations;
     public boolean is_currently_equipped;
     public Item current_equipment;
 
@@ -17,6 +18,14 @@ public class Customization {
     public Customization(Item item){
         this.current_equipment = item;
         this.is_currently_equipped = true;
+    }
+
+    public void addItem(Item item) {
+        customizations.add(item);
+    }
+
+    public void removeItem(Item item) {
+        customizations.remove(item);
     }
 
     public boolean isCurrentlyEquipped() {
