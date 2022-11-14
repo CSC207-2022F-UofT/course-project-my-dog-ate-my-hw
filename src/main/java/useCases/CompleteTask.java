@@ -1,4 +1,4 @@
-package UseCases;
+package useCases;
 import java.time.LocalDateTime;
 
 public class CompleteTask {

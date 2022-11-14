@@ -1,7 +1,7 @@
 package controller;
 
-import UseCases.CompleteTask;
-import UseCases.GainPoints;
+import useCases.CompleteTask;
+import useCases.GainPoints;
 
 public class CompleteTaskControl {
     String taskName;

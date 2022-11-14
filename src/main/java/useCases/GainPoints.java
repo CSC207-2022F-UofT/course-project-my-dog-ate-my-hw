@@ -1,4 +1,4 @@
-package UseCases;
+package useCases;
 import entities.User;
 
 public class GainPoints {
