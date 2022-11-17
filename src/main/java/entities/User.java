@@ -1,8 +1,8 @@
 package entities;
 
 public class User {
-    int Points;
-    Pet MyPet;
+    private int Points;
+    private Pet MyPet;
 
     public User (int points) {
         this.Points = points;
