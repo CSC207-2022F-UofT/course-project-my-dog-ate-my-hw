@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import javax.swing.*;
 
@@ -7,16 +7,16 @@ public class Pet {
     /* CLASS VARIABLES */
 
     private static final int MAX_HEALTH = 10;
-    private int currHealth;
     private final String name;
     private final ImageIcon skin;
     private final Customization[] customizations;
+    private int currHealth;
     private Hat hat;
 
 
     /* CONSTRUCTORS */
 
-    public Pet(String name, ImageIcon skin, Customization[] customizations){
+    public Pet(String name, ImageIcon skin){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
@@ -80,4 +80,8 @@ public class Pet {
 
     // Need some function to assign customizations a value, create Customization list from file or something
 
+    @Override
+    public String toString() {
+        return name + ": " + currHealth + " hearts";
+    }
 }

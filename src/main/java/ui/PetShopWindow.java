@@ -1,5 +1,8 @@
 package ui;
 
+import entities.Pet;
+import uiControllers.PetShopUIController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,6 +19,7 @@ public class PetShopWindow extends JFrame {
     JButton adoptButton;
     String petName;
     ImageIcon selectedPetIcon;
+    Pet pet;
 
     /* CONSTRUCTORS */
     public PetShopWindow() {
@@ -146,7 +150,8 @@ public class PetShopWindow extends JFrame {
 
     /**
      * Upon the adopt button being clicked, calls the PetShopUIController to create a pet from the user's
-     * selections in the PetShopWindow. Displays warning if user has not made selection.
+     * selections in the PetShopWindow and saves the pet as an instance variable.
+     * Displays warning if user has not made selection.
      * @param evt button click
      */
     private void adoptButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,8 +161,9 @@ public class PetShopWindow extends JFrame {
         if(petName.strip().equals("") || selectedPetIcon == null) {
             warningPopup();
         } else {
-            //CALL UI CONTROLLER
-            System.out.println(selectedPetIcon.getDescription());
+            PetShopUIController controller = new PetShopUIController();
+            controller.adoptPet(selectedPetIcon, petName);
+            pet = controller.getPet();
             dispose();
         }
 
