@@ -12,6 +12,7 @@ import java.io.IOException;
 public class MainPetDisplay extends JPanel {
 
     private static final Dimension heartDimensions = new Dimension(20,20);
+    private static final Dimension petDimensions = new Dimension(200,200);
     JLabel petImage;
     JPanel healthBar;
 
@@ -30,7 +31,10 @@ public class MainPetDisplay extends JPanel {
 
     private void loadPetImage(){
 
+
     }
+
+
     private void createHealthBar(){
         healthBar = new JPanel();
         healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
@@ -78,6 +82,22 @@ public class MainPetDisplay extends JPanel {
             throw new RuntimeException(e);
         }
         return brokenIcon;
+    }
+
+    private ImageIcon getPetImage(){
+        String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription() + ".png";
+        File f = new File(path);
+        ImageIcon petImage;
+        try {
+            Image brokenImage = ImageIO.read(f);
+            petImage = new ImageIcon(brokenImage.getScaledInstance(petDimensions.width, petDimensions.height,
+                    Image.SCALE_SMOOTH));
+            petImage.setDescription("");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return petImage;
     }
 
 
