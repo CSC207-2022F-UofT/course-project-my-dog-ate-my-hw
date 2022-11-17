@@ -8,15 +8,15 @@ public class CompleteTaskUC {
     private ToDolist todo;
     private DoneList done;
 
-    public CompleteTaskUC(String taskName) {
+    public CompleteTaskUC(Task task) {
         //go through the TODOlist to find the task
-        this.task = todo.searchFor(taskName);
+        this.task = task;
     }
 
     //Check if the task is finished before studyDeadline
     public Boolean finishedBeforeDDL () {
         LocalDateTime now = LocalDateTime.now();
-        deadline = task.StudyDeadline;
+        deadline = task.StudyDeadline;//StudyDeadline attribute of Task, which is a date/time
         return deadline.compareTo(now);
     }
 

@@ -4,20 +4,23 @@ import useCases.CompleteTaskUC;
 import useCases.GainPointsUC;
 
 public class CompleteTaskControl {
-    String taskName;
+    Task task;
 
     //returns class variable taskName
-    public String getTaskName() {
-        return taskName;
+    public Task getTask() {
+        return task;
     }
 
-    private void setTaskName (String taskName) {
-        this.taskName = taskName;
+    private void setTask (Task task) {
+        this.task = task;
     }
 
+    public CompleteTaskControl (Task task) {
+        this.task = task;
+    }
     //activate use cases
-    public void CompleteTask (String taskName) {
-        CompleteTaskUC completeTaskUC = new CompleteTaskUC(taskName);
+    public void CompleteTask () {
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC(task);
         completeTaskUC.addToDl();
         completeTaskUC.removeFromTdl();
         GainPointsUC gainPointsUC = new GainPointsUC(completeTaskUC);
