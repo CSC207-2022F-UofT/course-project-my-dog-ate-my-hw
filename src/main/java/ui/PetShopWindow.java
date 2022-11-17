@@ -26,7 +26,11 @@ public class PetShopWindow extends JFrame {
         createPetShopWindow();
     }
 
+    /* GETTERS */
 
+    public Pet getPet() {
+        return pet;
+    }
     /* METHODS */
 
     /**
