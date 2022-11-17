@@ -15,12 +15,16 @@ public class Pet {
 
 
     /* CONSTRUCTORS */
+    
+    public Pet(String name){
+        this.name = name;
+    }
 
     public Pet(String name, ImageIcon skin, Customization customization){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
-        this.customization = null; // Need to assign a customization (using file reading likely)
+        this.customization = customization; // Need to assign a customization (using file reading likely)
     }
 
 
