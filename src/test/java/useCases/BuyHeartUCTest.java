@@ -17,9 +17,7 @@ public class BuyHeartUCTest {
      */
     @Test
     public void BuyHeartTest() {
-        ImageIcon skin = new ImageIcon();
-        Customization customization = new Customization();
-        Pet pet = new Pet("Name", skin, customization);
+        Pet pet = new Pet("Name");
         User user = new User(10, pet);
         pet.ouch(5);
         BuyHeartUC.buyHeart(user, 3);
