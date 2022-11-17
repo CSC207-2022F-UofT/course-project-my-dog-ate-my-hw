@@ -11,13 +11,15 @@ public class Pet {
     private final String name;
     private final ImageIcon skin;
     private final Customization customization;
-    private Hat hat;
 
 
     /* CONSTRUCTORS */
     
     public Pet(String name){
         this.name = name;
+        this.skin = null;
+        this.currHealth = MAX_HEALTH;
+        this.customization = null;
     }
 
     public Pet(String name, ImageIcon skin, Customization customization){
@@ -46,21 +48,12 @@ public class Pet {
         return skin;
     }
 
-    public Hat getHat() {
-        return hat;
-    }
-
 
     /* SETTERS */
 
     public void setCurrHealth(int currHealth) {
         this.currHealth = currHealth;
     }
-
-    public void equipHat(Hat hat){
-        this.hat = hat;
-    }
-
 
     /* CLASS METHODS */
 
