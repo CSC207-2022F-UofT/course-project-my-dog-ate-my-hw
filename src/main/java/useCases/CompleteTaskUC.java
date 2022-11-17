@@ -8,6 +8,7 @@ public class CompleteTaskUC {
     private ToDolist todo;
     private DoneList done;
 
+    //edited the use case so that now it takes in a Task object as constructor parameter
     public CompleteTaskUC(Task task) {
         //go through the TODOlist to find the task
         this.task = task;

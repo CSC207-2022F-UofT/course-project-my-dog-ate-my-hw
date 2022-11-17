@@ -4,6 +4,7 @@ import useCases.CompleteTaskUC;
 import useCases.GainPointsUC;
 
 public class CompleteTaskControl {
+    //the UI passed the Task object to controller
     Task task;
 
     //returns class variable taskName
@@ -18,6 +19,7 @@ public class CompleteTaskControl {
     public CompleteTaskControl (Task task) {
         this.task = task;
     }
+
     //activate use cases
     public void CompleteTask () {
         CompleteTaskUC completeTaskUC = new CompleteTaskUC(task);
