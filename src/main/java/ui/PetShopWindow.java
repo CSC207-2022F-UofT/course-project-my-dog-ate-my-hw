@@ -162,7 +162,7 @@ public class PetShopWindow extends JFrame {
             warningPopup();
         } else {
             PetShopUIController controller = new PetShopUIController();
-            controller.adoptPet(selectedPetIcon, petName);
+            controller.performPetAdoption(selectedPetIcon, petName);
             pet = controller.getPet();
             dispose();
         }
