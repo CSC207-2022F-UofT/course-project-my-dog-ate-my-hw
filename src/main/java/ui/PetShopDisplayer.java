@@ -24,9 +24,11 @@ public class PetShopDisplayer {
         shop.setVisible(true);
     }
 
+    /**
+     * Main method for testing, to be removed
+     */
     public static void main(String[] args) {
        createPetShop();
     }
-
 
 }
