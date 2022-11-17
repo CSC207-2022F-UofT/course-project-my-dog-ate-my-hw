@@ -1,15 +1,16 @@
 package useCases;
 import java.time.LocalDateTime;
+import entities.Priority;
 
-public class CompleteTask {
+public class CompleteTaskUC {
     private Task task;
     /* checklists acquired from DataAccess */
-    private TODOlist todo;
-    private DONEList done;
+    private ToDolist todo;
+    private DoneList done;
 
-    public CompleteTask (String taskName) {
+    public CompleteTaskUC(String taskName) {
         //go through the TODOlist to find the task
-        this.task = task;
+        this.task = todo.searchFor(taskName);
     }
 
     //Check if the task is finished before studyDeadline
@@ -19,13 +20,18 @@ public class CompleteTask {
         return deadline.compareTo(now);
     }
 
-    //remove the task from TODOlist
-    public void removeFromTdl() {
-        todo.remove(task);
+    //return the task priority
+    public Priority getPriority () {
+        return task.Priority;
     }
 
-    //add the task to DONElist
+    //remove the task from ToDolist
+    public void removeFromTdl() {
+        todo.removeTask(task);
+    }
+
+    //add the task to Donelist
     public void addToDl() {
-        done.add(task);
+        done.addTask(task);
     }
 }

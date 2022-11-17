@@ -1,16 +1,17 @@
 package useCases;
 import entities.User;
+import entities.Priority;
 
-public class GainPoints {
-    CompleteTask ct;
+public class GainPointsUC {
+    CompleteTaskUC ct;
     User user;
 
-    public GainPoints (CompleteTask completeTask) {
-        this.ct = completeTask;
+    public GainPointsUC(CompleteTaskUC completeTaskUC) {
+        this.ct = completeTaskUC;
     }
     public void Gain() {
         if (ct.finishedBeforeDDL()) {
-            pr = ct.task.Priority;
+            pr = ct.getPriority();
             if (pr.equals("High")) {
                 user.GainPoints(3);
             }

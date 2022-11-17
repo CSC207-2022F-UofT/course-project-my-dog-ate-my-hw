@@ -1,7 +1,7 @@
 package controllers;
 
-import useCases.CompleteTask;
-import useCases.GainPoints;
+import useCases.CompleteTaskUC;
+import useCases.GainPointsUC;
 
 public class CompleteTaskControl {
     String taskName;
@@ -17,10 +17,10 @@ public class CompleteTaskControl {
 
     //activate use cases
     public void CompleteTask (String taskName) {
-        CompleteTask completeTask = new CompleteTask(taskName);
-        completeTask.addToDl();
-        completeTask.removeFromTdl();
-        GainPoints gainPoints = new GainPoints(completeTask);
-        gainPoints.Gain();
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC(taskName);
+        completeTaskUC.addToDl();
+        completeTaskUC.removeFromTdl();
+        GainPointsUC gainPointsUC = new GainPointsUC(completeTaskUC);
+        gainPointsUC.Gain();
     }
 }
