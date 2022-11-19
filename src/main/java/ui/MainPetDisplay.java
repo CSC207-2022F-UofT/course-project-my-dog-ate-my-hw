@@ -11,81 +11,78 @@ import java.io.IOException;
 
 public class MainPetDisplay extends JPanel {
 
-    private static final Dimension heartDimensions = new Dimension(20,20);
+    private static final Dimension heartDimensions = new Dimension(40,40);
     private static final Dimension petDimensions = new Dimension(200,200);
-    JLabel petImage;
-    JPanel healthBar;
+    private static final Dimension fillerDimensions = new Dimension(14,40);
+    private ImageIcon heartIcon;
+    private ImageIcon brokenHeartIcon;
+
+    private JLabel petImage;
+    private JPanel healthBar;
 
     User user;
 
-    public void createPetDisplay(){
-        if (user.getPet() == null) {
-            // Call pet shop displayer
-            // call controller/use case to add pet to user
-            int x = 1;
-        }
-
-        createHealthBar();
+    public MainPetDisplay(User user){
+        this.user = user;
+        this.healthBar = new JPanel();
+        loadHeartIcon();
+        loadBrokenHeartIcon();
 
     }
 
-    private void loadPetImage(){
-
-
+    public JPanel getHealthBar() {
+        return healthBar;
     }
 
-
-    private void createHealthBar(){
-        healthBar = new JPanel();
-        healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
+    public void createHealthBar(){
+        //replace with presenter
         int health = user.getPet().getCurrHealth();
         int maxHealth = Pet.getMaxHealth();
-        ImageIcon heart = getHeartImage();
-        ImageIcon brokenHeart = getBrokenHeartImage();
 
+        healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
+        healthBar.setBorder(UIFormat.panelBorder);
+        healthBar.setBackground(UIFormat.sidePanelBackground);
+        healthBar.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
         for (int i = 0; i < maxHealth; i++){
             if(i < health){
-                healthBar.add(new JLabel(heart));
+                healthBar.add(makeHeartLabel(heartIcon));
+
             } else {
-                healthBar.add(new JLabel(brokenHeart));
+                healthBar.add(makeHeartLabel(brokenHeartIcon));
             }
         }
-
     }
 
-    private ImageIcon getHeartImage(){
+    private void loadHeartIcon(){
         File f = new File("src/main/resources/miscAssets/heart.png");
-        ImageIcon heartIcon;
-        try {
-            Image heartImage = ImageIO.read(f);
-            heartIcon = new ImageIcon(heartImage.getScaledInstance(heartDimensions.width, heartDimensions.height,
-                    Image.SCALE_SMOOTH));
-            heartIcon.setDescription("heart");
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return heartIcon;
+        heartIcon = convertFileToHeartIcon(f);
+    }
+    private void loadBrokenHeartIcon(){
+        File f = new File("src/main/resources/miscAssets/broken.png");
+        brokenHeartIcon = convertFileToHeartIcon(f);
     }
 
-    private ImageIcon getBrokenHeartImage(){
-        File f = new File("src/main/resources/miscAssets/broken.png");
-        ImageIcon brokenIcon;
+    private ImageIcon convertFileToHeartIcon(File f){
+        ImageIcon icon;
         try {
-            Image brokenImage = ImageIO.read(f);
-            brokenIcon = new ImageIcon(brokenImage.getScaledInstance(heartDimensions.width, heartDimensions.height,
-                    Image.SCALE_SMOOTH));
-            brokenIcon.setDescription("heart");
-
+            Image image = ImageIO.read(f);
+            icon = new ImageIcon(image.getScaledInstance(heartDimensions.width, heartDimensions.height, Image.SCALE_SMOOTH));
+            icon.setDescription("heart");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return brokenIcon;
+        return icon;
+    }
+
+    private JLabel makeHeartLabel(ImageIcon icon){
+        JLabel label = new JLabel(icon);
+        label.setMinimumSize(heartDimensions);
+        return label;
     }
 
     private ImageIcon getPetImage(){
-        String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription() + ".png";
+        String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription();
         File f = new File(path);
         ImageIcon petImage;
         try {
@@ -100,20 +97,5 @@ public class MainPetDisplay extends JPanel {
         return petImage;
     }
 
-
-    //MAIN FOR TESTING
-    public static void main(String[] args) {
-        Pet p = new Pet("billy", null, null);
-        p.ouch(4);
-        User u = new User(0, p);
-        JFrame frame = new JFrame();
-        MainPetDisplay m = new MainPetDisplay();
-        m.user = u;
-        m.createHealthBar();
-        frame.add(m.healthBar);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
 }
