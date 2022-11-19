@@ -175,7 +175,7 @@ public class MainUI extends JFrame {
 
         customizationBox.setFont(UIFormat.buttonFont); // NOI18N
         customizationBox.setForeground(new java.awt.Color(242, 132, 130));
-        customizationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customization", "Hat" }));
+        customizationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Customization", "Hat"}));
         customizationBox.setMixingCutoutShape(null);
         customizationBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +225,7 @@ public class MainUI extends JFrame {
         petNameLabel.setText("NAME");
         namePanel.add(petNameLabel, java.awt.BorderLayout.CENTER);
 
-        MainPetDisplay petDisplay= new MainPetDisplay(u);
+        MainPetDisplay petDisplay = new MainPetDisplay(u);
         petDisplay.createHealthBar();
         healthPanel = petDisplay.getHealthBar();
 
@@ -347,7 +347,7 @@ public class MainUI extends JFrame {
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
 
-            } catch (UnsupportedLookAndFeelException e) {
+        } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -364,7 +364,7 @@ public class MainUI extends JFrame {
     }
 
 
-    private void initializeVars(){
+    private void initializeVars() {
         mainPanel = new javax.swing.JPanel();
         taskPanel = new javax.swing.JPanel();
         taskScrollPane = new javax.swing.JScrollPane();
