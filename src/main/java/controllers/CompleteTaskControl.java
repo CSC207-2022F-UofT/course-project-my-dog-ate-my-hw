@@ -4,28 +4,29 @@ import useCases.CompleteTaskUC;
 import useCases.GainPointsUC;
 
 public class CompleteTaskControl {
-    //the UI passed the Task object to controller
-    Task task;
+    //the UI passed the Task name to controller
+    String taskName;
 
     //returns class variable taskName
-    public Task getTask() {
-        return task;
+    public String getTaskName() {
+        return taskName;
     }
 
-    private void setTask (Task task) {
-        this.task = task;
+    private void setTaskName (String taskName) {
+        this.taskName = taskName;
     }
 
-    public CompleteTaskControl (Task task) {
-        this.task = task;
+    public CompleteTaskControl (String taskName) {
+        this.taskName = taskName;
     }
 
     //activate use cases
     public void CompleteTask () {
-        CompleteTaskUC completeTaskUC = new CompleteTaskUC(task);
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC(taskName);
         completeTaskUC.addToDl();
         completeTaskUC.removeFromTdl();
         GainPointsUC gainPointsUC = new GainPointsUC(completeTaskUC);
         gainPointsUC.Gain();
     }
+
 }

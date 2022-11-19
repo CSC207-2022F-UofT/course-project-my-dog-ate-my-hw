@@ -1,6 +1,8 @@
 package entities;
 import entities.Pet;
 
+/* We have decided that the User class does not need checklists as attributes,
+* as use cases that need to access User.java only deal with points and pet*/
 public class User {
     private int Points;
     private Pet MyPet;
