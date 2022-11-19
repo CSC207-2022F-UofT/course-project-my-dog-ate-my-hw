@@ -2,21 +2,22 @@ package entities;
 
 import java.util.Date;
 
-public abstract class Task {
-    public enum Priority {
-        LOW,
-        MEDIUM,
-        HIGH
-    }
-
-    ;
-
+public class Task {
     private Date deadline;
     private String name;
     private String course;
     private Priority priority;
     private boolean completion;
 
+    //constructor
+    public Task(String name, String course, Date deadline, Priority priority){
+        this.name = name;
+        this.course = course;
+        this.deadline = deadline;
+        this.priority = priority;
+    }
+
+    // getters and setters
     public Date getDeadline() {
         return deadline;
     }
