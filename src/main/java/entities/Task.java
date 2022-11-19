@@ -1,28 +1,30 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Task {
-    private Date deadline;
+    private LocalDateTime deadline;
+    private LocalDateTime studyDeadline;
     private String name;
     private String course;
     private Priority priority;
     private boolean completion;
 
     //constructor
-    public Task(String name, String course, Date deadline, Priority priority){
+    public Task(String name, String course, LocalDateTime deadline, Priority priority){
         this.name = name;
         this.course = course;
         this.deadline = deadline;
         this.priority = priority;
+        this.studyDeadline = deadline.plusDays(3);
     }
 
     // getters and setters
-    public Date getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
     }
 
