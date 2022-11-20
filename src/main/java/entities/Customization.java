@@ -1,7 +1,5 @@
 package entities;
 
-import entities.Item;
-
 import java.util.ArrayList;
 
 public class Customization {
@@ -67,7 +65,7 @@ public class Customization {
     }
 
     public boolean equip(Item item) {
-        if (!this.is_currently_equipped && item.unlocked) {
+        if (!this.is_currently_equipped && item.isUnlocked()) {
             this.current_equipment = item;
             this.is_currently_equipped = true;
             return true;
