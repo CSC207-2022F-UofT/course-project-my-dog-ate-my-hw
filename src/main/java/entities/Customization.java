@@ -38,7 +38,7 @@ public class Customization {
         return is_currently_equipped;
     }
     
-    public item currentEquipment() {
+    public Item currentEquipment() {
         return current_equipment;
     }
     
