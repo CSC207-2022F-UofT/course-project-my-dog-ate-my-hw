@@ -1,5 +1,6 @@
 package entities;
 import java.io.*;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class suggestedTechniques {
@@ -11,9 +12,16 @@ public class suggestedTechniques {
         ESSAY,
         LAB_REPORT
     }
+    public String AssignmentType;
+    public String studyTechnique;
+
+    public void AssignmentType(String AssignmentType, String studyTechnique){
+        this.AssignmentType = AssignmentType;
+        this.studyTechnique = studyTechnique;
 
     public void getStudyTechnique(enum assignmentType) throws FileNotFoundException {
-        if (assignmentType.contentEquals("EXAM")) {
+        System.out.println("Choose an assignment type: EXAM , QUIZ , RESEARCH PAPER, PRESENTATION, ESSAY , LAB REPORT OR OTHER");
+        if (assignmentType == "EXAM") {
 
 
             File file = new File("/Users/rajeshwarisingh/Desktop/studytechnqiueexam.txt");
@@ -24,7 +32,7 @@ public class suggestedTechniques {
             }
             System.out.println(scan.nextLine());
         }
-        elif(assignmentType.contentEquals("QUIZ")) {
+        elif(assignmentType == "QUIZ") {
 
 
             File file2 = new File("/Users/rajeshwarisingh/Desktop/studytechnqiuequiz.txt");
@@ -35,7 +43,7 @@ public class suggestedTechniques {
             }
             System.out.println(scan2.nextLine());
         }
-        elif(assignmentType.contentEquals("RESEARCH_PAPER")) {
+        elif(assignmentType == "RESEARCH_PAPER") {
 
 
             File file3 = new File("/Users/rajeshwarisingh/Desktop/studytechnqiueresearchpaper.txt");
@@ -46,7 +54,7 @@ public class suggestedTechniques {
             }
             System.out.println(scan3.nextLine());
         }
-        elif(assignmentType.contentEquals("PRESENTATION")) {
+        elif(assignmentType == "PRESENTATION") {
 
 
             File file4 = new File("/Users/rajeshwarisingh/Desktop/studytechnqiuepresentation.txt");
@@ -57,7 +65,7 @@ public class suggestedTechniques {
             }
             System.out.println(scan4.nextLine());
 
-        } elif(assignmentType.contentEquals("ESSAY")) {
+        } elif(assignmentType == "ESSAY") {
 
 
             File file5 = new File("/Users/rajeshwarisingh/Desktop/studytechnqiueessay.txt");
@@ -69,7 +77,7 @@ public class suggestedTechniques {
             System.out.println(scan5.nextLine());
 
         }
-        elif(assignmentType.contentEquals("LAB_REPORT")) {
+        elif(assignmentType == "LAB_REPORT") {
 
 
             File file6 = new File("/Users/rajeshwarisingh/Desktop/studytechnqiuelabreport.txt");
@@ -80,8 +88,14 @@ public class suggestedTechniques {
             }
             System.out.println(scan6.nextLine());
 
-        } else{
-            pass
+        } elif(assignmentType == "OTHER"){
+            System.out.println("Don't see what you want? Create a custom assignment type!");
+            }
         }
+    }
+
+    public void addCustomAssignmentType(String type, Optional studyTechniques)){
+        this.AssignmentType = type;
+        this.studyTechnique = technqiue;
     }
 }
