@@ -1,30 +1,47 @@
-package Entities;
+package entities;
 
 import javax.swing.*;
 
 public class Pet {
 
-    /* CLASS VARIABLES */
 
+    // ==PRIVATE VARIABLES==
+    
+    // the maximum health of the pet
     private static final int MAX_HEALTH = 10;
+    
+    //the current health of the pet
     private int currHealth;
+    
+    // the name of the pet
     private final String name;
+    
+    // the imageicon associated with the pet
     private final ImageIcon skin;
-    private final Customization[] customizations;
-    private Hat hat;
+    
+    // the customization object which keeps track of all items,
+    // the currently equipped item, and the equipement status
+    private final Customization customization;
 
 
-    /* CONSTRUCTORS */
+    // ==CONSTRUCTORS==
+    
+    public Pet(String name){
+        this.name = name;
+        this.skin = null;
+        this.currHealth = MAX_HEALTH;
+        this.customization = null;
+    }
 
-    public Pet(String name, ImageIcon skin, Customization[] customizations){
+    public Pet(String name, ImageIcon skin, Customization customization){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
-        this.customizations = null; // Need to assign a list of available customization (using file reading likely)
+        this.customization = customization; // Need to assign a customization (using file reading likely)
     }
 
 
-    /* GETTERS */
+    // ==GETTERS== 
 
     public static int getMaxHealth() {
         return MAX_HEALTH;
@@ -42,27 +59,15 @@ public class Pet {
         return skin;
     }
 
-    public Hat getHat() {
-        return hat;
-    }
 
-    public Customization[] getCustomizations() {
-        return customizations;
-    }
-
-
-    /* SETTERS */
+    // ==SETTERS==
 
     public void setCurrHealth(int currHealth) {
         this.currHealth = currHealth;
     }
 
-    public void equipHat(Hat hat){
-        this.hat = hat;
-    }
 
-
-    /* CLASS METHODS */
+    // ==CLASS METHODS==
 
     public void heal(int healedHealth){
         currHealth += healedHealth;

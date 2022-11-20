@@ -1,5 +1,4 @@
-package Entities;
-import Entities.Pet;
+package entities;
 
 public class User {
     private int Points;
@@ -21,14 +20,16 @@ public class User {
     public Pet getPet() {
         return MyPet;
     }
-
-    public Checklist getTODOlist() {
-        return TODOlist;
-    }
-
-    public Checklist getDONElist() {
-        return DONElist;
-    }
+    
+    // TODO: uncomment when ToDoList and DoneList entities are merged into main
+    
+    // public Checklist getToDoList() {
+    //     return ToDoList;
+    // }
+    
+    // public Checklist getDoneList() {
+    //     return DoneList;
+    // }
 
     public void GainPoints (int points) {
         Points += points;
