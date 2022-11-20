@@ -21,14 +21,14 @@ public class User {
         return MyPet;
     }
     
-    // TODO: UNCOMMENT WHEN TODOlist and DONElist entities are merged into main
+    // TODO: uncomment when ToDoList and DoneList entities are merged into main
     
-    // public Checklist getTODOlist() {
-    //     return TODOlist;
+    // public Checklist getToDoList() {
+    //     return ToDoList;
     // }
     
-    // public Checklist getDONElist() {
-    //     return DONElist;
+    // public Checklist getDoneList() {
+    //     return DoneList;
     // }
 
     public void GainPoints (int points) {
