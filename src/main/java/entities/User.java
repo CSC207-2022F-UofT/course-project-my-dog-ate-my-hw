@@ -1,9 +1,12 @@
 package entities;
 
+/* We have decided that the User class does not need checklists as attributes,
+* as use cases that need to access User.java only deal with points and pet*/
 public class User {
     private int Points;
     private Pet MyPet;
 
+    //constructors
     public User (int points) {
         this.Points = points;
     }
@@ -13,6 +16,11 @@ public class User {
         this.MyPet = pet;
     }
     
+    //default constructor with null Pet and 0 points
+    public User() {
+    }
+    
+    //getter methods
     public int getPoints(){
         return Points;
     }
@@ -20,21 +28,13 @@ public class User {
     public Pet getPet() {
         return MyPet;
     }
-    
-    // TODO: uncomment when ToDoList and DoneList entities are merged into main
-    
-    // public Checklist getToDoList() {
-    //     return ToDoList;
-    // }
-    
-    // public Checklist getDoneList() {
-    //     return DoneList;
-    // }
 
+    //user gains points
     public void GainPoints (int points) {
         Points += points;
     }
 
+    //user loses points; returns false if there are no enough points to lose
     public Boolean LosePoints (int points) {
         if (Points < points) {
             return false;
@@ -43,10 +43,16 @@ public class User {
         return true;
     }
 
+    //setter methods
     public void setPet (Pet somePet) {
         this.MyPet = somePet;
     }
+    
+    public void setPoints (int points) {
+        this.Points = points;
+    }
 
+    //override toString method
     public String toString () {
         return "User with points: " + this.Points + ", Pet: " + this.MyPet.getName();
     }
