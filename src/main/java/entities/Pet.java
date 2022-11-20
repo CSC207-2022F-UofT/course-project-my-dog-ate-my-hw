@@ -4,16 +4,27 @@ import javax.swing.*;
 
 public class Pet {
 
-    /* CLASS VARIABLES */
 
+    // ==PRIVATE VARIABLES==
+    
+    // the maximum health of the pet
     private static final int MAX_HEALTH = 10;
+    
+    //the current health of the pet
     private int currHealth;
+    
+    // the name of the pet
     private final String name;
+    
+    // the imageicon associated with the pet
     private final ImageIcon skin;
+    
+    // the customization object which keeps track of all items,
+    // the currently equipped item, and the equipement status
     private final Customization customization;
 
 
-    /* CONSTRUCTORS */
+    // ==CONSTRUCTORS==
     
     public Pet(String name){
         this.name = name;
@@ -30,7 +41,7 @@ public class Pet {
     }
 
 
-    /* GETTERS */
+    // ==GETTERS== 
 
     public static int getMaxHealth() {
         return MAX_HEALTH;
@@ -49,13 +60,14 @@ public class Pet {
     }
 
 
-    /* SETTERS */
+    // ==SETTERS==
 
     public void setCurrHealth(int currHealth) {
         this.currHealth = currHealth;
     }
 
-    /* CLASS METHODS */
+
+    // ==CLASS METHODS==
 
     public void heal(int healedHealth){
         currHealth += healedHealth;
