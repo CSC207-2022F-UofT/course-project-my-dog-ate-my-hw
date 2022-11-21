@@ -1,7 +1,7 @@
 package entities;
 
 /* We have decided that the User class does not need checklists as attributes,
-* as use cases that need to access User.java only deal with points and pet*/
+ * as use cases that need to access User.java only deal with points and pet*/
 public class User {
     private int points;
     private Pet myPet;
@@ -10,16 +10,16 @@ public class User {
     public User (int points) {
         this.points = points;
     }
-    
+
     public User (int points, Pet pet) {
         this.points = points;
         this.myPet = pet;
     }
-    
+
     //default constructor with null Pet and 0 points
     public User() {
     }
-    
+
     //getter methods
     public int getPoints(){
         return points;
@@ -47,7 +47,7 @@ public class User {
     public void setPet (Pet somePet) {
         this.myPet = somePet;
     }
-    
+
     public void setPoints (int points) {
         this.points = points;
     }
