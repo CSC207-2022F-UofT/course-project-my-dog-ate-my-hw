@@ -43,7 +43,7 @@ public class MainPetDisplay extends JPanel {
 
         healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
         healthBar.setBorder(UIFormat.panelBorder);
-        healthBar.setBackground(UIFormat.sidePanelBackground);
+        healthBar.setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
         healthBar.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
         for (int i = 0; i < maxHealth; i++){

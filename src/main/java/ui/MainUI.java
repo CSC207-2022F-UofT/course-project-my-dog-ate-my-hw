@@ -20,9 +20,75 @@ public class MainUI extends JFrame {
     private void initComponents() {
 
         initializeVars();
+        formatFrame();
+        setBackgrounds();
+        setFonts();
+        setTextColors();
 
+        makePetDisplay();
+        makePointsDisplay();
+        makeTaskScrollDisplay();
+        makeButtons();
+        makeTitle();
+        makeToolPanel();
+        makeNamePanel();
+        finalizeLayout();
+        pack();
+    }
+
+    // EVENT HANDLERS
+    private void customizationBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void editTasksToggleActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void completedTasksToggleActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void newTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void healButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void rouletteButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        saveOnClose();
+    }
+
+    private void initializeVars() {
+        mainPanel = new javax.swing.JPanel();
+        taskPanel = new javax.swing.JPanel();
+        taskScrollPane = new javax.swing.JScrollPane();
+        taskContainer = new javax.swing.JPanel();
+        newTaskButton = new javax.swing.JButton();
+        completedTasksToggle = new javax.swing.JToggleButton();
+        editTasksToggle = new javax.swing.JToggleButton();
+        pointsPanel = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        pointsLabel = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        pointsDisplayLabel = new javax.swing.JLabel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        titlePanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        petPanel = new javax.swing.JPanel();
+        petLabel = new javax.swing.JLabel();
+        toolPanel = new javax.swing.JPanel();
+        customizationBox = new javax.swing.JComboBox<>();
+        healButton = new javax.swing.JButton();
+        namePanel = new javax.swing.JPanel();
+        petNameLabel = new javax.swing.JLabel();
+        healthPanel = new javax.swing.JPanel();
+        rouletteButton = new javax.swing.JButton();
+    }
+
+    // Formatting Methods
+    private void formatFrame() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(247, 237, 226));
         setMaximumSize(new java.awt.Dimension(1288, 733));
         setMinimumSize(new java.awt.Dimension(1288, 733));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -30,23 +96,83 @@ public class MainUI extends JFrame {
                 formWindowClosing(evt);
             }
         });
+    }
+    private void setBackgrounds() {
+        mainPanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
+        taskPanel.setBackground(UIFormat.YEllOW);
+        taskScrollPane.setBackground(UIFormat.TASK_SCROLL);
+        taskContainer.setBackground(UIFormat.TASK_SCROLL);
+        newTaskButton.setBackground(UIFormat.BUTTON_PINK);
+        completedTasksToggle.setBackground(UIFormat.BUTTON_PINK);
+        editTasksToggle.setBackground(UIFormat.YEllOW);
+        pointsPanel.setBackground(UIFormat.LIGHT_GREEN);
+        titlePanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
+        petPanel.setBackground(UIFormat.BUTTON_PINK);
+        toolPanel.setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
+        healButton.setBackground(UIFormat.HEAL_BUTTON);
+        namePanel.setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
+        rouletteButton.setBackground(UIFormat.GREEN);
+    }
+    private void setFonts() {
+        newTaskButton.setFont(UIFormat.buttonFont);
+        completedTasksToggle.setFont(UIFormat.buttonFont);
+        editTasksToggle.setFont(UIFormat.buttonFont);
+        pointsLabel.setFont(UIFormat.pointsFont);
+        rouletteButton.setFont(UIFormat.buttonFont);
+        petNameLabel.setFont(UIFormat.petNameFont);
+        pointsDisplayLabel.setFont(UIFormat.pointsFont);
+        titleLabel.setFont(UIFormat.titleFont);
+        customizationBox.setFont(UIFormat.buttonFont);
+        healButton.setFont(UIFormat.buttonFont);
+    }
+    private void setTextColors(){
+        newTaskButton.setForeground(Color.WHITE);
+        completedTasksToggle.setForeground(Color.WHITE);
+        editTasksToggle.setForeground(Color.WHITE);
+        healButton.setForeground(Color.WHITE);
+        rouletteButton.setForeground(Color.WHITE);
+        titleLabel.setForeground(new java.awt.Color(97, 152, 142));
+        petNameLabel.setForeground(new java.awt.Color(97, 152, 142));
+        customizationBox.setForeground(new java.awt.Color(242, 132, 130));
 
-        mainPanel.setBackground(new java.awt.Color(247, 237, 226));
-        mainPanel.setPreferredSize(new java.awt.Dimension(26, 771));
+    }
 
-        taskPanel.setBackground(new java.awt.Color(246, 189, 96));
+    // Make Contents
+    private void makePetDisplay(){
+        MainPetDisplay petDisplay = new MainPetDisplay(u);
+        petDisplay.createHealthBar();
+        healthPanel = petDisplay.getHealthBar();
+        makePetPanelLayout();
 
-        taskScrollPane.setBackground(new java.awt.Color(251, 223, 178));
+    }
+    private void makePointsDisplay(){
+        pointsPanel.setLayout(new javax.swing.BoxLayout(pointsPanel, javax.swing.BoxLayout.LINE_AXIS));
+        pointsPanel.add(filler1);
+        pointsLabel.setText("Points:");
+        pointsPanel.add(pointsLabel);
+        pointsPanel.add(filler2);
+        pointsDisplayLabel.setText(loadUserPoints());
+        pointsPanel.add(pointsDisplayLabel);
+        pointsPanel.add(filler3);
+    }
+    private void makeTaskScrollDisplay(){
+        // Make the scroll pane
         taskScrollPane.setBorder(null);
         taskScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        taskScrollPane.setToolTipText("");
         taskScrollPane.setViewportView(taskContainer);
+        taskScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.LIGHT_GRAY;
+            }
+        });
 
-        taskContainer.setBackground(new java.awt.Color(251, 223, 178));
+        // Make a container for tasks in scroll pane
         taskContainer.setMaximumSize(new java.awt.Dimension(754, 32767));
         taskContainer.setMinimumSize(new java.awt.Dimension(754, 100));
-        taskContainer.setSize(new java.awt.Dimension(754, 741));
+        taskContainer.setPreferredSize(new java.awt.Dimension(754, 741));
 
+        // Set Layouts
         javax.swing.GroupLayout taskContainerLayout = new javax.swing.GroupLayout(taskContainer);
         taskContainer.setLayout(taskContainerLayout);
         taskContainerLayout.setHorizontalGroup(
@@ -58,14 +184,7 @@ public class MainUI extends JFrame {
                         .addGap(0, 687, Short.MAX_VALUE)
         );
 
-        taskScrollPane.setViewportView(taskContainer);
-        taskScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-            @Override
-            protected void configureScrollBarColors() {
-                this.thumbColor = Color.LIGHT_GRAY;
-            }
-        });
-
+        //Make the panel containing the scroll pane
         javax.swing.GroupLayout taskPanelLayout = new javax.swing.GroupLayout(taskPanel);
         taskPanel.setLayout(taskPanelLayout);
         taskPanelLayout.setHorizontalGroup(
@@ -82,10 +201,16 @@ public class MainUI extends JFrame {
                                 .addComponent(taskScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
+    }
+    private void makeButtons(){
+        makeNewTaskButton();
+        makeShowCompletedButton();
+        makeEditButton();
+        makeHealButton();
+        makeRouletteButton();
+    }
+    private void makeNewTaskButton(){
 
-        newTaskButton.setBackground(new java.awt.Color(240, 177, 168));
-        newTaskButton.setFont(UIFormat.buttonFont);
-        newTaskButton.setForeground(new java.awt.Color(255, 255, 255));
         newTaskButton.setText("New Task");
         newTaskButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(252, 227, 222), new java.awt.Color(252, 227, 222), new java.awt.Color(231, 148, 146), new java.awt.Color(231, 148, 146)));
         newTaskButton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,10 +218,8 @@ public class MainUI extends JFrame {
                 newTaskButtonActionPerformed(evt);
             }
         });
-
-        completedTasksToggle.setBackground(new java.awt.Color(240, 177, 168));
-        completedTasksToggle.setFont(UIFormat.buttonFont);
-        completedTasksToggle.setForeground(new java.awt.Color(255, 255, 255));
+    }
+    private void makeShowCompletedButton(){
         completedTasksToggle.setText("See Completed Tasks");
         completedTasksToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(252, 227, 222), new java.awt.Color(252, 227, 222), new java.awt.Color(231, 148, 146), new java.awt.Color(231, 148, 146)));
         completedTasksToggle.addActionListener(new java.awt.event.ActionListener() {
@@ -104,10 +227,8 @@ public class MainUI extends JFrame {
                 completedTasksToggleActionPerformed(evt);
             }
         });
-
-        editTasksToggle.setBackground(new java.awt.Color(246, 189, 96));
-        editTasksToggle.setFont(UIFormat.buttonFont); // NOI18N
-        editTasksToggle.setForeground(new java.awt.Color(255, 255, 255));
+    }
+    private void makeEditButton(){
         editTasksToggle.setText("Edit Tasks");
         editTasksToggle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(254, 230, 191), new java.awt.Color(254, 230, 191), new java.awt.Color(231, 168, 67), new java.awt.Color(231, 168, 67)));
         editTasksToggle.addActionListener(new java.awt.event.ActionListener() {
@@ -115,29 +236,27 @@ public class MainUI extends JFrame {
                 editTasksToggleActionPerformed(evt);
             }
         });
-
-        pointsPanel.setBackground(new java.awt.Color(167, 187, 182));
-        pointsPanel.setLayout(new javax.swing.BoxLayout(pointsPanel, javax.swing.BoxLayout.LINE_AXIS));
-        pointsPanel.add(filler1);
-
-        pointsLabel.setFont(UIFormat.pointsFont); // NOI18N
-        pointsLabel.setForeground(new java.awt.Color(255, 255, 255));
-        pointsLabel.setText("Points:");
-        pointsPanel.add(pointsLabel);
-        pointsPanel.add(filler2);
-
-        pointsDisplayLabel.setFont(UIFormat.pointsFont); // NOI18N
-        pointsDisplayLabel.setForeground(new java.awt.Color(255, 255, 255));
-        pointsDisplayLabel.setText("0");
-        pointsPanel.add(pointsDisplayLabel);
-        pointsPanel.add(filler3);
-
-        titlePanel.setBackground(new java.awt.Color(247, 237, 226));
-
-        titleLabel.setFont(UIFormat.titleFont); // NOI18N
-        titleLabel.setForeground(new java.awt.Color(97, 152, 142));
+    }
+    private void makeHealButton(){
+        healButton.setText("HEAL");
+        healButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(252, 227, 222), new java.awt.Color(252, 227, 222), new java.awt.Color(231, 148, 146), new java.awt.Color(231, 148, 146)));
+        healButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                healButtonActionPerformed(evt);
+            }
+        });
+    }
+    private void makeRouletteButton(){
+        rouletteButton.setText("Roulette");
+        rouletteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(184, 207, 201), new java.awt.Color(184, 207, 201), new java.awt.Color(113, 147, 133), new java.awt.Color(113, 147, 133)));
+        rouletteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rouletteButtonActionPerformed(evt);
+            }
+        });
+    }
+    private void makeTitle(){
         titleLabel.setText("DOG ATE MY HOMEWORK");
-
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
@@ -150,9 +269,8 @@ public class MainUI extends JFrame {
                                 .addGap(0, 8, Short.MAX_VALUE)
                                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        petPanel.setBackground(new java.awt.Color(245, 202, 195));
-
+    }
+    private void makePetPanelLayout(){
         javax.swing.GroupLayout petPanelLayout = new javax.swing.GroupLayout(petPanel);
         petPanel.setLayout(petPanelLayout);
         petPanelLayout.setHorizontalGroup(
@@ -169,31 +287,18 @@ public class MainUI extends JFrame {
                                 .addComponent(petLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                                 .addContainerGap())
         );
-
-        toolPanel.setBackground(new java.awt.Color(247, 238, 233));
+    }
+    private void makeToolPanel(){
         toolPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(245, 202, 195), new java.awt.Color(245, 202, 195)));
-
-        customizationBox.setFont(UIFormat.buttonFont); // NOI18N
-        customizationBox.setForeground(new java.awt.Color(242, 132, 130));
-        customizationBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Customization", "Hat"}));
-        customizationBox.setMixingCutoutShape(null);
+        customizationBox.setModel(new javax.swing.DefaultComboBoxModel<>(loadCustomizations()));
         customizationBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customizationBoxActionPerformed(evt);
             }
         });
-
-        healButton.setBackground(new java.awt.Color(242, 132, 130));
-        healButton.setFont(UIFormat.buttonFont); // NOI18N
-        healButton.setForeground(new java.awt.Color(255, 255, 255));
-        healButton.setText("HEAL");
-        healButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(252, 227, 222), new java.awt.Color(252, 227, 222), new java.awt.Color(231, 148, 146), new java.awt.Color(231, 148, 146)));
-        healButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                healButtonActionPerformed(evt);
-            }
-        });
-
+        makeToolPanelLayout();
+    }
+    private void makeToolPanelLayout(){
         javax.swing.GroupLayout toolPanelLayout = new javax.swing.GroupLayout(toolPanel);
         toolPanel.setLayout(toolPanelLayout);
         toolPanelLayout.setHorizontalGroup(
@@ -214,32 +319,15 @@ public class MainUI extends JFrame {
                                         .addComponent(healButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
         );
-
-        namePanel.setBackground(new java.awt.Color(247, 238, 233));
+    }
+    private void makeNamePanel(){
         namePanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(245, 202, 195), new java.awt.Color(245, 202, 195)));
         namePanel.setLayout(new java.awt.BorderLayout());
-
-        petNameLabel.setFont(UIFormat.petNameFont); // NOI18N
-        petNameLabel.setForeground(new java.awt.Color(97, 152, 142));
         petNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        petNameLabel.setText("NAME");
+        petNameLabel.setText(loadPetName());
         namePanel.add(petNameLabel, java.awt.BorderLayout.CENTER);
-
-        MainPetDisplay petDisplay = new MainPetDisplay(u);
-        petDisplay.createHealthBar();
-        healthPanel = petDisplay.getHealthBar();
-
-        rouletteButton.setBackground(new java.awt.Color(132, 165, 157));
-        rouletteButton.setFont(UIFormat.buttonFont);
-        rouletteButton.setForeground(new java.awt.Color(255, 255, 255));
-        rouletteButton.setText("Roulette");
-        rouletteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(184, 207, 201), new java.awt.Color(184, 207, 201), new java.awt.Color(113, 147, 133), new java.awt.Color(113, 147, 133)));
-        rouletteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rouletteButtonActionPerformed(evt);
-            }
-        });
-
+    }
+    private void finalizeLayout(){
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -308,41 +396,30 @@ public class MainUI extends JFrame {
                                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        pack();
     }
 
-    private void customizationBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    // USECASE BEHAVIOUR METHODS TODO
+    private String loadUserPoints(){
+        return "0";
+    }
+    private void saveOnClose() {}
+    private String[] loadCustomizations(){
+        return new String[]{"Customization", "Hat"};
+    }
+    private String loadPetName() {
+        return "Name";
     }
 
-    private void editTasksToggleActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
+    // INSTANCE VARIABLES
+    private javax.swing.JToggleButton completedTasksToggle, editTasksToggle;
+    private javax.swing.JComboBox<String> customizationBox;
+    private javax.swing.Box.Filler filler1, filler2, filler3;
+    private javax.swing.JButton healButton, newTaskButton, rouletteButton;
+    private javax.swing.JPanel healthPanel, mainPanel, namePanel, petPanel, pointsPanel, taskContainer, taskPanel, titlePanel, toolPanel;
+    private javax.swing.JLabel pointsLabel, pointsDisplayLabel, petLabel, petNameLabel, titleLabel;
+    private javax.swing.JScrollPane taskScrollPane;
 
-    private void completedTasksToggleActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void newTaskButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void healButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void rouletteButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    /**
-     * @param args the command line arguments
-     */
+    //TESTING
     public static void main(String[] args) {
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
@@ -362,42 +439,4 @@ public class MainUI extends JFrame {
         MainUI ui = new MainUI(i);
         ui.setVisible(true);
     }
-
-
-    private void initializeVars() {
-        mainPanel = new javax.swing.JPanel();
-        taskPanel = new javax.swing.JPanel();
-        taskScrollPane = new javax.swing.JScrollPane();
-        taskContainer = new javax.swing.JPanel();
-        newTaskButton = new javax.swing.JButton();
-        completedTasksToggle = new javax.swing.JToggleButton();
-        editTasksToggle = new javax.swing.JToggleButton();
-        pointsPanel = new javax.swing.JPanel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
-        pointsLabel = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
-        pointsDisplayLabel = new javax.swing.JLabel();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        titlePanel = new javax.swing.JPanel();
-        titleLabel = new javax.swing.JLabel();
-        petPanel = new javax.swing.JPanel();
-        petLabel = new javax.swing.JLabel();
-        toolPanel = new javax.swing.JPanel();
-        customizationBox = new javax.swing.JComboBox<>();
-        healButton = new javax.swing.JButton();
-        namePanel = new javax.swing.JPanel();
-        petNameLabel = new javax.swing.JLabel();
-        healthPanel = new javax.swing.JPanel();
-        rouletteButton = new javax.swing.JButton();
-    }
-
-    // Variables declaration - do not modify
-    private javax.swing.JToggleButton completedTasksToggle, editTasksToggle;
-    private javax.swing.JComboBox<String> customizationBox;
-    private javax.swing.Box.Filler filler1, filler2, filler3;
-    private javax.swing.JButton healButton, newTaskButton, rouletteButton;
-    private javax.swing.JPanel healthPanel, mainPanel, namePanel, petPanel, pointsPanel, taskContainer, taskPanel, titlePanel, toolPanel;
-    private javax.swing.JLabel pointsLabel, pointsDisplayLabel, petLabel, petNameLabel, titleLabel;
-    private javax.swing.JScrollPane taskScrollPane;
-
 }
