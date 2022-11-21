@@ -20,7 +20,7 @@ public class Pet {
     private final ImageIcon skin;
     
     // the customization object which keeps track of all items,
-    // the currently equipped item, and the equipement status
+    // the currently equipped item, and the equipment status
     private final Customization customization;
 
 

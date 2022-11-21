@@ -1,7 +1,5 @@
 package entities;
 
-import entities.Item;
-
 import java.util.ArrayList;
 
 public class Customization {
@@ -57,22 +55,18 @@ public class Customization {
         customizations.remove(item);
     }
 
-    public boolean dequip() {
+    public void dequip() {
         if (this.is_currently_equipped) {
             this.current_equipment = null;
             this.is_currently_equipped = false;
-            return true;
         }
-        return false;
     }
 
-    public boolean equip(Item item) {
+    public void equip(Item item) {
         if (!this.is_currently_equipped && item.unlocked) {
             this.current_equipment = item;
             this.is_currently_equipped = true;
-            return true;
         }
-        return false;
     }
     
 }
