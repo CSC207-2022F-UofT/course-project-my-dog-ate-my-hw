@@ -1,7 +1,7 @@
 package ui;
 
 import entities.User;
-import Entities.Pet;
+import entities.Pet;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

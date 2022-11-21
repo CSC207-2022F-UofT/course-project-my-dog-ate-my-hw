@@ -1,6 +1,6 @@
 package ui;
 
-import Entities.Pet;
+import entities.Pet;
 import entities.User;
 
 import javax.swing.*;
@@ -358,7 +358,7 @@ public class MainUI extends JFrame {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        Entities.Pet p = new Pet("a", null, null);
+        entities.Pet p = new Pet("a", null, null);
         p.ouch(2);
         User i = new User(0, p);
         MainUI ui = new MainUI(i);
