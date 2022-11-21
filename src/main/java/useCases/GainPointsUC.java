@@ -16,14 +16,14 @@ public class GainPointsUC {
     //assign points based on the task's Priority
     public void Gain() {
         if (ct.finishedBeforeDDL()) {
-            pr = ct.getPriority();
-            if (pr.equals(Priority.High)) {
+            Priority pr = ct.getPriority();
+            if (pr.equals(Priority.HIGH)) {
                 user.GainPoints(3);
             }
-            else if (pr.equals(Priority.Medium)) {
+            else if (pr.equals(Priority.MEDIUM)) {
                 user.GainPoints(2);
             }
-            else if (pr.equals(Priority.Low)) {
+            else if (pr.equals(Priority.LOW)) {
                 user.GainPoints(1);
             }
         }

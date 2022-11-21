@@ -1,4 +1,4 @@
-package controllers;
+package uiControllers;
 
 import useCases.CompleteTaskUC;
 import useCases.GainPointsUC;
