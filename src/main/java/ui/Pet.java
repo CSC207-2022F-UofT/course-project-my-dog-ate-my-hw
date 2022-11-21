@@ -3,5 +3,5 @@ package ui;
 public interface Pet {
     int getCurrHealth();
 
-    int getMaxHealth();
+    int getMaxHealthUI();
 }

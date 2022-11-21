@@ -1,22 +1,28 @@
 package useCases;
 
-import entities.Pet;
+import entities.*;
 
 import javax.swing.*;
 
-public class User extends entities.User implements ui.User {
+public class User implements ui.User {
 
-    public User (int points) {
-        super(points);
+    entities.User user;
+
+    public User(entities.User user){
+        this.user = user;
     }
 
-    public User (int points, Pet pet) {
-        super(points, pet);
+    public User (int points, entities.Pet pet) {
+        this.user = new entities.User(points, pet);
+    }
+
+    public User (int points) {
+        this.user = new entities.User(points);
     }
 
     //default constructor with null Pet and 0 points
     public User() {
-        super();
+        new entities.User();
     }
 
     public void adoptPet(ImageIcon petIcon, String petName){
@@ -25,7 +31,15 @@ public class User extends entities.User implements ui.User {
         this.setPet(usecase.getPet());
     }
 
-    public ui.Pet getPetUI(){
-        return (ui.Pet) this.getPet();
+    public void setPet(entities.Pet pet){
+        this.user.setPet(pet);
+    }
+
+    public entities.Pet getPet(){
+        return this.user.getPet();
+    }
+
+    public Pet getPetUI(){
+        return new Pet(this.getPet());
     }
 }

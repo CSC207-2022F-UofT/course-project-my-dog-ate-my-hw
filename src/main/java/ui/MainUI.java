@@ -11,7 +11,8 @@ public class MainUI extends JFrame {
     /**
      * Creates new form MainUI
      */
-    public MainUI() {
+    public MainUI(User user) {
+        this.user = user;
         initComponents();
     }
 
@@ -137,7 +138,7 @@ public class MainUI extends JFrame {
     // Make Contents
     private void makePetDisplay(){
         // TODO
-        MainPetDisplay petDisplay = new MainPetDisplay(user);
+        MainPetDisplay petDisplay = new MainPetDisplay(this.user);
         petDisplay.createHealthBar();
         healthPanel = petDisplay.getHealthBar();
         makePetPanelLayout();
@@ -418,7 +419,7 @@ public class MainUI extends JFrame {
     private javax.swing.JScrollPane taskScrollPane;
 
     //TESTING
-    public static void start(){
+    public static void start(User user){
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
 
@@ -433,7 +434,7 @@ public class MainUI extends JFrame {
         }
         entities.Pet p = new entities.Pet("a", null, null);
         p.ouch(2);
-        MainUI ui = new MainUI();
+        MainUI ui = new MainUI(user);
         ui.setVisible(true);
     }
 }

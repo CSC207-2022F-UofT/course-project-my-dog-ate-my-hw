@@ -10,6 +10,6 @@ public class Main {
     public static void main(String[] args){
         entities.Pet p = new entities.Pet("a", null, null);
         user = new User(0, p);
-        MainUI.start();
+        MainUI.start(user);
     }
 }
