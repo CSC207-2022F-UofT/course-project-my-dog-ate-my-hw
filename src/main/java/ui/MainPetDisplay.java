@@ -1,8 +1,7 @@
 package ui;
 
 import entities.User;
-import Entities.Pet;
-
+import entities.Pet;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +10,9 @@ import java.io.IOException;
 
 public class MainPetDisplay extends JPanel {
 
-    private static final Dimension heartDimensions = new Dimension(40,40);
-    private static final Dimension petDimensions = new Dimension(200,200);
-    private static final Dimension fillerDimensions = new Dimension(14,40);
+    private static final Dimension heartDimensions = new Dimension(40, 40);
+    private static final Dimension petDimensions = new Dimension(200, 200);
+    private static final Dimension fillerDimensions = new Dimension(14, 40);
     private ImageIcon heartIcon;
     private ImageIcon brokenHeartIcon;
 
@@ -22,7 +21,7 @@ public class MainPetDisplay extends JPanel {
 
     User user;
 
-    public MainPetDisplay(User user){
+    public MainPetDisplay(User user) {
         this.user = user;
         this.healthBar = new JPanel();
         loadHeartIcon();
@@ -34,7 +33,7 @@ public class MainPetDisplay extends JPanel {
         return healthBar;
     }
 
-    public void createHealthBar(){
+    public void createHealthBar() {
         //replace with presenter
         int health = user.getPet().getCurrHealth();
         int maxHealth = Pet.getMaxHealth();
@@ -44,8 +43,8 @@ public class MainPetDisplay extends JPanel {
         healthBar.setBackground(UIFormat.sidePanelBackground);
         healthBar.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
-        for (int i = 0; i < maxHealth; i++){
-            if(i < health){
+        for (int i = 0; i < maxHealth; i++) {
+            if (i < health) {
                 healthBar.add(makeHeartLabel(heartIcon));
 
             } else {
@@ -54,16 +53,17 @@ public class MainPetDisplay extends JPanel {
         }
     }
 
-    private void loadHeartIcon(){
+    private void loadHeartIcon() {
         File f = new File("src/main/resources/miscAssets/heart.png");
         heartIcon = convertFileToHeartIcon(f);
     }
-    private void loadBrokenHeartIcon(){
+
+    private void loadBrokenHeartIcon() {
         File f = new File("src/main/resources/miscAssets/broken.png");
         brokenHeartIcon = convertFileToHeartIcon(f);
     }
 
-    private ImageIcon convertFileToHeartIcon(File f){
+    private ImageIcon convertFileToHeartIcon(File f) {
         ImageIcon icon;
         try {
             Image image = ImageIO.read(f);
@@ -75,13 +75,13 @@ public class MainPetDisplay extends JPanel {
         return icon;
     }
 
-    private JLabel makeHeartLabel(ImageIcon icon){
+    private JLabel makeHeartLabel(ImageIcon icon) {
         JLabel label = new JLabel(icon);
         label.setMinimumSize(heartDimensions);
         return label;
     }
 
-    private ImageIcon getPetImage(){
+    private ImageIcon getPetImage() {
         String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription();
         File f = new File(path);
         ImageIcon petImage;
@@ -90,12 +90,9 @@ public class MainPetDisplay extends JPanel {
             petImage = new ImageIcon(brokenImage.getScaledInstance(petDimensions.width, petDimensions.height,
                     Image.SCALE_SMOOTH));
             petImage.setDescription("");
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return petImage;
     }
-
-
 }

@@ -1,8 +1,6 @@
 package ui;
 
-import Entities.Pet;
 import entities.User;
-
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
@@ -358,7 +356,7 @@ public class MainUI extends JFrame {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        Entities.Pet p = new Pet("a", null, null);
+        entities.Pet p = new entities.Pet("a", null, null);
         p.ouch(2);
         User i = new User(0, p);
         MainUI ui = new MainUI(i);
@@ -393,8 +391,6 @@ public class MainUI extends JFrame {
         rouletteButton = new javax.swing.JButton();
     }
 
-
-
     // Variables declaration - do not modify
     private javax.swing.JToggleButton completedTasksToggle, editTasksToggle;
     private javax.swing.JComboBox<String> customizationBox;
@@ -404,5 +400,4 @@ public class MainUI extends JFrame {
     private javax.swing.JLabel pointsLabel, pointsDisplayLabel, petLabel, petNameLabel, titleLabel;
     private javax.swing.JScrollPane taskScrollPane;
 
-    // End of variables declaration
 }
