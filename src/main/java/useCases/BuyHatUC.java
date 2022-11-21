@@ -13,7 +13,7 @@ public class BuyHatUC {
      * @param hat the Hat the user wants to purchase
      * @param customization the possible customizations assigned to the given pet
      */
-    public void buyHat(User user, Item hat, Customization customization){
+    public static void buyHat(User user, Item hat, Customization customization){
         Pet pet = user.getPet(); // Customization not yet assigned to pet class
 
         if (user.getPoints() >= hat.price) {

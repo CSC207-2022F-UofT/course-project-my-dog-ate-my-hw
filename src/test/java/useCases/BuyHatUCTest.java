@@ -16,4 +16,13 @@ public class BuyHatUCTest {
      * The hat should be successfully equipped on the pet
      */
 
+    @Test
+    public void BuyHatTest() {
+        Pet pet = new Pet("Name");
+        User user = new User(10, pet);
+        Item hat = new Item(7);
+        BuyHatUC.buyHat(user, hat, pet.getCustomization());
+        Assertions.assertEquals(user.getPoints(), 3);
+        Assertions.assertSame(pet.getCustomization().current_equipment, hat);
+    }
 }
