@@ -21,4 +21,5 @@ public class BuyHeartUC {
             pet.heal(hearts);
         }
     }
+
 }
