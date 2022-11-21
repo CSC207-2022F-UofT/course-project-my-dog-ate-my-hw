@@ -1,9 +1,6 @@
 package useCases;
 
-import entities.Item;
-import entities.Pet;
-import entities.User;
-import entities.Customization;
+import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +17,8 @@ public class BuyHatUCTest {
     public void BuyHatTest() {
         Pet pet = new Pet("Name");
         User user = new User(10, pet);
-        Item hat = new Item(7);
-        BuyHatUC.buyHat(user, hat, pet.getCustomization());
+        Item hat = new Item("Hat", 7);
+        BuyHatUC.buyHat(user, hat);
         Assertions.assertEquals(user.getPoints(), 3);
         Assertions.assertSame(pet.getCustomization().current_equipment, hat);
     }

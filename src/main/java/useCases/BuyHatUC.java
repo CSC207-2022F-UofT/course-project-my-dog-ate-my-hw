@@ -11,10 +11,9 @@ public class BuyHatUC {
      * Allows the user ot buy a hat and updates their points and pet accordingly.
      * @param user the User's name
      * @param hat the Hat the user wants to purchase
-     * @param customization the possible customizations assigned to the given pet
      */
-    public static void buyHat(User user, Item hat, Customization customization){
-        Pet pet = user.getPet(); // Customization not yet assigned to pet class
+    public static void buyHat(User user, Item hat){
+        Customization customization = user.getPet().getCustomization();
 
         if (user.getPoints() >= hat.price) {
             user.LosePoints(hat.price);
