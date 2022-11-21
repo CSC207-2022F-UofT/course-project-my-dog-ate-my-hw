@@ -33,8 +33,9 @@ public class MainPetDisplay extends JPanel {
         return healthBar;
     }
 
-    public void createHealthBar() {
-        //replace with presenter
+    private void createHealthBar(){
+        healthBar = new JPanel();
+        healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
         int health = user.getPet().getCurrHealth();
         int maxHealth = Pet.getMaxHealth();
 
