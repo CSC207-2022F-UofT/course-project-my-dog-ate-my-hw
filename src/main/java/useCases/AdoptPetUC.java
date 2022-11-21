@@ -14,7 +14,7 @@ public class AdoptPetUC {
      * @param petName the pet's name
      */
     public void adoptPet(ImageIcon petIcon, String petName){
-        pet = new Pet(petName, petIcon);
+        pet = new Pet(petName, petIcon, null);
     }
 
     public Pet getPet() {

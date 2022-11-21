@@ -16,11 +16,19 @@ public class UIFormat {
     public static final Color GREEN = new Color(132, 165, 157);
 
     // FONTS
-    public static final Font titleFont = new Font("Krungthep", Font.PLAIN, 36);
-    public static final Font buttonFont = new Font("Krungthep", Font.PLAIN, 13);
-    public static final Font pointsFont = new Font("Krungthep", Font.PLAIN, 18);
-    public static final Font petNameFont = new Font("Krungthep", Font.PLAIN, 20);
+    public static final Font TITLE_FONT = new Font("Krungthep", Font.PLAIN, 36);
+    public static final Font BUTTON_FONT = new Font("Krungthep", Font.PLAIN, 13);
+    public static final Font POINTS_FONT = new Font("Krungthep", Font.PLAIN, 18);
+    public static final Font PET_NAME_FONT = new Font("Krungthep", Font.PLAIN, 20);
 
-    // BOARDERS
+    // TEXT COLORS
+    public static final Color GREEN_TEXT = new Color(97, 152, 142);
+    public static final Color PINK_TEXT = new Color(242, 132, 130);
+    public static final Color WHITE_TEXT = Color.WHITE;
+
+    // BOARDERS TODO
     public static final Border panelBorder = new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(245, 202, 195), new java.awt.Color(245, 202, 195));
+
+    // TODO make method to create accesable UI formatting
+
 }

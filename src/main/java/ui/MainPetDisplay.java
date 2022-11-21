@@ -12,7 +12,7 @@ public class MainPetDisplay extends JPanel {
 
     /* STATIC VARIABLES */
     private static final Dimension heartDimensions = new Dimension(40,40);
-    private static final Dimension petDimensions = new Dimension(200,200);
+    private static final Dimension petDimensions = new Dimension(410,410);
     private static final Dimension fillerDimensions = new Dimension(14,40);
 
     /* INSTANCE VARIABLES */
@@ -78,15 +78,14 @@ public class MainPetDisplay extends JPanel {
 
     }
 
-
     private JLabel makeHeartLabel(ImageIcon icon){
         JLabel label = new JLabel(icon);
         label.setMinimumSize(heartDimensions);
         return label;
     }
 
-    private ImageIcon getPetImage(){
-        String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription();
+    public ImageIcon getPetImage(String path){
+        //String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription();
         File f = new File(path);
         ImageIcon petImage;
         try {

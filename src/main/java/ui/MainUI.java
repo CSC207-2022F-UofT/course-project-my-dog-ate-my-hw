@@ -1,6 +1,5 @@
 package ui;
 
-import entities.Pet;
 import entities.User;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -115,36 +114,36 @@ public class MainUI extends JFrame {
         rouletteButton.setBackground(UIFormat.GREEN);
     }
     private void setFonts() {
-        newTaskButton.setFont(UIFormat.buttonFont);
-        completedTasksToggle.setFont(UIFormat.buttonFont);
-        editTasksToggle.setFont(UIFormat.buttonFont);
-        pointsLabel.setFont(UIFormat.pointsFont);
-        rouletteButton.setFont(UIFormat.buttonFont);
-        petNameLabel.setFont(UIFormat.petNameFont);
-        pointsDisplayLabel.setFont(UIFormat.pointsFont);
-        titleLabel.setFont(UIFormat.titleFont);
-        customizationBox.setFont(UIFormat.buttonFont);
-        healButton.setFont(UIFormat.buttonFont);
+        newTaskButton.setFont(UIFormat.BUTTON_FONT);
+        completedTasksToggle.setFont(UIFormat.BUTTON_FONT);
+        editTasksToggle.setFont(UIFormat.BUTTON_FONT);
+        pointsLabel.setFont(UIFormat.POINTS_FONT);
+        rouletteButton.setFont(UIFormat.BUTTON_FONT);
+        petNameLabel.setFont(UIFormat.PET_NAME_FONT);
+        pointsDisplayLabel.setFont(UIFormat.POINTS_FONT);
+        titleLabel.setFont(UIFormat.TITLE_FONT);
+        customizationBox.setFont(UIFormat.BUTTON_FONT);
+        healButton.setFont(UIFormat.BUTTON_FONT);
     }
     private void setTextColors(){
-        newTaskButton.setForeground(Color.WHITE);
-        completedTasksToggle.setForeground(Color.WHITE);
-        editTasksToggle.setForeground(Color.WHITE);
-        healButton.setForeground(Color.WHITE);
-        rouletteButton.setForeground(Color.WHITE);
-        titleLabel.setForeground(new java.awt.Color(97, 152, 142));
-        petNameLabel.setForeground(new java.awt.Color(97, 152, 142));
-        customizationBox.setForeground(new java.awt.Color(242, 132, 130));
-
+        newTaskButton.setForeground(UIFormat.WHITE_TEXT);
+        completedTasksToggle.setForeground(UIFormat.WHITE_TEXT);
+        editTasksToggle.setForeground(UIFormat.WHITE_TEXT);
+        healButton.setForeground(UIFormat.WHITE_TEXT);
+        rouletteButton.setForeground(UIFormat.WHITE_TEXT);
+        titleLabel.setForeground(UIFormat.GREEN_TEXT);
+        petNameLabel.setForeground(UIFormat.GREEN_TEXT);
+        customizationBox.setForeground(UIFormat.PINK_TEXT);
     }
 
     // Make Contents
     private void makePetDisplay(){
+        // TODO
         MainPetDisplay petDisplay = new MainPetDisplay(u);
         petDisplay.createHealthBar();
         healthPanel = petDisplay.getHealthBar();
         makePetPanelLayout();
-
+        petLabel.setIcon(petDisplay.getPetImage("src/main/resources/petIcons/cow.jpeg")); //example for now
     }
     private void makePointsDisplay(){
         pointsPanel.setLayout(new javax.swing.BoxLayout(pointsPanel, javax.swing.BoxLayout.LINE_AXIS));
@@ -278,7 +277,7 @@ public class MainUI extends JFrame {
                 petPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(petPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(petLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(petLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                                 .addContainerGap())
         );
         petPanelLayout.setVerticalGroup(
