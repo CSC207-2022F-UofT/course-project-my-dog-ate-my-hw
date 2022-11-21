@@ -35,7 +35,7 @@ public class CreateTaskUC {
      * @param assignmentType  the task's type of assignment
      * @param studyTechniques the task's ideal study technique
      */
-    public Task createCustomTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
+    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
         return task;
     }
