@@ -1,10 +1,11 @@
 package entities;
 
-/* We have decided that the User class does not need checklists as attributes,
- * as use cases that need to access User.java only deal with points and pet*/
+//the user class stores all information needed for the user
 public class User {
     private int points;
     private Pet myPet;
+    private ToDoList todo;
+    private DoneList done;
 
     //constructors
     public User (int points) {
@@ -14,6 +15,13 @@ public class User {
     public User (int points, Pet pet) {
         this.points = points;
         this.myPet = pet;
+    }
+
+    public User (int points, Pet pet, ToDoList todo, DoneList done) {
+        this.points = points;
+        this.myPet = pet;
+        this.todo = todo;
+        this.done = done;
     }
 
     //default constructor with null Pet and 0 points
@@ -27,6 +35,14 @@ public class User {
 
     public Pet getPet() {
         return myPet;
+    }
+
+    public ToDoList getTodo() {
+        return this.todo;
+    }
+
+    public DoneList getDone() {
+        return this.done;
     }
 
     //user gains points
@@ -50,6 +66,14 @@ public class User {
 
     public void setPoints (int points) {
         this.points = points;
+    }
+
+    public void setTodo (ToDoList todo) {
+        this.todo = todo;
+    }
+
+    public void setDone (DoneList done) {
+        this.done = done;
     }
 
     //override toString method
