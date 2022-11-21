@@ -59,6 +59,8 @@ public class Pet {
         return skin;
     }
 
+    public Customization getCustomization() { return customization; }
+
 
     // ==SETTERS==
 
