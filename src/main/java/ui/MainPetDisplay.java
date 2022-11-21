@@ -10,17 +10,17 @@ import java.io.IOException;
 
 public class MainPetDisplay extends JPanel {
 
+    /* STATIC VARIABLES */
     private static final Dimension heartDimensions = new Dimension(40,40);
     private static final Dimension petDimensions = new Dimension(200,200);
     private static final Dimension fillerDimensions = new Dimension(14,40);
+
+    /* INSTANCE VARIABLES */
     private ImageIcon heartIcon;
     private ImageIcon brokenHeartIcon;
-
     private JLabel petImage;
     private JPanel healthBar;
-
     User user;
-
 
     public MainPetDisplay(User user){
         this.user = user;
@@ -30,10 +30,12 @@ public class MainPetDisplay extends JPanel {
 
     }
 
+    /* GETTERS AND SETTERS */
     public JPanel getHealthBar() {
         return healthBar;
     }
 
+    /* METHODS */
     public void createHealthBar(){
         //replace with presenter
         int health = user.getPet().getCurrHealth();
@@ -63,7 +65,6 @@ public class MainPetDisplay extends JPanel {
         File f = new File("src/main/resources/miscAssets/broken.png");
         brokenHeartIcon = convertFileToHeartIcon(f);
     }
-
     private ImageIcon convertFileToHeartIcon(File f){
         ImageIcon icon;
         try {
