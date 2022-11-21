@@ -1,9 +1,8 @@
-package Entities;
-import Entities.Pet;
+package entities;
 
 public class User {
-    private int Points;
-    private Pet MyPet;
+    int Points;
+    Pet MyPet;
 
     public User (int points) {
         this.Points = points;

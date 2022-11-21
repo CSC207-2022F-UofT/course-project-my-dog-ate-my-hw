@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import javax.swing.*;
 
@@ -10,17 +10,17 @@ public class Pet {
     private int currHealth;
     private final String name;
     private final ImageIcon skin;
-    private final Customization[] customizations;
+    private final Customization customization;
     private Hat hat;
 
 
     /* CONSTRUCTORS */
 
-    public Pet(String name, ImageIcon skin, Customization[] customizations){
+    public Pet(String name, ImageIcon skin, Customization customization){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
-        this.customizations = null; // Need to assign a list of available customization (using file reading likely)
+        this.customization = null; // Need to assign a customization (using file reading likely)
     }
 
 
@@ -44,10 +44,6 @@ public class Pet {
 
     public Hat getHat() {
         return hat;
-    }
-
-    public Customization[] getCustomizations() {
-        return customizations;
     }
 
 
