@@ -1,5 +1,6 @@
 package ui;
 
+import entities.Pet;
 import entities.User;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
