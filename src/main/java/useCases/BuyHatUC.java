@@ -15,19 +15,19 @@ public class BuyHatUC {
      * @param user the User's name
      * @param hat the Hat the user wants to purchase
      */
-    public void buyHat(User user, Item hat){
+    public void buyHat(User user, Item hat, Customization customization){
         Pet pet = user.getPet();
 
         if (user.getPoints() >= hat.price) {
             user.LosePoints(hat.price);
         }
-        if Customization.customizations.
-
-
-
-
-
-
-
+        if (!customization.isCurrentlyEquipped()){
+            hat.Unlock();
+            customization.equip(hat);
+        } else {
+            hat.Unlock();
+            customization.dequip();
+            customization.equip(hat);
+        }
     }
 }
