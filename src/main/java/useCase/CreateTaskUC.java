@@ -2,17 +2,13 @@ package useCase;
 
 import java.time.LocalDateTime;
 
-import entities.CustomTask;
-import entities.Priority;
-import entities.Task;
-import entities.ToDoList;
+import entities.*;
 
 public class CreateTaskUC {
     private Task task;
     private ToDoList todo;
 
-    public CreateTaskUC(Task task) {
-        this.task = task;
+    public CreateTaskUC() {
     }
 
     /**
@@ -22,9 +18,11 @@ public class CreateTaskUC {
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
+     * @return the created task
      */
-    public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
+    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
+        return task;
     }
 
     /**
@@ -37,8 +35,9 @@ public class CreateTaskUC {
      * @param assignmentType  the task's type of assignment
      * @param studyTechniques the task's ideal study technique
      */
-    public void createCustomTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, String assignmentType) {
+    public Task createCustomTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
+        return task;
     }
 
     /**
