@@ -16,7 +16,7 @@ public class Task {
         this.course = course;
         this.deadline = deadline;
         this.priority = priority;
-        this.studyDeadline = deadline.plusDays(3);
+        this.studyDeadline = deadline.minusDays(3);
     }
 
     // getters and setters
