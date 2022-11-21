@@ -60,4 +60,12 @@ public class Task {
     public void setCompletion(boolean completion) {
         this.completion = completion;
     }
+
+    public LocalDateTime getStudyDeadline() {
+        return studyDeadline;
+    }
+
+    public void setStudyDeadline(LocalDateTime studyDeadline) {
+        this.studyDeadline = studyDeadline;
+    }
 }
