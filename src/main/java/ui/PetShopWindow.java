@@ -1,8 +1,5 @@
 package ui;
 
-import entities.Pet;
-import uiControllers.PetShopUIController;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,18 +17,14 @@ public class PetShopWindow extends JFrame {
     JButton adoptButton;
     String petName;
     ImageIcon selectedPetIcon;
-    Pet pet;
+    PetShopUIController controller;
 
     /* CONSTRUCTORS */
-    public PetShopWindow() {
+    public PetShopWindow(PetShopUIController controller) {
+        this.controller = controller;
         createPetShopWindow();
     }
 
-    /* GETTERS */
-
-    public Pet getPet() {
-        return pet;
-    }
     /* METHODS */
 
     /**
@@ -166,9 +159,7 @@ public class PetShopWindow extends JFrame {
         if(petName.replaceAll("^[ \t]+|[ \t]+$", "").equals("") || selectedPetIcon == null) {
             warningPopup();
         } else {
-            PetShopUIController controller = new PetShopUIController();
             controller.performPetAdoption(selectedPetIcon, petName);
-            pet = controller.getPet();
             dispose();
         }
 

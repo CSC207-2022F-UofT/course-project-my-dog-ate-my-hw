@@ -1,7 +1,5 @@
 package ui;
 
-import entities.User;
-import entities.Pet;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -38,8 +36,8 @@ public class MainPetDisplay extends JPanel {
     /* METHODS */
     public void createHealthBar(){
         //replace with presenter
-        int health = user.getPet().getCurrHealth();
-        int maxHealth = Pet.getMaxHealth();
+        int health = user.getPetUI().getCurrHealth();
+        int maxHealth = user.getPetUI().getMaxHealth();
 
         healthBar.setLayout(new BoxLayout(healthBar, BoxLayout.LINE_AXIS));
         healthBar.setBorder(UIFormat.panelBorder);

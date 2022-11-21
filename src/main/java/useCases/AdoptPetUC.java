@@ -1,10 +1,11 @@
 package useCases;
 
 import entities.Pet;
+import ui.*;
 
 import javax.swing.*;
 
-public class AdoptPetUC {
+public class AdoptPetUC{
 
     Pet pet;
 

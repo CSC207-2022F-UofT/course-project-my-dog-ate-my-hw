@@ -17,19 +17,11 @@ public class BuyHeartUCTest {
      */
     @Test
     public void BuyHeartTest() {
-<<<<<<< HEAD
-        Pet pet = new Pet("Name");
-=======
-        Pet pet = new Pet("Name", null);
->>>>>>> e251dde278572c2f71be32fadd72fb45725fca51
+        entities.Pet pet = new Pet("Name");
         User user = new User(10, pet);
         pet.ouch(5);
         BuyHeartUC.buyHeart(user, 3);
         Assertions.assertEquals(user.getPoints(), 7);
         Assertions.assertEquals(pet.getCurrHealth(), 8);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> e251dde278572c2f71be32fadd72fb45725fca51
 }
