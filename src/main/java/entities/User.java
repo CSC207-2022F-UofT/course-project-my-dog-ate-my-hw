@@ -1,48 +1,59 @@
 package entities;
 
+/* We have decided that the User class does not need checklists as attributes,
+ * as use cases that need to access User.java only deal with points and pet*/
 public class User {
-    int Points;
-    Pet MyPet;
-    Checklist TODOlist;
-    Checklist DONElist;
+    private int points;
+    private Pet myPet;
 
-    public int getPoints() {
-        return Points;
+    //constructors
+    public User (int points) {
+        this.points = points;
+    }
+
+    public User (int points, Pet pet) {
+        this.points = points;
+        this.myPet = pet;
+    }
+
+    //default constructor with null Pet and 0 points
+    public User() {
+    }
+
+    //getter methods
+    public int getPoints(){
+        return points;
     }
 
     public Pet getPet() {
-        return MyPet;
+        return myPet;
     }
 
-    public Checklist getTODOlist() {
-        return TODOlist;
+    //user gains points
+    public void GainPoints (int points) {
+        this.points += points;
     }
 
-    public Checklist getDONElist() {
-        return DONElist;
-    }
-
-    public void GainPoints(int points) {
-        Points += points;
-    }
-
-    public Boolean LosePoints(int points) {
-        if (Points < points) {
+    //user loses points; returns false if there are no enough points to lose
+    public Boolean LosePoints (int points) {
+        if (this.points < points) {
             return false;
         }
-        Points -= points;
+        this.points -= points;
         return true;
     }
 
-    public void setPet(Pet somePet) {
-        this.MyPet = somePet;
+    //setter methods
+    public void setPet (Pet somePet) {
+        this.myPet = somePet;
     }
 
-    public void setTODOlist(Checklist someList) {
-        this.TODOlist = someList;
+    public void setPoints (int points) {
+        this.points = points;
     }
 
-    public void setDONElist(Checklist someList) {
-        this.DONElist = someList;
+    //override toString method
+    public String toString () {
+        return "User with points: " + this.points + ", Pet: " + this.myPet.getName();
     }
 }
