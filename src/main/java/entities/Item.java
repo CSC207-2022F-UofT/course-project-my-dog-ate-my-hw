@@ -42,7 +42,7 @@ public class Item {
         this.unlocked = unlocked;
     }
 
-    public Item(int price) {
+    public Item(String type, String name, int price, ImageIcon icon, boolean unlocked) {
         this.type = type;
         this.name = name;
         this.price = price;
