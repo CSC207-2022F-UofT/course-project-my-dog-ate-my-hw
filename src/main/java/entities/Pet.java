@@ -18,7 +18,7 @@ public class Pet {
     private Hat hat;
     
     // the customization object which keeps track of all items,
-    // the currently equipped item, and the equipement status
+    // the currently equipped item, and the equipment status
     private final Customization customization;
 
 
@@ -48,6 +48,8 @@ public class Pet {
     public ImageIcon getSkin() {
         return skin;
     }
+
+    public Customization getCustomization() { return customization; }
 
 
     // ==SETTERS==
