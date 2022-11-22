@@ -15,7 +15,7 @@ public class BuyHatUCTest {
 
     @Test
     public void BuyHatTest() {
-        Pet pet = new Pet("Name");
+        Pet pet = new Pet("Name", null);
         User user = new User(10, pet);
         Item hat = new Item("Hat", 7);
         BuyHatUC.buyHat(user, hat);
