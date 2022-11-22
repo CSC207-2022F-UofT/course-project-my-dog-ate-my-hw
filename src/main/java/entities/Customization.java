@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Customization {
 
-    // ==PRIVATE ATTRIBUTES==
+    // ==PUBLIC ATTRIBUTES==
     
     // an array list of all possible items that can be equipped
     public static ArrayList<Item> customizations;
