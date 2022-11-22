@@ -1,9 +1,9 @@
 package entities;
 
+import entities.Item;
 import java.util.ArrayList;
 
 public class Customization {
-
 
     // ==PRIVATE ATTRIBUTES==
     
@@ -18,7 +18,7 @@ public class Customization {
 
     
     // ==CONSTRUCTORS==
-    
+
     public Customization(){
         this.current_equipment = null;
         this.is_currently_equipped = false;
@@ -28,10 +28,8 @@ public class Customization {
         this.current_equipment = item;
         this.is_currently_equipped = true;
     }
-    
-    
-    // ==GETTERS==
 
+    // ==GETTERS==
     public boolean isCurrentlyEquipped() {
         return is_currently_equipped;
     }
@@ -72,5 +70,5 @@ public class Customization {
         }
         return false;
     }
-    
+
 }
