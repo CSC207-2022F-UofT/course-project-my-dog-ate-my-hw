@@ -28,8 +28,8 @@ public class ToDoList {
      * Remove the task with the given name from this
      * @param oldTask
      */
-    public void removeTask(Task oldTask) {
-        this.taskList.remove(oldTask);
+    public void removeTask(String taskName) {
+        this.taskList.remove(task);
     }
 
 }

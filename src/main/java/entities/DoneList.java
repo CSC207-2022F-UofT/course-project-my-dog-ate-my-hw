@@ -8,7 +8,7 @@ public class DoneList {
     //Tasks can be added to this list only if it is first checked off the checklist and removed from the ToDoList.
     //Tasks can also be removed from this list if the user wants to add it to its
 
-    private List<Task> doneTasks; //A list of tasks completed by the user.
+    private ArrayList<Task> doneTasks; //A list of tasks completed by the user.
 
     /**
      * Initialize an empty DoneList with no tasks in its doneTasks list.
