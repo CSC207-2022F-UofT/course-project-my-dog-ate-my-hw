@@ -4,35 +4,27 @@ import javax.swing.*;
 
 public class Item {
 
-    public String name;
-    public String type;
-    public int price;
-    public boolean unlocked;
-    public ImageIcon icon;
+    // a String representing the Item name
+    private String name;
 
-    // CONSTRUCTORS
+    // a String representing the Item type (e.g., Hat)
+    private String type;
+
+    // an int representing the Item cost
+    private int price;
+
+    // a boolean representing whether the Item has been bought
+    private boolean unlocked;
+
+    // an ImageIcon representing the Item icon (clean architecture?)
+    private ImageIcon icon;
+
+
+    // ==CONSTRUCTORS==
 
     public Item() {
         this.price = 1;
         this.unlocked = false;
-    }
-
-    public Item(String name, int price) {
-        this.name = name;
-        this.price = price;
-        this.unlocked = false;
-    }
-
-    public Item(String name, int price, boolean unlocked) {
-        this.name = name;
-        this.price = price;
-        this.unlocked = unlocked;
-    }
-
-    public Item(String type, String name, int price) {
-        this.type = type;
-        this.name = name;
-        this.price = price;
     }
 
     public Item(String type, String name, int price, boolean unlocked) {
@@ -51,25 +43,14 @@ public class Item {
     }
 
 
-    // UNLOCK AND LOCK
-
-    public void Unlock() {
-        this.unlocked = true;
-    }
-
-    public void Lock() {
-        this.unlocked = false;
-    }
-
-
     // SETTERS
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setPrice(int price) {
@@ -80,6 +61,38 @@ public class Item {
         this.icon = icon;
     }
 
-}
 
-    // FIN
+    // ==GETTERS==
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public boolean isUnlocked() {
+        return unlocked;
+    }
+
+    public ImageIcon getIcon() {
+        return icon;
+    }
+
+
+    // ==CLASS METHODS==
+
+    public void Unlock() {
+        this.unlocked = true;
+    }
+
+    public void Lock() {
+        this.unlocked = false;
+    }
+
+}
