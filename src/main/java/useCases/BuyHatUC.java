@@ -1,7 +1,6 @@
 package useCases;
 
 import entities.Item;
-import entities.Pet;
 import entities.User;
 import entities.Customization;
 
@@ -19,10 +18,19 @@ public class BuyHatUC {
             user.LosePoints(hat.price);
         }
         if (!customization.isCurrentlyEquipped()){
+            if (!hat.unlocked) {
+                hat.Unlock();
+                customization.equip(hat);
+            }
+            else {
+                customization.equip(hat);
+                }
+        } else if (!hat.unlocked) {
             hat.Unlock();
+            customization.dequip();
             customization.equip(hat);
-        } else {
-            hat.Unlock();
+        }
+        else {
             customization.dequip();
             customization.equip(hat);
         }
