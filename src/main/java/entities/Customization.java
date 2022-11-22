@@ -60,8 +60,6 @@ public class Customization {
         }
     }
 
-    public boolean equip(Item item) {
-        if (!this.is_currently_equipped && item.isUnlocked()) {
     public void equip(Item item) {
         if (!this.is_currently_equipped && item.unlocked) {
             this.current_equipment = item;
