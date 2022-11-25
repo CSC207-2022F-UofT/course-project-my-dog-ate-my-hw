@@ -2,7 +2,7 @@ package entities;
 
 import java.time.LocalDateTime;
 
-public class Task {
+public abstract class Task {
     private LocalDateTime deadline;
     private LocalDateTime studyDeadline;
     private String name;
@@ -10,14 +10,14 @@ public class Task {
     private Priority priority;
     private boolean completion;
 
-    //constructor
-    public Task(String name, String course, LocalDateTime deadline, Priority priority){
+    public Task(String name, String course, LocalDateTime deadline, Priority priority) {
         this.name = name;
         this.course = course;
         this.deadline = deadline;
         this.priority = priority;
-        this.studyDeadline = deadline.minusDays(3);
     }
+
+
 
     // getters and setters
     public LocalDateTime getDeadline() {
