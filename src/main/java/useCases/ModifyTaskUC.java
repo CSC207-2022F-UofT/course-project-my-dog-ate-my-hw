@@ -1,12 +1,11 @@
 package useCases;
 
-import entities.DoneList;
+import entities.AssignmentType;
+import entities.CustomTask;
 import entities.Priority;
 import entities.Task;
-import entities.ToDoList;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class ModifyTaskUC {
     private Task task;
@@ -38,11 +37,12 @@ public class ModifyTaskUC {
     }
 
     public void changeAssignmentType(String assignment){
-        task.setAssignmentType(assignment);
+        ((CustomTask) task).setAssignmentType(AssignmentType.valueOf(assignment));
     }
 
     public void changeStudyTechnique(String technique){
-        task.setStudyTechnique(technique);
+
+        ((CustomTask) task).setStudyTechnique(technique);
     }
 }
 
