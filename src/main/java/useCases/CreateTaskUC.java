@@ -1,4 +1,4 @@
-package useCase;
+package useCases;
 
 import java.time.LocalDateTime;
 
