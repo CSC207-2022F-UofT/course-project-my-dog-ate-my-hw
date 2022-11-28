@@ -5,7 +5,7 @@ import javax.swing.*;
 public class PetShopDisplayer {
 
     /**
-     * Creates and runs a PetShopWindow that will look the same on all platforms.
+     * Creates and runs a PetShopUI that will look the same on all platforms.
      */
     public void createPetShop(User user) {
         try {
@@ -21,7 +21,7 @@ public class PetShopDisplayer {
         }
 
         PetShopUIController controller = new PetShopUIController(user);
-        PetShopWindow shop = new PetShopWindow(controller);
+        PetShopUI shop = new PetShopUI(controller);
         shop.setVisible(true);
     }
 

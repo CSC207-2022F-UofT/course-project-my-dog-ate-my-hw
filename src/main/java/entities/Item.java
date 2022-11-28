@@ -8,7 +8,6 @@ public class Item {
     public String type;
     public int price;
     public boolean unlocked;
-    public ImageIcon icon;
 
     // CONSTRUCTORS
 
@@ -42,14 +41,6 @@ public class Item {
         this.unlocked = unlocked;
     }
 
-    public Item(String type, String name, int price, ImageIcon icon, boolean unlocked) {
-        this.type = type;
-        this.name = name;
-        this.price = price;
-        this.unlocked = unlocked;
-        this.icon = icon;
-    }
-
 
     // UNLOCK AND LOCK
 
@@ -74,10 +65,6 @@ public class Item {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public void setIcon(ImageIcon icon) {
-        this.icon = icon;
     }
 
 }

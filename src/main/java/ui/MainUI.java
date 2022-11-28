@@ -66,22 +66,22 @@ public class MainUI extends JFrame {
         newTaskButton = new javax.swing.JButton();
         completedTasksToggle = new javax.swing.JToggleButton();
         editTasksToggle = new javax.swing.JToggleButton();
-        pointsPanel = new javax.swing.JPanel();
+        pointsPanel = new PointsPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
         pointsLabel = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
-        pointsDisplayLabel = new javax.swing.JLabel();
+
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        petPanel = new PetDisplayPanel(user);
+        petPanel = new PetDisplayPanel();
         petLabel = new javax.swing.JLabel();
         toolPanel = new javax.swing.JPanel();
         customizationBox = new javax.swing.JComboBox<>();
         healButton = new javax.swing.JButton();
         namePanel = new javax.swing.JPanel();
         petNameLabel = new javax.swing.JLabel();
-        healthPanel = new HealthBarPanel(user);
+        healthPanel = new HealthBarPanel();
         rouletteButton = new javax.swing.JButton();
     }
 
@@ -136,20 +136,9 @@ public class MainUI extends JFrame {
     }
 
     // Make Contents
-    private void makePetDisplay(){
-        // TODO
-        healthPanel.createHealthBar();
-        petPanel.createPetDisplay(); //TODO: add ability for program or pet panel to check is user has pet
-    }
+
     private void makePointsDisplay(){
-        pointsPanel.setLayout(new javax.swing.BoxLayout(pointsPanel, javax.swing.BoxLayout.LINE_AXIS));
-        pointsPanel.add(filler1);
-        pointsLabel.setText("Points:");
-        pointsPanel.add(pointsLabel);
-        pointsPanel.add(filler2);
-        pointsDisplayLabel.setText(loadUserPoints());
-        pointsPanel.add(pointsDisplayLabel);
-        pointsPanel.add(filler3);
+        pointsPanel.createPointsPanel("Points: ", 0);
     }
     private void makeTaskScrollDisplay(){
         // Make the scroll pane
@@ -411,11 +400,12 @@ public class MainUI extends JFrame {
     private javax.swing.JComboBox<String> customizationBox;
     private javax.swing.Box.Filler filler1, filler2, filler3;
     private javax.swing.JButton healButton, newTaskButton, rouletteButton;
-    private javax.swing.JPanel mainPanel, namePanel, pointsPanel, taskContainer, taskPanel, titlePanel, toolPanel;
+    private javax.swing.JPanel mainPanel, namePanel, taskContainer, taskPanel, titlePanel, toolPanel;
     private javax.swing.JLabel pointsLabel, pointsDisplayLabel, petLabel, petNameLabel, titleLabel;
     private javax.swing.JScrollPane taskScrollPane;
     private HealthBarPanel healthPanel;
     private PetDisplayPanel petPanel;
+    private PointsPanel pointsPanel;
 
     //TESTING
     public static void start(User user){

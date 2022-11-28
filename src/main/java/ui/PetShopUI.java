@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 
-public class PetShopWindow extends JFrame {
+public class PetShopUI extends JFrame {
 
     /* INSTANCE VARIABLES */
     JPanel mainPanel;
-    PetIconPanel petIconPanel;
+    PetShopIconPanel petIconPanel;
     JPanel bottomPanel;
     JLabel petShopLabel;
     JLabel nameLabel;
@@ -20,7 +20,7 @@ public class PetShopWindow extends JFrame {
     PetShopUIController controller;
 
     /* CONSTRUCTORS */
-    public PetShopWindow(PetShopUIController controller) {
+    public PetShopUI(PetShopUIController controller) {
         this.controller = controller;
         createPetShopWindow();
     }
@@ -32,7 +32,7 @@ public class PetShopWindow extends JFrame {
      */
     private void createPetShopWindow() {
         mainPanel = new JPanel();
-        petIconPanel = new PetIconPanel();
+        petIconPanel = new PetShopIconPanel();
         bottomPanel = new JPanel();
         petShopLabel = new JLabel();
         nameLabel = new JLabel();
@@ -148,7 +148,7 @@ public class PetShopWindow extends JFrame {
 
     /**
      * Upon the adopt button being clicked, calls the PetShopUIController to create a pet from the user's
-     * selections in the PetShopWindow and saves the pet as an instance variable.
+     * selections in the PetShopUI and saves the pet as an instance variable.
      * Displays warning if user has not made selection.
      * @param evt button click
      */

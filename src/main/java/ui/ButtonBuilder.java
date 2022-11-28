@@ -4,6 +4,8 @@ import controllers.BuyHeartController;
 
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ButtonBuilder {
 
@@ -27,7 +29,13 @@ public class ButtonBuilder {
 
     public Button buildAdoptButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font){
         Button b = new Button(background, textColor, border, label, preferedSize, font);
-        //b.addActionListener(new PetShopUIController());
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //PetShopUIController control = new PetShopUIController()
+                // TODO: must access parent (PetDisplayPanel) and remove button from panel
+            }
+        });
         return b;
     }
 

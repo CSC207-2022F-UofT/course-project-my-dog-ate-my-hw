@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class PetIconPanel extends JPanel{
+public class PetShopIconPanel extends JPanel{
 
     /* CLASS VARIABLES */
 

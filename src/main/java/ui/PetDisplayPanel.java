@@ -1,5 +1,9 @@
 package ui;
 
+import viewModels.MainViewModel;
+import viewModels.ThemeFormat;
+import viewModels.ViewFormattingData;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -13,37 +17,46 @@ public class PetDisplayPanel extends JPanel{
     private static final int imageBorderSpace = 15;
 
     //INSTANCE VARIABLES //
-    private final User user;
+    MainViewModel viewModel;
     private JLabel petImage;
     private Button adoptButton;
 
-    public PetDisplayPanel(User user){
-        this.user = user;
-        this.setLayout(new GridBagLayout());
-        //format self
-    }
-
     // METHODS //
-
-    public void createPetDisplay(){
-        String path = "src/main/resources/petIcons/cow.jpeg"; //TODO: Make it check which pet user has
+    public void createPetPanel(String skin, boolean adopted) {
+        if(adopted) {
+            createPetDisplay(skin);
+        }
+        else{
+            createAdoptDisplay();
+        }
+    }
+    public void createPetDisplay(String skin){
+        this.setLayout(new GridBagLayout());
+        String path = "src/main/resources/petIcons/" + skin + ".jpeg"; //TODO: add customization functionality
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
         c.anchor = GridBagConstraints.CENTER;
-        this.add(makePetJLabel(getPetImage(path)), c);
     }
 
     public void createAdoptDisplay(){
-        //make and display adopt button
-        //remove button from panel when done?
+        GridBagConstraints c = new GridBagConstraints();
+        c.anchor = GridBagConstraints.CENTER;
+        ButtonBuilder builder = new ButtonBuilder();
+        ViewFormattingData format = viewModel.getAdoptButtonFormat();
+        ThemeFormat theme = format.getThemeFormat();
+        adoptButton = builder.buildAdoptButton(theme.getBackground(), theme.getTextColor(), theme.getBorder(), format.getText(), format.getPreferedSize(), theme.getFont());
+        this.add(adoptButton, c);
     }
 
-    public void updatePetDisplay(){
-        //do this
+    public void deleteAdopt(){
+        this.remove(adoptButton);
     }
 
-    private ImageIcon getPetImage(String path) {
-        //String path = "src/main/resources/petIcons/" + user.getPet().getSkin().getDescription();
+    public void updatePetDisplay(String skin){
+        // TODO
+    }
+
+    private ImageIcon getPetImage(String path){
         File f = new File(path);
         ImageIcon petImage;
         try {
@@ -62,4 +75,5 @@ public class PetDisplayPanel extends JPanel{
         label.setMinimumSize(petDimensions);
         return label;
     }
+
 }
