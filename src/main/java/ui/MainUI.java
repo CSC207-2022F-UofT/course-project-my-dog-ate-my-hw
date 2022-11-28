@@ -74,14 +74,14 @@ public class MainUI extends JFrame {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        petPanel = new javax.swing.JPanel();
+        petPanel = new PetDisplayPanel(user);
         petLabel = new javax.swing.JLabel();
         toolPanel = new javax.swing.JPanel();
         customizationBox = new javax.swing.JComboBox<>();
         healButton = new javax.swing.JButton();
         namePanel = new javax.swing.JPanel();
         petNameLabel = new javax.swing.JLabel();
-        healthPanel = new javax.swing.JPanel();
+        healthPanel = new HealthBarPanel(user);
         rouletteButton = new javax.swing.JButton();
     }
 
@@ -138,11 +138,8 @@ public class MainUI extends JFrame {
     // Make Contents
     private void makePetDisplay(){
         // TODO
-        MainPetDisplay petDisplay = new MainPetDisplay(this.user);
-        petDisplay.createHealthBar();
-        healthPanel = petDisplay.getHealthBar();
-        makePetPanelLayout();
-        petLabel.setIcon(petDisplay.getPetImage("src/main/resources/petIcons/cow.jpeg")); //example for now
+        healthPanel.createHealthBar();
+        petPanel.createPetDisplay(); //TODO: add ability for program or pet panel to check is user has pet
     }
     private void makePointsDisplay(){
         pointsPanel.setLayout(new javax.swing.BoxLayout(pointsPanel, javax.swing.BoxLayout.LINE_AXIS));
@@ -414,9 +411,11 @@ public class MainUI extends JFrame {
     private javax.swing.JComboBox<String> customizationBox;
     private javax.swing.Box.Filler filler1, filler2, filler3;
     private javax.swing.JButton healButton, newTaskButton, rouletteButton;
-    private javax.swing.JPanel healthPanel, mainPanel, namePanel, petPanel, pointsPanel, taskContainer, taskPanel, titlePanel, toolPanel;
+    private javax.swing.JPanel mainPanel, namePanel, pointsPanel, taskContainer, taskPanel, titlePanel, toolPanel;
     private javax.swing.JLabel pointsLabel, pointsDisplayLabel, petLabel, petNameLabel, titleLabel;
     private javax.swing.JScrollPane taskScrollPane;
+    private HealthBarPanel healthPanel;
+    private PetDisplayPanel petPanel;
 
     //TESTING
     public static void start(User user){
