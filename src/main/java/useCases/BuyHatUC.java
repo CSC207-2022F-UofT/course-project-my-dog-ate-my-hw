@@ -14,18 +14,18 @@ public class BuyHatUC {
     public static void buyHat(User user, Item hat){
         Customization customization = user.getPet().getCustomization();
 
-        if (user.getPoints() >= hat.price && !hat.unlocked) {
-            user.LosePoints(hat.price);
+        if (user.getPoints() >= hat.getPrice() && !hat.isUnlocked()) {
+            user.LosePoints(hat.getPrice());
         }
         if (!customization.isCurrentlyEquipped()){
-            if (!hat.unlocked) {
+            if (!hat.isUnlocked()) {
                 hat.Unlock();
                 customization.equip(hat);
             }
             else {
                 customization.equip(hat);
                 }
-        } else if (!hat.unlocked) {
+        } else if (!hat.isUnlocked()) {
             hat.Unlock();
             customization.dequip();
             customization.equip(hat);

@@ -28,8 +28,22 @@ public class ToDoList {
      * Remove the task with the given name from this
      * @param oldTask
      */
-    public void removeTask(String taskName) {
-        this.taskList.remove(task);
+    public void removeTask(Task oldTask) {
+        this.taskList.remove(oldTask);
+    }
+
+    /**
+     * Search for the task in the list with the given name
+     * @param taskName
+     * @return Task
+     */
+    public Task searchFor(String taskName) {
+        for (Task task: this.taskList) {
+            if (task.getName().equals(taskName)) {
+                return task;
+            }
+        }
+        return null;
     }
 
 }

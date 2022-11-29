@@ -17,7 +17,7 @@ public class BuyHatUCTest {
     public void BuyHatTest() {
         Pet pet = new Pet("Name", null);
         User user = new User(10, pet);
-        Item hat = new Item("Hat", 7);
+        Item hat = new Item("Hat", "Cap", 7, false);
         BuyHatUC.buyHat(user, hat);
         Assertions.assertEquals(user.getPoints(), 3);
         Assertions.assertSame(pet.getCustomization().current_equipment, hat);
