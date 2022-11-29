@@ -42,7 +42,6 @@ public class Customization {
         return customizations;
     }
     
-    
     // ==CLASS METHODS==
     
     public void addItem(Item item) {

@@ -1,22 +1,23 @@
 package useCases;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import entities.DoneList;
-import entities.Priority;
-import entities.Task;
-import entities.ToDoList;
+import database.DataHandler;
+import entities.*;
 
 public class CompleteTaskUC {
     private Task task;
-    /* checklists acquired from DataAccess */
-    private ToDoList todo;
-    private DoneList done;
+    //userUC is responsible for loading and saving data
+    private UserUC userUC;
+    private User user;
 
     //the use case takes in a String as parameter
-    public CompleteTaskUC(String taskName) {
+    public CompleteTaskUC(String taskName) throws IOException {
         //go through the TODOlist to find the task
-        this.task = todo.searchFor(taskName);
+        this.userUC = new UserUC(new DataHandler("src/main/java/database/Database.txt"));
+        this.user = userUC.getUser();
+        this.task = user.getTodo().searchFor(taskName);
     }
 
     //Check if the task is finished before studyDeadline
@@ -33,12 +34,17 @@ public class CompleteTaskUC {
 
     //remove the task from ToDolist
     public void removeFromTdl() {
-        todo.removeTask(task);
+        user.getTodo().removeTask(task);
     }
 
     //add the task to Donelist
     public void addToDl() {
-        done.addTask(task);
+        user.getDone().addTask(task);
+    }
+
+    //invoke UserUC to save data
+    public void save() {
+
     }
 
     /*

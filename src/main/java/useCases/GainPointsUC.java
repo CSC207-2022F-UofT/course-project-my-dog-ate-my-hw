@@ -1,8 +1,6 @@
 package useCases;
 import entities.User;
 import entities.Priority;
-import presenters.CompleteTaskResponseModel;
-import presenters.CompleteTaskPresenter;
 
 public class GainPointsUC {
     CompleteTaskUC ct;
@@ -29,9 +27,7 @@ public class GainPointsUC {
         }
     }
 
-    //presenter method
-    public void present(CompleteTaskPresenter presenter) {
-        CompleteTaskResponseModel complete = new CompleteTaskResponseModel(user.getPoints(), ct.getTodo(), ct.getDone());
-        presenter.show(complete);
+    public void saveData() {
+        ct.save();
     }
 }

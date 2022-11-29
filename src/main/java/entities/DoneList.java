@@ -28,4 +28,12 @@ public class DoneList {
     public void removeTask(Task uncompletedTask) {
         this.doneTasks.remove(uncompletedTask);
     }
+
+    /**
+     * getter method for the TaskList
+     * @return The Task List stored in ToDoList
+     */
+    public List<Task> getTaskList() {
+        return this.doneTasks;
+    }
 }

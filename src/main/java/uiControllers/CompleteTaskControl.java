@@ -3,6 +3,8 @@ package uiControllers;
 import useCases.CompleteTaskUC;
 import useCases.GainPointsUC;
 
+import java.io.IOException;
+
 public class CompleteTaskControl {
     //the UI passed the Task name to controller
     String taskName;
@@ -21,7 +23,7 @@ public class CompleteTaskControl {
     }
 
     //activate use cases
-    public void CompleteTask () {
+    public void CompleteTask () throws IOException {
         CompleteTaskUC completeTaskUC = new CompleteTaskUC(taskName);
         completeTaskUC.addToDl();
         completeTaskUC.removeFromTdl();

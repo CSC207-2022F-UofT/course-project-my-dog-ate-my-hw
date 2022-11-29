@@ -15,6 +15,8 @@ public class User {
     public User (int points, Pet pet) {
         this.points = points;
         this.myPet = pet;
+        this.todo = new ToDoList();
+        this.done = new DoneList();
     }
 
     public User (int points, Pet pet, ToDoList todo, DoneList done) {

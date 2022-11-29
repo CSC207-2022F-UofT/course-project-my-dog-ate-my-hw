@@ -46,4 +46,12 @@ public class ToDoList {
         return null;
     }
 
+    /**
+     * getter method for the TaskList
+     * @return The Task List stored in ToDoList
+     */
+    public List<Task> getTaskList() {
+        return this.taskList;
+    }
+
 }

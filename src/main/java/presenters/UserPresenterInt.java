@@ -1,6 +1,8 @@
 package presenters;
 
+import entities.User;
+
 /* A general presenter interface to be implemented by each presenter */
-public interface CompleteTaskPresenter {
-    void show(CompleteTaskResponseModel complete);
+public interface UserPresenterInt {
+    void show(User user);
 }
