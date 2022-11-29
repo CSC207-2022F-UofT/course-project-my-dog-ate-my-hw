@@ -1,7 +1,5 @@
 package ui;
 
-import entities.Pet;
-
 import javax.swing.*;
 
 public class PetShopDisplayer {
@@ -9,8 +7,7 @@ public class PetShopDisplayer {
     /**
      * Creates and runs a PetShopWindow that will look the same on all platforms.
      */
-    Pet pet;
-    public void createPetShop() {
+    public void createPetShop(User user) {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (UnsupportedLookAndFeelException e) {
@@ -23,17 +20,17 @@ public class PetShopDisplayer {
             throw new RuntimeException(e);
         }
 
-        PetShopWindow shop = new PetShopWindow();
+        PetShopUIController controller = new PetShopUIController(user);
+        PetShopWindow shop = new PetShopWindow(controller);
         shop.setVisible(true);
-        pet = shop.getPet();
     }
 
     /**
      * Main method for testing, to be removed
-     */
+     *
     public static void main(String[] args) {
         PetShopDisplayer d = new PetShopDisplayer();
         d.createPetShop();
     }
-
+    */
 }

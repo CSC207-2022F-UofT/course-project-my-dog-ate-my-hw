@@ -1,10 +1,10 @@
 package useCases;
 
-import entities.User; // Need user points and user pet
-import entities.Pet; // Need Pet.getMaxHealth() in case we change this value
+import entities.User;
+import entities.Pet;
 
 public class BuyHeartUC {
-    
+
     /**
     * Updates the User's balance and the corresponding Pet's health (1:1)
     * @param hearts the number of hearts to heal (cost)
