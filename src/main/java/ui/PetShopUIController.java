@@ -10,6 +10,6 @@ public class PetShopUIController {
         this.user = user;
     }
     public void performPetAdoption(ImageIcon petIcon, String petName){
-        user.adoptPet(petIcon, petName);
+//        user.adoptPet(petIcon, petName);
     }
 }
