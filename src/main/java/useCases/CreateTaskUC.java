@@ -50,4 +50,9 @@ public class CreateTaskUC {
     }
 
     public Task getTask(){return this.task; }
+
+    public void refreshTask(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Tasklist").refresh();
+    }
 }
