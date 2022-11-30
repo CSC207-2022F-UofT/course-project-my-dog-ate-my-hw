@@ -61,6 +61,10 @@ public class Item {
         this.icon = icon;
     }
 
+    public void setUnlocked(boolean unlocked) {
+        this.unlocked = unlocked;
+    }
+
 
     // ==GETTERS==
 
@@ -83,16 +87,4 @@ public class Item {
     public ImageIcon getIcon() {
         return icon;
     }
-
-
-    // ==CLASS METHODS==
-
-    public void Unlock() {
-        this.unlocked = true;
-    }
-
-    public void Lock() {
-        this.unlocked = false;
-    }
-
 }

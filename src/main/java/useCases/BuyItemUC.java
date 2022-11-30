@@ -11,7 +11,7 @@ public class BuyItemUC {
      * @param user the User's name
      * @param item the item the user wants to purchase
      */
-    public static void buyHat(User user, Item item){
+    public static void buyItem(User user, Item item){
         Customization customization = user.getPet().getCustomization();
 
         int price = item.getPrice();
