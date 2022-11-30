@@ -1,5 +1,5 @@
 package useCases;
-
+import entities.Task;
 public class CheckerUC {
     /**
      * Checker Use case interactor.
@@ -7,9 +7,12 @@ public class CheckerUC {
      * from the pet accordingly.
      */
 
+    public void checkDeadlines() {
 
+        for (Task task : User.u().getTodo()) {
 
-    public void checkDeadlines
+        }
+    }
 
 
 }
