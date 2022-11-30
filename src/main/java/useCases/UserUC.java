@@ -3,6 +3,7 @@ package useCases;
 import presenters.UserPresenter;
 import useCases.DataAccess.UserDataInterface;
 import entities.User;
+import useCases.DataAccess.UserResponseModel;
 
 public class UserUC {
     final UserDataInterface userDataInterface;
@@ -24,6 +25,7 @@ public class UserUC {
 
     //presenter method
     public void present() {
-        userPresenter.show(this.user);
+        UserResponseModel userResponseModel = new UserResponseModel(user);
+        userPresenter.show(userResponseModel);
     }
 }

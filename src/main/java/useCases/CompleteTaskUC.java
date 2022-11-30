@@ -42,9 +42,8 @@ public class CompleteTaskUC {
         user.getDone().addTask(task);
     }
 
-    //invoke UserUC to save data
     public void save() {
-
+        this.userUC.saveUser();
     }
 
     /*
