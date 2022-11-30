@@ -81,7 +81,7 @@ public class MainUI extends JFrame {
         healButton = new javax.swing.JButton();
         namePanel = new javax.swing.JPanel();
         petNameLabel = new javax.swing.JLabel();
-        healthPanel = new HealthBarPanel(user);
+        healthPanel = new HealthBarPanel();
         rouletteButton = new javax.swing.JButton();
     }
 

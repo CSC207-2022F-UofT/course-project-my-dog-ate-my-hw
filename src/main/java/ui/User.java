@@ -1,8 +1,16 @@
 package ui;
 
-import javax.swing.*;
+public class User {
 
-public interface User {
+    private int points;
+    private Pet myPet;
+    private ToDoList todo;
+    private DoneList done;
 
-    Pet getPetUI();
+    User(int points, Pet myPet, ToDoList todo, DoneList done){
+        this.points = points;
+        this.myPet = myPet;
+        this.todo = todo;
+        this.done = done;
+    }
 }

@@ -1,24 +1,25 @@
 package useCases;
 
-import ui.Pet;
-
-public class User extends entities.User implements ui.User{
+public class User extends entities.User{
 
     private static User user = null;
+    private static MainOutputBoundary MainUI = null;
 
     private User(int n, entities.Pet P){
         super(n, P);
     }
 
-    public static void declare(int n, entities.Pet P){
-        user = new User(n, P);
+    private User(entities.User user){ return user}
+
+    public static void declare(entities.User u){
+        user = new User(u);
     }
+
+    public static void declareUI(MainOutputBoundary m){MainUI = m; }
 
     public static User u(){
         return user;
     }
 
-    public ui.Pet getPetUI(){
-        return Pet(user.getPet());
-    }
+    public static MainOutputBoundary UI(){return MainUI; }
 }

@@ -1,7 +1,6 @@
 package useCases;
 
-import entities.User;
-import entities.Pet;
+
 
 public class BuyHeartUC {
 
@@ -10,16 +9,25 @@ public class BuyHeartUC {
     * @param hearts the number of hearts to heal (cost)
     * @param user the User's name
     */
-    public static void buyHeart(User user, int hearts){
+    public static void buyHeart(entities.User user, int hearts){
     
-        Pet pet = user.getPet();
+        entities.Pet pet = user.getPet();
         
         if(user.getPoints() > 0 &&
                 pet.getCurrHealth() > 0 &&
-                pet.getCurrHealth() < Pet.getMaxHealth()){
+                pet.getCurrHealth() < entities.Pet.getMaxHealth()){
             user.LosePoints(hearts);
             pet.heal(hearts);
         }
+    }
+
+    public static void buyHeart(int hearts){
+        this.buyHeart(User.u(), hearts);
+    }
+
+    public void refresh(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
     }
 
 }

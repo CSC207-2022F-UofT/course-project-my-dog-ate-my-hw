@@ -14,31 +14,40 @@ public class HealthBarPanel extends JPanel{
     private static final Dimension fillerDimensions = new Dimension(14,40);
 
     // INSTANCE VARIABLES //
-    private final User user;
+    private int health;
+    private int maxHealth;
     private ImageIcon heartIcon;
     private ImageIcon brokenHeartIcon;
 
 
     // CONSTRUCTOR //
-    public HealthBarPanel(User user){
-        this.user = user;
+    public HealthBarPanel(int current, int max){
+        this.health = current;
+        this.maxHealth = max;
+    }
+
+    public HealthBarPanel(){
+        this.health = 0;
+        this.maxHealth = 0;
     }
 
     /* METHODS */
+    public void changeHealth(int current, int max){
+        this.health = current;
+        this.maxHealth = max;
+    }
     public void createHealthBar(){
         loadHeartIcon();
         loadBrokenHeartIcon();
         //replace with presenter
-        int health = user.getPetUI().getCurrHealth();
-        int maxHealth = user.getPetUI().getMaxHealthUI();
 
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         this.setBorder(UIFormat.panelBorder);
         this.setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
         this.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
-        for (int i = 0; i < maxHealth; i++){
-            if(i < health){
+        for (int i = 0; i < this.maxHealth; i++){
+            if(i < this.health){
                 this.add(makeHeartLabel(heartIcon));
             } else {
                 this.add(makeHeartLabel(brokenHeartIcon));

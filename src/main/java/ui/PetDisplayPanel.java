@@ -1,5 +1,7 @@
 package ui;
 
+import presenters.PetPresenter;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +15,12 @@ public class PetDisplayPanel extends JPanel{
     private static final int imageBorderSpace = 15;
 
     //INSTANCE VARIABLES //
-    private final User user;
+    private final PetPresenter pet;
     private JLabel petImage;
     private Button adoptButton;
 
-    public PetDisplayPanel(User user){
-        this.user = user;
+    public PetDisplayPanel(PetPresenter pet){
+        this.pet = pet;
         this.setLayout(new GridBagLayout());
         //format self
     }

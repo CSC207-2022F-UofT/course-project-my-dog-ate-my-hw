@@ -1,13 +1,11 @@
 package useCases;
 
 import entities.Pet;
-import ui.*;
 
 import javax.swing.*;
 
-public class AdoptPetUC{
+public class AdoptPetUC implements AdoptPetInputBoundary{
 
-    Pet pet;
 
     /**
      * Creates a Pet object from the given petIcon and petName.
@@ -15,10 +13,11 @@ public class AdoptPetUC{
      * @param petName the pet's name
      */
     public void adoptPet(ImageIcon petIcon, String petName){
-        pet = new Pet(petName, petIcon, null);
+        User.u().setPet(new Pet(petName, petIcon, null));
     }
 
-    public Pet getPet() {
-        return pet;
+    public void refreshPet(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
     }
 }

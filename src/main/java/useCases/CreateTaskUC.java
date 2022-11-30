@@ -20,9 +20,9 @@ public class CreateTaskUC {
      * @param priority the task's priority level
      * @return the created task
      */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority) {
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
-        return task;
+        todo = User.u().getTodo();
     }
 
     /**
@@ -35,9 +35,9 @@ public class CreateTaskUC {
      * @param assignmentType  the task's type of assignment
      * @param studyTechniques the task's ideal study technique
      */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
-        return task;
+        todo = User.u().getTodo();
     }
 
     /**
@@ -48,4 +48,6 @@ public class CreateTaskUC {
     public void addToTDL(Task task) {
         todo.addTask(task);
     }
+
+    public Task getTask(){return this.task; }
 }
