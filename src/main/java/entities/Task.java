@@ -78,4 +78,18 @@ public class Task {
     public boolean pastDeadline() {
         return this.deadline.isBefore(LocalDateTime.now());
     }
-}
+
+    /**
+     * Return a task in a string representation
+     * @return string of task in representation
+     */
+    public String toString() {
+        return name + course + deadline + priority;
+    }
+
+    public String[] taskToList() {
+        String [] result = {name, course, String.valueOf(deadline), String.valueOf(priority)};
+        return result;
+    }
+
+    }
