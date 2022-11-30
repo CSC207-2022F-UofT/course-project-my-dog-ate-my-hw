@@ -1,9 +1,12 @@
 package useCases;
 
-import java.time.LocalDateTime;
-
 import entities.*;
 
+import java.time.LocalDateTime;
+
+/**
+ * The use case controller to create a task in the program.
+ */
 public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
     private ToDoList todo;
@@ -12,13 +15,12 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
     }
 
     /**
-     * Creates a task.
+     * Creates a task based on name, course, deadline and priority.
      *
      * @param name     the task's name
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
-     * @return the created task
      */
     public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
@@ -49,9 +51,19 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
         todo.addTask(task);
     }
 
-    public Task getTask(){return this.task; }
+    /**
+     * Gets the task.
+     *
+     * @return task
+     */
+    public Task getTask() {
+        return this.task;
+    }
 
-    public void refreshTask(){
+    /**
+     * Calls on factory to create a refresher.
+     */
+    public void refreshTask() {
         RefresherFactory factory = new RefresherFactory();
         factory.createRefresher("Tasklist").refresh();
     }
