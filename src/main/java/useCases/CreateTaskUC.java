@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import entities.*;
 
-public class CreateTaskUC {
+public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
     private ToDoList todo;
 
