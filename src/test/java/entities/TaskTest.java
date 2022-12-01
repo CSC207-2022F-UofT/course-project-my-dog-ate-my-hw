@@ -1,13 +1,18 @@
 package entities;
-import org.junit.Assert;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TaskTest {
+    /**
+     * Created a new task.
+     * Set task name as "testing", course as "csc207", deadline as 2022-11-30, and priority as high.
+     * Then tested respective getters and setters for each of those attributes.
+     * Also tested if the task can return a string and list representation.
+     */
     @Test
     public void CreateTaskTest() {
         LocalDateTime deadline = LocalDateTime.parse("2022-11-30");
@@ -125,6 +130,7 @@ public class TaskTest {
         task.setStudyDeadline(newdeadline);
         Assertions.assertTrue(task.getDeadline().isBefore(LocalDateTime.now()));
     }
+
     @Test
     public void ToStringTest() {
         LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
@@ -136,7 +142,7 @@ public class TaskTest {
     public void ToArrayTest() {
         LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        String[] res = new String[] {"testing", "csc207", "3025-12-30", "HIGH"};
+        String[] res = new String[]{"testing", "csc207", "3025-12-30", "HIGH"};
         Assertions.assertEquals(res, task.taskToList());
     }
 }

@@ -1,10 +1,19 @@
 package entities;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CustomTaskTest {
+
+    /**
+     * Created a new custom task.
+     * Set task name as "testing", course as "csc207", deadline as 2022-11-30, and priority as high.
+     * Also assigned it to Project assignment type with study technique of "chunk time".
+     * Then tested respective getters and setters for the assignment type and study technique.
+     */
     @Test
     public void CreateCustomTaskTest() {
         LocalDateTime deadline = LocalDateTime.parse("2022-11-30");
@@ -53,5 +62,5 @@ public class CustomTaskTest {
         task.setStudyTechniques("think before you write");
         Assertions.assertEquals("think before your write", task.getStudyTechniques());
     }
-    }
+}
 
