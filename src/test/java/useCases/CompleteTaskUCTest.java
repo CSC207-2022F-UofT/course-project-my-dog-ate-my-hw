@@ -37,12 +37,12 @@ public class CompleteTaskUCTest {
         DoneList doneList = new DoneList();
         user.setDone(doneList);
         CompleteTaskUC.completeTask("CompSci Assignment", user);
-        Assertions.assertEquals(toDoList.getTaskList().size(), 1);
-        Assertions.assertEquals(doneList.getTaskList().size(), 1);
+        Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
+        Assertions.assertEquals(user.getDone().getTaskList().size(), 1);
         Assertions.assertEquals(user.getPoints(), 0);
         CompleteTaskUC.completeTask("Math Midterm 1", user);
         Assertions.assertEquals(user.getPoints(), 3);
-        Assertions.assertEquals(toDoList.getTaskList().size(), 0);
-        Assertions.assertEquals(doneList.getTaskList().size(), 2);
+        Assertions.assertEquals(user.getToDo().getTaskList().size(), 0);
+        Assertions.assertEquals(user.getDone().getTaskList().size(), 2);
     }
 }
