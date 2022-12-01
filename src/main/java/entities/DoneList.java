@@ -25,7 +25,6 @@ public class DoneList {
         this.doneTasks.add(completedTask);
     }
 
-
     public void removeTask(String taskName) {
         this.doneTasks.remove(this.searchFor(taskName));
     }

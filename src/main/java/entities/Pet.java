@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class Pet {
 
-
     // ==PRIVATE VARIABLES==
     
     // the maximum health of the pet

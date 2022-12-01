@@ -13,7 +13,7 @@ public class ToDoList {
      * Initialize an empty ToDOList with no tasks in its taskList.
      */
     public ToDoList() {
-        this.taskList = new ArrayList();
+        this.taskList = new ArrayList<>();
     }
 
     /**
