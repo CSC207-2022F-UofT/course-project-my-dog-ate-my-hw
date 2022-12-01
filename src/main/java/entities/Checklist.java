@@ -11,13 +11,14 @@ public abstract class Checklist {
         private List<Task> taskList;
 
         public Checklist() {
-            this.taskList = new ArrayList();
+            this.taskList = new ArrayList<>();
         }
 
 
         /**
          * Add the given task to taskList. Do not sort the taskList.
-         * @param task
+         * @param task : the given task to add.
+         * @return boolean : true if the task was successfully added, false otherwise.
          */
         public boolean addTask(Task task) {
             this.taskList.add(task);
@@ -26,27 +27,12 @@ public abstract class Checklist {
 
         /**
          * Remove the given task from the taskList.
-         * @param task
+         * @param task : The given task to be removed.
          */
         public void removeTask(Task task) {
             this.taskList.remove(task);
         }
 
-        /**
-         * Return the task in the taskList that has the given name. The names of tasks are unique.
-         * @param taskName : the name of the task being searched for.
-         * @return : a task with the given name or throw an AbsentTaskNameException if there is no task with
-         * the given name.
-         */
-
-        public Task searchFor(String taskName) throws AbsentTaskNameException {
-                for (Task task : taskList) {
-                    if (task.getName() == taskName) {
-                        return task;
-                    }
-                }
-                throw new AbsentTaskNameException();
-            }
 
         /**
          * Return the taskList.

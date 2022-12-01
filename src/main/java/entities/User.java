@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 //the user class stores all information needed for the user
 public class User {
     private int points;
@@ -37,12 +39,12 @@ public class User {
         return myPet;
     }
 
-    public ToDoList getTodo() {
-        return this.todo;
+    public List<Task> getToDo() {
+        return this.todo.getTaskList();
     }
 
-    public DoneList getDone() {
-        return this.done;
+    public List<Task> getDone() {
+        return this.done.getTaskList();
     }
 
     //user gains points
