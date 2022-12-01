@@ -39,12 +39,12 @@ public class User {
         return myPet;
     }
 
-    public List<Task> getToDo() {
-        return this.todo.getTaskList();
+    public ToDoList getToDo() {
+        return this.todo;
     }
 
-    public List<Task> getDone() {
-        return this.done.getTaskList();
+    public DoneList getDone() {
+        return this.done;
     }
 
     //user gains points
