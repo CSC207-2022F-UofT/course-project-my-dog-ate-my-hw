@@ -37,7 +37,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param assignmentType  the task's type of assignment
      * @param studyTechniques the task's ideal study technique
      */
-    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType, String studyTechniques) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
         todo = User.u().getTodo();
     }
@@ -48,6 +48,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param task the task to be added to the to do list
      */
     public void addToTDL(Task task) {
+
         todo.addTask(task);
     }
 

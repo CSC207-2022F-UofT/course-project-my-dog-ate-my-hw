@@ -32,7 +32,7 @@ public interface CreateTaskInputBoundary {
      * @param studyTechniques the task's study technique.
      * @param assignmentType  the task's assignment type.
      */
-    void createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType);
+    void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType, String studyTechniques);
 
     /**
      * Adds the task to the to do list.
