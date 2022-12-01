@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 //the user class stores all information needed for the user
 public class User {
     private int points;
@@ -65,16 +67,16 @@ public class User {
      * Getter for Todo List
      * @return Todo
      */
-    public ToDoList getTodo() {
-        return this.todo;
+    public ToDoList getToDo() {
+        return this.todo.getTaskList();
     }
 
     /**
-     * Getter for Done LIst
+     * Getter for Done List
      * @return Done list
      */
     public DoneList getDone() {
-        return this.done;
+        return this.done.getTaskList();
     }
 
     /**
