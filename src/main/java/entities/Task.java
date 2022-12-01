@@ -28,6 +28,7 @@ public class Task {
         this.deadline = deadline;
         this.priority = priority;
         this.studyDeadline = deadline.minusDays(3);
+        this.completion = false;
     }
 
     /**
@@ -155,7 +156,7 @@ public class Task {
      * @return task in string representation
      */
     public String toString() {
-        return name + course + deadline + priority;
+        return name + " " + course + " " + String.valueOf(deadline) + " " + String.valueOf(priority);
     }
 
     /**
@@ -164,7 +165,8 @@ public class Task {
      * @return task in list representation
      */
     public String[] taskToList() {
-        String[] result = {name, course, String.valueOf(deadline), String.valueOf(priority)};
+        String[] result;
+        result = new String[]{name, course, String.valueOf(deadline), String.valueOf(priority)};
         return result;
     }
 
