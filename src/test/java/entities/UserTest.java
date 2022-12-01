@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+/**
+ * Test cases for User entity
+ * Mainly test gain points and lose points methods
+ * Other properties (pet, checklists) will be tested in corresponding test classes
+ */
 public class UserTest {
     @Test
     public void CreateUserDefaultTest() {
