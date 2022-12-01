@@ -14,5 +14,5 @@ public interface CompleteTaskInputBoundary {
     /**
      * The refresh method connected to view
      */
-    void refreshTasklist();
+    void refreshCompleteTask();
 }
