@@ -6,4 +6,5 @@ public enum AssignmentType {
     EXAM,
     LAB_REPORTS,
     REFLECTION,
+    PROJECT,
 }

@@ -1,6 +1,5 @@
 package entities;
 
-import entities.Item;
 import java.util.ArrayList;
 
 public class Customization {

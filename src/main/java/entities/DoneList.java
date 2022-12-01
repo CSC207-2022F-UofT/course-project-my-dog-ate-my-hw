@@ -25,7 +25,19 @@ public class DoneList {
         this.doneTasks.add(completedTask);
     }
 
-    public void removeTask(Task uncompletedTask) {
-        this.doneTasks.remove(uncompletedTask);
+
+    public void removeTask(String taskName) {
+        this.doneTasks.remove(this.searchFor(taskName));
+    }
+
+    public void removeTask(Task task){this.doneTasks.remove(task);}
+
+    public Task searchFor(String taskName){
+        for (Task task : this.doneTasks){
+            if(task.getName().equals(taskName)){
+                return task;
+            }
+        }
+        return null;
     }
 }

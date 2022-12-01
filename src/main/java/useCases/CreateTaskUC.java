@@ -1,10 +1,13 @@
-package useCase;
-
-import java.time.LocalDateTime;
+package useCases;
 
 import entities.*;
 
-public class CreateTaskUC {
+import java.time.LocalDateTime;
+
+/**
+ * The use case controller to create a task in the program.
+ */
+public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
     private ToDoList todo;
 
@@ -12,17 +15,16 @@ public class CreateTaskUC {
     }
 
     /**
-     * Creates a task.
+     * Creates a task based on name, course, deadline and priority.
      *
      * @param name     the task's name
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
-     * @return the created task
      */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority) {
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
-        return task;
+        todo = User.u().getTodo();
     }
 
     /**
@@ -35,9 +37,9 @@ public class CreateTaskUC {
      * @param assignmentType  the task's type of assignment
      * @param studyTechniques the task's ideal study technique
      */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType, String studyTechniques) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
-        return task;
+        todo = User.u().getTodo();
     }
 
     /**
@@ -46,6 +48,24 @@ public class CreateTaskUC {
      * @param task the task to be added to the to do list
      */
     public void addToTDL(Task task) {
+
         todo.addTask(task);
+    }
+
+    /**
+     * Gets the task.
+     *
+     * @return task
+     */
+    public Task getTask() {
+        return this.task;
+    }
+
+    /**
+     * Calls on factory to create a refresher.
+     */
+    public void refreshTask() {
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Tasklist").refresh();
     }
 }

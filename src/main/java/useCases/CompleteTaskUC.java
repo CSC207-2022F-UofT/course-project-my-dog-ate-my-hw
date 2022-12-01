@@ -3,12 +3,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import entities.Priority;
-import presenters.CompleteTaskResponseModel;
+import entities.Task;
+import entities.ToDoList;
+import entities.DoneList;
+
 
 public class CompleteTaskUC {
     private Task task;
     /* checklists acquired from DataAccess */
-    private ToDolist todo;
+    private ToDoList todo;
     private DoneList done;
 
     //the use case takes in a String as parameter
@@ -20,8 +23,8 @@ public class CompleteTaskUC {
     //Check if the task is finished before studyDeadline
     public Boolean finishedBeforeDDL () {
         LocalDateTime now = LocalDateTime.now();
-        deadline = task.getStudyDeadline();//StudyDeadline attribute of Task, which is a date/time
-        return deadline.compareTo(now);
+        LocalDateTime deadline = task.getStudyDeadline();//StudyDeadline attribute of Task, which is a date/time
+        return deadline.isAfter(now);
     }
 
     //return the task priority

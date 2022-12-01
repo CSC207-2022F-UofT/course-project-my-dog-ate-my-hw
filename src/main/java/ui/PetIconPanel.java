@@ -13,9 +13,9 @@ public class PetIconPanel extends JPanel{
     /* CLASS VARIABLES */
 
     private static final int NUMBER_OF_PETS = 6;
-    private static int PET_PANEL_COLUMNS = 4;
-    private static int PET_ICON_WIDTH = 150;
-    private static int PET_ICON_HEIGHT = 150;
+    private static final int PET_PANEL_COLUMNS = 4;
+    private static final int PET_ICON_WIDTH = 150;
+    private static final int PET_ICON_HEIGHT = 150;
     private ImageIcon selectedIcon = null;
 
     /* GETTERS */
