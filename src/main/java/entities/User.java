@@ -72,7 +72,7 @@ public class User {
     }
 
     /**
-     * Getter for Done LIst
+     * Getter for Done List
      * @return Done list
      */
     public DoneList getDone() {
