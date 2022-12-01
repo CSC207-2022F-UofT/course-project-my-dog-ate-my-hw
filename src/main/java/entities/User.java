@@ -67,16 +67,16 @@ public class User {
      * Getter for Todo List
      * @return Todo
      */
-    public List<Task> getToDo() {
-        return this.todo.getTaskList();
+    public ToDoList getToDo() {
+        return this.todo;
     }
 
     /**
      * Getter for Done List
      * @return Done list
      */
-    public List<Task> getDone() {
-        return this.done.getTaskList();
+    public DoneList getDone() {
+        return this.done;
     }
 
     /**
