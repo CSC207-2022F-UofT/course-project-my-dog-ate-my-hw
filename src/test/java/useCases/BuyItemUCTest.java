@@ -13,7 +13,6 @@ public class BuyItemUCTest {
      * User should have 3 points (10 - 7 = 3)
      * The hat should be successfully equipped on the pet
      */
-
     @Test
     public void BuyItemUCTestBasic() {
         Pet pet = new Pet("Name");

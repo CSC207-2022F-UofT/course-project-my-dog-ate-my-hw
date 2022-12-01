@@ -24,15 +24,15 @@ public class ItemTest {
     @Test
     public void UnlockTest() {
         Item item = new Item();
-        item.Unlock();
+        item.setUnlocked(true);
         Assertions.assertTrue(item.isUnlocked());
     }
 
     @Test
     public void LockTest() {
         Item item = new Item();
-        item.Unlock();
-        item.Lock();
+        item.setUnlocked(true);
+        item.setUnlocked(false);
         Assertions.assertFalse(item.isUnlocked());
     }
 

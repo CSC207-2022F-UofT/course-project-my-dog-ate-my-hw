@@ -3,6 +3,11 @@ package entities;
 import java.time.LocalDateTime;
 
 public class Task {
+    // Task is a public class which contains a String name, String course, Priority priority,
+
+
+    // ==PRIVATE ATTRIBUTES==
+
     private LocalDateTime deadline;
     private LocalDateTime studyDeadline;
     private String name;
@@ -10,7 +15,8 @@ public class Task {
     private Priority priority;
     private boolean completion;
 
-    //constructor
+    // ==CONSTRUCTORS==
+
     public Task(String name, String course, LocalDateTime deadline, Priority priority){
         this.name = name;
         this.course = course;
@@ -19,7 +25,8 @@ public class Task {
         this.studyDeadline = deadline.minusDays(3);
     }
 
-    // getters and setters
+    // ==GETTERS/SETTERS==
+
     public LocalDateTime getDeadline() {
         return deadline;
     }
@@ -35,7 +42,6 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getCourse() {
         return course;
@@ -68,6 +74,8 @@ public class Task {
     public void setStudyDeadline(LocalDateTime studyDeadline) {
         this.studyDeadline = studyDeadline;
     }
+
+    // ==CLASS METHODS==
 
     /**
      * Return whether the given task is incompleted and the task is past its deadline. This method uses the current

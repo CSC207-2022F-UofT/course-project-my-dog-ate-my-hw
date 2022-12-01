@@ -1,13 +1,15 @@
 package entities;
 
-//the user class stores all information needed for the user
+// == the user class stores all information needed for the user ==
 public class User {
+
+    // ==PRIVATE ATTRIBUTES==
     private int points;
     private Pet myPet;
     private ToDoList todo;
     private DoneList done;
 
-    //constructors
+    // ==CONSTRUCTORS==
     public User (int points) {
         this.points = points;
     }
@@ -24,11 +26,11 @@ public class User {
         this.done = done;
     }
 
-    //default constructor with null Pet and 0 points
+    // ==DEFAULT CONSTRUCTOR==
     public User() {
     }
 
-    //getter methods
+    // ==GETTERS==
     public int getPoints(){
         return points;
     }
@@ -45,12 +47,12 @@ public class User {
         return this.done;
     }
 
-    //user gains points
+    // ==CLASS METHODS==
     public void GainPoints (int points) {
         this.points += points;
     }
 
-    //user loses points; returns false if there are no enough points to lose
+    // user loses points; returns false if there are no enough points to lose
     public Boolean LosePoints (int points) {
         if (this.points < points) {
             return false;
@@ -59,7 +61,7 @@ public class User {
         return true;
     }
 
-    //setter methods
+    // ==SETTERS==
     public void setPet (Pet somePet) {
         this.myPet = somePet;
     }

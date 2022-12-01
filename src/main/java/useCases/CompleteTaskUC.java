@@ -9,10 +9,15 @@ import entities.DoneList;
 
 
 public class CompleteTaskUC {
+
+    // ==PRIVATE ATTRIBUTES==
+
     private Task task;
     /* checklists acquired from DataAccess */
     private ToDoList todo;
     private DoneList done;
+
+    // ==CONSTRUCTOR==
 
     //the use case takes in a String as parameter
     public CompleteTaskUC(String taskName) {
@@ -20,10 +25,12 @@ public class CompleteTaskUC {
         this.task = todo.searchFor(taskName);
     }
 
+    // ==CLASS METHODS==
+
     //Check if the task is finished before studyDeadline
     public Boolean finishedBeforeDDL () {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime deadline = task.getStudyDeadline();//StudyDeadline attribute of Task, which is a date/time
+        LocalDateTime deadline = task.getStudyDeadline(); //StudyDeadline attribute of Task, which is a date/time
         return deadline.isAfter(now);
     }
 

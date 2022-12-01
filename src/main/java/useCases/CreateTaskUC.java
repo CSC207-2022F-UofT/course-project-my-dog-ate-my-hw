@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import entities.*;
 
 public class CreateTaskUC {
+
+    // ==PRIVATE ATTRIBUTES==
+
     private Task task;
     private ToDoList todo;
 
@@ -18,7 +21,6 @@ public class CreateTaskUC {
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
-     * @return the created task
      */
     public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);

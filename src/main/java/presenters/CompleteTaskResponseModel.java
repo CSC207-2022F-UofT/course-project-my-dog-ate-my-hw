@@ -3,19 +3,24 @@ package presenters;
 import java.util.ArrayList;
 
 public class CompleteTaskResponseModel {
+
+    // ==PRIVATE ATTRIBUTES==
+
     private int points;
     //store the information in checklists in an ArrayList of ArrayList of Strings
     private ArrayList<ArrayList<String>> toDo;
     private ArrayList<ArrayList<String>> done;
 
-    //constructor
+    // ==CONSTRUCTOR==
+
     public CompleteTaskResponseModel(int points, ArrayList<ArrayList<String>> toDo, ArrayList<ArrayList<String>> done) {
         this.points = points;
         this.toDo = toDo;
         this.done = done;
     }
 
-    //setters and getters
+    // ==GETTERS/SETTERS==
+
     public int getPoints() {
         return points;
     }

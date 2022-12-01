@@ -7,11 +7,8 @@ public class CheckerUC {
      * from the pet accordingly.
      */
 
-
-
     public void checkDeadlines(){
 
     }
-
 
 }

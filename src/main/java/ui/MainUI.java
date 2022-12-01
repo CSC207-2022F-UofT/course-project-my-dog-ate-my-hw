@@ -400,7 +400,7 @@ public class MainUI extends JFrame {
     }
     private void saveOnClose() {}
     private String[] loadCustomizations(){
-        return new String[]{"Customization", "Hat"};
+        return new String[]{"Customization", "Item"};
     }
     private String loadPetName() {
         return "Name";

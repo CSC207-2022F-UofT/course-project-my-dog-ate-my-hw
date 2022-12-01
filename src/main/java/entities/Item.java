@@ -3,6 +3,8 @@ package entities;
 import javax.swing.*;
 
 public class Item {
+    // Item is a public class for an equipable item that has a String name, String type, int price
+    // and boolean unlocked...
 
     // a String representing the Item name
     private String name;
@@ -42,7 +44,6 @@ public class Item {
         this.icon = icon;
     }
 
-
     // SETTERS
 
     public void setName(String name) {
@@ -64,7 +65,6 @@ public class Item {
     public void setUnlocked(boolean unlocked) {
         this.unlocked = unlocked;
     }
-
 
     // ==GETTERS==
 

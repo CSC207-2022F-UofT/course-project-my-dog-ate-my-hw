@@ -17,7 +17,6 @@ public class BuyItemUC {
         int price = item.getPrice();
         boolean unlocked = item.isUnlocked();
 
-
         if (user.getPoints() >= price && !unlocked) {
             user.LosePoints(price);
         }
