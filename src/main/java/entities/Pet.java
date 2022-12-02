@@ -1,10 +1,8 @@
 package entities;
 
-import javax.swing.*;
-
 public class Pet {
 
-    // ==PRIVATE VARIABLES==
+    // ==PRIVATE ATTRIBUTES==
     
     // the maximum health of the pet
     private static final int MAX_HEALTH = 10;
@@ -14,6 +12,9 @@ public class Pet {
     
     // the name of the pet
     private final String name;
+
+    // the id associated with the skin
+    private final String skin;
     
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
@@ -23,12 +24,14 @@ public class Pet {
     
     public Pet(String name){
         this.name = name;
+        this.skin = null;
         this.currHealth = MAX_HEALTH;
         this.customization = null;
     }
 
-    public Pet(String name, Customization customization){
+    public Pet(String name, String skin, Customization customization){
         this.name = name;
+        this.skin = skin;
         this.currHealth = MAX_HEALTH;
         this.customization = customization; // Need to assign a customization (using file reading likely)
     }
@@ -48,6 +51,10 @@ public class Pet {
     }
 
     public Customization getCustomization() { return customization; }
+
+    public String getSkin(){
+        return skin;
+    }
 
     // ==CLASS METHODS==
 
