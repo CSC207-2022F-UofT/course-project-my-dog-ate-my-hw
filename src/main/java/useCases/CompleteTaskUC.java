@@ -12,7 +12,7 @@ public class CompleteTaskUC implements CompleteTaskInputBoundary{
      */
     public static void completeTask(String taskName, entities.User user) throws RuntimeException {
         try{
-            Task task = User.u().getToDo().searchFor(taskName);
+            Task task = user.getToDo().searchFor(taskName);
             user.getToDo().removeTask(task);
             user.getDone().addTask(task);
             GainPointsUC.Gain(taskName, user);
