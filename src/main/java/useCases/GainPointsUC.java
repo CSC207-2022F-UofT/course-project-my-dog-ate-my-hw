@@ -12,13 +12,13 @@ public class GainPointsUC {
      * Check if the task is finished before studyDeadline
      * Reward points to user according to the priority of the task
      * @param taskName The task that has been completed
-     * @throws RuntimeException
+     * @throws RuntimeException If the task name is not in the ToDoList
      */
     public static void Gain(String taskName, entities.User user) throws RuntimeException {
         try {
-            Task task = user.getTodo().searchFor(taskName);
+            Task task = user.getToDo().searchFor(taskName);
             LocalDateTime now = LocalDateTime.now();
-            LocalDateTime deadline = task.getStudyDeadline();//StudyDeadline attribute of Task, which is a date/time
+            LocalDateTime deadline = task.getDeadline();//Deadline attribute of Task, which is a date/time
             if (deadline.isAfter(now)) {
                 Priority priority = task.getPriority();
                 if (priority.equals(Priority.HIGH)) {
