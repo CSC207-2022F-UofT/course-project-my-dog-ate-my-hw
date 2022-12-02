@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 public class TaskTest {
 
+    // create a task and check that all getters return proper values
     @Test
     public void TaskTestGetters(){
         LocalDateTime time = LocalDateTime.of(2022, 12, 8, 11, 59);
@@ -16,6 +17,7 @@ public class TaskTest {
         Assertions.assertEquals(Priority.HIGH, task.getPriority());
     }
 
+    // create a task, use setters and check that getters return proper values
     @Test
     public void TaskTestSetters(){
         LocalDateTime time1 = LocalDateTime.of(2022, 12, 7, 11, 59);
@@ -32,6 +34,7 @@ public class TaskTest {
         Assertions.assertEquals(Priority.HIGH, task.getPriority());
     }
 
+    // create a task past some deadline and verify that task.pastDeadline returns true
     @Test
     public void TaskTestPastDeadline(){
         LocalDateTime time = LocalDateTime.of(2022, 12, 7, 11, 59);
@@ -39,6 +42,7 @@ public class TaskTest {
         Assertions.assertTrue(task.pastDeadline());
     }
 
+    // create a task, set it as complete, and check whether task.isCompletion returns true
     @Test
     public void TaskTestCompleted(){
         LocalDateTime time = LocalDateTime.of(2022, 12, 8, 11, 59);

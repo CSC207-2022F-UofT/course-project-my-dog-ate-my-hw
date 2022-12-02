@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class ItemTest {
 
+    // create a default item
     @Test
     public void CreateItemDefaulTest() {
         Item item = new Item();
@@ -12,6 +13,7 @@ public class ItemTest {
         Assertions.assertFalse(item.isUnlocked());
     }
 
+    // create an unlocked item with a type, name, and price
     @Test
     public void CreateItemNameAndPriceAndTypeAndUnlockedTest() {
         Item item = new Item("Hat", "Name", 10, true);
@@ -21,6 +23,7 @@ public class ItemTest {
         Assertions.assertTrue(item.isUnlocked());
     }
 
+    // create an unlocked item and check whether item.isUnlocked returns true
     @Test
     public void UnlockTest() {
         Item item = new Item();
@@ -28,6 +31,7 @@ public class ItemTest {
         Assertions.assertTrue(item.isUnlocked());
     }
 
+    // create an unlocked item and then lock it, check whether item.isUnlocked returns false
     @Test
     public void LockTest() {
         Item item = new Item();
@@ -36,6 +40,7 @@ public class ItemTest {
         Assertions.assertFalse(item.isUnlocked());
     }
 
+    // check type setter
     @Test
     public void SetTypeTest() {
         Item item = new Item();
@@ -43,6 +48,7 @@ public class ItemTest {
         Assertions.assertEquals("Hat", item.getType());
     }
 
+    // check name setter
     @Test
     public void SetNameTest() {
         Item item = new Item();
@@ -50,6 +56,7 @@ public class ItemTest {
         Assertions.assertEquals("Name", item.getName());
     }
 
+    // check price setter
     @Test
     public void SetPriceTest() {
         Item item = new Item();

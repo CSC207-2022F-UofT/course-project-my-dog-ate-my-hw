@@ -19,18 +19,30 @@ public class DoneList {
 
     /**
      * Add the given task to the doneTasks list. Do not sort the list.
-     * @param completedTask
+     * @param completedTask the completed task
      */
     public void addTask(Task completedTask) {
         this.doneTasks.add(completedTask);
     }
 
+    /**
+     * Given only a String, search for and remove the task with the given name from this ToDoList
+     * @param taskName the task that is to be removed
+     */
     public void removeTask(String taskName) {
         this.doneTasks.remove(this.searchFor(taskName));
     }
 
+    /**
+     * Remove the task with the given name from this ToDoList
+     * @param task the task that is to be removed
+     */
     public void removeTask(Task task){this.doneTasks.remove(task);}
 
+    /**
+     * Given only a String, search for the task and return it, else return null
+     * @param taskName the task that is to be searched
+     */
     public Task searchFor(String taskName){
         for (Task task : this.doneTasks){
             if(task.getName().equals(taskName)){
@@ -39,4 +51,5 @@ public class DoneList {
         }
         return null;
     }
+
 }

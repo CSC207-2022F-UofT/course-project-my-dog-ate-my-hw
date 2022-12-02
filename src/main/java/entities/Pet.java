@@ -15,30 +15,23 @@ public class Pet {
     // the name of the pet
     private final String name;
     
-    // the imageicon associated with the pet
-    private final ImageIcon skin;
-    
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
     private final Customization customization;
-
 
     // ==CONSTRUCTORS==
     
     public Pet(String name){
         this.name = name;
-        this.skin = null;
         this.currHealth = MAX_HEALTH;
         this.customization = null;
     }
 
-    public Pet(String name, ImageIcon skin, Customization customization){
+    public Pet(String name, Customization customization){
         this.name = name;
-        this.skin = skin;
         this.currHealth = MAX_HEALTH;
         this.customization = customization; // Need to assign a customization (using file reading likely)
     }
-
 
     // ==GETTERS== 
 
@@ -54,19 +47,7 @@ public class Pet {
         return name;
     }
 
-    public ImageIcon getSkin() {
-        return skin;
-    }
-
     public Customization getCustomization() { return customization; }
-
-
-    // ==SETTERS==
-
-    public void setCurrHealth(int currHealth) {
-        this.currHealth = currHealth;
-    }
-
 
     // ==CLASS METHODS==
 
