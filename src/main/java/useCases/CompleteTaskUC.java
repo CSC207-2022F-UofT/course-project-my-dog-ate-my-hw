@@ -1,7 +1,7 @@
 package useCases;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import entities.Priority;
 import entities.Task;
 import entities.ToDoList;

@@ -1,4 +1,5 @@
 package useCases;
+
 import entities.User;
 import entities.Priority;
 import presenters.CompleteTaskResponseModel;

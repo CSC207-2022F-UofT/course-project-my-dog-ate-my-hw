@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public interface AdoptPetInputBoundary {
 
-    void adoptPet(ImageIcon petIcon, String petName);
+    void adoptPet(String petName);
 
     void refreshPet();
 }
