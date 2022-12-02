@@ -1,5 +1,5 @@
 package controllers;
-import useCase.CreateTaskUC;
+import useCases.CreateTaskUC;
 import entities.Task;
 
 public class CreateTaskControl {
@@ -8,6 +8,7 @@ public class CreateTaskControl {
     public Task getTask() {
         return task;
     }
+
     private void setTask (Task task) {
         this.task = task;
     }
@@ -17,7 +18,8 @@ public class CreateTaskControl {
     }
 
     public void createTask () {
-        CreateTaskUC createTaskUC = new CreateTaskUC(task);
+        CreateTaskUC createTaskUC = new CreateTaskUC();
         createTaskUC.addToTDL(task);
     }
+
 }
