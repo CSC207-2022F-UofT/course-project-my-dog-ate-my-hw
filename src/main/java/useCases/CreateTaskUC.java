@@ -24,7 +24,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      */
     public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
-        todo = User.u().getTodo();
+        todo = User.u().getToDo();
     }
 
     /**

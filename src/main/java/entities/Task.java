@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
  */
 public class Task {
     private LocalDateTime deadline;
-    private LocalDateTime studyDeadline;
     private String name;
     private String course;
     private Priority priority;
@@ -27,7 +26,6 @@ public class Task {
         this.course = course;
         this.deadline = deadline;
         this.priority = priority;
-        this.studyDeadline = deadline.minusDays(3);
         this.completion = false;
     }
 
@@ -122,24 +120,6 @@ public class Task {
     }
 
     /**
-     * Gets the task's study deadline.
-     *
-     * @return task's study deadline
-     */
-    public LocalDateTime getStudyDeadline() {
-        return studyDeadline;
-    }
-
-    /**
-     * Sets the study deadline.
-     *
-     * @param studyDeadline the task's study deadline
-     */
-    public void setStudyDeadline(LocalDateTime studyDeadline) {
-        this.studyDeadline = studyDeadline;
-    }
-
-    /**
      * Return whether the given task is incompleted and the task is past its deadline. This method uses the current
      * time from the system clock based on the default time-zone.
      *
@@ -156,7 +136,7 @@ public class Task {
      * @return task in string representation
      */
     public String toString() {
-        return name + " " + course + " " + String.valueOf(deadline) + " " + String.valueOf(priority);
+        return name + " " + course + " " + deadline + " " + priority;
     }
 
     /**

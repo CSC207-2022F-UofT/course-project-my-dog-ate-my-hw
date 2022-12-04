@@ -39,7 +39,7 @@ public class TaskTest {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
         LocalDateTime newdeadline = LocalDateTime.parse("2026-12-30");
-        task.setStudyDeadline(newdeadline);
+        task.setDeadline(newdeadline);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateTime = LocalDateTime.parse("2026-12-30", formatter);
         Assertions.assertEquals(dateTime, task.getDeadline());
@@ -101,25 +101,6 @@ public class TaskTest {
         Assertions.assertFalse(task.isCompletion());
     }
 
-    @Test
-    public void GetStudyDeadlineTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-10");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime dateTime = LocalDateTime.parse("2025-12-13", formatter);
-        Assertions.assertEquals(dateTime, task.getDeadline());
-    }
-
-    @Test
-    public void SetStudyDeadlineTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        LocalDateTime newdeadline = LocalDateTime.parse("2026-11-20");
-        task.setStudyDeadline(newdeadline);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime dateTime = LocalDateTime.parse("2026-11-23", formatter);
-        Assertions.assertEquals(dateTime, task.getDeadline());
-    }
 
     @Test
     public void PastDeadlineTest() {
@@ -127,7 +108,7 @@ public class TaskTest {
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
         Assertions.assertFalse(task.getDeadline().isBefore(LocalDateTime.now()));
         LocalDateTime newdeadline = LocalDateTime.parse("2002-11-20");
-        task.setStudyDeadline(newdeadline);
+        task.setDeadline(newdeadline);
         Assertions.assertTrue(task.getDeadline().isBefore(LocalDateTime.now()));
     }
 
