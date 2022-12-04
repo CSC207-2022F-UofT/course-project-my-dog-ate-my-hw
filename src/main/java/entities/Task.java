@@ -72,10 +72,20 @@ public class Task {
     /**
      * Return whether the given task is incompleted and the task is past its deadline. This method uses the current
      * time from the system clock based on the default time-zone.
-     * @return false if the task is completed before its deadline or if it is incompleted
-     * and it is before the deadline. Return true otherwise.
+     * @return the number of points lost to the pet, depending on the priority of the task. Return 3 if the task is high
+     * priority, return 2 if it is medium priority, return 1 if it is low priority, return 0 if it is not past the
+     * deadline.
      */
-    public boolean pastDeadline() {
-        return this.deadline.isBefore(LocalDateTime.now());
+    public int pastDeadline() {
+        if (this.deadline.isBefore(LocalDateTime.now()) && !(this.isCompletion())) {
+            if (this.priority == Priority.HIGH) {
+                return 3;
+            } else if (this.priority == Priority.MEDIUM) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+        return 0;
     }
 }
