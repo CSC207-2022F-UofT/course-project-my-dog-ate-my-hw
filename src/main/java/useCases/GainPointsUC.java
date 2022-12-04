@@ -17,9 +17,7 @@ public class GainPointsUC {
     public static void Gain(String taskName, entities.User user) throws RuntimeException {
         try {
             Task task = user.getToDo().searchFor(taskName);
-            LocalDateTime now = LocalDateTime.now();
-            LocalDateTime deadline = task.getDeadline();//Deadline attribute of Task, which is a date/time
-            if (deadline.isAfter(now)) {
+            if (!task.pastDeadline()) {
                 Priority priority = task.getPriority();
                 if (priority.equals(Priority.HIGH)) {
                     user.GainPoints(3);
