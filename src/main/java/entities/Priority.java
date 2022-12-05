@@ -1,6 +1,8 @@
 package entities;
 
-//an enum object which represents the task's priority
+/**
+ * The enum object that represents the priority of a task
+ */
 public enum Priority {
     HIGH,
     MEDIUM,

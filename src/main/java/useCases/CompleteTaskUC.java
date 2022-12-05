@@ -1,53 +1,41 @@
 package useCases;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import entities.AbsentTaskNameException;
+import entities.Task;
 
-import entities.Priority;
-import presenters.CompleteTaskResponseModel;
 
-public class CompleteTaskUC {
-    private Task task;
-    /* checklists acquired from DataAccess */
-    private ToDolist todo;
-    private DoneList done;
+public class CompleteTaskUC implements CompleteTaskInputBoundary{
 
-    //the use case takes in a String as parameter
-    public CompleteTaskUC(String taskName) {
-        //go through the TODOlist to find the task
-        this.task = todo.searchFor(taskName);
+    /**
+     * Remove the task from ToDoList and add the task to DoneList
+     * @param taskName The String of the task that has been completed
+     * @param user The user that we are changing
+     */
+    public static void completeTask(String taskName, entities.User user) throws RuntimeException {
+        try{
+            Task task = user.getToDo().searchFor(taskName);
+            GainPointsUC.Gain(taskName, user);
+            user.getToDo().removeTask(task);
+            user.getDone().addTask(task);
+        } catch (AbsentTaskNameException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    //Check if the task is finished before studyDeadline
-    public Boolean finishedBeforeDDL () {
-        LocalDateTime now = LocalDateTime.now();
-        deadline = task.getStudyDeadline();//StudyDeadline attribute of Task, which is a date/time
-        return deadline.compareTo(now);
+    /**
+     * Refresh method that refreshes the view with the changes made
+     */
+    @Override
+    public void refreshCompleteTask() {
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Tasklist").refresh();
+        //also need to refresh user's points
+        factory.createRefresher("Pet").refresh();
     }
 
-    //return the task priority
-    public Priority getPriority () {
-        return task.getPriority();
-    }
+    /**
+     * Another version of the method that deals with the User user case
+     * @param taskName The name of the task that has been completed
+     */
+    public static void completeTask(String taskName) { CompleteTaskUC.completeTask(taskName, User.u());}
 
-    //remove the task from ToDolist
-    public void removeFromTdl() {
-        todo.removeTask(task);
-    }
-
-    //add the task to Donelist
-    public void addToDl() {
-        done.addTask(task);
-    }
-
-    //return the arraylist representation of todoList
-    public ArrayList<ArrayList<String>> getTodo () {
-        //potential method from entity
-        return todo.toList();
-    }
-
-    //return the arraylist representation of doneList
-    public ArrayList<ArrayList<String>> getDone () {
-        //potential method from entity
-        return done.toList();
-    }
 }
