@@ -144,6 +144,7 @@ public class Task {
 
     /**
      * Gets the assignment type of the task.
+     *
      * @return assignment type
      */
     public AssignmentType getAssignmentType() {
@@ -152,6 +153,7 @@ public class Task {
 
     /**
      * Sets the assignment type of the task
+     *
      * @param assignmentType of the task
      */
     public void setAssignmentType(AssignmentType assignmentType) {
