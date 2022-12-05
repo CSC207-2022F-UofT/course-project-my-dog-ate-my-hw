@@ -1,5 +1,4 @@
 package useCases;
-package useCases;
 
 import entities.*;
 
@@ -29,7 +28,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
     }
 
     /**
-     * Creates a task then add to to-do list..
+     * Creates a task then add to to-do list.
      *
      * @param name            the task's name
      * @param course          the task's belonging course
