@@ -69,13 +69,4 @@ public class Task {
         this.studyDeadline = studyDeadline;
     }
 
-    /**
-     * Return whether the given task is incompleted and the task is past its deadline. This method uses the current
-     * time from the system clock based on the default time-zone.
-     * @return false if the task is completed before its deadline or if it is incompleted
-     * and it is before the deadline. Return true otherwise.
-     */
-    public boolean pastDeadline() {
-        return this.deadline.isBefore(LocalDateTime.now());
-    }
 }
