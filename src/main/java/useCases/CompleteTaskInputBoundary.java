@@ -9,7 +9,9 @@ public interface CompleteTaskInputBoundary {
      */
     static void completeTask(String taskName, entities.User user) {}
 
-    static void completeTask(String taskName) {}
+    static void completeTask(String taskName) {
+
+    }
 
     /**
      * The refresh method connected to view
