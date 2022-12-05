@@ -19,30 +19,18 @@ public class CreateTaskUCTest {
     @Test
     public void CreateTaskTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         entities.Pet pet = new Pet("Name");
         entities.User user = new User(10, pet);
         CreateTaskUC createTaskUC = new CreateTaskUC();
-        createTaskUC.createTask("testing", "csc207", deadline, Priority.HIGH);
+        createTaskUC.createTask("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         Assertions.assertEquals(user.getTodo().searchFor("testing"), task);
     }
 
     @Test
-    public void CreateCustomTaskTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        CustomTask task = new CustomTask("testing", "csc207", deadline, Priority.HIGH,
-                AssignmentType.PROJECT, "just do it");
-        entities.Pet pet = new Pet("Name");
-        entities.User user = new User(10, pet);
-        CreateTaskUC createTaskUC = new CreateTaskUC();
-        createTaskUC.createTask("testing", "csc207", deadline, Priority.HIGH,
-                AssignmentType.PROJECT, "just do it");
-        Assertions.assertEquals(user.getTodo().searchFor("testing"), task);
-    }
-    @Test
     public void AddToTDLTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         entities.ToDoList todo = new ToDoList();
         todo.addTask(task);
         Assertions.assertEquals(todo.searchFor("testing"), task);
@@ -51,7 +39,7 @@ public class CreateTaskUCTest {
     @Test
     public void GetTaskTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         CreateTaskUC createTaskUC = new CreateTaskUC();
         Assertions.assertEquals(task, createTaskUC.getTask());
     }

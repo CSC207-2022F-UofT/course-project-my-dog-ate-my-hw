@@ -18,21 +18,10 @@ public interface CreateTaskInputBoundary {
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
+     * @param assignmentType the task's assignment type
      */
-    void createTask(String name, String course, LocalDateTime deadline, Priority priority);
+    void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType);
 
-    /**
-     * Creates a custom task based on name, course, deadline and priority, and added attribute of study
-     * techniques and assignment types.
-     *
-     * @param name            the task's name
-     * @param course          the task's belonging course
-     * @param deadline        the task's deadline
-     * @param priority        the task's priority level
-     * @param studyTechniques the task's study technique.
-     * @param assignmentType  the task's assignment type.
-     */
-    void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType, String studyTechniques);
 
     /**
      * Adds the task to the to do list.

@@ -22,25 +22,11 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param deadline the task's deadline
      * @param priority the task's priority level
      */
-    public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
-        task = new Task(name, course, deadline, priority);
+    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType) {
+        task = new Task(name, course, deadline, priority, assignmentType);
         this.addToTDL(task);
     }
 
-    /**
-     * Creates a task then add to to-do list.
-     *
-     * @param name            the task's name
-     * @param course          the task's belonging course
-     * @param deadline        the task's deadline
-     * @param priority        the task's priority level
-     * @param assignmentType  the task's type of assignment
-     * @param studyTechniques the task's ideal study technique
-     */
-    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType, String studyTechniques) {
-        task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
-        this.addToTDL(task);
-    }
 
     /**
      * Adds task to the To Do list.

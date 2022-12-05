@@ -13,6 +13,8 @@ public class Task {
     private Priority priority;
     private boolean completion;
 
+    private AssignmentType assignmentType;
+
     /**
      * The task's constructor to create a task.
      *
@@ -21,11 +23,12 @@ public class Task {
      * @param deadline the task's deadline.
      * @param priority the task's priority.
      */
-    public Task(String name, String course, LocalDateTime deadline, Priority priority) {
+    public Task(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType) {
         this.name = name;
         this.course = course;
         this.deadline = deadline;
         this.priority = priority;
+        this.assignmentType = assignmentType;
         this.completion = false;
     }
 
@@ -120,17 +123,6 @@ public class Task {
     }
 
     /**
-     * Return whether the given task is incompleted and the task is past its deadline. This method uses the current
-     * time from the system clock based on the default time-zone.
-     *
-     * @return false if the task is completed before its deadline or if it is incompleted
-     * and it is before the studyDeadline. Return true otherwise.
-     */
-    public boolean pastDeadline() {
-        return this.deadline.isBefore(LocalDateTime.now());
-    }
-
-    /**
      * Return a task in a string representation.
      *
      * @return task in string representation
@@ -146,8 +138,23 @@ public class Task {
      */
     public String[] taskToList() {
         String[] result;
-        result = new String[]{name, course, String.valueOf(deadline), String.valueOf(priority)};
+        result = new String[]{name, course, String.valueOf(deadline), priority.name(), assignmentType.name()};
         return result;
     }
 
+    /**
+     * Gets the assignment type of the task.
+     * @return assignment type
+     */
+    public AssignmentType getAssignmentType() {
+        return assignmentType;
+    }
+
+    /**
+     * Sets the assignment type of the task
+     * @param assignmentType of the task
+     */
+    public void setAssignmentType(AssignmentType assignmentType) {
+        this.assignmentType = assignmentType;
+    }
 }

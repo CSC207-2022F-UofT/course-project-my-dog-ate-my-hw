@@ -18,7 +18,7 @@ public class TaskTest {
         LocalDateTime deadline = LocalDateTime.parse("2022-11-30");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateTime = LocalDateTime.parse("2022-11-30", formatter);
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         Assertions.assertEquals("testing", task.getName());
         Assertions.assertEquals("csc207", task.getCourse());
         Assertions.assertEquals(dateTime, task.getDeadline());
@@ -28,7 +28,7 @@ public class TaskTest {
     @Test
     public void GetDeadlineTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateTime = LocalDateTime.parse("2025-12-30", formatter);
         Assertions.assertEquals(dateTime, task.getDeadline());
@@ -37,7 +37,7 @@ public class TaskTest {
     @Test
     public void SetDeadlineTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         LocalDateTime newdeadline = LocalDateTime.parse("2026-12-30");
         task.setDeadline(newdeadline);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -48,14 +48,14 @@ public class TaskTest {
     @Test
     public void GetNameTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         Assertions.assertEquals("rough draft", task.getName());
     }
 
     @Test
     public void SetNameTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         task.setName("final draft");
         Assertions.assertEquals("final draft", task.getName());
     }
@@ -63,14 +63,14 @@ public class TaskTest {
     @Test
     public void GetCourseTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "SOC150", deadline, Priority.HIGH);
+        Task task = new Task("rough draft", "SOC150", deadline, Priority.HIGH, AssignmentType.PROJECT);
         Assertions.assertEquals("SOC150", task.getCourse());
     }
 
     @Test
     public void SetCourseTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         task.setCourse("PSY100");
         Assertions.assertEquals("PSY100", task.getCourse());
     }
@@ -78,22 +78,36 @@ public class TaskTest {
     @Test
     public void GetPriorityTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM);
+        Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertEquals("MEDIUM", task.getPriority().name());
     }
 
     @Test
     public void SetPriorityTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH);
+        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         task.setPriority(Priority.LOW);
         Assertions.assertEquals("LOW", task.getPriority().name());
     }
 
     @Test
-    public void IsCompletionTest() {
+    public void GetAssignmentTypeTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
-        Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM);
+        Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM, AssignmentType.PROJECT);
+        Assertions.assertEquals("PROJECT", task.getAssignmentType().name());
+    }
+
+    @Test
+    public void SetAssignmentTypeTest() {
+        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        Task task = new Task("rough draft", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+        task.setAssignmentType(AssignmentType.ESSAY);
+        Assertions.assertEquals("ESSAY", task.getAssignmentType().name());
+    }
+    @Test
+    public void IsCompletionTest () {
+        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertFalse(task.isCompletion());
         task.setCompletion(true);
         Assertions.assertTrue(task.isCompletion());
@@ -102,28 +116,18 @@ public class TaskTest {
     }
 
 
-    @Test
-    public void PastDeadlineTest() {
-        LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        Assertions.assertFalse(task.getDeadline().isBefore(LocalDateTime.now()));
-        LocalDateTime newdeadline = LocalDateTime.parse("2002-11-20");
-        task.setDeadline(newdeadline);
-        Assertions.assertTrue(task.getDeadline().isBefore(LocalDateTime.now()));
-    }
+        @Test
+        public void ToStringTest () {
+            LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
+            Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+            Assertions.assertEquals("testing csc207 3025-12-30 HIGH", task.toString());
+        }
 
-    @Test
-    public void ToStringTest() {
-        LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        Assertions.assertEquals("testing csc207 3025-12-30 HIGH", task.toString());
+        @Test
+        public void ToArrayTest () {
+            LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
+            Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+            String[] res = new String[]{"testing", "csc207", "3025-12-30", "HIGH"};
+            Assertions.assertEquals(res, task.taskToList());
+        }
     }
-
-    @Test
-    public void ToArrayTest() {
-        LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
-        Task task = new Task("testing", "csc207", deadline, Priority.HIGH);
-        String[] res = new String[]{"testing", "csc207", "3025-12-30", "HIGH"};
-        Assertions.assertEquals(res, task.taskToList());
-    }
-}
