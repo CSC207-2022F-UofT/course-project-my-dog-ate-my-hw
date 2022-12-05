@@ -1,16 +1,32 @@
 package uiControllers;
 
-import useCases.CompleteTaskInputBoundary;
+import useCases.CompleteTaskUC;
+import useCases.GainPointsUC;
 
 public class CompleteTaskControl {
-    private final CompleteTaskInputBoundary completeTaskInputBoundary;
+    //the UI passed the Task name to controller
+    String taskName;
 
-    public CompleteTaskControl(CompleteTaskInputBoundary completeTaskInputBoundary) {
-        this.completeTaskInputBoundary = completeTaskInputBoundary;
+    //returns class variable taskName
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void CompleteTask(String taskName) {
-        CompleteTaskInputBoundary.completeTask(taskName);
-        completeTaskInputBoundary.refreshCompleteTask();
+    private void setTaskName (String taskName) {
+        this.taskName = taskName;
     }
+
+    public CompleteTaskControl (String taskName) {
+        this.taskName = taskName;
+    }
+
+    //activate use cases
+    public void CompleteTask () {
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC(taskName);
+        completeTaskUC.addToDl();
+        completeTaskUC.removeFromTdl();
+        GainPointsUC gainPointsUC = new GainPointsUC(completeTaskUC);
+        gainPointsUC.Gain();
+    }
+
 }
