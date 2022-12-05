@@ -24,15 +24,15 @@ public class CompleteTaskUCTest {
      * doneList should have two tasks
      */
     @Test
-    public void CompleteTaskTest() {
-        Task task1 = new Task("Math Miterm 1", "MAT137", LocalDateTime.of(2022, Month.DECEMBER
+    public void CompleteTaskTest() throws AbsentTaskNameException {
+        Task task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.DECEMBER
                 , 29, 19, 30, 40), Priority.HIGH);
         Task task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40), Priority.MEDIUM);
         ToDoList toDoList = new ToDoList();
         toDoList.addTask(task1);
         toDoList.addTask(task2);
-        User user = new User();
+        entities.User user = new User();
         user.setTodo(toDoList);
         DoneList doneList = new DoneList();
         user.setDone(doneList);

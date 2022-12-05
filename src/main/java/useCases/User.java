@@ -9,7 +9,7 @@ public class User extends entities.User{
         super(n, P);
     }
 
-    private User(entities.User user){ return user}
+    private User(entities.User user){super(user.getPoints(), user.getPet(), user.getToDo(), user.getDone());}
 
     public static void declare(entities.User u){
         user = new User(u);

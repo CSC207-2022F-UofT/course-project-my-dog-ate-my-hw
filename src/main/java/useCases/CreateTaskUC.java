@@ -22,7 +22,7 @@ public class CreateTaskUC {
      */
     public void createTask(String name, String course, LocalDateTime deadline, Priority priority) {
         task = new Task(name, course, deadline, priority);
-        todo = User.u().getTodo();
+        todo = User.u().getToDo();
     }
 
     /**
@@ -37,7 +37,7 @@ public class CreateTaskUC {
      */
     public void createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
         task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
-        todo = User.u().getTodo();
+        todo = User.u().getToDo();
     }
 
     /**

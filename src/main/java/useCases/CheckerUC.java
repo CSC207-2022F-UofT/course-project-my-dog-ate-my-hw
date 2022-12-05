@@ -8,9 +8,9 @@ public class CheckerUC {
      */
     public void checkDeadlines() {
 
-        for (Task task : User.u().getToDo()) {
+        /*for (Task task : User.u().getToDo()) {
 
-        }
+        }*/
     }
 
 

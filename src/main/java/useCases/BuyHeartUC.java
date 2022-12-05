@@ -1,7 +1,5 @@
 package useCases;
 
-
-
 public class BuyHeartUC {
 
     /**
@@ -22,10 +20,18 @@ public class BuyHeartUC {
     }
 
     public static void buyHeart(int hearts){
-        this.buyHeart(User.u(), hearts);
+        buyHeart(User.u(), hearts);
     }
 
     public void refresh(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
+    }
+
+    /**
+     * Refresh the UI after changes
+     */
+    public void refreshItem() {
         RefresherFactory factory = new RefresherFactory();
         factory.createRefresher("Pet").refresh();
     }
