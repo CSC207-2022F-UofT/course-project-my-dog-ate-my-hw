@@ -13,23 +13,23 @@ public class ToDoList {
      * Initialize an empty ToDOList with no tasks in its taskList.
      */
     public ToDoList() {
-        this.taskList = new ArrayList();
+        this.taskList = new ArrayList<>();
     }
 
     /**
      * Add the given task to this ToDoList's taskList.
-     * @param newTask
+     * @param newTask the task to be added to the taskList.
      */
     public void addTask(Task newTask) {
         this.taskList.add(newTask);
     }
 
     /**
-     * Remove the task with the given name from this
-     * @param oldTask
+     * Remove the task with the given name from this taskList.
+     * @param oldTask the task to be removed from the taskList.
      */
-    public void removeTask(String taskName) {
-        this.taskList.remove(task);
+    public void removeTask(Task oldTask) {
+        this.taskList.remove(oldTask);
     }
 
 }
