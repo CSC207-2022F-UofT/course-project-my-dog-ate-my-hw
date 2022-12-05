@@ -9,7 +9,7 @@ public class AdoptPetUC implements AdoptPetInputBoundary{
      * @param petName the pet's name
      */
     public void adoptPet(String petName){
-        User.u().setPet(new Pet(petName, null));
+        User.u().setPet(new Pet(petName, null, null));
     }
 
     public void refreshPet(){

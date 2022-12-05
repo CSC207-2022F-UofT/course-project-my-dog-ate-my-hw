@@ -1,6 +1,7 @@
 package entities;
 
 // == the user class stores all information needed for the user ==
+
 public class User {
 
     // ==PRIVATE ATTRIBUTES==
@@ -10,6 +11,7 @@ public class User {
     private DoneList done;
 
     // ==CONSTRUCTORS==
+
     public User (int points) {
         this.points = points;
     }
@@ -27,10 +29,12 @@ public class User {
     }
 
     // ==DEFAULT CONSTRUCTOR==
+
     public User() {
     }
 
     // ==GETTERS==
+
     public int getPoints(){
         return points;
     }
@@ -48,6 +52,7 @@ public class User {
     }
 
     // ==CLASS METHODS==
+
     public void GainPoints (int points) {
         this.points += points;
     }
@@ -62,6 +67,7 @@ public class User {
     }
 
     // ==SETTERS==
+
     public void setPet (Pet somePet) {
         this.myPet = somePet;
     }
