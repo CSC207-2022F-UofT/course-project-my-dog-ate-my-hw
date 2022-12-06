@@ -1,5 +1,7 @@
 package ui;
 
+import controllers.PetShopUIController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +18,7 @@ public class PetShopUI extends JFrame {
     JFormattedTextField nameBox;
     JButton adoptButton;
     String petName;
-    ImageIcon selectedPetIcon;
+    String selectedPetIcon;
     PetShopUIController controller;
 
     /* CONSTRUCTORS */
@@ -154,7 +156,7 @@ public class PetShopUI extends JFrame {
      */
     private void adoptButtonActionPerformed(ActionEvent evt) {
         petName = nameBox.getText();
-        selectedPetIcon = petIconPanel.getSelectedIcon();
+        selectedPetIcon = petIconPanel.getSelectedIcon().getDescription();
 
         if(petName.replaceAll("^[ \t]+|[ \t]+$", "").equals("") || selectedPetIcon == null) {
             warningPopup();

@@ -44,7 +44,7 @@ public class PetDisplayPanel extends JPanel{
         ButtonBuilder builder = new ButtonBuilder();
         ViewFormattingData format = viewModel.getAdoptButtonFormat();
         ThemeFormat theme = format.getThemeFormat();
-        adoptButton = builder.buildAdoptButton(theme.getBackground(), theme.getTextColor(), theme.getBorder(), format.getText(), format.getPreferedSize(), theme.getFont());
+        adoptButton = builder.buildAdoptButton(theme.getBackground(), theme.getTextColor(), theme.getBorder(), format.getText());
         this.add(adoptButton, c);
     }
 

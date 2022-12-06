@@ -9,44 +9,48 @@ import java.awt.event.ActionListener;
 
 public class ButtonBuilder {
 
-    public Button buildHealButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font){
-        Button b = new Button(background, textColor, border, label, preferedSize, font);
+    private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(98, 33);
+    private static final Dimension COMPLETED_TOGGLE_SIZE = new Dimension(187, 33);
+
+    public Button buildHealButton(Color background, Color textColor, Border border, String label){
+        Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         b.addActionListener(new BuyHeartController());
         return b;
     }
 
-    public Button buildRouletteButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font){
-        Button b = new Button(background, textColor, border, label, preferedSize, font);
+    public Button buildRouletteButton(Color background, Color textColor, Border border, String label){
+        Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         //b.addActionListener();
         return b;
     }
 
-    public Button buildNewTaskButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font){
-        Button b = new Button(background, textColor, border, label, preferedSize, font);
+    public Button buildNewTaskButton(Color background, Color textColor, Border border, String label){
+        Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         //b.addActionListener();
         return b;
     }
 
-    public Button buildAdoptButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font){
-        Button b = new Button(background, textColor, border, label, preferedSize, font);
+    public Button buildAdoptButton(Color background, Color textColor, Border border, String label){
+        Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //PetShopUIController control = new PetShopUIController()
-                // TODO: must access parent (PetDisplayPanel) and remove button from panel
+                //PetShopUIController control = new PetShopUIController();
+                b.getParent().remove(b);
+
             }
         });
         return b;
     }
 
-    public ToggleButton buildEditToggleButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font) {
-        ToggleButton b = new ToggleButton(background, textColor, border, label, preferedSize, font);
+    public ToggleButton buildEditToggleButton(Color background, Color textColor, Border border, String label) {
+        ToggleButton b = new ToggleButton(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         //b.addActionListener();
         return b;
     }
 
-    public ToggleButton buildSeeDoneToggleButton(Color background, Color textColor, Border border, String label, Dimension preferedSize, Font font) {
-        ToggleButton b = new ToggleButton(background, textColor, border, label, preferedSize, font);
+    public ToggleButton buildSeeDoneToggleButton(Color background, Color textColor, Border border, String label) {
+        ToggleButton b = new ToggleButton(background, textColor, border, label, COMPLETED_TOGGLE_SIZE, UIFormat.BUTTON_FONT);
         //b.addActionListener();
         return b;
     }

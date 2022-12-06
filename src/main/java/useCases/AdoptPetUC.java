@@ -11,11 +11,11 @@ public class AdoptPetUC{
 
     /**
      * Creates a Pet object from the given petIcon and petName.
-     * @param petIcon the image representing the selected pet
+     * @param skin a string representing the selected pet's type
      * @param petName the pet's name
      */
-    public void adoptPet(ImageIcon petIcon, String petName){
-        pet = new Pet(petName, petIcon, null);
+    public void adoptPet(String skin, String petName){
+        pet = new Pet(petName, skin, null);
     }
 
     public Pet getPet() {

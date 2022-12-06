@@ -14,6 +14,8 @@ public class PetNamePanel extends JPanel {
         this.setLayout(new BorderLayout());
         petNameLabel = new JLabel(petName);
         petNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        petNameLabel.setForeground(UIFormat.GREEN_TEXT);
+        petNameLabel.setFont(UIFormat.PET_NAME_FONT);
         this.add(petNameLabel, BorderLayout.CENTER);
     }
 }

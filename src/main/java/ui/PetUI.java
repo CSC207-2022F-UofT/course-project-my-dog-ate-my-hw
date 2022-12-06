@@ -1,5 +1,7 @@
 package ui;
 
+import javax.swing.*;
+
 public class PetUI {
 
     private PetDisplayPanel petDisplayPanel;
@@ -7,6 +9,7 @@ public class PetUI {
     private PetNamePanel petNamePanel;
     private PointsPanel pointsPanel;
     private ToolPanel toolPanel;
+    private JButton adpotPetButton;
 
     private void createPetDisplay(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted){
         healthPanel.createHealthBar(currHealth, maxHealth);

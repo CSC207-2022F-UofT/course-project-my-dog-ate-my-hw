@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,16 +13,10 @@ public class ToolPanel extends JPanel {
     JComboBox customizationBox;
     Button healButton;
 
-    private void makeToolPanel(){
+    public void createToolPanel(String[] customizations){
         this.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, new Color(245, 202, 195)));
-        ButtonBuilder builder = new ButtonBuilder();
-        builder.buildHealButton(// TODO);
-        customizationBox.setModel(new DefaultComboBoxModel<>(loadCustomizations()));
-        customizationBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                customizationBoxActionPerformed(evt);
-            }
-        });
+        createHealButton();
+        createCustomizationBox(customizations);
         makeToolPanelLayout();
     }
     private void makeToolPanelLayout(){
@@ -47,10 +42,22 @@ public class ToolPanel extends JPanel {
         );
     }
 
-    private String[] loadCustomizations(){
-        return new String[]{"Customization", "Hat"};
+    private void createHealButton(){
+        ButtonBuilder builder = new ButtonBuilder();
+        Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, UIFormat.HEAL_BUTTON.brighter(), UIFormat.HEAL_BUTTON.darker());
+        healButton = builder.buildHealButton(UIFormat.HEAL_BUTTON, Color.WHITE, border, "HEAL");
     }
 
+    private void createCustomizationBox(String[] customizations){
+        customizationBox = new JComboBox<>(new DefaultComboBoxModel<>(customizations));
+        customizationBox.setFont(UIFormat.BUTTON_FONT);
+        customizationBox.setForeground(UIFormat.PINK_TEXT);
+        customizationBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                customizationBoxActionPerformed(evt);
+            }
+        });
+    }
     private void customizationBoxActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }

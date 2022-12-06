@@ -14,9 +14,10 @@ public class PointsPanel extends JPanel {
     }
 
     public void createPointsPanel(int pointsNumber){
-        String title = "get this from main view model";
+        String title = "Points: ";
         this.pointsNumber = new JLabel(Integer.toString(pointsNumber));
         this.pointsTitle = new JLabel(title);
+
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         this.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
         this.add(this.pointsTitle);
