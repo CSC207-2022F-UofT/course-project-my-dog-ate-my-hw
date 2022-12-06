@@ -19,10 +19,16 @@ public class Pet {
     
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
-    private final Customization customization;
+    private Customization customization;
 
 
     // ==CONSTRUCTORS==
+    public Pet(String name){
+        this.name = name;
+        this.skin = null;
+        this.currHealth = MAX_HEALTH;
+        this.customization = null;
+    }
 
     public Pet(String name, ImageIcon skin){
         this.name = name;
@@ -57,6 +63,8 @@ public class Pet {
     public void setCurrHealth(int currHealth) {
         this.currHealth = currHealth;
     }
+
+    public void setCustomization(Customization customization) {this.customization = customization;}
 
 
     // ==CLASS METHODS==
