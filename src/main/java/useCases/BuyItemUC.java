@@ -14,6 +14,8 @@ public class BuyItemUC implements BuyItemInputBoundary{
         Customization customization = user.getPet().getCustomization();
         Item item = customization.getItem(itemName);
 
+        //If the item is locked and user has enough points to buy
+        //Buy the item and equip it
         if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
             user.LosePoints(item.getPrice());
             item.Unlock();
@@ -25,6 +27,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
                 customization.equip(item);
             }
         }
+        //If the item is unlocked, equip the item
         else if (item.isUnlocked()) {
             if (!customization.isCurrentlyEquipped()){
                 customization.equip(item);
