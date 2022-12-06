@@ -1,5 +1,4 @@
 package ui;
-
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -10,7 +9,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
 
+/**
+ * Creates a Calendar pop-up that allows users to select month and date.
+ */
 public class CalendarPanel extends JFrame {
+    /**
+     * Creates the calendar model.
+     *
+     * @return A calendar output
+     */
     public JDatePickerImpl createCalendar(){
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
@@ -22,6 +29,9 @@ public class CalendarPanel extends JFrame {
         return datePicker;
     }
 
+    /**
+     * A Date label formatter for the calendar to use.
+     */
     public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
 
         private String datePattern = "yyyy-MM-dd";
