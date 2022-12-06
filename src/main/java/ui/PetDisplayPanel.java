@@ -32,7 +32,7 @@ public class PetDisplayPanel extends JPanel{
     }
     public void createPetDisplay(String skin){
         this.setLayout(new GridBagLayout());
-        String path = "src/main/resources/petIcons/" + skin + ".jpeg"; //TODO: add customization functionality
+        String path = "src/main/resources/petIcons/" + skin + ".PNG"; //TODO: add customization functionality
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
         c.anchor = GridBagConstraints.CENTER;
