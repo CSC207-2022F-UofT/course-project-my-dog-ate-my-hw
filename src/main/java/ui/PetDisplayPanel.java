@@ -33,9 +33,11 @@ public class PetDisplayPanel extends JPanel{
     public void createPetDisplay(String skin){
         this.setLayout(new GridBagLayout());
         String path = "src/main/resources/petIcons/" + skin + ".PNG"; //TODO: add customization functionality
+        petImage = makePetJLabel(getPetImage(path));
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
         c.anchor = GridBagConstraints.CENTER;
+        this.add(petImage);
     }
 
     public void createAdoptDisplay(){
@@ -48,11 +50,7 @@ public class PetDisplayPanel extends JPanel{
         this.add(adoptButton, c);
     }
 
-    public void deleteAdopt(){
-        this.remove(adoptButton);
-    }
-
-    public void updatePetDisplay(String skin){
+    public void refresh(String skin){
         // TODO
     }
 
@@ -63,7 +61,6 @@ public class PetDisplayPanel extends JPanel{
             Image brokenImage = ImageIO.read(f);
             petImage = new ImageIcon(brokenImage.getScaledInstance(petDimensions.width, petDimensions.height,
                     Image.SCALE_SMOOTH));
-            petImage.setDescription("");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

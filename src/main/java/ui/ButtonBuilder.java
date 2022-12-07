@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class ButtonBuilder {
 
-    private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(98, 33);
+    private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(96, 33);
     private static final Dimension COMPLETED_TOGGLE_SIZE = new Dimension(187, 33);
 
     public Button buildHealButton(Color background, Color textColor, Border border, String label){
