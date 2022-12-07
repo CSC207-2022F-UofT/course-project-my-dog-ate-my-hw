@@ -3,6 +3,7 @@ package useCases;
 import entities.AbsentItemNameException;
 import entities.Item;
 import entities.Customization;
+import entities.User;
 
 public class BuyItemUC implements BuyItemInputBoundary{
 
@@ -11,7 +12,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
-    public static void buyItem(entities.User user, String itemName) throws AbsentItemNameException {
+    public static void buyItem(User user, String itemName) throws AbsentItemNameException {
         try {
             Customization customization = user.getPet().getCustomization();
             Item item = customization.getItem(itemName);
@@ -42,7 +43,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Another version of buyItem method
      * @param itemName Name of the item to purchase.
      */
-    public static void buyItem(String itemName) throws AbsentItemNameException {buyItem(User.u(), itemName);}
+    public static void buyItem(String itemName) throws AbsentItemNameException {buyItem(UserUC.u(), itemName);}
 
     /**
      * Refresh method that refreshes the UI

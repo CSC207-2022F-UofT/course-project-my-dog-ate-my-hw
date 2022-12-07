@@ -2,8 +2,7 @@ package useCases;
 import entities.AbsentTaskNameException;
 import entities.Priority;
 import entities.Task;
-
-import java.time.LocalDateTime;
+import entities.User;
 
 public class GainPointsUC {
 
@@ -14,7 +13,7 @@ public class GainPointsUC {
      * @param taskName The task that has been completed
      * @throws RuntimeException If the task name is not in the ToDoList
      */
-    public static void Gain(String taskName, entities.User user) throws RuntimeException {
+    public static void Gain(String taskName, User user) throws RuntimeException {
         try {
             Task task = user.getToDo().searchFor(taskName);
             if (!task.pastDeadline()) {
@@ -37,7 +36,7 @@ public class GainPointsUC {
      * Another version of the gain method that deals with the User use case
      * @param taskName Name of the task that has been completed
      */
-    public static void Gain(String taskName) { GainPointsUC.Gain(taskName, User.u());}
+    public static void Gain(String taskName) { GainPointsUC.Gain(taskName, UserUC.u());}
 
     /**
      * The refresh method that refreshes view after changes being made

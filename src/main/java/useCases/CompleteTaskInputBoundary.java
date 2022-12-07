@@ -1,5 +1,7 @@
 package useCases;
 
+import entities.User;
+
 public interface CompleteTaskInputBoundary {
 
     /**
@@ -7,7 +9,7 @@ public interface CompleteTaskInputBoundary {
      *
      * @param taskName
      */
-    static void completeTask(String taskName, entities.User user) {}
+    static void completeTask(String taskName, User user) {}
 
     static void completeTask(String taskName) {
 
