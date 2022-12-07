@@ -5,7 +5,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class TaskUI {
+public class TaskUI extends JPanel{
 
     private Button newTaskButton;
     private ToggleButton editTaskToggle;

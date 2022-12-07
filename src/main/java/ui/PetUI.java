@@ -2,7 +2,7 @@ package ui;
 
 import javax.swing.*;
 
-public class PetUI {
+public class PetUI extends JPanel{
 
     private PetDisplayPanel petDisplayPanel;
     private HealthBarPanel healthPanel;
