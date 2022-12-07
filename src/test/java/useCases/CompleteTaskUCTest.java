@@ -41,7 +41,7 @@ public class CompleteTaskUCTest {
         Assertions.assertEquals(user.getDone().getTaskList().size(), 1);
         Assertions.assertEquals(user.getPoints(), 0);
         CompleteTaskUC.completeTask("Math Midterm 1", user);
-        Assertions.assertEquals(user.getPoints(), 3);
+        Assertions.assertEquals(user.getPoints(), 1);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 0);
         Assertions.assertEquals(user.getDone().getTaskList().size(), 2);
     }
