@@ -1,6 +1,7 @@
 package entities;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -13,16 +14,12 @@ public class TaskTest {
      * Then tested respective getters and setters for each of those attributes.
      * Also tested if the task can return a string and list representation.
      */
-    @Test
-    public void CreateTaskTest() {
+    @BeforeEach
+    public void setUp() {
         LocalDateTime deadline = LocalDateTime.parse("2022-11-30");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime dateTime = LocalDateTime.parse("2022-11-30", formatter);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
-        Assertions.assertEquals("testing", task.getName());
-        Assertions.assertEquals("csc207", task.getCourse());
-        Assertions.assertEquals(dateTime, task.getDeadline());
-        Assertions.assertEquals("HIGH", task.getPriority().name());
     }
 
     @Test
@@ -104,8 +101,9 @@ public class TaskTest {
         task.setAssignmentType(AssignmentType.ESSAY);
         Assertions.assertEquals("ESSAY", task.getAssignmentType().name());
     }
+
     @Test
-    public void IsCompletionTest () {
+    public void IsCompletionTest() {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
         Task task = new Task("rough draft", "SOC150", deadline, Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertFalse(task.isCompletion());
@@ -116,18 +114,18 @@ public class TaskTest {
     }
 
 
-        @Test
-        public void ToStringTest () {
-            LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
-            Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
-            Assertions.assertEquals("testing csc207 3025-12-30 HIGH", task.toString());
-        }
-
-        @Test
-        public void ToArrayTest () {
-            LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
-            Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
-            String[] res = new String[]{"testing", "csc207", "3025-12-30", "HIGH"};
-            Assertions.assertEquals(res, task.taskToList());
-        }
+    @Test
+    public void ToStringTest() {
+        LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+        Assertions.assertEquals("testing csc207 3025-12-30 HIGH", task.toString());
     }
+
+    @Test
+    public void ToArrayTest() {
+        LocalDateTime deadline = LocalDateTime.parse("3025-12-30");
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+        String[] res = new String[]{"testing", "csc207", "3025-12-30", "HIGH"};
+        Assertions.assertEquals(res, task.taskToList());
+    }
+}

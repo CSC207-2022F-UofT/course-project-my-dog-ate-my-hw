@@ -5,7 +5,7 @@ import entities.*;
 import java.time.LocalDateTime;
 
 /**
- * The use case controller to create a task in the program.
+ * The use case to create a task in the program.
  */
 public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
@@ -22,8 +22,9 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param deadline the task's deadline
      * @param priority the task's priority level
      */
-    public void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType) {
-        task = new Task(name, course, deadline, priority, assignmentType);
+    public void createTask(String name, String course, LocalDateTime deadline, String priority, String
+            assignmentType) {
+        task = new Task(name, course, deadline, convertPriority(priority), convertAssignment(assignmentType));
         this.addToTDL(task);
     }
 
@@ -33,7 +34,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      *
      * @param task the task to be added to the to do list
      */
-    public void addToTDL(Task task) {
+    private void addToTDL(Task task) {
         todo = User.u().getTodo();
         todo.addTask(task);
     }
@@ -46,6 +47,20 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
     public Task getTask() {
         return this.task;
     }
+
+    /**
+     * Converts priority from string to the enum value.
+     * @param priority priority of task
+     * @return Enum of priority
+     */
+    private Priority convertPriority(String priority){return Priority.valueOf(priority);}
+
+    /**
+     * Converts assignment type from string to the enum value.
+     * @param assignment type of task
+     * @return Enum of assignment type
+     */
+    private AssignmentType convertAssignment(String assignment){return AssignmentType.valueOf(assignment);}
 
     /**
      * Calls on factory to create a refresher.

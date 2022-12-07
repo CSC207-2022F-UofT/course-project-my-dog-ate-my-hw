@@ -9,12 +9,7 @@ import java.time.LocalDateTime;
 
 public class CreateTaskUCTest {
     /**
-     * Create a new task and user
-     * Set user points as 10, pet begins with 10 health
-     * Remove 5 hearts
-     * Then test BuyHeartUC.buyHeart() by buying 3 hearts
-     * User should have 7 points (10 - 3 = 7)
-     * Pet should have 8 hearts (5 + 3 = 8)
+     * Testing create a new task and user
      */
     @Test
     public void CreateTaskTest() {
@@ -23,7 +18,7 @@ public class CreateTaskUCTest {
         entities.Pet pet = new Pet("Name");
         entities.User user = new User(10, pet);
         CreateTaskUC createTaskUC = new CreateTaskUC();
-        createTaskUC.createTask("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+        createTaskUC.createTask("testing", "csc207", deadline, "HIGH", "PROJECT");
         Assertions.assertEquals(user.getTodo().searchFor("testing"), task);
     }
 

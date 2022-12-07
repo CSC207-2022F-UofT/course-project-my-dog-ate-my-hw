@@ -1,7 +1,5 @@
 package useCases;
 
-import entities.AssignmentType;
-import entities.Priority;
 import entities.Task;
 
 import java.time.LocalDateTime;
@@ -20,15 +18,7 @@ public interface CreateTaskInputBoundary {
      * @param priority the task's priority level
      * @param assignmentType the task's assignment type
      */
-    void createTask(String name, String course, LocalDateTime deadline, Priority priority, AssignmentType assignmentType);
-
-
-    /**
-     * Adds the task to the to do list.
-     *
-     * @param task the task.
-     */
-    void addToTDL(Task task);
+    void createTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType);
 
     /**
      * Gets a task.
