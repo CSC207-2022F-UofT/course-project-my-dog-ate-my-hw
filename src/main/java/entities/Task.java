@@ -3,7 +3,7 @@ package entities;
 import java.time.LocalDateTime;
 
 /**
- * The task entity that has information of the task's deadline, study deadline, name, course, priority,
+ * The task entity that has information of the task's deadline, name, course, priority,
  * and completion status.
  */
 public class Task {
