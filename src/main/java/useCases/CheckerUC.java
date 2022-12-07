@@ -17,22 +17,35 @@ public class CheckerUC {
      * to their priority. If the user has lost points, remove these points and reduce the health of their pet.
      * @param user The User singleton that holds this user's ToDoList
      */
-     public void checkLostHealth(User user) {
-         int lostHealth = user.getTodo().pastDeadLineSum();
-         if (lostHealth > 0) {
-             reducePetHealth(user, lostHealth);
-         }
-
-     }
+    public void checkLostHealth(User user) {
+        int lostHealth = user.getToDo().pastDeadLineSum();
+        if (lostHealth > 0) {
+            reducePetHealth(user, lostHealth);
+        }
+    }
 
     /**
-     * Reduce the user's points by the given amount and reduce their pet's health by the given amount of points.
+     * Another version of the method which performs on UserUC
+     */
+    public void checkLostHealth() {
+        this.checkLostHealth(UserUC.u());
+    }
+
+    /**
+     * Reduce the pet's health by the given amount
      * @param user The User object that holds the user's pet and points
      * @param pointsLost the number of points this user has lost
      */
-     private void reducePetHealth(User user,int pointsLost) {
-         user.getPet().ouch(pointsLost);
-     }
+    private void reducePetHealth(User user,int pointsLost) {
+        user.getPet().ouch(pointsLost);
+    }
 
+    /**
+     * Refresh method which refreshes UI because of changes of the pet
+     */
+    public void refeshChecker(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
+    }
 
 }
