@@ -1,9 +1,7 @@
 package useCases;
-import entities.Customization;
-import entities.Item;
-import entities.Pet;
-import entities.User;
+import entities.*;
 
+import entities.User;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,7 +44,7 @@ public class BuyItemUCTest {
     }
 
     @Test
-    public void BuyItemTest1() {
+    public void BuyItemTest1() throws AbsentItemNameException {
         BuyItemUC.buyItem(user,"Straw Hat");
         Assertions.assertEquals(user.getPoints(), 1);
 
@@ -54,14 +52,14 @@ public class BuyItemUCTest {
     }
 
     @Test
-    public void BuyItemTest2() {
+    public void BuyItemTest2() throws AbsentItemNameException {
         BuyItemUC.buyItem(user,"Cap");
         Assertions.assertEquals(user.getPoints(), 4);
         Assertions.assertFalse(user.getPet().getCustomization().isCurrentlyEquipped());
     }
 
     @Test
-    public void BuyItemTest3() {
+    public void BuyItemTest3() throws AbsentItemNameException {
         BuyItemUC.buyItem(user,"Baseball Cap");
         Assertions.assertEquals(user.getPoints(), 4);
         Assertions.assertEquals(user.getPet().getCustomization().currentEquipment().getName(), "Baseball Cap");

@@ -1,13 +1,14 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customization {
 
     // ==PUBLIC ATTRIBUTES==
 
     // an array list of all possible items that can be equipped
-    private ArrayList<Item> customizations;
+    private List<Item> customizations;
 
     // a boolean which returns whether an item is currently equipped
     public boolean isCurrentlyEquipped;
@@ -38,7 +39,7 @@ public class Customization {
         return currentEquipment;
     }
 
-    public ArrayList<Item> possibleCustomizations() {
+    public List<Item> possibleCustomizations() {
         return customizations;
     }
 
@@ -72,13 +73,13 @@ public class Customization {
      * @param itemName The name of the item desired
      * @return The Item object with given name stored in customization
      */
-    public Item getItem(String itemName) {
+    public Item getItem(String itemName) throws AbsentItemNameException{
         for (Item item: this.customizations) {
             if (item.getName().equals(itemName)) {
                 return item;
             }
         }
-        return null;
+        throw new AbsentItemNameException();
     }
 
 }

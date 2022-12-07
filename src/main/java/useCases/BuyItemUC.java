@@ -1,5 +1,6 @@
 package useCases;
 
+import entities.AbsentItemNameException;
 import entities.Item;
 import entities.Customization;
 
@@ -10,32 +11,30 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
-    public static void buyItem(entities.User user, String itemName){
-        Customization customization = user.getPet().getCustomization();
-        Item item = customization.getItem(itemName);
+    public static void buyItem(entities.User user, String itemName) throws AbsentItemNameException {
+        try {
+            Customization customization = user.getPet().getCustomization();
+            Item item = customization.getItem(itemName);
 
-        //If the item is locked and user has enough points to buy
-        //Buy the item and equip it
-        if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
-            user.LosePoints(item.getPrice());
-            item.Unlock();
-            if (!customization.isCurrentlyEquipped()){
-                customization.equip(item);
+            if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
+                user.LosePoints(item.getPrice());
+                item.Unlock();
+                if (!customization.isCurrentlyEquipped()) {
+                    customization.equip(item);
+                } else {
+                    customization.dequip();
+                    customization.equip(item);
+                }
+            } else if (item.isUnlocked()) {
+                if (!customization.isCurrentlyEquipped()) {
+                    customization.equip(item);
+                } else {
+                    customization.dequip();
+                    customization.equip(item);
+                }
             }
-            else {
-                customization.dequip();
-                customization.equip(item);
-            }
-        }
-        //If the item is unlocked, equip the item
-        else if (item.isUnlocked()) {
-            if (!customization.isCurrentlyEquipped()){
-                customization.equip(item);
-            }
-            else {
-                customization.dequip();
-                customization.equip(item);
-            }
+        }catch (AbsentItemNameException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -43,7 +42,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Another version of buyItem method
      * @param itemName Name of the item to purchase.
      */
-    public static void buyItem(String itemName) {buyItem(User.u(), itemName);}
+    public static void buyItem(String itemName) throws AbsentItemNameException {buyItem(User.u(), itemName);}
 
     /**
      * Refresh method that refreshes the UI
