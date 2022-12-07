@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ToDoList {
     // ToDoList is a public Class that contains a list of tasks that the user has yet to complete. Tasks can be added
@@ -32,4 +33,12 @@ public class ToDoList {
         this.taskList.remove(task);
     }
 
+    /**
+     * Randomize a task in the list
+     * @return Task at random index in the taskList
+     */
+    public Task randomTask() {
+        int randomNum = ThreadLocalRandom.current().nextInt(0, super.getTaskList().size());
+        return super.getTaskList().get(randomNum);
+    }
 }
