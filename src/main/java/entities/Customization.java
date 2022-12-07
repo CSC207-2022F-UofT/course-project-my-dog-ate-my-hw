@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Customization {
 
@@ -11,32 +10,32 @@ public class Customization {
     private ArrayList<Item> customizations;
 
     // a boolean which returns whether an item is currently equipped
-    public boolean is_currently_equipped;
+    public boolean isCurrentlyEquipped;
 
     // the current item equipped by the pet
-    public Item current_equipment;
+    public Item currentEquipment;
 
 
     // ==CONSTRUCTORS==
 
     public Customization(){
-        this.current_equipment = null;
-        this.is_currently_equipped = false;
+        this.currentEquipment = null;
+        this.isCurrentlyEquipped = false;
         this.customizations = new ArrayList<>();
     }
 
     public Customization(Item item){
-        this.current_equipment = item;
-        this.is_currently_equipped = true;
+        this.currentEquipment = item;
+        this.isCurrentlyEquipped = true;
     }
 
     // ==GETTERS==
     public boolean isCurrentlyEquipped() {
-        return is_currently_equipped;
+        return isCurrentlyEquipped;
     }
 
     public Item currentEquipment() {
-        return current_equipment;
+        return currentEquipment;
     }
 
     public ArrayList<Item> possibleCustomizations() {
@@ -55,16 +54,16 @@ public class Customization {
     }
 
     public void dequip() {
-        if (this.is_currently_equipped) {
-            this.current_equipment = null;
-            this.is_currently_equipped = false;
+        if (this.isCurrentlyEquipped) {
+            this.currentEquipment = null;
+            this.isCurrentlyEquipped = false;
         }
     }
 
     public void equip(Item item) {
-        if (!this.is_currently_equipped && item.isUnlocked()) {
-            this.current_equipment = item;
-            this.is_currently_equipped = true;
+        if (!this.isCurrentlyEquipped && item.isUnlocked()) {
+            this.currentEquipment = item;
+            this.isCurrentlyEquipped = true;
         }
     }
 
