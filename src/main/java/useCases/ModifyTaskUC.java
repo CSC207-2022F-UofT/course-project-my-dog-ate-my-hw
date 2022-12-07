@@ -3,6 +3,7 @@ package useCases;
 import entities.AssignmentType;
 import entities.Priority;
 import entities.Task;
+import entities.ToDoList;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
  */
 public class ModifyTaskUC implements ModifyTaskInputBoundary{
     private Task task;
+    private ToDoList todo;
 
     /**
      * This constructs the ModifyTaskUC by taking in the string of a task name then finding the task
@@ -30,9 +32,12 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param newName task's new name
      */
     public void changeName(String newName) {
-        task.setName(newName);
+        if (todo.checkUniqueName(newName)) {
+            task.setName(newName);
+        } else {
+            ModifyTaskOutputBoundary.displaymodifytask();
+        }
     }
-
     /**
      * Changes the task's associated course.
      *
