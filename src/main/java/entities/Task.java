@@ -78,13 +78,7 @@ public class Task {
      */
     public int pastDeadline() {
         if (this.deadline.isBefore(LocalDateTime.now()) && !(this.isCompletion())) {
-            if (this.priority == Priority.HIGH) {
-                return 3;
-            } else if (this.priority == Priority.MEDIUM) {
-                return 2;
-            } else {
-                return 1;
-            }
+            return this.priority.getValue();
         }
         return 0;
     }
