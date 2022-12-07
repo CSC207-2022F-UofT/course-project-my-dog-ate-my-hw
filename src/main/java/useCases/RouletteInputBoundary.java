@@ -1,6 +1,7 @@
 package useCases;
 
 import entities.Task;
+import entities.User;
 
 public interface RouletteInputBoundary {
 
@@ -9,7 +10,7 @@ public interface RouletteInputBoundary {
      * @param user The User
      * @return A randomized task from ToDoList
      */
-    public Task Roulette(entities.User user);
+    public Task Roulette(User user);
 
     public Task Roulette();
 

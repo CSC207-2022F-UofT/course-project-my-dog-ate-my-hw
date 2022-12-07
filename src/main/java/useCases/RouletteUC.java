@@ -1,6 +1,7 @@
 package useCases;
 
 import entities.Task;
+import entities.User;
 
 public class RouletteUC implements RouletteInputBoundary{
 
@@ -9,7 +10,7 @@ public class RouletteUC implements RouletteInputBoundary{
      * @param user The user who performs the action
      * @return A randomized task from ToDoList
      */
-    public Task Roulette(entities.User user) {
+    public Task Roulette(User user) {
         return user.getToDo().randomTask();
     }
 
@@ -17,7 +18,7 @@ public class RouletteUC implements RouletteInputBoundary{
      * Another version of the roulette method
      * @return A randomized task from ToDoList
      */
-    public Task Roulette() {return this.Roulette(User.u());}
+    public Task Roulette() {return this.Roulette(UserUC.u());}
 
     /**
      * Refresh method that refreshes the UI
