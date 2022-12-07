@@ -18,13 +18,7 @@ public class GainPointsUC {
             Task task = user.getToDo().searchFor(taskName);
             if (!task.pastDeadline()) {
                 Priority priority = task.getPriority();
-                if (priority.equals(Priority.HIGH)) {
-                    user.GainPoints(3);
-                } else if (priority.equals(Priority.MEDIUM)) {
-                    user.GainPoints(2);
-                } else if (priority.equals(Priority.LOW)) {
-                    user.GainPoints(1);
-                }
+                user.GainPoints(priority.getValue());
             }
         }
         catch (AbsentTaskNameException e) {
