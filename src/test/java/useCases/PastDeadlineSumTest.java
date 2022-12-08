@@ -25,8 +25,8 @@ public class PastDeadlineSumTest {
         Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
                 , 29, 19, 30, 40), Priority.HIGH);
         list.addTask(one);
-        ToDoList.pastDeadLineSum();
-        Assertions.assertEquals(ToDoList.pastDeadLineSum(), 3);
+        list.pastDeadLineSum();
+        Assertions.assertEquals(list.pastDeadLineSum(), 3);
     }
 
     /**
@@ -43,8 +43,8 @@ public class PastDeadlineSumTest {
         Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
                 , 29, 19, 30, 40), Priority.HIGH);
         list.addTask(one);
-        ToDoList.pastDeadLineSum();
-        Assertions.assertEquals(ToDoList.pastDeadLineSum(), 2);
+        list.pastDeadLineSum();
+        Assertions.assertEquals(list.pastDeadLineSum(), 2);
     }
 
     /**
@@ -61,8 +61,8 @@ public class PastDeadlineSumTest {
         Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
                 , 29, 19, 30, 40), Priority.LOW);
         list.addTask(one);
-        ToDoList.pastDeadLineSum();
-        Assertions.assertEquals(ToDoList.pastDeadLineSum(), 1);
+        list.pastDeadLineSum();
+        Assertions.assertEquals(list.pastDeadLineSum(), 1);
     }
 
 
@@ -88,8 +88,8 @@ public class PastDeadlineSumTest {
         list.addTask(one);
         list.addTask(two);
         list.addTask(three);
-        ToDoList.pastDeadLineSum();
-        Assertions.assertEquals(ToDoList.pastDeadLineSum(), 6);
+        list.pastDeadLineSum();
+        Assertions.assertEquals(list.pastDeadLineSum(), 6);
 
     }
 
@@ -116,8 +116,8 @@ public class PastDeadlineSumTest {
         list.addTask(one);
         list.addTask(two);
         list.addTask(three);
-        ToDoList.pastDeadLineSum();
-        Assertions.assertEquals(ToDoList.pastDeadLineSum(), 0);
+        list.pastDeadLineSum();
+        Assertions.assertEquals(list.pastDeadLineSum(), 0);
 
     }
 
