@@ -1,8 +1,10 @@
 package ui;
 
-import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * Stores all background color, Font, and text color info needed by the UI
+ */
 public class UIFormat {
 
     // BACKGROUND COLORS
@@ -25,10 +27,5 @@ public class UIFormat {
     public static final Color GREEN_TEXT = new Color(97, 152, 142);
     public static final Color PINK_TEXT = new Color(242, 132, 130);
     public static final Color WHITE_TEXT = Color.WHITE;
-
-    // BOARDERS TODO
-    public static final Border panelBorder = new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(245, 202, 195), new java.awt.Color(245, 202, 195));
-
-    // TODO make method to create accesable UI formatting
 
 }

@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * A JComboBox with the customization options as selectable components
+ */
 public class CustomizationBox extends JComboBox<String>{
 
     private static final Dimension preferredSize = new Dimension(70, 24);

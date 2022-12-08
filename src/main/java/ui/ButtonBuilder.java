@@ -12,11 +12,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Builds Buttons based on their type. Gives them the Action Listeners associated with their type.
+ */
 public class ButtonBuilder {
 
+    // STATIC VARIABLES
     private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(80, 33);
     private static final Dimension COMPLETED_TOGGLE_SIZE = new Dimension(120, 33);
 
+    // METHODS
     public Button buildHealButton(Color background, Color textColor, String label){
         Button b = new Button(background, textColor,createBevel(background), label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
         b.addActionListener(new BuyHeartController());
@@ -63,9 +68,15 @@ public class ButtonBuilder {
         return b;
     }
 
-    public ToggleButton buildSeeDoneToggleButton(Color background, Color textColor, String label) {
-        ToggleButton b = new ToggleButton(background, textColor, createBevel(background), label, COMPLETED_TOGGLE_SIZE, UIFormat.BUTTON_FONT);
+    public Button buildSeeDoneButton(Color background, Color textColor, String label) {
+        Button b = new Button(background, textColor, createBevel(background), label, COMPLETED_TOGGLE_SIZE, UIFormat.BUTTON_FONT);
         b.addActionListener(new SeeDoneController());
+        return b;
+    }
+
+    public Button buildSeeToDoButton(Color background, Color textColor, String label) {
+        Button b = new Button(background, textColor, createBevel(background), label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
+        b.addActionListener(new SeeToDoController());
         return b;
     }
 

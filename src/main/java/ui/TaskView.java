@@ -28,7 +28,6 @@ public class TaskView extends JFrame {
     private boolean newTask;
     private String oldName;
 
-
     /**
      * Called if a new task is being created
      */

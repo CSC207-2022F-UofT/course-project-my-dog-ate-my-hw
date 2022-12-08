@@ -65,6 +65,11 @@ public class PetDisplayPanel extends JPanel{
         this.add(adoptButton, c);
     }
 
+    /**
+     * Gets a pet ImageIcon from the given file path
+     * @param path a string which marks the location and name of the pet image
+     * @return returns an ImageIcon
+     */
     private ImageIcon getPetImage(String path){
         File f = new File(path);
         ImageIcon petImage;
@@ -78,6 +83,11 @@ public class PetDisplayPanel extends JPanel{
         return petImage;
     }
 
+    /**
+     * Makes a JLabel with the correct sizing from an ImageIcon
+     * @param icon the icon being added to the JLabel
+     * @return the new JLabel
+     */
     private JLabel makePetJLabel(ImageIcon icon){
         JLabel label = new JLabel(icon);
         label.setMinimumSize(petDimensions);
