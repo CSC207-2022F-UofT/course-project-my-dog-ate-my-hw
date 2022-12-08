@@ -17,7 +17,6 @@ public class ScrollPanel extends JPanel {
     public void createScrollPanel(TaskVM[] tasks){
         format();
 
-        //TODO: Change tasks to task data object
         scrollPane = new TaskScrollPane();
         scrollPane.createTaskScrollPane(tasks);
 

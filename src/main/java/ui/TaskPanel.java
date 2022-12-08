@@ -22,12 +22,26 @@ public class TaskPanel extends JPanel {
     JCheckBox checkBox;
 
     public void createTaskPanel(TaskVM task) {
-        //TODO: Add edit button to each task. Remove from Buttons Panel
-        //TODO: Add checkbox to each task
         this.task = task;
         format();
         initalizeWithFormat(task);
         setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        if(task.completed){
+            createDonePanel(task);
+        } else {
+            createToDoPanel(task);
+        }
+    }
+
+    public void createDonePanel(TaskVM task) {
+        add(nameLabel);
+        add(courseLabel);
+        add(typeLabel);
+        add(deadlineLabel);
+        add(priorityLabel);
+    }
+
+    public void createToDoPanel(TaskVM task) {
         add(checkBox);
         add(nameLabel);
         add(courseLabel);

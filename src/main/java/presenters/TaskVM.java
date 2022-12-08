@@ -10,6 +10,7 @@ public class TaskVM {
     public String course;
     public String priority;
     public String assignenmentType;
+    public Boolean completed;
 
     public TaskVM(TaskUIDS task){
         deadline = task.deadline;
@@ -17,5 +18,6 @@ public class TaskVM {
         course = task.course;
         priority = task.priority;
         assignenmentType = task.assignenmentType;
+        completed = task.completed;
     }
 }
