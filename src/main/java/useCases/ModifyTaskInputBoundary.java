@@ -41,13 +41,6 @@ public interface ModifyTaskInputBoundary {
     void changeDeadline(LocalDateTime date);
 
     /**
-     * Changes the task's assignment type.
-     *
-     * @param assignmentType the task's assignment type.
-     */
-    void changeAssignmentType(AssignmentType assignmentType);
-
-    /**
      * Refreshes the task to update.
      */
     void refreshTask();
