@@ -19,7 +19,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
 
             if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
                 user.LosePoints(item.getPrice());
-                item.Unlock();
+                item.setUnlocked(true);
                 if (!customization.isCurrentlyEquipped()) {
                     customization.equip(item);
                 } else {
