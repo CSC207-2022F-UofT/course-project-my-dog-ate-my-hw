@@ -16,11 +16,11 @@ public class PetUIDS {
         MAX_HEALTH = Pet.getMaxHealth();
         currHealth = pet.getCurrHealth();
         skin = pet.getSkin();
-        currCustomization = pet.getCustomization().currentEquipment().getIcon();
+        currCustomization = pet.getCustomization().currentEquipment().getName();
         ArrayList<String> cus = new ArrayList<>();
         cus.add("None");
         for(entities.Item i : pet.getCustomization().possibleCustomizations())
-            cus.add(i.getIcon());
+            cus.add(i.getName());
         customizations = cus;
     }
 }
