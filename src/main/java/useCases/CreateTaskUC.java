@@ -1,43 +1,28 @@
 package useCases;
 
-import java.time.LocalDateTime;
-
 import entities.*;
 
-public class CreateTaskUC {
+import java.time.LocalDateTime;
+
+/**
+ * The use case to create a task in the program.
+ */
+public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
     private ToDoList todo;
 
-    public CreateTaskUC() {
-    }
-
     /**
-     * Creates a task.
+     * Creates a task based on name, course, deadline and priority then add to to-do list.
      *
      * @param name     the task's name
      * @param course   the task's belonging course
      * @param deadline the task's deadline
      * @param priority the task's priority level
-     * @return the created task
      */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority) {
-        task = new Task(name, course, deadline, priority);
-        return task;
-    }
-
-    /**
-     * Creates a task.
-     *
-     * @param name            the task's name
-     * @param course          the task's belonging course
-     * @param deadline        the task's deadline
-     * @param priority        the task's priority level
-     * @param assignmentType  the task's type of assignment
-     * @param studyTechniques the task's ideal study technique
-     */
-    public Task createTask(String name, String course, LocalDateTime deadline, Priority priority, String studyTechniques, AssignmentType assignmentType) {
-        task = new CustomTask(name, course, deadline, priority, assignmentType, studyTechniques);
-        return task;
+    public void createTask(String name, String course, LocalDateTime deadline, String priority, String
+            assignmentType) {
+        task = new Task(name, course, deadline, convertPriority(priority), convertAssignment(assignmentType));
+        this.addToTDL(task);
     }
 
     /**
@@ -45,7 +30,39 @@ public class CreateTaskUC {
      *
      * @param task the task to be added to the to do list
      */
-    public void addToTDL(Task task) {
+    private void addToTDL(Task task) {
+        todo = User.u().getTodo();
         todo.addTask(task);
+    }
+
+    /**
+     * Gets the task.
+     *
+     * @return task
+     */
+    public Task getTask() {
+        return this.task;
+    }
+
+    /**
+     * Converts priority from string to the enum value.
+     * @param priority priority of task
+     * @return Enum of priority
+     */
+    private Priority convertPriority(String priority){return Priority.valueOf(priority);}
+
+    /**
+     * Converts assignment type from string to the enum value.
+     * @param assignment type of task
+     * @return Enum of assignment type
+     */
+    private AssignmentType convertAssignment(String assignment){return AssignmentType.valueOf(assignment);}
+
+    /**
+     * Calls on factory to create a refresher.
+     */
+    public void refreshTask() {
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Tasklist").refresh();
     }
 }
