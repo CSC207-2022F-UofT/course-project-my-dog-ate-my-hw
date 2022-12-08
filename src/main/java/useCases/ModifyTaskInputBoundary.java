@@ -33,7 +33,7 @@ public interface ModifyTaskInputBoundary {
      * @param priority task's priority
      */
 
-    void changePriority(Priority priority);
+    void changePriority(String priority);
 
     /**
      * Changes the task's deadline

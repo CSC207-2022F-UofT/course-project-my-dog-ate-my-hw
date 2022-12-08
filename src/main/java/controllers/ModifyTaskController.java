@@ -32,6 +32,7 @@ public class ModifyTaskController {
             uc.changeName(name);
             uc.changeCourse(course);
             uc.changeDeadline(deadline);
+            uc.changePriority(priority);
             uc.changeAssignmentType(assignenmentType);
         }
     }
