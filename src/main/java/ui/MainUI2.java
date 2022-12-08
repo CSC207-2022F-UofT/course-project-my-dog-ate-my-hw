@@ -37,4 +37,8 @@ public class MainUI2 extends JFrame{
         setResizable(false);
     }
 
+    public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String[] tasks){
+        createMainUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, tasks);
+    }
+
 }
