@@ -1,10 +1,7 @@
 package ui;
 
-import viewModels.MainViewModel;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +14,14 @@ public class PetDisplayPanel extends JPanel{
     private static final int imageBorderSpace = 15;
 
     //INSTANCE VARIABLES //
-    MainViewModel viewModel;
     private JLabel petImage;
     private Button adoptButton;
 
     // METHODS //
-    public void createPetPanel(String skin, String customization, boolean adopted) {
+    public void createPetPanel(String skin, String currentEquipment, int currHealth, boolean adopted) {
         format();
         if(adopted) {
-            createPetDisplay(skin, customization);
+            createPetDisplay(skin, currentEquipment, currHealth);
         }
         else{
             createAdoptDisplay();
@@ -36,10 +32,22 @@ public class PetDisplayPanel extends JPanel{
      * Displays the User's pet as a JLabel
      * @param skin
      */
-    private void createPetDisplay(String skin, String customization){
-        setLayout(new GridBagLayout());
-        String path = "src/main/resources/petIcons/" + skin + customization + ".PNG"; //TODO: add customization functionality
+    private void createPetDisplay(String skin, String currentEquipment, int currhealth){
+        // Get the string for customizations
+        String customization = "";
+        if(!currentEquipment.equals("None")){
+            customization = currentEquipment;
+        }
+        // get string for health status
+        String status = "";
+        if(currhealth == 0){
+            status = "dead";
+        }
+
+        String path = "src/main/resources/petIcons/" + skin + customization + status + ".PNG";
+
         petImage = makePetJLabel(getPetImage(path));
+        setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
         c.anchor = GridBagConstraints.CENTER;

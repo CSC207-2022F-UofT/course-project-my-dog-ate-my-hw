@@ -18,6 +18,7 @@ public class PetUIDS {
         skin = pet.getSkin();
         currCustomization = pet.getCustomization().currentEquipment().getIcon();
         ArrayList<String> cus = new ArrayList<>();
+        cus.add("None");
         for(entities.Item i : pet.getCustomization().possibleCustomizations())
             cus.add(i.getIcon());
         customizations = cus;

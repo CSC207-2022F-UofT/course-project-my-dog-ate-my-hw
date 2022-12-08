@@ -1,7 +1,5 @@
 package entities;
 
-import javax.swing.*;
-
 public class Item {
 
     // a String representing the Item name
@@ -41,7 +39,6 @@ public class Item {
         this.unlocked = unlocked;
         this.icon = icon;
     }
-
 
     // SETTERS
 

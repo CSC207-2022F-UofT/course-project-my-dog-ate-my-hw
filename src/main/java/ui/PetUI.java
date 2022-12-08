@@ -17,12 +17,12 @@ public class PetUI extends JPanel{
     private ToolPanel toolPanel;
     private Title title;
 
-    public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted){
+    public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String currentEquipment){
         format();
 
         initializeComponents();
         healthPanel.createHealthBar(currHealth, maxHealth);
-        petDisplayPanel.createPetPanel(skin, petAdopted);
+        petDisplayPanel.createPetPanel(skin, currentEquipment, petAdopted);
         petNamePanel.createNamePanel(petName);
         pointsPanel.createPointsPanel(points);
         toolPanel.createToolPanel(customizations);

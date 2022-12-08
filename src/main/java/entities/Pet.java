@@ -86,6 +86,5 @@ public class Pet {
         }
     }
 
-    // Need some function to assign customizations a value, create Customization list from file or something
 
 }
