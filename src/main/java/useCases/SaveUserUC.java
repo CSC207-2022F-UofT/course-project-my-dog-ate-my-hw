@@ -25,7 +25,7 @@ public class SaveUserUC {
      * call the UserUC for a User object
      */
     public void saveUser(){
-        this.saveUser(UserUC.u());
+        saveUser(UserUC.u());
     }
 
     /**
@@ -35,7 +35,7 @@ public class SaveUserUC {
      * and DataSaver saves the data in a file.
      * @param user the User object to be saved
      */
-    public void saveUser(entities.User user){
+    public static void saveUser(entities.User user){
         // Create the User object to save
         dl.makeUser();
 

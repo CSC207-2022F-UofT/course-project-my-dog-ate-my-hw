@@ -1,8 +1,10 @@
 package database;
 
+import databaseBoundaries.DataLoggerBoundary;
+
 import java.time.LocalDateTime;
 
-public class DataLogger {
+public class DataLogger implements DataLoggerBoundary {
     UserDB user;
 
     public DataLogger(){
@@ -26,7 +28,7 @@ public class DataLogger {
     }
 
     public void setEquip(String name, String type, int price, boolean unlocked, String icon){
-        this.user.myPet.customization.current_equipment = new ItemDB(name, type, price, unlocked, icon);
+        this.user.myPet.customization.currentEquipment = new ItemDB(name, type, price, unlocked, icon);
     }
 
     public void addTodo(LocalDateTime deadline, String name, String course, String priorityString, boolean completion,

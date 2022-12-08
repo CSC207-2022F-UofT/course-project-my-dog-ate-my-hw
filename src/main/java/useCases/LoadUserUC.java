@@ -41,11 +41,11 @@ public class LoadUserUC {
      * It calls upon the helper methods, LoadToDoList, LoadDoneList, and LoadPet.
      * @return The Loaded User Object
      */
-    public entities.User loadUser(){
+    public static entities.User loadUser(){
 
-        ToDoList toDoList = this.loadToDoList();
-        DoneList doneList = this.loadDoneList();
-        Pet pet = this.loadPet();
+        ToDoList toDoList = loadToDoList();
+        DoneList doneList = loadDoneList();
+        Pet pet = loadPet();
 
         return new entities.User(
                 udb.getPoints(),
@@ -62,7 +62,7 @@ public class LoadUserUC {
      * before finally returning a ToDoList object
      * @return The Loaded ToDoList object
      */
-    public ToDoList loadToDoList() {
+    public static ToDoList loadToDoList() {
 
         // Create a new ToDoList object
         ToDoList toDoList = new ToDoList();
@@ -84,10 +84,13 @@ public class LoadUserUC {
             switch (priorityString) {
                 case "HIGH":
                     task.setPriority(Priority.HIGH);
+                    break;
                 case "MEDIUM":
                     task.setPriority(Priority.MEDIUM);
+                    break;
                 case "LOW":
                     task.setPriority(Priority.LOW);
+                    break;
             }
 
             // Assign AssignmentType according to assignmentString
@@ -95,16 +98,22 @@ public class LoadUserUC {
             switch (assignmentString) {
                 case "ESSAY":
                     task.setAssignmentType(AssignmentType.ESSAY);
+                    break;
                 case "QUIZ":
                     task.setAssignmentType(AssignmentType.QUIZ);
+                    break;
                 case "EXAM":
                     task.setAssignmentType(AssignmentType.EXAM);
+                    break;
                 case "LAB_REPORTS":
                     task.setAssignmentType(AssignmentType.LAB_REPORTS);
+                    break;
                 case "REFLECTION":
                     task.setAssignmentType(AssignmentType.REFLECTION);
+                    break;
                 case "PROJECT":
                     task.setAssignmentType(AssignmentType.PROJECT);
+                    break;
             }
 
             // Add the Task object to the ToDoList
@@ -122,7 +131,7 @@ public class LoadUserUC {
      * before finally returning a DoneList object
      * @return The Loaded DoneList object
      */
-    public DoneList loadDoneList() {
+    public static DoneList loadDoneList() {
 
         // Create a new DoneList object
         DoneList doneList = new DoneList();
@@ -144,10 +153,13 @@ public class LoadUserUC {
             switch (priorityString) {
                 case "HIGH":
                     task.setPriority(Priority.HIGH);
+                    break;
                 case "MEDIUM":
                     task.setPriority(Priority.MEDIUM);
+                    break;
                 case "LOW":
                     task.setPriority(Priority.LOW);
+                    break;
             }
 
             // Assign AssignmentType according to assignmentString
@@ -155,16 +167,22 @@ public class LoadUserUC {
             switch (assignmentString) {
                 case "ESSAY":
                     task.setAssignmentType(AssignmentType.ESSAY);
+                    break;
                 case "QUIZ":
                     task.setAssignmentType(AssignmentType.QUIZ);
+                    break;
                 case "EXAM":
                     task.setAssignmentType(AssignmentType.EXAM);
+                    break;
                 case "LAB_REPORTS":
                     task.setAssignmentType(AssignmentType.LAB_REPORTS);
+                    break;
                 case "REFLECTION":
                     task.setAssignmentType(AssignmentType.REFLECTION);
+                    break;
                 case "PROJECT":
                     task.setAssignmentType(AssignmentType.PROJECT);
+                    break;
             }
 
             // Add the Task object to the DoneList
@@ -182,7 +200,7 @@ public class LoadUserUC {
      * creates a Pet object, before returning it.
      * @return The Loaded Pet object
      */
-    public Pet loadPet() {
+    public static Pet loadPet() {
 
         // Create a new Customization object
         Customization customization = new Customization();

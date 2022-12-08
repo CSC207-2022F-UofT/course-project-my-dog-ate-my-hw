@@ -4,13 +4,14 @@ import java.io.*;
 
 public class DataSaver {
 
-    public static final String fileName = "save.txt";
+    public static final String fileName = "src/main/java/database/save.txt";
 
     public static void saveUser(UserDB user){
         File f = new File(fileName);
         if(!f.exists()){
             try {
-                if(!f.createNewFile()){
+                boolean createdNewFile = f.createNewFile();
+                if(!createdNewFile){
                     System.out.println("DataSaver: Could not make File.");
                     return;
                 }

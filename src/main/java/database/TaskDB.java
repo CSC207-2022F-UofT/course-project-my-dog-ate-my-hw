@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 
 public class TaskDB implements Serializable, TaskDBBoundary {
 
+    private static final long serialVersionUID = 4L;
+
     public LocalDateTime deadline;
     public String name;
     public String course;
