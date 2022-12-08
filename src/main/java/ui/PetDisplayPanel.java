@@ -18,9 +18,9 @@ public class PetDisplayPanel extends JPanel{
     private Button adoptButton;
 
     // METHODS //
-    public void createPetPanel(String skin, String currentEquipment, int currHealth, boolean adopted) {
+    public void createPetPanel(String skin, String currentEquipment, int currHealth, boolean petAdopted) {
         format();
-        if(adopted) {
+        if(petAdopted) {
             createPetDisplay(skin, currentEquipment, currHealth);
         }
         else{

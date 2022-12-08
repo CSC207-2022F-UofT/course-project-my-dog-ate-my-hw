@@ -15,7 +15,8 @@ public class PetVM {
     public boolean adopted;
 
     public PetVM(PetUIDS pet){
-        PetVM(
+        adopted = skin != null && skin.length() >= 1;
+        new PetVM(
                 pet.currHealth,
                 pet.MAX_HEALTH,
                 pet.skin,
@@ -23,7 +24,7 @@ public class PetVM {
                 pet.points,
                 pet.currCustomization,
                 pet.customizations,
-                true
+                adopted
         );
     }
 

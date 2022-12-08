@@ -11,8 +11,10 @@ public class PetUIDS {
     public String skin;
     public String currCustomization;
     public ArrayList<String> customizations;
+    public int points;
 
     public PetUIDS(entities.Pet pet){
+        points = 0; // Change to points from user
         MAX_HEALTH = Pet.getMaxHealth();
         currHealth = pet.getCurrHealth();
         skin = pet.getSkin();
