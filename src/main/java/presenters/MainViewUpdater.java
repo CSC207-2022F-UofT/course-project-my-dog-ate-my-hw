@@ -2,6 +2,7 @@ package presenters;
 
 import useCases.MainOutputBoundary;
 import useCases.PetOutputBoundary;
+import useCases.TasklistOutputBoundary;
 
 public class MainViewUpdater implements MainOutputBoundary {
 
@@ -18,6 +19,10 @@ public class MainViewUpdater implements MainOutputBoundary {
     }
 
     public TasklistUpdater getTasklistUpdater() {
+        return tasklistUpdater;
+    }
+
+    public TasklistOutputBoundary getTasklistOutputBoundary(){
         return tasklistUpdater;
     }
 }

@@ -1,8 +1,9 @@
 package useCases;
 
+import presenters.TaskVM;
+
 import java.util.ArrayList;
 
 public interface TasklistOutputBoundary {
-    void loadTodoList(ArrayList<TaskUIDS> todo);
-    void loadDoneList(ArrayList<TaskUIDS> done);
+    void loadList(ArrayList<TaskUIDS> tasks);
 }

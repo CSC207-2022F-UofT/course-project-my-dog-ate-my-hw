@@ -15,7 +15,9 @@ public class PetVM {
     public boolean adopted;
 
     public PetVM(PetUIDS pet){
-        adopted = skin != null && skin.length() >= 1;
+        boolean adopted = (pet.skin != null && skin.length() >= 1);
+        String[] c = new String[pet.customizations.size()];
+        c = pet.customizations.toArray(c);
         new PetVM(
                 pet.currHealth,
                 pet.MAX_HEALTH,
@@ -23,7 +25,7 @@ public class PetVM {
                 pet.name,
                 pet.points,
                 pet.currCustomization,
-                pet.customizations,
+                c,
                 adopted
         );
     }
