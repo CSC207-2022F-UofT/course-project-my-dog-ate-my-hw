@@ -1,5 +1,7 @@
 package ui;
 
+import presenters.TaskVM;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,7 +14,7 @@ public class ScrollPanel extends JPanel {
     private static final Dimension preferredSize = new Dimension(754, 630);
     private static final Dimension maxSize = new Dimension(760, 636);
     private TaskScrollPane scrollPane;
-    public void createScrollPanel(String[] tasks){
+    public void createScrollPanel(TaskVM[] tasks){
         format();
 
         //TODO: Change tasks to task data object

@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Properties;
 
 public class CalendarPanel extends JFrame {
+    String date;
     public JDatePickerImpl createCalendar(){
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
@@ -19,6 +20,7 @@ public class CalendarPanel extends JFrame {
         p.put("text.year", "Year");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+        date = datePicker.getJFormattedTextField().getText();
         return datePicker;
     }
 

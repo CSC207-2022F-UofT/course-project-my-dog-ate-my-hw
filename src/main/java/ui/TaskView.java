@@ -1,30 +1,49 @@
 package ui;
 
+import presenters.TaskVM;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
  */
 public class TaskView extends JFrame {
-
+    private static final String[] priority = {"LOW", "MEDIUM","HIGH"};
+    private static final String[] assignmentType = {"ESSAY", "PROJECT","EXAM", "QUIZ", "REFLECTION"};
     private JLabel labelName = new JLabel("Enter name: ");
     private JLabel labelCourse = new JLabel("Enter course: ");
-    private JTextField textName = new JTextField(20);
-    private JTextField textCourse = new JTextField(20);
+
     private JLabel labelDeadline = new JLabel("Enter deadline: ");
     private JLabel labelPriority = new JLabel("Enter Priority: ");
     private JLabel labelAssignment = new JLabel("Enter Assignment Type: ");
     private JButton buttonSave = new JButton("Save");
+    private JTextField textName = new JTextField(20);
+    private JTextField textCourse = new JTextField(20);
+    private CalendarPanel calendarPanel;
+    private JComboBox<String> priorityBox;
+    private JComboBox<String> assignmentTypeBox;
 
-    private String[] priority = {"LOW", "MEDIUM","HIGH"};
-    private String[] assignmentType = {"ESSAY", "PROJECT","EXAM", "QUIZ", "REFLECTION"};
 
-    public TaskView() {
-        super("Create/Modify Task");
-        //TODO: Add presenter to get task info if task is being modified
+
+    public void createTaskView(){
+        layoutTaskView();
+    }
+
+    public void createTaskView(TaskVM task){
+        layoutTaskView();
+        textName.setText(task.name);
+        textCourse.setText(task.course);
+        setSelectedValue(priorityBox, task.priority);
+        setSelectedValue(assignmentTypeBox, task.assignenmentType);
+    }
+
+
+    public void layoutTaskView() {
+        setTitle("Create/Modify Task");
 
         // create a new panel with GridBagLayout manager
         JPanel newPanel = new JPanel(new GridBagLayout());
@@ -55,7 +74,7 @@ public class TaskView extends JFrame {
         newPanel.add(labelDeadline, constraints);
 
         constraints.gridx = 1;
-        CalendarPanel calendarPanel = new CalendarPanel();
+        calendarPanel = new CalendarPanel();
         newPanel.add(calendarPanel.createCalendar(), constraints);
 
         // add label priority and a priority drop down
@@ -64,9 +83,9 @@ public class TaskView extends JFrame {
         newPanel.add(labelPriority, constraints);
 
         constraints.gridx = 1;
-        JComboBox<String> jComboBox = new JComboBox<>(priority);
-        jComboBox.setBounds(80, 50, 140, 20);
-        newPanel.add(jComboBox,constraints);
+        priorityBox = new JComboBox<>(priority);
+        priorityBox.setBounds(80, 50, 140, 20);
+        newPanel.add(priorityBox,constraints);
 
         // add label assignment type and a assignment drop down
         constraints.gridx = 0;
@@ -74,9 +93,9 @@ public class TaskView extends JFrame {
         newPanel.add(labelAssignment, constraints);
 
         constraints.gridx = 1;
-        JComboBox<String> jComboBox2 = new JComboBox<>(assignmentType);
-        jComboBox.setBounds(80, 50, 140, 20);
-        newPanel.add(jComboBox2,constraints);
+        assignmentTypeBox = new JComboBox<>(assignmentType);
+        assignmentTypeBox.setBounds(80, 50, 140, 20);
+        newPanel.add(assignmentTypeBox,constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 5;
@@ -86,7 +105,9 @@ public class TaskView extends JFrame {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: Controller
+                // Below are all the variable calls to necessary task info
+                // (textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), calendarPanel.date)
+                // TODO: Call controller
             }
         });
 
@@ -97,7 +118,7 @@ public class TaskView extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
+    public void display(){
         // set look and feel to the system look and feel
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -111,5 +132,16 @@ public class TaskView extends JFrame {
                 new TaskView().setVisible(true);
             }
         });
+    }
+
+    public void setSelectedValue(JComboBox comboBox, String value){
+        String item;
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            item = (String) comboBox.getItemAt(i);
+            if (item.equalsIgnoreCase(value)){
+                comboBox.setSelectedIndex(i);
+                break;
+            }
+        }
     }
 }

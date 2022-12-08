@@ -22,18 +22,23 @@ public class PetDisplayPanel extends JPanel{
     private Button adoptButton;
 
     // METHODS //
-    public void createPetPanel(String skin, boolean adopted) {
+    public void createPetPanel(String skin, String customization, boolean adopted) {
         format();
         if(adopted) {
-            createPetDisplay(skin);
+            createPetDisplay(skin, customization);
         }
         else{
             createAdoptDisplay();
         }
     }
-    private void createPetDisplay(String skin){
+
+    /**
+     * Displays the User's pet as a JLabel
+     * @param skin
+     */
+    private void createPetDisplay(String skin, String customization){
         setLayout(new GridBagLayout());
-        String path = "src/main/resources/petIcons/" + skin + ".PNG"; //TODO: add customization functionality
+        String path = "src/main/resources/petIcons/" + skin + customization + ".PNG"; //TODO: add customization functionality
         petImage = makePetJLabel(getPetImage(path));
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
@@ -41,13 +46,14 @@ public class PetDisplayPanel extends JPanel{
         add(petImage);
     }
 
+    /**
+     * If user has adopted no pet, adopt button will appear in place of pet
+     */
     private void createAdoptDisplay(){
-
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.CENTER;
         ButtonBuilder builder = new ButtonBuilder();
-        Border b = BorderFactory.createBevelBorder(BevelBorder.RAISED, UIFormat.LIGHT_GREEN.brighter(), UIFormat.LIGHT_GREEN.darker());
-        adoptButton = builder.buildAdoptButton(UIFormat.LIGHT_GREEN, Color.WHITE, b, "Adopt Pet");
+        adoptButton = builder.buildAdoptButton(UIFormat.LIGHT_GREEN, Color.WHITE, "Adopt Pet");
         this.add(adoptButton, c);
     }
 
