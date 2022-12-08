@@ -1,7 +1,5 @@
 package entities;
 
-import javax.swing.*;
-
 public class Item {
 
     // a String representing the Item name
@@ -16,8 +14,8 @@ public class Item {
     // a boolean representing whether the Item has been bought
     private boolean unlocked;
 
-    // an ImageIcon representing the Item icon (clean architecture?)
-    private ImageIcon icon;
+    // a String associated with the Item icon
+    private String icon;
 
 
     // ==CONSTRUCTORS==
@@ -34,7 +32,7 @@ public class Item {
         this.unlocked = unlocked;
     }
 
-    public Item(String type, String name, int price, ImageIcon icon, boolean unlocked) {
+    public Item(String type, String name, int price, String icon, boolean unlocked) {
         this.type = type;
         this.name = name;
         this.price = price;
@@ -57,10 +55,13 @@ public class Item {
         this.price = price;
     }
 
-    public void setIcon(ImageIcon icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
+    public void setUnlocked(boolean unlocked){
+        this.unlocked = unlocked;
+    }
 
     // ==GETTERS==
 
@@ -80,19 +81,8 @@ public class Item {
         return unlocked;
     }
 
-    public ImageIcon getIcon() {
+    public String getIcon() {
         return icon;
-    }
-
-
-    // ==CLASS METHODS==
-
-    public void Unlock() {
-        this.unlocked = true;
-    }
-
-    public void Lock() {
-        this.unlocked = false;
     }
 
 }

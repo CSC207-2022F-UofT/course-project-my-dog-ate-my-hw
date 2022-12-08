@@ -14,12 +14,12 @@ public class ToDoList {
      * Initialize an empty ToDOList with no tasks in its taskList.
      */
     public ToDoList() {
-        this.taskList = new ArrayList();
+        this.taskList = new ArrayList<>();
     }
 
     /**
      * Add the given task to this ToDoList's taskList.
-     * @param newTask
+     * @param newTask the new task that will be added
      */
     public void addTask(Task newTask) {
         this.taskList.add(newTask);
@@ -27,9 +27,9 @@ public class ToDoList {
 
     /**
      * Remove the task with the given name from this
-     * @param oldTask
+     * @param task the task to be removed
      */
-    public void removeTask(String taskName) {
+    public void removeTask(Task task) {
         this.taskList.remove(task);
     }
 
@@ -38,7 +38,15 @@ public class ToDoList {
      * @return Task at random index in the taskList
      */
     public Task randomTask() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, super.getTaskList().size());
-        return super.getTaskList().get(randomNum);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, this.getTaskList().size());
+        return this.getTaskList().get(randomNum);
+    }
+
+    /**
+     * Getter for taskList
+     * @return taskList
+     */
+    public List<Task> getTaskList() {
+        return taskList;
     }
 }
