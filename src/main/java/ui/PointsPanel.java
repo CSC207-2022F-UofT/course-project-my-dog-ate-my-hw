@@ -1,10 +1,13 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
 public class PointsPanel extends JPanel {
 
+    private static final Dimension preferredSize = new Dimension();
     private static final Dimension fillerDimensions = new Dimension(10, 10);
     private JLabel pointsNumber;
     private JLabel pointsTitle;
@@ -24,5 +27,14 @@ public class PointsPanel extends JPanel {
         this.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
         this.add(this.pointsNumber);
         this.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
+
+        format();
+    }
+
+    private void format(){
+        setBackground(UIFormat.LIGHT_GREEN);
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setMinimumSize(preferredSize);
+        setPreferredSize(preferredSize);
     }
 }

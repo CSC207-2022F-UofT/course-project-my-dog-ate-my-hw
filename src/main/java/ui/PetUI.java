@@ -1,8 +1,13 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
+import java.awt.*;
 
 public class PetUI extends JPanel{
+
+    private static final Dimension preferredSize = new Dimension();
 
     private PetDisplayPanel petDisplayPanel;
     private HealthBarPanel healthPanel;
@@ -29,6 +34,7 @@ public class PetUI extends JPanel{
         add(toolPanel);
         add(pointsPanel);
 
+        format();
     }
 
     private void initializeComponents(){
@@ -38,6 +44,13 @@ public class PetUI extends JPanel{
         pointsPanel = new PointsPanel();
         toolPanel = new ToolPanel();
         title = new Title();
+    }
+
+    private void format(){
+        setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setMinimumSize(preferredSize);
+        setPreferredSize(preferredSize);
     }
 
 

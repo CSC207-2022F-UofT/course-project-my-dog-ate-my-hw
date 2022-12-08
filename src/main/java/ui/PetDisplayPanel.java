@@ -6,6 +6,8 @@ import viewModels.ViewFormattingData;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.io.IOException;
 public class PetDisplayPanel extends JPanel{
 
     // STATIC VARIABLES //
+    private static final Dimension preferredSize = new Dimension();
     private static final Dimension petDimensions = new Dimension(410,410);
     private static final int imageBorderSpace = 15;
 
@@ -31,6 +34,8 @@ public class PetDisplayPanel extends JPanel{
         }
     }
     public void createPetDisplay(String skin){
+        format();
+
         this.setLayout(new GridBagLayout());
         String path = "src/main/resources/petIcons/" + skin + ".PNG"; //TODO: add customization functionality
         petImage = makePetJLabel(getPetImage(path));
@@ -41,6 +46,8 @@ public class PetDisplayPanel extends JPanel{
     }
 
     public void createAdoptDisplay(){
+        format();
+
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.CENTER;
         ButtonBuilder builder = new ButtonBuilder();
@@ -48,10 +55,6 @@ public class PetDisplayPanel extends JPanel{
         ThemeFormat theme = format.getThemeFormat();
         adoptButton = builder.buildAdoptButton(theme.getBackground(), theme.getTextColor(), theme.getBorder(), format.getText());
         this.add(adoptButton, c);
-    }
-
-    public void refresh(String skin){
-        // TODO
     }
 
     private ImageIcon getPetImage(String path){
@@ -71,6 +74,13 @@ public class PetDisplayPanel extends JPanel{
         JLabel label = new JLabel(icon);
         label.setMinimumSize(petDimensions);
         return label;
+    }
+
+    private void format(){
+        setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setMinimumSize(preferredSize);
+        setPreferredSize(preferredSize);
     }
 
 }

@@ -2,6 +2,8 @@ package ui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +20,12 @@ public class HealthBarPanel extends JPanel {
         loadHeartIcon();
         loadBrokenHeartIcon();
 
-        this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        this.setBorder(UIFormat.panelBorder);
-        this.setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
-        this.add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
+        format();
+
+        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+        setBorder(UIFormat.panelBorder);
+        setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
+        add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
         for (int i = 0; i < maxHealth; i++){
             if(i < health){
@@ -58,5 +62,12 @@ public class HealthBarPanel extends JPanel {
         JLabel label = new JLabel(icon);
         label.setMinimumSize(heartDimensions);
         return label;
+    }
+
+    private void format(){
+        setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setMinimumSize(preferredSize);
+        setPreferredSize(preferredSize);
     }
 }
