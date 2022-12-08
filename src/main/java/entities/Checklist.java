@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Checklist {
     /**
@@ -9,7 +10,7 @@ public abstract class Checklist {
      * viewing purposes.
      */
 
-    private ArrayList<Task> taskList;
+    private List<Task> taskList;
 
     public Checklist() {
         this.taskList = new ArrayList<>();
@@ -39,7 +40,7 @@ public abstract class Checklist {
      * Return the taskList.
      * @return : The taskList attribute.
      */
-    public ArrayList<Task> getTaskList() {
+    public List<Task> getTaskList() {
         return this.taskList;
     }
 }

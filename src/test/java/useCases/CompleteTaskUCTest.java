@@ -3,7 +3,6 @@ package useCases;
 import entities.*;
 import entities.User;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +33,10 @@ public class CompleteTaskUCTest {
     public void Setup() {
         user = new User();
         task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.DECEMBER
-                , 29, 19, 30, 40), Priority.HIGH);
+                , 29, 19, 30, 40), Priority.HIGH, AssignmentType.ESSAY);
         task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40), Priority.MEDIUM);
+                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
+                Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         toDoList.addTask(task2);
         user.setTodo(toDoList);

@@ -19,8 +19,9 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param taskName the task name
      */
 
-    public ModifyTaskUC(String taskName) {
+    public ModifyTaskUC(String taskName, User user) {
         try {
+            todo = user.getToDo();
             this.task = todo.searchFor(taskName);
         } catch (AbsentTaskNameException e) {
             throw new RuntimeException(e);

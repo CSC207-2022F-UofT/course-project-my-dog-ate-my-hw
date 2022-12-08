@@ -61,7 +61,7 @@ public class SaveUserUC {
         }
 
         // Get and crete the DoneList object
-        ArrayList<entities.Task> doneList = user.getDone().getTaskList();
+        List<entities.Task> doneList = user.getDone().getTaskList();
         for (entities.Task task : doneList){
             dl.addDone(
                     task.getDeadline(),
