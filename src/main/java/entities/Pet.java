@@ -16,8 +16,8 @@ public class Pet {
     // the name of the pet
     private final String name;
 
-    // the imageicon associated with the pet
-    private final ImageIcon skin;
+    // the string associated with the pet
+    private final String skin;
 
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
@@ -28,12 +28,12 @@ public class Pet {
 
     public Pet(String name){
         this.name = name;
-        this.skin = new ImageIcon();
+        this.skin = "";
         this.currHealth = MAX_HEALTH;
         this.customization = new Customization();
     }
 
-    public Pet(String name, ImageIcon skin, Customization customization){
+    public Pet(String name, String skin, Customization customization){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
@@ -55,7 +55,7 @@ public class Pet {
         return name;
     }
 
-    public ImageIcon getSkin() {
+    public String getSkin() {
         return skin;
     }
 

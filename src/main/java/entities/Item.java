@@ -16,8 +16,8 @@ public class Item {
     // a boolean representing whether the Item has been bought
     private boolean unlocked;
 
-    // an ImageIcon representing the Item icon (clean architecture?)
-    private ImageIcon icon;
+    // an String representing the Item icon (clean architecture?)
+    private String icon;
 
 
     // ==CONSTRUCTORS==
@@ -34,7 +34,7 @@ public class Item {
         this.unlocked = unlocked;
     }
 
-    public Item(String type, String name, int price, ImageIcon icon, boolean unlocked) {
+    public Item(String type, String name, int price, String icon, boolean unlocked) {
         this.type = type;
         this.name = name;
         this.price = price;
@@ -57,7 +57,7 @@ public class Item {
         this.price = price;
     }
 
-    public void setIcon(ImageIcon icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -80,7 +80,7 @@ public class Item {
         return unlocked;
     }
 
-    public ImageIcon getIcon() {
+    public String getIcon() {
         return icon;
     }
 

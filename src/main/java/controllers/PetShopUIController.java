@@ -1,9 +1,7 @@
 package controllers;
 
-import ui.User;
-import useCases.AdoptPetUC;
 
-import javax.swing.*;
+import useCases.AdoptPetUC;
 
 public class PetShopUIController {
 

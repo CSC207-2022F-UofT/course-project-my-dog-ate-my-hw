@@ -22,7 +22,7 @@ import java.time.Month;
          *  This should result 6 (3 + 2 + 1)
          */
         @Test
-        public void ToDoListTest() {
+        public void TodoListTest() {
             ToDoList list = new ToDoList();
             Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
                     , 29, 19, 30, 40), Priority.HIGH);
@@ -33,8 +33,7 @@ import java.time.Month;
             list.addTask(one);
             list.addTask(two);
             list.addTask(three);
-            ToDoList.pastDeadLineSum();
-            Assertions.assertEquals(ToDoList.pastDeadLineSum(), 8);
+            Assertions.assertEquals(list.pastDeadLineSum(), 8);
 
         }
         /**
@@ -59,8 +58,7 @@ import java.time.Month;
             list.addTask(one);
             list.addTask(two);
             list.addTask(three);
-            ToDoList.pastDeadLineSum();
-            Assertions.assertEquals(ToDoList.pastDeadLineSum(), 0);
+            Assertions.assertEquals(list.pastDeadLineSum(), 0);
 
         }
 
