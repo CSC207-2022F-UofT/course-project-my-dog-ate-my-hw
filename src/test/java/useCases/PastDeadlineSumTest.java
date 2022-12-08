@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 public class PastDeadlineSumTest {
-    // Test method to test the pastDeadLineSum in the ToDoList
+    // Test method to test the pastDeadLineSum in the ToDoList.
 
     /**
      * Tests that Task.pastDeadline() runs correctly with one task overdue of priority level HIGH.
