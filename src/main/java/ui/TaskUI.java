@@ -14,7 +14,6 @@ public class TaskUI extends JPanel{
     public void createTaskUI(TaskVM[] tasks) {
         format();
 
-        //TODO: Change tasks from string to task data objects
         scrollPanel = new ScrollPanel();
         scrollPanel.createScrollPanel(tasks);
         buttonsPanel = new ButtonsPanel();

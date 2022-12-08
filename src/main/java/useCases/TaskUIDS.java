@@ -8,6 +8,7 @@ public class TaskUIDS {
     public String course;
     public String priority;
     public String assignenmentType;
+    public Boolean completed;
 
     public TaskUIDS(entities.Task task){
         deadline = task.getDeadline();
@@ -15,5 +16,6 @@ public class TaskUIDS {
         course = task.getCourse();
         priority = task.getPriority().toString();
         assignenmentType = task.getAssignmentType().toString();
+        completed = task.isCompletion();
     }
 }
