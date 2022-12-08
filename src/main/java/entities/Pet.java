@@ -6,34 +6,34 @@ public class Pet {
 
 
     // ==PRIVATE VARIABLES==
-    
+
     // the maximum health of the pet
     private static final int MAX_HEALTH = 10;
-    
+
     //the current health of the pet
     private int currHealth;
-    
+
     // the name of the pet
     private final String name;
-    
+
     // the imageicon associated with the pet
-    private final String skin;
-    
+    private final ImageIcon skin;
+
     // the customization object which keeps track of all items,
-    // the currently equipped item, and the equipement status
-    private final Customization customization;
+    // the currently equipped item, and the equipment status
+    private Customization customization;
 
 
     // ==CONSTRUCTORS==
-    
+
     public Pet(String name){
         this.name = name;
-        this.skin = null;
+        this.skin = new ImageIcon();
         this.currHealth = MAX_HEALTH;
-        this.customization = null;
+        this.customization = new Customization();
     }
 
-    public Pet(String name, String skin, Customization customization){
+    public Pet(String name, ImageIcon skin, Customization customization){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
@@ -41,7 +41,7 @@ public class Pet {
     }
 
 
-    // ==GETTERS== 
+    // ==GETTERS==
 
     public static int getMaxHealth() {
         return MAX_HEALTH;
@@ -55,9 +55,11 @@ public class Pet {
         return name;
     }
 
-    public String getSkin() {
+    public ImageIcon getSkin() {
         return skin;
     }
+
+    public Customization getCustomization() { return customization; }
 
 
     // ==SETTERS==
@@ -66,6 +68,7 @@ public class Pet {
         this.currHealth = currHealth;
     }
 
+    public void setCustomization(Customization customization) {this.customization = customization;}
 
     // ==CLASS METHODS==
 
