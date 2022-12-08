@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
  */
 public interface ModifyTaskInputBoundary {
 
+
+    boolean findTask(String taskName);
     /**
      * Changes the task's name.
      *
@@ -40,6 +42,7 @@ public interface ModifyTaskInputBoundary {
      */
     void changeDeadline(LocalDateTime date);
 
+    void changeAssignmentType(String assignmentType);
     /**
      * Refreshes the task to update.
      */

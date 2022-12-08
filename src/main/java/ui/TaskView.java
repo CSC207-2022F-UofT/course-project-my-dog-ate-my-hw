@@ -1,11 +1,16 @@
 package ui;
 
+import controllers.ModifyTaskController;
 import presenters.TaskVM;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -125,7 +130,7 @@ public class TaskView extends JFrame {
                 if(newTask){
                     //call new task controller
                 } else{
-                    //call modify task controller
+                    new ModifyTaskController(calendarPanel.date, textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), oldName);
                 }
                 dispose();
             }

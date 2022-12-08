@@ -20,7 +20,8 @@ public class BuyHeartUCTest {
         entities.Pet pet = new Pet("Name");
         User user = new User(10, pet);
         pet.ouch(5);
-        BuyHeartUC.buyHeart(user, 3);
+        BuyHeartUC uc = new BuyHeartUC();
+        uc.buyHeart(user, 3);
         Assertions.assertEquals(user.getPoints(), 7);
         Assertions.assertEquals(pet.getCurrHealth(), 8);
     }
