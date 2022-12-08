@@ -129,7 +129,9 @@ public class TaskView extends JFrame {
                 if(newTask){
                     //call new task controller
                 } else{
-                    new ModifyTaskController(calendarPanel.date, textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), oldName);
+                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    new ModifyTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem()
+                            , (String) assignmentTypeBox.getSelectedItem(), oldName);
                 }
                 dispose();
             }
