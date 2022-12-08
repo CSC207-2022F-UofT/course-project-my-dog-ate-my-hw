@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -26,22 +25,35 @@ public class TaskView extends JFrame {
     private CalendarPanel calendarPanel;
     private JComboBox<String> priorityBox;
     private JComboBox<String> assignmentTypeBox;
+    private boolean newTask;
 
 
-
+    /**
+     * Called if a new task is being created
+     */
     public void createTaskView(){
+        newTask = true;
         layoutTaskView();
+        display();
     }
 
+    /**
+     * Called if a task is being modified, input areas start with the previously selected values
+     * @param task the task being modified.
+     */
     public void createTaskView(TaskVM task){
+        newTask = false;
         layoutTaskView();
         textName.setText(task.name);
         textCourse.setText(task.course);
         setSelectedValue(priorityBox, task.priority);
         setSelectedValue(assignmentTypeBox, task.assignenmentType);
+        display();
     }
 
-
+    /**
+     * Creates and lays out the TaskView
+     */
     public void layoutTaskView() {
         setTitle("Create/Modify Task");
 
@@ -108,6 +120,12 @@ public class TaskView extends JFrame {
                 // Below are all the variable calls to necessary task info
                 // (textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), calendarPanel.date)
                 // TODO: Call controller
+                if(newTask){
+                    //call new task controller
+                } else{
+                    //call modify task controller
+                }
+                dispose();
             }
         });
 
@@ -118,6 +136,9 @@ public class TaskView extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Displays the TaskViewWindow
+     */
     public void display(){
         // set look and feel to the system look and feel
         try {
