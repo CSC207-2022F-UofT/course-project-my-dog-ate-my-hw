@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class HealthBarPanel extends JPanel {
 
-    private static final Dimension preferredSize = new Dimension(406, 46);
+    private static final Dimension preferredSize = new Dimension(410, 46);
     private static final Dimension heartDimensions = new Dimension(40,40);
     private static final Dimension fillerDimensions = new Dimension(14,40);
     private ImageIcon heartIcon;
@@ -19,12 +19,8 @@ public class HealthBarPanel extends JPanel {
     public void createHealthBar(int health, int maxHealth){
         loadHeartIcon();
         loadBrokenHeartIcon();
-
         format();
-
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-        setBorder(UIFormat.panelBorder);
-        setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
         add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
 
         for (int i = 0; i < maxHealth; i++){
@@ -35,6 +31,7 @@ public class HealthBarPanel extends JPanel {
                 this.add(makeHeartLabel(brokenHeartIcon));
             }
         }
+        add(Box.createHorizontalGlue());
     }
 
     private void loadHeartIcon(){
@@ -66,7 +63,7 @@ public class HealthBarPanel extends JPanel {
 
     private void format(){
         setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
-        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), UIFormat.BUTTON_PINK));
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
     }

@@ -8,16 +8,19 @@ import java.awt.*;
 public class PetUI extends JPanel{
 
     private static final Dimension preferredSize = new Dimension();
+    private static final Dimension fillerSizeSmall = new Dimension(0, 6);
+    private static final Dimension fillerSizeMid = new Dimension(0, 12);
 
     private PetDisplayPanel petDisplayPanel;
     private HealthBarPanel healthPanel;
     private PetNamePanel petNamePanel;
     private PointsPanel pointsPanel;
     private ToolPanel toolPanel;
-    private JButton adpotPetButton;
     private Title title;
 
-    public void createPetDisplay(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted){
+    public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted){
+        format();
+
         initializeComponents();
         healthPanel.createHealthBar(currHealth, maxHealth);
         petDisplayPanel.createPetPanel(skin, petAdopted);
@@ -27,14 +30,20 @@ public class PetUI extends JPanel{
         title.createTitle();
 
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        add(Box.createHorizontalGlue());
+        add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
         add(title);
+        add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
         add(petDisplayPanel);
+        add(new Box.Filler(fillerSizeSmall, fillerSizeSmall, fillerSizeSmall));
         add(petNamePanel);
+        add(new Box.Filler(fillerSizeSmall, fillerSizeSmall, fillerSizeSmall));
         add(healthPanel);
+        add(new Box.Filler(fillerSizeSmall, fillerSizeSmall, fillerSizeSmall));
         add(toolPanel);
+        add(new Box.Filler(fillerSizeSmall, fillerSizeSmall, fillerSizeSmall));
         add(pointsPanel);
-
-        format();
+        add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
     }
 
     private void initializeComponents(){
@@ -48,10 +57,8 @@ public class PetUI extends JPanel{
 
     private void format(){
         setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
-        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
     }
-
 
 }

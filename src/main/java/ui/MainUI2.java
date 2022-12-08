@@ -1,33 +1,40 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainUI2 extends JFrame{
 
-    private JPanel titlePanel;
+    private static final Dimension fillerSizeSmall = new Dimension(15, 733);
+    private static final Dimension fillerSizeMid = new Dimension(26, 733);
+    private TaskUI taskUI;
+    private PetUI petUI;
 
-
-
-
-    private void makeTitlePanel(){
-        JLabel titleLabel = new JLabel("DOG ATE MY HOMEWORK");
-        titleLabel.setFont(UIFormat.TITLE_FONT);
-        titleLabel.setForeground(UIFormat.GREEN_TEXT);
-        titlePanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
-        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
-        titlePanel.setLayout(titlePanelLayout);
-        titlePanelLayout.setHorizontalGroup(
-                titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(titleLabel)
-        );
-        titlePanelLayout.setVerticalGroup(
-                titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                                .addGap(0, 8, Short.MAX_VALUE)
-                                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+    public void createMainUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String[] tasks){
+        format();
+        petUI = new PetUI();
+        taskUI = new TaskUI();
+        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted);
+        taskUI.createTaskUI(tasks);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.LINE_AXIS));
+        mainPanel.add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
+        mainPanel.add(taskUI);
+        mainPanel.add(new Box.Filler(fillerSizeSmall, fillerSizeSmall, fillerSizeSmall));
+        mainPanel.add(petUI);
+        mainPanel.add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
+        add(mainPanel);
+        mainPanel.setMinimumSize(new java.awt.Dimension(1288, 733));
+        setVisible(true);
     }
-    private void formatTitlePanel(){
 
+    private void format(){
+        setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
+        setMinimumSize(new java.awt.Dimension(1288, 733));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
+
 }

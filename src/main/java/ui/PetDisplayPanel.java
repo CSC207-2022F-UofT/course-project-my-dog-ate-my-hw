@@ -1,13 +1,10 @@
 package ui;
 
 import viewModels.MainViewModel;
-import viewModels.ThemeFormat;
-import viewModels.ViewFormattingData;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +12,7 @@ import java.io.IOException;
 public class PetDisplayPanel extends JPanel{
 
     // STATIC VARIABLES //
-    private static final Dimension preferredSize = new Dimension();
+    private static final Dimension preferredSize = new Dimension(410, 422);
     private static final Dimension petDimensions = new Dimension(410,410);
     private static final int imageBorderSpace = 15;
 
@@ -26,6 +23,7 @@ public class PetDisplayPanel extends JPanel{
 
     // METHODS //
     public void createPetPanel(String skin, boolean adopted) {
+        format();
         if(adopted) {
             createPetDisplay(skin);
         }
@@ -33,27 +31,23 @@ public class PetDisplayPanel extends JPanel{
             createAdoptDisplay();
         }
     }
-    public void createPetDisplay(String skin){
-        format();
-
-        this.setLayout(new GridBagLayout());
+    private void createPetDisplay(String skin){
+        setLayout(new GridBagLayout());
         String path = "src/main/resources/petIcons/" + skin + ".PNG"; //TODO: add customization functionality
         petImage = makePetJLabel(getPetImage(path));
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
         c.anchor = GridBagConstraints.CENTER;
-        this.add(petImage);
+        add(petImage);
     }
 
-    public void createAdoptDisplay(){
-        format();
+    private void createAdoptDisplay(){
 
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.CENTER;
         ButtonBuilder builder = new ButtonBuilder();
-        ViewFormattingData format = viewModel.getAdoptButtonFormat();
-        ThemeFormat theme = format.getThemeFormat();
-        adoptButton = builder.buildAdoptButton(theme.getBackground(), theme.getTextColor(), theme.getBorder(), format.getText());
+        Border b = BorderFactory.createBevelBorder(BevelBorder.RAISED, UIFormat.LIGHT_GREEN.brighter(), UIFormat.LIGHT_GREEN.darker());
+        adoptButton = builder.buildAdoptButton(UIFormat.LIGHT_GREEN, Color.WHITE, b, "Adopt Pet");
         this.add(adoptButton, c);
     }
 
@@ -77,10 +71,10 @@ public class PetDisplayPanel extends JPanel{
     }
 
     private void format(){
-        setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
-        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setBackground(UIFormat.BUTTON_PINK);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
+
     }
 
 }

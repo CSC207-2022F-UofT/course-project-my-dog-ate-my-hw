@@ -34,29 +34,4 @@ public class TaskUI extends JPanel{
         setPreferredSize(preferredSize);
     }
 
-    public static void main(String[] args) {
-        try {
-            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
-
-        } catch (UnsupportedLookAndFeelException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-        JFrame testFrame = new JFrame();
-        testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        TaskUI task = new TaskUI();
-        String[] s = new String[1];
-        task.createTaskUI(s);
-        testFrame.add(task);
-        testFrame.setMinimumSize(new java.awt.Dimension(450, 733));
-
-        testFrame.setLocationRelativeTo(null);
-
-        testFrame.setVisible(true);
-    }
 }

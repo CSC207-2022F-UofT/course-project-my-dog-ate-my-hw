@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class CustomizationBox extends JComboBox<String>{
 
-    private static final Dimension preferredSize = new Dimension(142, 24);
+    private static final Dimension preferredSize = new Dimension(70, 24);
 
     /**
      * Creates and formats a JComboBox with a list of given customizations.

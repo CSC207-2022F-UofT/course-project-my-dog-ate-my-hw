@@ -7,6 +7,7 @@ public class AdoptPetButtonController {
 
     public void getPetShopDisplay(){
         PetShopDisplayerInterface shopDisplayer = new PetShopDisplayer();
+        shopDisplayer.createPetShop();
     }
 
 }

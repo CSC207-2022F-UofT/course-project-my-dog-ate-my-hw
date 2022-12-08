@@ -9,7 +9,8 @@ import java.awt.*;
 public class ScrollPanel extends JPanel {
 
     private static final int borderSpace = 6;
-    private static final Dimension preferredSize = new Dimension(766, 636);
+    private static final Dimension preferredSize = new Dimension(754, 630);
+    private static final Dimension maxSize = new Dimension(760, 636);
     private TaskScrollPane scrollPane;
     public void createScrollPanel(String[] tasks){
         format();
@@ -30,5 +31,6 @@ public class ScrollPanel extends JPanel {
         setBackground(UIFormat.YEllOW);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
+        setMaximumSize(maxSize);
     }
 }

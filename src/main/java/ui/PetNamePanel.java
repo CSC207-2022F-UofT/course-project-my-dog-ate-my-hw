@@ -26,8 +26,9 @@ public class PetNamePanel extends JPanel {
 
     private void format(){
         setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
-        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().darker()));
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), UIFormat.BUTTON_PINK));
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
+
     }
 }

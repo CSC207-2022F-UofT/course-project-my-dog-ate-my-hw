@@ -17,7 +17,6 @@ public class TaskScrollPane extends JScrollPane {
 
     private void formatPane(){
         setBackground(UIFormat.TASK_SCROLL);
-        setBorder(null);
         setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         setViewportView(taskContainer);
         getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -28,7 +27,8 @@ public class TaskScrollPane extends JScrollPane {
         });
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
-
+        setMaximumSize(preferredSize);
+        setBorder(BorderFactory.createLineBorder(UIFormat.YEllOW, 2));
     }
     private void makeTaskContainer(String [] tasks){
         //TODO: Must be updated when Stephanie commits her task panel code

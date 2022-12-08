@@ -1,5 +1,6 @@
 package ui;
 
+import controllers.AdoptPetButtonController;
 import controllers.BuyHeartController;
 
 import javax.swing.border.Border;
@@ -9,8 +10,8 @@ import java.awt.event.ActionListener;
 
 public class ButtonBuilder {
 
-    private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(96, 33);
-    private static final Dimension COMPLETED_TOGGLE_SIZE = new Dimension(187, 33);
+    private static final Dimension STANDARD_BUTTONS_SIZE = new Dimension(80, 33);
+    private static final Dimension COMPLETED_TOGGLE_SIZE = new Dimension(120, 33);
 
     public Button buildHealButton(Color background, Color textColor, Border border, String label){
         Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
@@ -35,7 +36,8 @@ public class ButtonBuilder {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //PetShopUIController control = new PetShopUIController();
+                AdoptPetButtonController controller = new AdoptPetButtonController();
+                controller.getPetShopDisplay();
                 b.getParent().remove(b);
 
             }
