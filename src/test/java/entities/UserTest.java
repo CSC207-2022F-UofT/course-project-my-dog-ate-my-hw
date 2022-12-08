@@ -22,7 +22,7 @@ public class UserTest {
 
     /** 
      * create a user with points and check that the getter works
-     *
+     */
     @Test
     public void CreateUserPointsTest() {
         User user = new User(5);
