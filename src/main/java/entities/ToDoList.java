@@ -78,7 +78,7 @@ public class ToDoList extends Checklist {
      */
     public int pastDeadLineSum() {
         int sumOfLate = 0;
-        for (Task task: this.taskList) {
+        for (Task task: this.getTaskList()) {
             sumOfLate += task.pastDeadline();
         }
         return sumOfLate;
