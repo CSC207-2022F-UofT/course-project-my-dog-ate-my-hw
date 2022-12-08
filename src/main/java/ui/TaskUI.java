@@ -1,13 +1,10 @@
 package ui;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
 public class TaskUI extends JPanel{
 
-    private static final Dimension preferredSize = new Dimension();
     private static final Dimension fillerDimensions = new Dimension(0, 12);
     private ButtonsPanel buttonsPanel;
     private ScrollPanel scrollPanel;
@@ -30,8 +27,6 @@ public class TaskUI extends JPanel{
 
     private void format(){
         setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
-        setMinimumSize(preferredSize);
-        setPreferredSize(preferredSize);
     }
 
 }
