@@ -22,7 +22,7 @@ public class PetUI extends JPanel{
 
         initializeComponents();
         healthPanel.createHealthBar(currHealth, maxHealth);
-        petDisplayPanel.createPetPanel(skin, currentEquipment, petAdopted);
+        petDisplayPanel.createPetPanel(skin, currentEquipment, currHealth, petAdopted);
         petNamePanel.createNamePanel(petName);
         pointsPanel.createPointsPanel(points);
         toolPanel.createToolPanel(customizations);

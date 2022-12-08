@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
-public class ModifyTaskController implements ActionListener {
+public class ModifyTaskController {
     private static ModifyTaskInputBoundary uc;
     public LocalDateTime deadline;
     public String name;
@@ -24,9 +24,10 @@ public class ModifyTaskController implements ActionListener {
         this.priority = priority;
         this.assignenmentType = assignenmentType;
         this.oldName = oldName;
+        modify();
     }
 
-    public void actionPerformed(ActionEvent e){
+    public void modify(){
         if(uc.findTask(oldName)) {
             uc.changeName(name);
             uc.changeCourse(course);

@@ -12,11 +12,11 @@ public class MainUI2 extends JFrame{
     private TaskUI taskUI;
     private PetUI petUI;
 
-    public void createMainUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, TaskVM[] tasks){
+    public void createMainUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
         format();
         petUI = new PetUI();
         taskUI = new TaskUI();
-        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted);
+        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedIteam);
         taskUI.createTaskUI(tasks);
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
