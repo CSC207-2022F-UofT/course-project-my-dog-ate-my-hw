@@ -8,7 +8,7 @@ public abstract class Checklist {
      * viewing purposes.
      */
 
-    protected List<Task> taskList;
+    private List<Task> taskList;
 
     public Checklist() {
         this.taskList = new ArrayList<>();
