@@ -1,7 +1,7 @@
-package controller;
+package uiControllers;
 import entities.AssignmentType;
 import entities.Priority;
-import useCase.CreateTaskUC;
+import useCases.CreateTaskUC;
 import entities.Task;
 
 import java.time.LocalDateTime;
