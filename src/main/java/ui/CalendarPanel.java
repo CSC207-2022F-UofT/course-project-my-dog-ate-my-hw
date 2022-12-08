@@ -4,7 +4,6 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
