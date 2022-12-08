@@ -30,7 +30,7 @@ public class BuyItemUCTest {
     public void Setup() {
         user = new User();
         customization = new Customization();
-        pet = new Pet("dog");
+        pet = new Pet("dog", null);
         item1 = new Item("Hat", "Straw Hat", 3, false);
         item2 = new Item("Hat", "Cap", 5, false);
         item3 = new Item("Hat", "Baseball Cap", 1, true);

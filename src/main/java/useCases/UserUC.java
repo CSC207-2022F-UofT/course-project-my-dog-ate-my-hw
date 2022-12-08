@@ -3,7 +3,9 @@ package useCases;
 import entities.Pet;
 import entities.User;
 
-// a user use-case interactor
+/**
+ * A User Use-Case Interactor
+ */
 public class UserUC extends User{
 
     private static UserUC user = null;

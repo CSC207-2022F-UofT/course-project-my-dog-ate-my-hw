@@ -3,20 +3,18 @@ package uiControllers;
 import entities.Pet;
 import useCases.AdoptPetUC;
 
-import javax.swing.*;
-
 public class PetShopUIController {
 
     Pet pet;
 
     /**
      * Calls the AdoptPetUC to create a Pet object from the given petIcon and petName.
-     * @param petIcon the image representing the selected pet
+     * @param petIcon the string representing the icon
      * @param petName the pet's name
      */
-    public void performPetAdoption(ImageIcon petIcon, String petName){
+    public void performPetAdoption(String petName, String petIcon){
         AdoptPetUC usecase = new AdoptPetUC();
-        usecase.adoptPet(petIcon, petName);
+        usecase.adoptPet(petName, petIcon);
         pet = usecase.getPet();
     }
 
