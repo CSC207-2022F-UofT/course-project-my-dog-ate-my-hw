@@ -27,7 +27,7 @@ public class ModifyTaskUCTest {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
-        modifyTaskUC.changePriority(Priority.LOW);
+        modifyTaskUC.changePriority(Priority.LOW.toString());
         Assertions.assertEquals(Priority.LOW, task.getPriority());
     }
 
@@ -55,7 +55,7 @@ public class ModifyTaskUCTest {
         LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
-        modifyTaskUC.changeAssignmentType(AssignmentType.QUIZ);
+        modifyTaskUC.changeAssignmentType(AssignmentType.QUIZ.toString());
         Assertions.assertEquals(AssignmentType.QUIZ, task.getAssignmentType());
     }
 }
