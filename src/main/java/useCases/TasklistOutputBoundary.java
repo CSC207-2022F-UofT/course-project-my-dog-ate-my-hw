@@ -1,7 +1,5 @@
 package useCases;
 
-import presenters.TaskVM;
-
 import java.util.ArrayList;
 
 public interface TasklistOutputBoundary {

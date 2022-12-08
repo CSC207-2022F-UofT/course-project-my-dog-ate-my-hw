@@ -49,14 +49,14 @@ public class TaskScrollPane extends JScrollPane {
     private void makeTaskContainer(TaskVM[] tasks){
         taskContainer = new JPanel();
         taskContainer.setLayout(new BoxLayout(taskContainer, BoxLayout.PAGE_AXIS));
-
+        if(tasks != null){
         // load in all tasks as panels
         for(TaskVM task : tasks){
             TaskPanel panel = new TaskPanel();
             panel.createTaskPanel(task);
             taskPanels.add(panel);
             taskContainer.add(panel);
-        }
+        }}
 
         // format container
         taskContainer.setMaximumSize(new Dimension(754, 32767));
