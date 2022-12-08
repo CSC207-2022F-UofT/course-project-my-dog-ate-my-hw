@@ -76,9 +76,9 @@ public class ToDoList extends Checklist {
      * low = 1 point).
      * @return the sum of points lost by the user due to tasks uncompleted past their deadline.
      */
-    public static int pastDeadLineSum() {
+    public int pastDeadLineSum() {
         int sumOfLate = 0;
-        for (Task task: this.getTaskList()) {
+        for (Task task: this.taskList) {
             sumOfLate += task.pastDeadline();
         }
         return sumOfLate;
