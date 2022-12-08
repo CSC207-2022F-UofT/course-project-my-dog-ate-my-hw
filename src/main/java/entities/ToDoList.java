@@ -15,7 +15,7 @@ public class ToDoList extends Checklist {
      *
      * 1) Every task in the taskList must have a unique name.
      */
-
+     
 
     /**
      * Check if the task has a unique name, meaning it does not have the same name as any other tasks in the taskList.
@@ -84,4 +84,12 @@ public class ToDoList extends Checklist {
         return sumOfLate;
     }
 
+    /**
+     * Randomize a task in the list
+     * @return Task at random index in the taskList
+     */
+    public Task randomTask() {
+        int randomNum = ThreadLocalRandom.current().nextInt(0, super.getTaskList().size());
+        return super.getTaskList().get(randomNum);
+    }
 }

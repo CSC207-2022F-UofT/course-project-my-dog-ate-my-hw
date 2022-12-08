@@ -1,37 +1,41 @@
 package useCases;
-import entities.User;
+import entities.AbsentTaskNameException;
 import entities.Priority;
-import presenters.CompleteTaskResponseModel;
-import presenters.CompleteTaskPresenter;
+import entities.Task;
+import entities.User;
 
 public class GainPointsUC {
-    CompleteTaskUC ct;
-    User user;
 
-    public GainPointsUC(CompleteTaskUC completeTaskUC) {
-        this.ct = completeTaskUC;
-    }
-
-    //if the task is finished before studyDeadline
-    //assign points based on the task's Priority
-    public void Gain() {
-        if (ct.finishedBeforeDDL()) {
-            Priority pr = ct.getPriority();
-            if (pr.equals(Priority.HIGH)) {
-                user.GainPoints(3);
+    /**
+     * Receive the task from input String taskName
+     * Check if the task is finished before studyDeadline
+     * Reward points to user according to the priority of the task
+     * @param taskName The task that has been completed
+     * @throws RuntimeException If the task name is not in the ToDoList
+     */
+    public static void Gain(String taskName, User user) throws RuntimeException {
+        try {
+            Task task = user.getToDo().searchFor(taskName);
+            if (task.pastDeadline() == 0) {
+                user.GainPoints(task.getPriority().getValue());
             }
-            else if (pr.equals(Priority.MEDIUM)) {
-                user.GainPoints(2);
-            }
-            else if (pr.equals(Priority.LOW)) {
-                user.GainPoints(1);
-            }
+        }
+        catch (AbsentTaskNameException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    //presenter method
-    public void present(CompleteTaskPresenter presenter) {
-        CompleteTaskResponseModel complete = new CompleteTaskResponseModel(user.getPoints(), ct.getTodo(), ct.getDone());
-        presenter.show(complete);
+    /**
+     * Another version of the gain method that deals with the User use case
+     * @param taskName Name of the task that has been completed
+     */
+    public static void Gain(String taskName) { GainPointsUC.Gain(taskName, UserUC.u());}
+
+    /**
+     * The refresh method that refreshes view after changes being made
+     */
+    public void refreshPoints() {
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
     }
 }
