@@ -1,5 +1,6 @@
 package ui;
 
+import controllers.CreateTaskController;
 import controllers.ModifyTaskController;
 import presenters.TaskVM;
 
@@ -127,7 +128,9 @@ public class TaskView extends JFrame {
                 // (textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), calendarPanel.date)
                 // TODO: Call controller
                 if(newTask){
-                    //call new task controller
+                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    new CreateTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem(),
+                            (String) assignmentTypeBox.getSelectedItem());
                 } else{
                     LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     new ModifyTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem()
