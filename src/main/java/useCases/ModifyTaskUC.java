@@ -1,9 +1,6 @@
 package useCases;
 
-import entities.AssignmentType;
-import entities.Priority;
-import entities.Task;
-import entities.ToDoList;
+import entities.*;
 
 import java.time.LocalDateTime;
 
@@ -23,7 +20,11 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      */
 
     public ModifyTaskUC(String taskName) {
-        this.task = todo.searchFor(taskName);
+        try {
+            this.task = todo.searchFor(taskName);
+        } catch (AbsentTaskNameException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -32,7 +33,8 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param newName task's new name
      */
     public void changeName(String newName) {
-        if (todo.checkUniqueName(newName)) {
+        Task newTask = new Task(newName, "", LocalDateTime.now(), Priority.LOW);
+        if (todo.checkUniqueName(newTask)) {
             task.setName(newName);
         } else {
             ModifyTaskOutputBoundary.displaymodifytask();
@@ -63,15 +65,6 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      */
     public void changeDeadline(LocalDateTime date) {
         task.setDeadline(date);
-    }
-
-    /**
-     * Changes the task's assignment type.
-     *
-     * @param assignmentType the task's assignment type.
-     */
-    public void changeAssignmentType(AssignmentType assignmentType) {
-        task.setAssignmentType(assignmentType);
     }
 
     /**
