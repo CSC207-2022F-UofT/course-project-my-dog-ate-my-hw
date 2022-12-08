@@ -10,7 +10,7 @@ public class ToolPanel extends JPanel {
 
     private static final Dimension verticalFillerDimensions = new Dimension(0, 51);
     private static final Dimension smallFillerDimensions = new Dimension(6, 0);
-    private static final Dimension preferredSize = new Dimension(406, 51);
+    private static final Dimension preferredSize = new Dimension(410, 51);
     CustomizationBox customizationBox;
     Button healButton;
 

@@ -7,10 +7,11 @@ import java.awt.*;
 
 public class PetNamePanel extends JPanel {
 
-    private static final Dimension preferredSize = new Dimension(406, 33);
+    private static final Dimension preferredSize = new Dimension(410, 33);
     private JLabel petNameLabel;
 
     public void createNamePanel(String petName){
+        format();
         createNameLabel(petName);
         setLayout(new BorderLayout());
         add(petNameLabel, BorderLayout.CENTER);
@@ -25,7 +26,7 @@ public class PetNamePanel extends JPanel {
 
     private void format(){
         setBackground(UIFormat.SIDE_PANEL_BACKGROUND);
-        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().brighter()));
+        setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), getBackground().darker()));
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
     }
