@@ -4,53 +4,39 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
-public class TaskPanel extends JFrame {
+public class TaskPanel extends JPanel {
 
-    public TaskPanel() {
-        init();
+    JLabel nameLabel;
+    JLabel courseLabel;
+    JLabel typeLabel;
+    JLabel deadlineLabel;
+    JLabel priorityLabel;
+
+    public void createTaskPanel(String name, String course, String type, String deadline, String priority) {
+        //TODO: Add edit button to each task. Remove from Buttons Panel
+        //TODO: Add checkbox to each task
+        initalizeWithFormat(name, course, type, deadline, priority);
+        setBackground(UIFormat.TASK_SCROLL);
+        setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+
+        add(nameLabel);
+        add(courseLabel);
+        add(typeLabel);
+        add(deadlineLabel);
+        add(priorityLabel);
     }
 
-    private void init() {
-        //JPanel panel = new JPanel();
-        JPanel panel2 = new JPanel();
-        //panel.setBackground(Color.LIGHT_GRAY);
-        panel2.setBackground(Color.pink);
+    private void initalizeWithFormat(String name, String course, String type, String deadline, String priority){
+        nameLabel = new JLabel(name);
+        nameLabel.setFont(UIFormat.BUTTON_FONT);
+        courseLabel = new JLabel(course);
+        courseLabel.setFont(UIFormat.BUTTON_FONT);
+        typeLabel = new JLabel(type);
+        typeLabel.setFont(UIFormat.BUTTON_FONT);
+        deadlineLabel = new JLabel(deadline);
+        deadlineLabel.setFont(UIFormat.BUTTON_FONT);
+        priorityLabel = new JLabel(priority);
+        priorityLabel.setFont(UIFormat.BUTTON_FONT);
 
-
-        this.setLayout(new BorderLayout());
-        this.setMinimumSize(new Dimension(100, 100));
-        panel2.setLayout(new BoxLayout(panel2, BoxLayout.PAGE_AXIS));
-       // JLabel label = new JLabel("This is a label");
-       // JLabel label2 = new JLabel("This is another label");
-
-        this.setLayout(new BorderLayout());
-        //this.add(panel, BorderLayout.CENTER);
-        this.add(panel2, BorderLayout.CENTER);
-
-        makeBoxPanels(10, panel2);
-
-    }
-
-    private void makeBoxPanels(int x, JPanel container) {
-        for (int i = 0; i < x; i++) {
-            JPanel panel = new JPanel();
-            JCheckBox checkBox = new JCheckBox();
-            checkBox.setHorizontalAlignment(JLabel.LEFT);
-            panel.add(new JLabel("TaskName"));
-            panel.add(new JLabel("TaskCourse"));
-            panel.add(new JLabel("TaskType"));
-            panel.add(new JLabel("TaskDeadline"));
-            panel.add(new JLabel("TaskPriority"));
-            panel.setBorder(new LineBorder(Color.BLACK));
-            container.add(panel);
-            container.add(checkBox);
-        }
-    }
-
-    public static void main(String[] args) {
-        TaskPanel a = new TaskPanel();
-        a.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        a.setPreferredSize(new Dimension(100, 100));
-        a.setVisible(true);
     }
 }

@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -22,6 +24,7 @@ public class TaskView extends JFrame {
 
     public TaskView() {
         super("Create/Modify Task");
+        //TODO: Add presenter to get task info if task is being modified
 
         // create a new panel with GridBagLayout manager
         JPanel newPanel = new JPanel(new GridBagLayout());
@@ -75,13 +78,17 @@ public class TaskView extends JFrame {
         jComboBox.setBounds(80, 50, 140, 20);
         newPanel.add(jComboBox2,constraints);
 
-
         constraints.gridx = 0;
         constraints.gridy = 5;
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
-
+        buttonSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: Controller
+            }
+        });
 
         // add the panel to this frame
         add(newPanel);
@@ -89,8 +96,6 @@ public class TaskView extends JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-
-
 
     public static void main(String[] args) {
         // set look and feel to the system look and feel

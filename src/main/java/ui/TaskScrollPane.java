@@ -31,9 +31,8 @@ public class TaskScrollPane extends JScrollPane {
         setBorder(BorderFactory.createLineBorder(UIFormat.YEllOW, 2));
     }
     private void makeTaskContainer(String [] tasks){
-        //TODO: Must be updated when Stephanie commits her task panel code
-
         taskContainer = new JPanel();
+        //TODO: Add ability for Container to load in all tasks in tasks. Use TaskPanel to create a task panel for each task
         taskContainer.setMaximumSize(new Dimension(754, 32767));
         taskContainer.setMinimumSize(new Dimension(754, 100));
         taskContainer.setPreferredSize(new Dimension(754, 741));
