@@ -2,22 +2,25 @@ package useCases;
 
 import entities.Pet;
 
-import javax.swing.*;
-
-public class AdoptPetUC {
+public class AdoptPetUC implements AdoptPetInputBoundary{
 
     Pet pet;
 
     /**
      * Creates a Pet object from the given petIcon and petName.
-     * @param petIcon the image representing the selected pet
      * @param petName the pet's name
      */
-    public void adoptPet(ImageIcon petIcon, String petName){
+    public void adoptPet(String petName, String petIcon){
+        UserUC.u().setPet(new Pet(petName, petIcon));
         pet = new Pet(petName, petIcon);
     }
 
-    public Pet getPet() {
+    public void refreshPet(){
+        RefresherFactory factory = new RefresherFactory();
+        factory.createRefresher("Pet").refresh();
+    }
+
+    public Pet getPet(){
         return pet;
     }
 }
