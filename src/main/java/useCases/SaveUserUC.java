@@ -76,7 +76,7 @@ public class SaveUserUC {
         // Get and create the ToDoList object
         List<Task> toDoList = user.getToDo().getTaskList();
         for (entities.Task task : toDoList){
-            dl.addTodo(
+            dl.addToDo(
                     task.getDeadline(),
                     task.getName(),
                     task.getCourse(),

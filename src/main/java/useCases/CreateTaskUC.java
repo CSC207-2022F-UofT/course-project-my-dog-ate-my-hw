@@ -31,7 +31,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param task the task to be added to the to do list
      */
     private void addToTDL(Task task) {
-        todo = User.u().getTodo();
+        todo = UserUC.u().getToDo();
         todo.addTask(task);
     }
 

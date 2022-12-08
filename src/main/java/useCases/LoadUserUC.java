@@ -68,7 +68,7 @@ public class LoadUserUC {
         ToDoList toDoList = new ToDoList();
 
         // Loop through the loaded ToDoList
-        for (TaskDBBoundary taskdb : udb.getTodo()) {
+        for (TaskDBBoundary taskdb : udb.getToDo()) {
 
             // Create a Task object, with null Priority and AssignmentType
             entities.Task task = new Task(
@@ -79,42 +79,11 @@ public class LoadUserUC {
                     null
             );
 
-            // Assign Priority according to priorityString
-            String priorityString = taskdb.getPriority();
-            switch (priorityString) {
-                case "HIGH":
-                    task.setPriority(Priority.HIGH);
-                    break;
-                case "MEDIUM":
-                    task.setPriority(Priority.MEDIUM);
-                    break;
-                case "LOW":
-                    task.setPriority(Priority.LOW);
-                    break;
-            }
+            // Take the Priority String and assign an enum
+            setPriority(task, taskdb.getPriority());
 
-            // Assign AssignmentType according to assignmentString
-            String assignmentString = taskdb.getAssignmentType();
-            switch (assignmentString) {
-                case "ESSAY":
-                    task.setAssignmentType(AssignmentType.ESSAY);
-                    break;
-                case "QUIZ":
-                    task.setAssignmentType(AssignmentType.QUIZ);
-                    break;
-                case "EXAM":
-                    task.setAssignmentType(AssignmentType.EXAM);
-                    break;
-                case "LAB_REPORTS":
-                    task.setAssignmentType(AssignmentType.LAB_REPORTS);
-                    break;
-                case "REFLECTION":
-                    task.setAssignmentType(AssignmentType.REFLECTION);
-                    break;
-                case "PROJECT":
-                    task.setAssignmentType(AssignmentType.PROJECT);
-                    break;
-            }
+            // Take the Assignment String and assign an enum
+            setAssignmentType(task, taskdb.getAssignmentType());
 
             // Add the Task object to the ToDoList
             toDoList.addTask(task);
@@ -148,42 +117,11 @@ public class LoadUserUC {
                     null
             );
 
-            // Assign Priority according to priorityString
-            String priorityString = taskdb.getPriority();
-            switch (priorityString) {
-                case "HIGH":
-                    task.setPriority(Priority.HIGH);
-                    break;
-                case "MEDIUM":
-                    task.setPriority(Priority.MEDIUM);
-                    break;
-                case "LOW":
-                    task.setPriority(Priority.LOW);
-                    break;
-            }
+            // Take the Priority String and assign an enum
+            setPriority(task, taskdb.getPriority());
 
-            // Assign AssignmentType according to assignmentString
-            String assignmentString = taskdb.getAssignmentType();
-            switch (assignmentString) {
-                case "ESSAY":
-                    task.setAssignmentType(AssignmentType.ESSAY);
-                    break;
-                case "QUIZ":
-                    task.setAssignmentType(AssignmentType.QUIZ);
-                    break;
-                case "EXAM":
-                    task.setAssignmentType(AssignmentType.EXAM);
-                    break;
-                case "LAB_REPORTS":
-                    task.setAssignmentType(AssignmentType.LAB_REPORTS);
-                    break;
-                case "REFLECTION":
-                    task.setAssignmentType(AssignmentType.REFLECTION);
-                    break;
-                case "PROJECT":
-                    task.setAssignmentType(AssignmentType.PROJECT);
-                    break;
-            }
+            // Take the Assignment String and assign an enum
+            setAssignmentType(task, taskdb.getAssignmentType());
 
             // Add the Task object to the DoneList
             doneList.addTask(task);
@@ -245,6 +183,47 @@ public class LoadUserUC {
 
         // Return the Pet object
         return pet;
+    }
+
+    // Convert the Priority (String) into an enum
+    public static void setPriority(Task task, String priorityString){
+        // Assign Priority according to priorityString
+        switch (priorityString) {
+            case "HIGH":
+                task.setPriority(Priority.HIGH);
+                break;
+            case "MEDIUM":
+                task.setPriority(Priority.MEDIUM);
+                break;
+            case "LOW":
+                task.setPriority(Priority.LOW);
+                break;
+        }
+    }
+
+    // Convert the AssignmentType (String) into an enum
+    public static void setAssignmentType(Task task, String assignmentString){
+        // Assign AssignmentType according to assignmentString
+        switch (assignmentString) {
+            case "ESSAY":
+                task.setAssignmentType(AssignmentType.ESSAY);
+                break;
+            case "QUIZ":
+                task.setAssignmentType(AssignmentType.QUIZ);
+                break;
+            case "EXAM":
+                task.setAssignmentType(AssignmentType.EXAM);
+                break;
+            case "LAB_REPORTS":
+                task.setAssignmentType(AssignmentType.LAB_REPORTS);
+                break;
+            case "REFLECTION":
+                task.setAssignmentType(AssignmentType.REFLECTION);
+                break;
+            case "PROJECT":
+                task.setAssignmentType(AssignmentType.PROJECT);
+                break;
+        }
     }
 
 }

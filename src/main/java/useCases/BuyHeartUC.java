@@ -23,7 +23,7 @@ public class BuyHeartUC {
      * @param hearts the number of hearts to heal (cost)
      */
     public static void buyHeart(int hearts){
-        User user = User.u();
+        entities.User user = UserUC.u();
         buyHeart(user, hearts);
     }
 

@@ -7,36 +7,62 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * This class contains a Serializable User DB object,
+ * for saving and loading the User object
+ */
 public class UserDB implements Serializable, UserDBBoundary {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 543131667156700401L;
 
     public int points;
     public PetDB myPet;
-    public ArrayList<TaskDB> todo;
+    public ArrayList<TaskDB> toDo;
     public ArrayList<TaskDB> done;
 
+    /**
+     * Constructor: Check for User to load, if there is none,
+     * than proceed with default assignments,
+     * else, load and set User
+     */
     public UserDB(){
         if (DataSaver.loadUser() == null){
             this.myPet = new PetDB();
-            this.todo = new ArrayList<>();
+            this.toDo = new ArrayList<>();
             this.done = new ArrayList<>();
         } else {
-            this.points = Objects.requireNonNull(DataSaver.loadUser()).points;
-            this.myPet = Objects.requireNonNull(DataSaver.loadUser()).myPet;
-            this.todo = Objects.requireNonNull(DataSaver.loadUser()).todo;
-            this.done = Objects.requireNonNull(DataSaver.loadUser()).done;
+            UserDB user = DataSaver.loadUser();
+            this.points = Objects.requireNonNull(user).points;
+            this.myPet = user.myPet;
+            this.toDo = user.toDo;
+            this.done = user.done;
         }
     }
 
+    /**
+     * A Getter for myPet
+     * @return myPet
+     */
     public PetDB getPet(){return this.myPet;}
 
+    /**
+     * A Getter for points
+     * @return points
+     */
     public int getPoints(){return this.points;}
 
-    public ArrayList<TaskDBBoundary> getTodo(){
-        return new ArrayList<>(this.todo);
+    /**
+     * A Getter for ToDoList
+     * @return toDo
+     */
+    public ArrayList<TaskDBBoundary> getToDo(){
+        return new ArrayList<>(this.toDo);
     }
 
+    /**
+     * A Getter for DoneList
+     * @return done
+     */
     public ArrayList<TaskDBBoundary> getDone() {
         return new ArrayList<>(this.done);
     }

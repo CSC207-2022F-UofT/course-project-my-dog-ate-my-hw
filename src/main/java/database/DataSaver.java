@@ -2,14 +2,22 @@ package database;
 
 import java.io.*;
 
+/**
+ * This class is for writing and reading the saved data from save.txt
+ */
 public class DataSaver {
 
+    // The filename
     public static final String fileName = "src/main/java/database/save.txt";
 
+    // Save User in fileName
     public static void saveUser(UserDB user){
         File f = new File(fileName);
+
+        // Check if file exists
         if(!f.exists()){
             try {
+                // Create new file
                 boolean createdNewFile = f.createNewFile();
                 if(!createdNewFile){
                     System.out.println("DataSaver: Could not make File.");
@@ -22,6 +30,7 @@ public class DataSaver {
         }
 
         try {
+            // Write data into file
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
             out.writeObject(user);
             out.close();
@@ -35,11 +44,13 @@ public class DataSaver {
 
     public static UserDB loadUser(){
         File f = new File(fileName);
+        // Check if file exists
         if(!f.exists()){
             return null;
         }
 
         try{
+            // Read file data
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName)); {
             return (UserDB) in.readObject();
         }

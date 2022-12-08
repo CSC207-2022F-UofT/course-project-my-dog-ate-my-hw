@@ -33,13 +33,14 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param newName task's new name
      */
     public void changeName(String newName) {
-        Task newTask = new Task(newName, "", LocalDateTime.now(), Priority.LOW);
+        Task newTask = new Task(newName, "", LocalDateTime.now(), Priority.LOW, AssignmentType.ESSAY);
         if (todo.checkUniqueName(newTask)) {
             task.setName(newName);
         } else {
             ModifyTaskOutputBoundary.displaymodifytask();
+            }
         }
-    }
+
     /**
      * Changes the task's associated course.
      *
@@ -65,6 +66,10 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      */
     public void changeDeadline(LocalDateTime date) {
         task.setDeadline(date);
+    }
+
+    public void changeAssignmentType(AssignmentType assignmentType){
+        task.setAssignmentType(assignmentType);
     }
 
     /**
