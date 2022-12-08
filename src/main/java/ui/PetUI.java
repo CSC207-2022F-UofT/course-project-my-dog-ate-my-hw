@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class PetUI extends JPanel{
 
-    private static final Dimension preferredSize = new Dimension();
     private static final Dimension fillerSizeSmall = new Dimension(0, 6);
     private static final Dimension fillerSizeMid = new Dimension(0, 12);
 
@@ -57,8 +56,6 @@ public class PetUI extends JPanel{
 
     private void format(){
         setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
-        setMinimumSize(preferredSize);
-        setPreferredSize(preferredSize);
     }
 
 }
