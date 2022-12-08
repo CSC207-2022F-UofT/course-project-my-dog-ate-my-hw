@@ -124,9 +124,6 @@ public class TaskView extends JFrame {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Below are all the variable calls to necessary task info
-                // (textName.getText(), textCourse.getText(), priorityBox.getSelectedItem(), assignmentTypeBox.getSelectedItem(), calendarPanel.date)
-                // TODO: Call controller
                 if(newTask){
                     LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     new CreateTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem(),
