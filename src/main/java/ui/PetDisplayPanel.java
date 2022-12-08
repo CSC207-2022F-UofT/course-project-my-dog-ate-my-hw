@@ -32,19 +32,17 @@ public class PetDisplayPanel extends JPanel{
      * Displays the User's pet as a JLabel
      * @param skin
      */
-    private void createPetDisplay(String skin, String currentEquipment, int currhealth){
-        // Get the string for customizations
-        String customization = "";
-        if(!currentEquipment.equals("None")){
-            customization = currentEquipment;
+    private void createPetDisplay(String skin, String currentEquipment, int currHealth){
+        String path;
+        if(currHealth == 0){
+            // get path if pet is dead
+            path = "src/main/resources/petIcons/" + skin + "dead" + ".PNG";
+        } else if(!currentEquipment.equals("None")){
+            // Get the string for customizations
+            path = "src/main/resources/petIcons/" + skin + currentEquipment + ".PNG";
+        } else {
+            path = "src/main/resources/petIcons/" + skin + ".PNG";
         }
-        // get string for health status
-        String status = "";
-        if(currhealth == 0){
-            status = "dead";
-        }
-
-        String path = "src/main/resources/petIcons/" + skin + customization + status + ".PNG";
 
         petImage = makePetJLabel(getPetImage(path));
         setLayout(new GridBagLayout());

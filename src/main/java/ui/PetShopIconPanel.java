@@ -31,7 +31,7 @@ public class PetShopIconPanel extends JPanel{
      * Precondition: folder must not be empty
      */
     public void makePetIconPanel() {
-        File[] folder = new File("src/main/resources/petIcons").listFiles();
+        File[] folder = new File("src/main/resources/petShopIcons").listFiles();
         int rows = (int) Math.ceil(NUMBER_OF_PETS / (double) PET_PANEL_COLUMNS);
         this.setLayout(new GridLayout(0, PET_PANEL_COLUMNS));
         this.setMaximumSize(new Dimension((PET_ICON_WIDTH * PET_PANEL_COLUMNS), (PET_ICON_HEIGHT * rows)));
