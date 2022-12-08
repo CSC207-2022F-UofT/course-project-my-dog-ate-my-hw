@@ -18,12 +18,12 @@ public class ScrollPanel extends JPanel {
         scrollPane = new TaskScrollPane();
         scrollPane.createTaskScrollPane(tasks);
 
-        this.setLayout(new GridBagLayout());
+        setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(borderSpace, borderSpace, borderSpace, borderSpace);
         c.anchor = GridBagConstraints.CENTER;
 
-        this.add(scrollPane);
+        add(scrollPane);
     }
 
     private void format(){

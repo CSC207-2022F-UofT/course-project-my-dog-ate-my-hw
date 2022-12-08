@@ -12,7 +12,7 @@ public class TaskScrollPane extends JScrollPane {
     public void createTaskScrollPane(String[] tasks){
         formatPane();
         makeTaskContainer(tasks);
-        this.add(taskContainer);
+        add(taskContainer);
     }
 
     private void formatPane(){

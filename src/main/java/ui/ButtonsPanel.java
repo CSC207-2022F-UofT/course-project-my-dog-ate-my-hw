@@ -7,8 +7,7 @@ import java.awt.*;
 
 public class ButtonsPanel extends JPanel {
 
-    private static final Dimension fillerDimensionsSmall = new Dimension(6, 6);
-    private static final Dimension fillerDimensionsLarge = new Dimension(279, 6);
+    private static final Dimension fillerDimensionsSmall = new Dimension(6, 0);
     private Button newTaskButton;
     private ToggleButton editTaskToggle;
     private Button rouletteButton;
@@ -16,16 +15,16 @@ public class ButtonsPanel extends JPanel {
 
     public void createButtonsPanel(){
         format();
-        this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
         initalizeButtons();
-        this.add(newTaskButton);
-        this.add(new Box.Filler(fillerDimensionsSmall, fillerDimensionsSmall, fillerDimensionsSmall));
-        this.add(editTaskToggle);
-        this.add(new Box.Filler(fillerDimensionsSmall, fillerDimensionsSmall, fillerDimensionsSmall));
-        this.add(rouletteButton);
-        this.add(new Box.Filler(fillerDimensionsLarge, fillerDimensionsLarge, fillerDimensionsLarge));
-        this.add(seeDoneButton);
+        add(newTaskButton);
+        add(new Box.Filler(fillerDimensionsSmall, fillerDimensionsSmall, fillerDimensionsSmall));
+        add(editTaskToggle);
+        add(new Box.Filler(fillerDimensionsSmall, fillerDimensionsSmall, fillerDimensionsSmall));
+        add(rouletteButton);
+        add(Box.createHorizontalGlue());
+        add(seeDoneButton);
 
     }
 

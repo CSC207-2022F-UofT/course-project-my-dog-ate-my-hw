@@ -24,7 +24,7 @@ public class MainUI extends JFrame {
         setFonts();
         setTextColors();
 
-        makePetDisplay();
+
         makePointsDisplay();
         makeTaskScrollDisplay();
         makeButtons();
@@ -138,7 +138,7 @@ public class MainUI extends JFrame {
     // Make Contents
 
     private void makePointsDisplay(){
-        pointsPanel.createPointsPanel("Points: ", 0);
+
     }
     private void makeTaskScrollDisplay(){
         // Make the scroll pane

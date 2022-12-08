@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class HealthBarPanel extends JPanel {
 
+    private static final Dimension preferredSize = new Dimension(406, 46);
     private static final Dimension heartDimensions = new Dimension(40,40);
     private static final Dimension fillerDimensions = new Dimension(14,40);
     private ImageIcon heartIcon;

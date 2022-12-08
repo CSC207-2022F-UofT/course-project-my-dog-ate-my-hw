@@ -12,7 +12,7 @@ public class Pet implements ui.Pet{
         this.pet = pet;
     }
 
-    public Pet(String name, ImageIcon skin, Customization customization){
+    public Pet(String name, String skin, Customization customization){
         this.pet = new entities.Pet(name, skin, customization);
     }
 

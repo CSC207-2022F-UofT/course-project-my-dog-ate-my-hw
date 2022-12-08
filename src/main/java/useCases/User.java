@@ -25,7 +25,7 @@ public class User implements ui.User {
         new entities.User();
     }
 
-    public void adoptPet(ImageIcon petIcon, String petName){
+    public void adoptPet(String petIcon, String petName){
         AdoptPetUC usecase = new AdoptPetUC();
         usecase.adoptPet(petIcon, petName);
         this.setPet(usecase.getPet());
