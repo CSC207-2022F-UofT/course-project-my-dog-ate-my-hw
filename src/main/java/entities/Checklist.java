@@ -1,6 +1,7 @@
 package entities;
-import java.util.List;
+
 import java.util.ArrayList;
+
 public abstract class Checklist {
     /**
      * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from
@@ -8,7 +9,7 @@ public abstract class Checklist {
      * viewing purposes.
      */
 
-    private List<Task> taskList;
+    private ArrayList<Task> taskList;
 
     public Checklist() {
         this.taskList = new ArrayList<>();
@@ -38,7 +39,7 @@ public abstract class Checklist {
      * Return the taskList.
      * @return : The taskList attribute.
      */
-    public List<Task> getTaskList() {
+    public ArrayList<Task> getTaskList() {
         return this.taskList;
     }
 }
