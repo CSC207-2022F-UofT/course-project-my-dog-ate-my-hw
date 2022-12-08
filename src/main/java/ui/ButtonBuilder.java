@@ -2,6 +2,8 @@ package ui;
 
 import controllers.AdoptPetButtonController;
 import controllers.BuyHeartController;
+import controllers.RouletteController;
+import controllers.SeeDoneController;
 
 import javax.swing.border.Border;
 import java.awt.*;
@@ -21,7 +23,7 @@ public class ButtonBuilder {
 
     public Button buildRouletteButton(Color background, Color textColor, Border border, String label){
         Button b = new Button(background, textColor, border, label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
-        //b.addActionListener();
+        b.addActionListener(new RouletteController());
         return b;
     }
 
@@ -53,7 +55,7 @@ public class ButtonBuilder {
 
     public ToggleButton buildSeeDoneToggleButton(Color background, Color textColor, Border border, String label) {
         ToggleButton b = new ToggleButton(background, textColor, border, label, COMPLETED_TOGGLE_SIZE, UIFormat.BUTTON_FONT);
-        //b.addActionListener();
+        b.addActionListener(new SeeDoneController());
         return b;
     }
 }

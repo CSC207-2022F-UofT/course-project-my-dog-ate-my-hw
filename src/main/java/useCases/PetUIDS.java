@@ -2,7 +2,6 @@ package useCases;
 
 import entities.Pet;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class PetUIDS {

@@ -71,8 +71,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * Calls on factory to create a refresher.
      */
     public void refreshTask() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Tasklist").refresh();
+        new TasklistRefresher().refresh();
     }
 }
 

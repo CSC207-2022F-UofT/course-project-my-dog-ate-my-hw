@@ -10,12 +10,12 @@ public interface RouletteInputBoundary {
      * @param user The User
      * @return A randomized task from ToDoList
      */
-    public Task Roulette(User user);
+    public void roulette(User user);
 
-    public Task Roulette();
+    public void roulette();
 
     /**
      * Refresh method that refreshes the UI
      */
-    public void RefreshRoulette();
+    public void refreshTask();
 }

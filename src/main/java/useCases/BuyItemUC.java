@@ -49,7 +49,6 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Refresh method that refreshes the UI
      */
     public void refreshItem() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 }

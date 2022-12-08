@@ -1,5 +1,7 @@
 package ui;
 
+import presenters.TaskVM;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +12,7 @@ public class MainUI2 extends JFrame{
     private TaskUI taskUI;
     private PetUI petUI;
 
-    public void createMainUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String[] tasks){
+    public void createMainUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, TaskVM[] tasks){
         format();
         petUI = new PetUI();
         taskUI = new TaskUI();
@@ -35,10 +37,6 @@ public class MainUI2 extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-    }
-
-    public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String[] tasks){
-        createMainUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, tasks);
     }
 
 }

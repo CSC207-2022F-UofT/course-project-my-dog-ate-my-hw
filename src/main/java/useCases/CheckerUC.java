@@ -44,8 +44,7 @@ public class CheckerUC {
      * Refresh method which refreshes UI because of changes of the pet
      */
     public void refeshChecker(){
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 
 }

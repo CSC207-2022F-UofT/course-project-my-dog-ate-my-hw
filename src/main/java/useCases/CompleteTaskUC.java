@@ -27,10 +27,9 @@ public class CompleteTaskUC implements CompleteTaskInputBoundary{
      */
     @Override
     public void refreshCompleteTask() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Tasklist").refresh();
+        new TasklistRefresher().refresh();
         //also need to refresh user's points
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 
     /**

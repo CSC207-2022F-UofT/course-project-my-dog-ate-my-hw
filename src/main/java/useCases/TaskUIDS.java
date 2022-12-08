@@ -13,6 +13,7 @@ public class TaskUIDS {
         deadline = task.getDeadline();
         name = task.getName();
         course = task.getCourse();
+        priority = task.getPriority().toString();
         assignenmentType = task.getAssignmentType().toString();
     }
 }

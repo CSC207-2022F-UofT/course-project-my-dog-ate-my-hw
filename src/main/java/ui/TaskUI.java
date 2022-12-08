@@ -3,13 +3,15 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+import presenters.TaskVM;
+
 public class TaskUI extends JPanel{
 
     private static final Dimension fillerDimensions = new Dimension(0, 12);
     private ButtonsPanel buttonsPanel;
     private ScrollPanel scrollPanel;
 
-    public void createTaskUI(String[] tasks) {
+    public void createTaskUI(TaskVM[] tasks) {
         format();
 
         //TODO: Change tasks from string to task data objects

@@ -35,7 +35,6 @@ public class GainPointsUC {
      * The refresh method that refreshes view after changes being made
      */
     public void refreshPoints() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 }
