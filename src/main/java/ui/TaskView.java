@@ -26,6 +26,7 @@ public class TaskView extends JFrame {
     private JComboBox<String> priorityBox;
     private JComboBox<String> assignmentTypeBox;
     private boolean newTask;
+    private String oldName;
 
 
     /**
@@ -43,6 +44,7 @@ public class TaskView extends JFrame {
      */
     public void createTaskView(TaskVM task){
         newTask = false;
+        oldName = task.name;
         layoutTaskView();
         textName.setText(task.name);
         textCourse.setText(task.course);
@@ -155,6 +157,11 @@ public class TaskView extends JFrame {
         });
     }
 
+    /**
+     * Searches for a value in the combobox and sets it as the selected value
+     * @param comboBox the combobox box being search in
+     * @param value the value being searched for
+     */
     public void setSelectedValue(JComboBox comboBox, String value){
         String item;
         for (int i = 0; i < comboBox.getItemCount(); i++) {
