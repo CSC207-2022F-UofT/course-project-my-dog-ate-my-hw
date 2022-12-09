@@ -1,35 +1,37 @@
 package useCases;
 
-public class BuyHeartUC {
+import entities.User;
+import entities.Pet;
+
+public class BuyHeartUC implements BuyHeartInputBoundary{
+
     /**
     * Updates the User's balance and the corresponding Pet's health (1:1)
     * @param hearts the number of hearts to heal (cost)
     * @param user the User's name
     */
-    public static void buyHeart(entities.User user, int hearts){
+    public void buyHeart(User user, int hearts){
     
-        entities.Pet pet = user.getPet();
-
+        Pet pet = user.getPet();
+        
         if(user.getPoints() > 0 &&
                 pet.getCurrHealth() > 0 &&
-                pet.getCurrHealth() < entities.Pet.getMaxHealth()){
+                pet.getCurrHealth() < Pet.getMaxHealth()){
             user.LosePoints(hearts);
             pet.heal(hearts);
         }
     }
 
-    /**
-     * Calls the User UseCase for a User and then calls buyHeart(user, hearts)
-     * @param hearts the number of hearts to heal (cost)
-     */
-    public static void buyHeart(int hearts){
-        User user = User.u();
-        buyHeart(user, hearts);
+    public void buyHeart(int hearts){
+        buyHeart(UserUC.u(), hearts);
     }
 
-    public void refresh(){
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Pet").refresh();
+    public void buyHeart(){
+        buyHeart(UserUC.u(), 1);
+    }
+
+    public void refreshPet(){
+        new PetRefresher().refresh();
     }
 
 }

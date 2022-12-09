@@ -2,6 +2,7 @@ package entities;
 
 public class Pet {
 
+
     // ==PRIVATE VARIABLES==
 
     // the maximum health of the pet
@@ -13,18 +14,19 @@ public class Pet {
     // the name of the pet
     private final String name;
 
-    // the string associated with the pet skin
+    // the string associated with the pet
     private final String skin;
 
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
     private Customization customization;
 
+
     // ==CONSTRUCTORS==
 
-    public Pet(String name, String skin){
+    public Pet(String name){
         this.name = name;
-        this.skin = skin;
+        this.skin = "";
         this.currHealth = MAX_HEALTH;
         this.customization = new Customization();
     }
@@ -34,7 +36,9 @@ public class Pet {
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
         this.customization = customization;
+        getDefaultCustomizations();
     }
+
 
     // ==GETTERS==
 
@@ -55,6 +59,7 @@ public class Pet {
     }
 
     public Customization getCustomization() { return customization; }
+
 
     // ==SETTERS==
 
@@ -78,6 +83,14 @@ public class Pet {
         if (currHealth < 0){
             currHealth = 0;
         }
+    }
+
+    public void getDefaultCustomizations(){
+        customization = new Customization();
+        Item halo = new Item("Hat", "Halo", 1, false);
+        Item defaultItem = new Item("None", "None", 0, true);
+        customization.addItem(halo);
+        customization.equip(defaultItem);
     }
 
 }

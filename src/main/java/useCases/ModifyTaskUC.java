@@ -12,16 +12,36 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     private Task task;
     private ToDoList todo;
 
+
+    public ModifyTaskUC(){
+        task = null;
+        todo = null;
+    }
+
     /**
      * This constructs the ModifyTaskUC by taking in the string of a task name then finding the task
      * in the to-do list.
      *
      * @param taskName the task name
      */
+    public ModifyTaskUC(String taskName){
+        new ModifyTaskUC(taskName, UserUC.u().getToDo());
+    }
 
-    public ModifyTaskUC(String taskName) {
+
+    public ModifyTaskUC(String taskName, ToDoList todo) {
+        this.todo = todo;
         try {
             this.task = todo.searchFor(taskName);
+        } catch (AbsentTaskNameException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean findTask(String taskName) {
+        try {
+            task = todo.searchFor(taskName);
+            return true;
         } catch (AbsentTaskNameException e) {
             throw new RuntimeException(e);
         }
@@ -33,12 +53,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param newName task's new name
      */
     public void changeName(String newName) {
-        Task newTask = new Task(newName, "", LocalDateTime.now(), Priority.LOW);
-        if (todo.checkUniqueName(newTask)) {
             task.setName(newName);
-        } else {
-            ModifyTaskOutputBoundary.displaymodifytask();
-        }
     }
     /**
      * Changes the task's associated course.
@@ -54,8 +69,9 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      *
      * @param priority task's priority
      */
-    public void changePriority(Priority priority) {
-        task.setPriority(priority);
+    public void changePriority(String priority) {
+        Priority p = Priority.getPriority(priority);
+        task.setPriority(p);
     }
 
     /**
@@ -67,12 +83,13 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         task.setDeadline(date);
     }
 
+    public void changeAssignmentType(String assignmentType){ task.setAssignmentType(AssignmentType.getAssignmentType(assignmentType));}
+
     /**
      * Calls on factory to create a refresher.
      */
     public void refreshTask() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Tasklist").refresh();
+        new TasklistRefresher().refresh();
     }
 }
 

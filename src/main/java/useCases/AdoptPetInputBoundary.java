@@ -1,8 +1,7 @@
 package useCases;
 
 public interface AdoptPetInputBoundary {
-
-    void adoptPet(String petName, String petIcon);
+    void adoptPet(String skin, String petName);
 
     void refreshPet();
 }

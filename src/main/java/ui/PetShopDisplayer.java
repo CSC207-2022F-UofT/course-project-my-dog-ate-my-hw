@@ -1,15 +1,14 @@
 package ui;
 
-import entities.Pet;
+import controllers.PetShopUIController;
 
 import javax.swing.*;
 
-public class PetShopDisplayer {
+public class PetShopDisplayer implements PetShopDisplayerInterface{
 
     /**
-     * Creates and runs a PetShopWindow that will look the same on all platforms.
+     * Creates and runs a PetShopUI that will look the same on all platforms.
      */
-    Pet pet;
     public void createPetShop() {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -23,17 +22,9 @@ public class PetShopDisplayer {
             throw new RuntimeException(e);
         }
 
-        PetShopWindow shop = new PetShopWindow();
+        PetShopUIController controller = new PetShopUIController();
+        PetShopUI shop = new PetShopUI(controller);
         shop.setVisible(true);
-        pet = shop.getPet();
-    }
-
-    /**
-     * Main method for testing, to be removed
-     */
-    public static void main(String[] args) {
-        PetShopDisplayer d = new PetShopDisplayer();
-        d.createPetShop();
     }
 
 }

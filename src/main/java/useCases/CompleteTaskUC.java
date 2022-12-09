@@ -1,4 +1,5 @@
 package useCases;
+
 import entities.AbsentTaskNameException;
 import entities.Task;
 import entities.User;
@@ -11,7 +12,7 @@ public class CompleteTaskUC implements CompleteTaskInputBoundary{
      * @param taskName The String of the task that has been completed
      * @param user The user that we are changing
      */
-    public static void completeTask(String taskName, User user) throws RuntimeException {
+    public void completeTask(String taskName, User user) throws RuntimeException {
         try{
             Task task = user.getToDo().searchFor(taskName);
             GainPointsUC.Gain(taskName, user);
@@ -27,16 +28,15 @@ public class CompleteTaskUC implements CompleteTaskInputBoundary{
      */
     @Override
     public void refreshCompleteTask() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Tasklist").refresh();
+        new TasklistRefresher().refresh();
         //also need to refresh user's points
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 
     /**
      * Another version of the method that deals with the User user case
      * @param taskName The name of the task that has been completed
      */
-    public static void completeTask(String taskName) { CompleteTaskUC.completeTask(taskName, UserUC.u());}
+    public void completeTask(String taskName) { this.completeTask(taskName, UserUC.u());}
 
 }
