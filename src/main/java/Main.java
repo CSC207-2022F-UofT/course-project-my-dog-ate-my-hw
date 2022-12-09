@@ -1,6 +1,7 @@
 import controllers.*;
 import entities.Pet;
 import entities.User;
+import presenters.MainViewUpdater;
 import presenters.PetUpdater;
 import presenters.TaskVM;
 import presenters.TasklistUpdater;
@@ -11,6 +12,8 @@ import useCases.*;
 import javax.swing.*;
 
 public class Main {
+
+    static MainUI2 mainUI;
     public static void main(String[] args) {
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getCrossPlatformLookAndFeelClassName());
@@ -19,14 +22,13 @@ public class Main {
                  ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        injectDepend();
-        initializeUser();
-
-
-        MainUI2 p = new MainUI2();
         String[] s = {"None", "Halo"};
         String[] t = new String[0];
-        p.createMainUI(0, 0, "", "", 0, s, "", false, null);
+        MainViewUpdater m = new MainViewUpdater();
+        UserUC.declareUI(m);
+        mainUI = new MainUI2(0, 0, "", "", 0, s, "", false, null);
+        injectDepend();
+        initializeUser();
     }
 
 
@@ -45,6 +47,7 @@ public class Main {
         SeeToDoController.setUc(new SeeToDoUC());
 
         ViewRefresher vr = new ViewRefresher();
+        ViewRefresher.setMainUI(mainUI);
         PetUpdater.setViewRefresher(vr);
         TasklistUpdater.setViewRefresher(vr);
     }

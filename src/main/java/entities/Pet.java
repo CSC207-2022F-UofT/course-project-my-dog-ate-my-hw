@@ -1,7 +1,5 @@
 package entities;
 
-import javax.swing.*;
-
 public class Pet {
 
 
@@ -37,7 +35,8 @@ public class Pet {
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
-        this.customization = customization; // Need to assign a customization (using file reading likely)
+        this.customization = customization;
+        getDefaultCustomizations();
     }
 
 
@@ -86,5 +85,12 @@ public class Pet {
         }
     }
 
+    public void getDefaultCustomizations(){
+        customization = new Customization();
+        Item halo = new Item("Hat", "Halo", 1, false);
+        Item defaultItem = new Item("None", "None", 0, true);
+        customization.addItem(halo);
+        customization.equip(defaultItem);
+    }
 
 }

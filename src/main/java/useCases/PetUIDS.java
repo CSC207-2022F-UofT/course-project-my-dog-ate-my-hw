@@ -10,7 +10,7 @@ public class PetUIDS {
     public String name;
     public String skin;
     public String currCustomization;
-    public ArrayList<String> customizations;
+    public String[] customizations;
     public int points;
 
     public PetUIDS(entities.Pet pet){
@@ -18,11 +18,21 @@ public class PetUIDS {
         MAX_HEALTH = Pet.getMaxHealth();
         currHealth = pet.getCurrHealth();
         skin = pet.getSkin();
-        currCustomization = pet.getCustomization().currentEquipment().getName();
+        if(pet.getCustomization().currentEquipment() != null) {
+            currCustomization = pet.getCustomization().currentEquipment().getName();
+        } else {
+            currCustomization = "None";
+        }
         ArrayList<String> cus = new ArrayList<>();
         cus.add("None");
         for(entities.Item i : pet.getCustomization().possibleCustomizations())
             cus.add(i.getName());
-        customizations = cus;
+        Object[] temp = cus.toArray();
+        String[] temp2 = new String[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            String y = temp[i].toString();
+            temp2[i] = y;
+        }
+        customizations = temp2;
     }
 }
