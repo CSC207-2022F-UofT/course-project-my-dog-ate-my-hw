@@ -1,6 +1,8 @@
 package entities;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Checklist {
     /**
      * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from

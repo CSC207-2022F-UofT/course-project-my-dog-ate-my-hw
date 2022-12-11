@@ -20,7 +20,7 @@ public class ToDoListTest {
     public void Setup() {
         toDoList = new ToDoList();
         time = LocalDateTime.of(2022, 12, 29, 11, 59);
-        task1 = new Task("task1", "csc207", time, Priority.HIGH);
+        task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task1);
     }
 
@@ -48,7 +48,7 @@ public class ToDoListTest {
      */
     @Test
     public void TestUniqueName(){
-        Task task2 = new Task("task1", "csc108", time, Priority.LOW);
+        Task task2 = new Task("task1", "csc108", time, Priority.LOW, AssignmentType.ESSAY);
         Assertions.assertFalse(toDoList.checkUniqueName(task2));
     }
 
@@ -81,7 +81,8 @@ public class ToDoListTest {
     @Test
     public void TestPastDeadlineSum() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40), Priority.MEDIUM);
+                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
+                Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task2);
         Assertions.assertEquals(toDoList.pastDeadLineSum(), 2);
     }
@@ -94,9 +95,11 @@ public class ToDoListTest {
     @Test
     public void TestPastDeadlineSum2() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40), Priority.MEDIUM);
+                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
+                Priority.MEDIUM, AssignmentType.ESSAY);
         Task task3 = new Task("Problem Set", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40), Priority.HIGH);
+                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
+                Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task2);
         toDoList.addTask(task3);
         Assertions.assertEquals(toDoList.pastDeadLineSum(), 5);

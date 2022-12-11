@@ -13,7 +13,7 @@ public class DoneListTest {
     @Test
     public void TestAddTask(){
         LocalDateTime time = LocalDateTime.of(2022, 12, 7, 11, 59);
-        Task task1 = new Task("task1", "csc207", time, Priority.HIGH);
+        Task task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         task1.setCompletion(true);
         DoneList doneList = new DoneList();
         doneList.addTask(task1);
@@ -27,7 +27,7 @@ public class DoneListTest {
     @Test
     public void TestRemoveTask(){
         LocalDateTime time = LocalDateTime.of(2022, 12, 7, 11, 59);
-        Task task1 = new Task("task1", "csc207", time, Priority.HIGH);
+        Task task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         DoneList doneList = new DoneList();
         doneList.addTask(task1);
         doneList.removeTask(task1);

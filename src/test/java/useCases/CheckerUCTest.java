@@ -20,7 +20,7 @@ public class CheckerUCTest {
     @BeforeEach
     public void Setup() {
         user = new User();
-        pet = new Pet("Cat");
+        pet = new Pet("Cat", null);
         todo = new ToDoList();
         user.setTodo(todo);
         user.setPet(pet);
@@ -34,7 +34,7 @@ public class CheckerUCTest {
     public void CheckerTest1() {
         Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
                 (2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.MEDIUM);
+                Priority.MEDIUM, AssignmentType.ESSAY);
         todo.addTask(task1);
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
@@ -49,7 +49,7 @@ public class CheckerUCTest {
     public void CheckerTest2() {
         Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
                 (2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.HIGH);
+                Priority.HIGH, AssignmentType.ESSAY);
         todo.addTask(task1);
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
@@ -64,7 +64,7 @@ public class CheckerUCTest {
     public void CheckerTest3() {
         Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
                 (2022, Month.DECEMBER, 29, 19, 30, 40),
-                Priority.HIGH);
+                Priority.HIGH, AssignmentType.ESSAY);
         todo.addTask(task1);
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
@@ -79,9 +79,9 @@ public class CheckerUCTest {
     public void CheckerTest4() {
         Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
                 (2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.HIGH);
+                Priority.HIGH, AssignmentType.ESSAY);
         Task task2 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.SEPTEMBER
-                , 29, 19, 30, 40), Priority.MEDIUM);
+                , 29, 19, 30, 40), Priority.MEDIUM, AssignmentType.ESSAY);
         todo.addTask(task1);
         todo.addTask(task2);
         CheckerUC checkerUC = new CheckerUC();

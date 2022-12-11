@@ -9,7 +9,6 @@ public class ViewRefresher implements ViewRefresherBoundary{
     public PetVM pet;
     public TaskVM[] tasks;
 
-
     private static MainUI2 mainUI;
 
     public static void setMainUI(MainUI2 main){ mainUI = main;}

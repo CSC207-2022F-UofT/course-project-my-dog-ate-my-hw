@@ -132,17 +132,6 @@ public class Task {
     }
 
     /**
-     * Return a task in a string array representation.
-     *
-     * @return task in list representation
-     */
-    public String[] taskToList() {
-        String[] result;
-        result = new String[]{name, course, String.valueOf(deadline), priority.name(), assignmentType.name()};
-        return result;
-    }
-
-    /**
      * Gets the assignment type of the task.
      *
      * @return assignment type
