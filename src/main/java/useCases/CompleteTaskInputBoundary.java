@@ -9,11 +9,9 @@ public interface CompleteTaskInputBoundary {
      *
      * @param taskName
      */
-    static void completeTask(String taskName, User user) {}
+    void completeTask(String taskName, User user);
 
-    static void completeTask(String taskName) {
-
-    }
+    void completeTask(String taskName);
 
     /**
      * The refresh method connected to view

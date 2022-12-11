@@ -14,7 +14,7 @@ public class Item {
     // a boolean representing whether the Item has been bought
     private boolean unlocked;
 
-    // a String associated with the Item icon
+    // an String representing the Item icon (clean architecture?)
     private String icon;
 
 
@@ -40,7 +40,6 @@ public class Item {
         this.icon = icon;
     }
 
-
     // SETTERS
 
     public void setName(String name) {
@@ -59,9 +58,6 @@ public class Item {
         this.icon = icon;
     }
 
-    public void setUnlocked(boolean unlocked){
-        this.unlocked = unlocked;
-    }
 
     // ==GETTERS==
 
@@ -83,6 +79,17 @@ public class Item {
 
     public String getIcon() {
         return icon;
+    }
+
+
+    // ==CLASS METHODS==
+
+    public void Unlock() {
+        this.unlocked = true;
+    }
+
+    public void Lock() {
+        this.unlocked = false;
     }
 
 }

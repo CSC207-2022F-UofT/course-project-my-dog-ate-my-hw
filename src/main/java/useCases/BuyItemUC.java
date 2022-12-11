@@ -8,7 +8,7 @@ import entities.User;
 public class BuyItemUC implements BuyItemInputBoundary{
 
     /**
-     * Allows the user to buy an item and updates their points and pet accordingly.
+     * (For Testing) Allows the user to buy an item and updates their points and pet accordingly.
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
@@ -19,7 +19,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
 
             if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
                 user.LosePoints(item.getPrice());
-                item.setUnlocked(true);
+                item.Unlock();
                 if (!customization.isCurrentlyEquipped()) {
                     customization.equip(item);
                 } else {
@@ -34,7 +34,7 @@ public class BuyItemUC implements BuyItemInputBoundary{
                     customization.equip(item);
                 }
             }
-        }catch (AbsentItemNameException e) {
+        } catch (AbsentItemNameException e) {
             throw new RuntimeException(e);
         }
     }
@@ -49,7 +49,6 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Refresh method that refreshes the UI
      */
     public void refreshItem() {
-        RefresherFactory factory = new RefresherFactory();
-        factory.createRefresher("Pet").refresh();
+        new PetRefresher().refresh();
     }
 }

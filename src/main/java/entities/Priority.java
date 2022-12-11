@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 /**
  * The enum object that represents the priority of a task
  */
@@ -9,7 +11,7 @@ public enum Priority {
     LOW(1);
 
     private final int value;
-    private Priority(int value) {
+    Priority(int value) {
         this.value = value;
     }
 
@@ -19,5 +21,12 @@ public enum Priority {
      */
     public int getValue() {
         return value;
+    }
+
+    public static Priority getPriority(String priority){
+        if (Objects.equals(priority, "HIGH")){return HIGH;}
+        else if (Objects.equals(priority, "MEDIUM")) { return MEDIUM;}
+        else {return LOW;}
+
     }
 }
