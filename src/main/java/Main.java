@@ -1,9 +1,10 @@
 import controllers.*;
-import entities.Pet;
+import database.UserDB;
+import database.PetDB;
+import database.CustomizationDB;
 import entities.User;
 import presenters.MainViewUpdater;
 import presenters.PetUpdater;
-import presenters.TaskVM;
 import presenters.TasklistUpdater;
 import ui.MainUI2;
 import ui.ViewRefresher;
@@ -31,10 +32,9 @@ public class Main {
         initializeUser();
     }
 
-
     private static void initializeUser(){
-        entities.User user = new User();
-        UserUC.declare(user);
+        User loadedUser = LoadUserUC.loadUser();
+        UserUC.declare(loadedUser);
     }
     private static void injectDepend(){
         BuyHeartController.setUc(new BuyHeartUC());
@@ -45,6 +45,9 @@ public class Main {
         RouletteController.setUc(new RouletteUC());
         SeeDoneController.setUc(new SeeDoneUC());
         SeeToDoController.setUc(new SeeToDoUC());
+        LoadUserUC.setCDB(new CustomizationDB());
+        LoadUserUC.setPDB(new PetDB());
+        LoadUserUC.setUDB(new UserDB());
 
         ViewRefresher vr = new ViewRefresher();
         ViewRefresher.setMainUI(mainUI);

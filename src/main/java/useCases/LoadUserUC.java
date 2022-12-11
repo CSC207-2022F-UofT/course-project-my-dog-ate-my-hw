@@ -173,9 +173,11 @@ public class LoadUserUC {
         }
 
         // Create a new Pet object
+        Customization custom = new Customization();
         Pet pet = new Pet(
                 pdb.getName(),
-                pdb.getSkin()
+                pdb.getSkin(),
+                custom
         );
 
         // Set the Pet Customization

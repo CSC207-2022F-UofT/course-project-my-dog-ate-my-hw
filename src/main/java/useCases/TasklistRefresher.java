@@ -15,6 +15,8 @@ public class TasklistRefresher{
         }
 
         m.getTasklistOutputBoundary().loadList(currTasks);
+
+        SaveUserUC.saveUser(UserUC.u());
     }
     public void refresh(){
         refresh(UserUC.u().getToDo().getTaskList());
