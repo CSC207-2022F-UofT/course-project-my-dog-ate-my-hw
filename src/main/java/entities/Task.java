@@ -152,6 +152,7 @@ public class Task {
     /**
      * Return whether the given task is incompleted and the task is past its deadline. This method uses the current
      * time from the system clock based on the default time-zone.
+     *
      * @return the number of points lost to the pet, depending on the priority of the task. Return 3 if the task is high
      * priority, return 2 if it is medium priority, return 1 if it is low priority, return 0 if it is not past the
      * deadline.
