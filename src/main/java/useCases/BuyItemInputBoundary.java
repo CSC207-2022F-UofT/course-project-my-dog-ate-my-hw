@@ -8,9 +8,9 @@ public interface BuyItemInputBoundary {
      * @param user The user that buys the item
      * @param itemName Name of the item
      */
-    void buyItem(User user, String itemName);
+    static void buyItem(User user, String itemName){}
 
-    void buyItem(String itemName);
+    static void buyItem(String itemName){}
 
     /**
      * Refresh method that refreshes the UI

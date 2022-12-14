@@ -37,9 +37,7 @@ public class CheckerUC {
      * @param pointsLost the number of points this user has lost
      */
     private void reducePetHealth(User user,int pointsLost) {
-        if(user.getPet() != null) {
-            user.getPet().ouch(pointsLost);
-        }
+        user.getPet().ouch(pointsLost);
     }
 
     /**

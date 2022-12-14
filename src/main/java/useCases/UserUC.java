@@ -1,5 +1,6 @@
 package useCases;
 
+import entities.Pet;
 import entities.User;
 
 /**
@@ -9,6 +10,10 @@ public class UserUC extends User{
 
     private static UserUC user = null;
     private static MainOutputBoundary MainUI = null;
+
+    private UserUC(int n, Pet P){
+        super(n, P);
+    }
 
     private UserUC(User user) {
         super(user.getPoints(), user.getPet(), user.getToDo(), user.getDone());
