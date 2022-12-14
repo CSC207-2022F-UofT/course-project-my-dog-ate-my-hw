@@ -15,7 +15,7 @@ public class PetVM {
     public boolean adopted;
 
     public PetVM(PetUIDS pet){
-        boolean adopted = (pet.skin != null);
+        boolean adopted = (pet.skin != null && !pet.skin.equals(""));
         new PetVM(
                 pet.currHealth,
                 pet.MAX_HEALTH,

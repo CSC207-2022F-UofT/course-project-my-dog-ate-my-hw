@@ -11,7 +11,7 @@ public class PetUIDS {
     public static final String DEFAULT_CURR_CUSTOM = "";
     public static final String DEFAULT_NAME = "Name";
     public static final int DEFAULT_HEALTH = 10;
-    public static final String DEFAULT_SKIN = "None";
+    public static final String DEFAULT_SKIN = "";
     public static final String[] DEFAULT_CUSTOMS = {"None"};
     public static final int DEFAULT_POINTS = 0;
 
