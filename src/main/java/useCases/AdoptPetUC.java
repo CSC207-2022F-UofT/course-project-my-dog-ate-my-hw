@@ -16,8 +16,7 @@ public class AdoptPetUC implements AdoptPetInputBoundary{
      * @param petName the pet's name
      */
     public void adoptPet(User user, String skin, String petName){
-        pet = new Pet(petName, skin, null);
-        user.setPet(pet);
+        user.adpotPet(petName, skin);
     }
 
     public void adoptPet(String skin, String petName){

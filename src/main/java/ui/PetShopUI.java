@@ -42,7 +42,6 @@ public class PetShopUI extends JFrame {
         nameBox = new JFormattedTextField();
 
         // Setting up Frame
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pet Shop");
         setResizable(false);
         setBackground(new Color(189, 226, 244));

@@ -3,12 +3,13 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from
+ * the task list. Tasks can also be searched from the tasklist. The task list can be returned for
+ * viewing purposes.
+ */
 public abstract class Checklist {
-    /**
-     * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from
-     * the task list. Tasks can also be searched from the tasklist. The task list can be returned for
-     * viewing purposes.
-     */
+
 
     private List<Task> taskList;
 

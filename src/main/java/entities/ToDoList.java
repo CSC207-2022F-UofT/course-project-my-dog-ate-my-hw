@@ -1,21 +1,14 @@
 package entities;
-/*
-
-import java.util.List;
-import java.util.ArrayList;
-*/
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/** ToDoList is a public Class that contains a list of tasks that the user has yet to complete, it is a child class
+ *  of Checklist. In addition to the inherited methods from Checklist, the ToDoList can be sorted by the deadlines
+ *  of the task and the priorities of the task.
+ *  ====== Representation invariant ========
+ * 1) Every task in the taskList must have a unique name.
+ */
 public class ToDoList extends Checklist {
-    /** ToDoList is a public Class that contains a list of tasks that the user has yet to complete, it is a child class
-     *  of Checklist. In addition to the inherited methods from Checklist, the ToDoList can be sorted by the deadlines
-     *  of the task and the priorities of the task.
-     *  ====== Representation invariant ========
-     *
-     * 1) Every task in the taskList must have a unique name.
-     */
-     
 
     /**
      * Check if the task has a unique name, meaning it does not have the same name as any other tasks in the taskList.
@@ -71,7 +64,7 @@ public class ToDoList extends Checklist {
     }
 
     /**
-     * Return the sum of the points lost due to tasks being incompleted past their deadline. The number
+     * Return the sum of the points lost due to tasks being incomplete past their deadline. The number
      * of points a task will cause someone to lose is based on its priority (high = 3 points, medium = 2 points,
      * low = 1 point).
      * @return the sum of points lost by the user due to tasks uncompleted past their deadline.

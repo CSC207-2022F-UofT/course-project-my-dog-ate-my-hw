@@ -1,37 +1,28 @@
 package useCases;
 
-import entities.AbsentItemNameException;
-import entities.Item;
-import entities.Customization;
-import entities.User;
+import entities.*;
 
 public class BuyItemUC implements BuyItemInputBoundary{
 
     /**
-     * (For Testing) Allows the user to buy an item and updates their points and pet accordingly.
+     * Allows the user to buy an item and updates their points and pet accordingly.
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
-    public static void buyItem(User user, String itemName) throws AbsentItemNameException {
+    public void buyItem(User user, String itemName) {
         try {
-            Customization customization = user.getPet().getCustomization();
-            Item item = customization.getItem(itemName);
-
-            if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
-                user.LosePoints(item.getPrice());
-                item.Unlock();
-                if (!customization.isCurrentlyEquipped()) {
-                    customization.equip(item);
-                } else {
-                    customization.dequip();
-                    customization.equip(item);
-                }
-            } else if (item.isUnlocked()) {
-                if (!customization.isCurrentlyEquipped()) {
-                    customization.equip(item);
-                } else {
-                    customization.dequip();
-                    customization.equip(item);
+            Pet pet = user.getPet();
+            if (pet != null) {
+                int cost = pet.equip(itemName);
+                if (cost > 0) {
+                    if (user.getPoints() >= cost) {
+                        Item item = pet.getCustomizations().findItem(itemName);
+                        item.Unlock();
+                        user.losePoints(cost);
+                        pet.equip(itemName);
+                    }
+                } else if (cost == -1) {
+                    System.out.println("Item not in list");
                 }
             }
         } catch (AbsentItemNameException e) {
@@ -43,7 +34,9 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Another version of buyItem method
      * @param itemName Name of the item to purchase.
      */
-    public static void buyItem(String itemName) throws AbsentItemNameException {buyItem(UserUC.u(), itemName);}
+    public void buyItem(String itemName){
+        buyItem(UserUC.u(), itemName);
+    }
 
     /**
      * Refresh method that refreshes the UI
