@@ -13,7 +13,10 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     private ToDoList todo;
 
 
-    public ModifyTaskUC(){}
+    public ModifyTaskUC(){
+        task = null;
+        todo = null;
+    }
 
     /**
      * This constructs the ModifyTaskUC by taking in the string of a task name then finding the task

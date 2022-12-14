@@ -1,21 +1,10 @@
 package useCases;
 
 import entities.Pet;
-import entities.User;
 
 import java.util.ArrayList;
 
 public class PetUIDS {
-
-    // ==DEFAULT VALUES==
-    public static final String DEFAULT_CURR_CUSTOM = "";
-    public static final String DEFAULT_NAME = "Name";
-    public static final int DEFAULT_HEALTH = 10;
-    public static final String DEFAULT_SKIN = "None";
-    public static final String[] DEFAULT_CUSTOMS = {"None"};
-    public static final int DEFAULT_POINTS = 0;
-
-    // ==INSTANCE VARIABLES==
     public int MAX_HEALTH;
     public int currHealth;
     public String name;
@@ -24,29 +13,26 @@ public class PetUIDS {
     public String[] customizations;
     public int points;
 
-    public PetUIDS(entities.Pet pet, User user) {
+    public PetUIDS(entities.Pet pet){
+        points = 0; // Change to points from user
         MAX_HEALTH = Pet.getMaxHealth();
-        if (user != null) {
-            points = user.getPoints();
+        currHealth = pet.getCurrHealth();
+        skin = pet.getSkin();
+        if(pet.getCustomization().currentEquipment() != null) {
+            currCustomization = pet.getCustomization().currentEquipment().getName();
         } else {
-            points = DEFAULT_POINTS;
+            currCustomization = "None";
         }
-        if (pet != null) {
-            currHealth = pet.getCurrHealth();
-            skin = pet.getSkin();
-            name = pet.getName();
-            customizations = pet.getCustomizations().toStringArray();
-            if (pet.getEquippedItem() != null) {
-                currCustomization = pet.getEquippedItem().getName();
-            } else {
-                currCustomization = DEFAULT_CURR_CUSTOM;
-            }
-        } else {
-            currCustomization = DEFAULT_CURR_CUSTOM;
-            currHealth = DEFAULT_HEALTH;
-            skin = DEFAULT_SKIN;
-            name = DEFAULT_NAME;
-            customizations = DEFAULT_CUSTOMS;
+        ArrayList<String> cus = new ArrayList<>();
+        cus.add("None");
+        for(entities.Item i : pet.getCustomization().possibleCustomizations())
+            cus.add(i.getName());
+        Object[] temp = cus.toArray();
+        String[] temp2 = new String[temp.length];
+        for(int i = 0; i < temp.length; i++){
+            String y = temp[i].toString();
+            temp2[i] = y;
         }
+        customizations = temp2;
     }
 }
