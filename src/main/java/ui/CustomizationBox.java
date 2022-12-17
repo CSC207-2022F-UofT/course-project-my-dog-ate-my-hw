@@ -16,8 +16,9 @@ public class CustomizationBox extends JComboBox<String>{
      * Creates and formats a JComboBox with a list of given customizations.
      * @param customizations a String Array of possible combinations that the user can select
      */
-    public void createCustomizationBox(String[] customizations){
+    public void createCustomizationBox(String[] customizations, String equippedItem){
         setModel(new DefaultComboBoxModel<>(customizations));
+        setSelectedItem(equippedItem);
         setFont(UIFormat.BUTTON_FONT);
         setForeground(UIFormat.PINK_TEXT);
         addActionListener(this::customizationBoxActionPerformed);

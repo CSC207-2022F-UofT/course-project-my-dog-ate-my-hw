@@ -10,9 +10,9 @@ public class MainUI2 extends JFrame{
     private static final Dimension fillerSizeSmall = new Dimension(15, 733);
     private static final Dimension fillerSizeMid = new Dimension(26, 733);
 
-    public MainUI2(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
+    public MainUI2(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedItem, boolean petAdopted, TaskVM[] tasks){
         format();
-        showUI(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
+        showUI(currHealth, maxHealth, skin, petName, points, customizations, equippedItem, petAdopted, tasks);
         setVisible(true);
     }
 

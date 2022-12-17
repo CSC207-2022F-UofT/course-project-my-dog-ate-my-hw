@@ -2,6 +2,7 @@ import controllers.*;
 import database.UserDB;
 import database.PetDB;
 import database.CustomizationDB;
+import entities.Pet;
 import entities.User;
 import presenters.MainViewUpdater;
 import presenters.PetUpdater;
@@ -23,10 +24,9 @@ public class Main {
                  ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String[] s = {"None", "Halo"};
         MainViewUpdater m = new MainViewUpdater();
         UserUC.declareUI(m);
-        mainUI = new MainUI2(0, 0, "", "", 0, s, "", false, null);
+        mainUI = new MainUI2(PetUIDS.DEFAULT_HEALTH, Pet.getMaxHealth(), PetUIDS.DEFAULT_SKIN, PetUIDS.DEFAULT_NAME, PetUIDS.DEFAULT_POINTS, PetUIDS.DEFAULT_CUSTOMS, PetUIDS.DEFAULT_CURR_CUSTOM, false, null);
         injectDepend();
         initializeUser();
     }

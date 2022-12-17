@@ -1,9 +1,6 @@
 package useCases;
 
-import entities.AbsentItemNameException;
-import entities.Item;
-import entities.Customization;
-import entities.User;
+import entities.*;
 
 public class BuyItemUC implements BuyItemInputBoundary{
 
@@ -17,7 +14,6 @@ public class BuyItemUC implements BuyItemInputBoundary{
             if (user.getPet() != null) {
                 Customization customization = user.getPet().getCustomizations();
                 Item item = customization.getItem(itemName);
-
                 if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
                     user.LosePoints(item.getPrice());
                     item.Unlock();

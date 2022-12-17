@@ -1,15 +1,16 @@
 package useCases;
 
+import entities.Customization;
 import entities.Pet;
 import entities.User;
 
 public class PetUIDS {
     // ==DEFAULT VALUES==
-    public static final String DEFAULT_CURR_CUSTOM = "";
+    public static final String DEFAULT_CURR_CUSTOM = Customization.NO_ITEM.getName();
     public static final String DEFAULT_NAME = "Name";
     public static final int DEFAULT_HEALTH = 10;
     public static final String DEFAULT_SKIN = "";
-    public static final String[] DEFAULT_CUSTOMS = {"None"};
+    public static final String[] DEFAULT_CUSTOMS = {DEFAULT_CURR_CUSTOM};
     public static final int DEFAULT_POINTS = 0;
 
     // ==INSTANCE VARIABLES==

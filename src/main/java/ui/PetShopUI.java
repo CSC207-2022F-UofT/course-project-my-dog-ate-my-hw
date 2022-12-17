@@ -17,7 +17,7 @@ public class PetShopUI extends JFrame {
     JFormattedTextField nameBox;
     JButton adoptButton;
     String petName;
-    String selectedPetIcon;
+    ImageIcon selectedPetSkin;
     PetShopUIController controller;
 
     /* CONSTRUCTORS */
@@ -41,6 +41,7 @@ public class PetShopUI extends JFrame {
         nameBox = new JFormattedTextField();
 
         // Setting up Frame
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setTitle("Pet Shop");
         setResizable(false);
         setBackground(new Color(189, 226, 244));
@@ -154,13 +155,13 @@ public class PetShopUI extends JFrame {
      */
     private void adoptButtonActionPerformed(ActionEvent evt) {
         petName = nameBox.getText();
-        selectedPetIcon = petIconPanel.getSelectedIcon().getDescription();
+        selectedPetSkin = petIconPanel.getSelectedIcon();
 
-        if(petName.replaceAll("^[ \t]+|[ \t]+$", "").equals("") || selectedPetIcon == null) {
+        if(petName.replaceAll("^[ \t]+|[ \t]+$", "").equals("") || selectedPetSkin == null) {
             warningPopup();
         } else {
             setVisible(false);
-            controller.performPetAdoption(selectedPetIcon, petName);
+            controller.performPetAdoption(selectedPetSkin.getDescription(), petName);
         }
 
     }

@@ -15,14 +15,14 @@ public class PetUI extends JPanel{
     private ToolPanel toolPanel;
     private Title title;
 
-    public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String currentEquipment){
+    public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String equippedItem){
         format();
         initializeComponents();
         healthPanel.createHealthBar(currHealth, maxHealth);
-        petDisplayPanel.createPetPanel(skin, currentEquipment, currHealth, petAdopted);
+        petDisplayPanel.createPetPanel(skin, equippedItem, currHealth, petAdopted);
         petNamePanel.createNamePanel(petName);
         pointsPanel.createPointsPanel(points);
-        toolPanel.createToolPanel(customizations);
+        toolPanel.createToolPanel(customizations, equippedItem);
         title.createTitle();
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(Box.createHorizontalGlue());
