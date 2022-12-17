@@ -10,7 +10,6 @@ public class PetUpdater implements PetOutputBoundary {
         viewRefresher = vr;
     }
     public void loadPet(PetUIDS pet) {
-
         viewRefresher.refresh(new PetVM(pet));
     }
 }

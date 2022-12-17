@@ -1,7 +1,6 @@
 package ui;
 
 import controllers.PetShopUIController;
-
 import javax.swing.*;
 
 public class PetShopDisplayer implements PetShopDisplayerInterface{
@@ -12,13 +11,8 @@ public class PetShopDisplayer implements PetShopDisplayerInterface{
     public void createPetShop() {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException |
+                 InstantiationException e) {
             throw new RuntimeException(e);
         }
 

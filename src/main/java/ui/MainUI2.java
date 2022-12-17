@@ -9,8 +9,6 @@ public class MainUI2 extends JFrame{
 
     private static final Dimension fillerSizeSmall = new Dimension(15, 733);
     private static final Dimension fillerSizeMid = new Dimension(26, 733);
-    private TaskUI taskUI;
-    private PetUI petUI;
 
     public MainUI2(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
         refresh(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
@@ -18,8 +16,8 @@ public class MainUI2 extends JFrame{
 
     public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
         format();
-        petUI = new PetUI();
-        taskUI = new TaskUI();
+        PetUI petUI = new PetUI();
+        TaskUI taskUI = new TaskUI();
         petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedIteam);
         taskUI.createTaskUI(tasks);
         JPanel mainPanel = new JPanel();

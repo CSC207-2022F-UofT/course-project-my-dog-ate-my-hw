@@ -6,12 +6,8 @@ import presenters.TaskVM;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -19,15 +15,15 @@ import java.time.format.DateTimeFormatterBuilder;
 public class TaskView extends JFrame {
     private static final String[] priority = {"LOW", "MEDIUM","HIGH"};
     private static final String[] assignmentType = {"ESSAY", "PROJECT","EXAM", "QUIZ", "REFLECTION"};
-    private JLabel labelName = new JLabel("Enter name: ");
-    private JLabel labelCourse = new JLabel("Enter course: ");
+    private final JLabel labelName = new JLabel("Enter name: ");
+    private final JLabel labelCourse = new JLabel("Enter course: ");
 
-    private JLabel labelDeadline = new JLabel("Enter deadline: ");
-    private JLabel labelPriority = new JLabel("Enter Priority: ");
-    private JLabel labelAssignment = new JLabel("Enter Assignment Type: ");
-    private JButton buttonSave = new JButton("Save");
-    private JTextField textName = new JTextField(20);
-    private JTextField textCourse = new JTextField(20);
+    private final JLabel labelDeadline = new JLabel("Enter deadline: ");
+    private final JLabel labelPriority = new JLabel("Enter Priority: ");
+    private final JLabel labelAssignment = new JLabel("Enter Assignment Type: ");
+    private final JButton buttonSave = new JButton("Save");
+    private final JTextField textName = new JTextField(20);
+    private final JTextField textCourse = new JTextField(20);
     private CalendarPanel calendarPanel;
     private JComboBox<String> priorityBox;
     private JComboBox<String> assignmentTypeBox;
@@ -106,7 +102,7 @@ public class TaskView extends JFrame {
         priorityBox.setBounds(80, 50, 140, 20);
         newPanel.add(priorityBox,constraints);
 
-        // add label assignment type and a assignment drop down
+        // add label assignment type and an assignment drop down
         constraints.gridx = 0;
         constraints.gridy = 4;
         newPanel.add(labelAssignment, constraints);
@@ -121,20 +117,17 @@ public class TaskView extends JFrame {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
-        buttonSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(newTask){
-                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    new CreateTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem(),
-                            (String) assignmentTypeBox.getSelectedItem());
-                } else{
-                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    new ModifyTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem()
-                            , (String) assignmentTypeBox.getSelectedItem(), oldName);
-                }
-                dispose();
+        buttonSave.addActionListener(e -> {
+            LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            if(newTask){
+                new CreateTaskController(d, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(),
+                        (String) assignmentTypeBox.getSelectedItem());
+            } else {
+                new ModifyTaskController(d, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
             }
+            dispose();
         });
 
         // add the panel to this frame
@@ -151,13 +144,8 @@ public class TaskView extends JFrame {
         // set look and feel to the system look and feel
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
         setVisible(true);

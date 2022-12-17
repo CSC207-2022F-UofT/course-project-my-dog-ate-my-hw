@@ -2,9 +2,6 @@ package useCases;
 
 import entities.Pet;
 import entities.User;
-import ui.*;
-
-import javax.swing.*;
 
 public class AdoptPetUC implements AdoptPetInputBoundary{
 
@@ -16,7 +13,7 @@ public class AdoptPetUC implements AdoptPetInputBoundary{
      * @param petName the pet's name
      */
     public void adoptPet(User user, String skin, String petName){
-        pet = new Pet(petName, skin, null);
+        pet = new Pet(petName, skin);
         user.setPet(pet);
     }
 

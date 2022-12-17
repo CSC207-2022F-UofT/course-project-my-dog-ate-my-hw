@@ -3,8 +3,6 @@ package ui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -36,6 +34,7 @@ public class PetShopIconPanel extends JPanel{
         this.setLayout(new GridLayout(0, PET_PANEL_COLUMNS));
         this.setMaximumSize(new Dimension((PET_ICON_WIDTH * PET_PANEL_COLUMNS), (PET_ICON_HEIGHT * rows)));
 
+        assert folder != null;
         for (File file : folder) {
             if(!file.getName().equals(".DS_Store")) {
                 this.add(makePetIconButton(makePetIcon(file)));
@@ -71,13 +70,10 @@ public class PetShopIconPanel extends JPanel{
         button.setPreferredSize(new Dimension(PET_ICON_WIDTH, PET_ICON_HEIGHT));
         button.setBorder(BorderFactory.createEmptyBorder());
         button.setBackground(new Color(234, 234, 255));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetIconBorders();
-                button.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-                selectedIcon = (ImageIcon) button.getIcon();
-            }
+        button.addActionListener(e -> {
+            resetIconBorders();
+            button.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+            selectedIcon = (ImageIcon) button.getIcon();
         });
 
         return button;

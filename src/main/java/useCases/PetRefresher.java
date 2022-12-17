@@ -3,7 +3,7 @@ package useCases;
 public class PetRefresher{
     public void refresh(){
         MainOutputBoundary m = UserUC.UI();
-        m.getPetOutputBoundary().loadPet(new PetUIDS(UserUC.u().getPet()));
-        SaveUserUC.saveUser(UserUC.u());
+        PetUIDS petUIDS = new PetUIDS(UserUC.u().getPet());
+        m.getPetOutputBoundary().loadPet(petUIDS);
     }
 }

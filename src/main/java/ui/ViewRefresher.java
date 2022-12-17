@@ -11,7 +11,7 @@ public class ViewRefresher implements ViewRefresherBoundary{
 
     private static MainUI2 mainUI;
 
-    public static void setMainUI(MainUI2 main){ mainUI = main;}
+    public static void setMainUI(MainUI2 main){mainUI = main;}
 
     public void refresh(PetVM pet, TaskVM[] tasks){
         this.pet = pet;
@@ -21,7 +21,7 @@ public class ViewRefresher implements ViewRefresherBoundary{
                 pet.skin,
                 pet.name,
                 pet.points,
-                pet.customizations ,
+                pet.customizations,
                 pet.currCustomization,
                 pet.adopted,
                 tasks);

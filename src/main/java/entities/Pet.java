@@ -28,7 +28,14 @@ public class Pet {
         this.name = name;
         this.skin = "";
         this.currHealth = MAX_HEALTH;
-        this.customization = new Customization();
+        this.customization = getDefaultCustomizations();
+    }
+
+    public Pet(String name, String skin){
+        this.name = name;
+        this.skin = skin;
+        this.currHealth = MAX_HEALTH;
+        this.customization = getDefaultCustomizations();
     }
 
     public Pet(String name, String skin, Customization customization){
@@ -36,7 +43,6 @@ public class Pet {
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
         this.customization = customization;
-        getDefaultCustomizations();
     }
 
 
@@ -85,12 +91,13 @@ public class Pet {
         }
     }
 
-    public void getDefaultCustomizations(){
+    public Customization getDefaultCustomizations(){
         customization = new Customization();
         Item halo = new Item("Hat", "Halo", 1, false);
         Item defaultItem = new Item("None", "None", 0, true);
         customization.addItem(halo);
         customization.equip(defaultItem);
+        return customization;
     }
 
 }

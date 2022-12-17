@@ -2,8 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * A JComboBox with the customization options as selectable components
@@ -20,11 +18,7 @@ public class CustomizationBox extends JComboBox<String>{
         setModel(new DefaultComboBoxModel<>(customizations));
         setFont(UIFormat.BUTTON_FONT);
         setForeground(UIFormat.PINK_TEXT);
-        addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                customizationBoxActionPerformed(evt);
-            }
-        });
+        addActionListener(this::customizationBoxActionPerformed);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
     }

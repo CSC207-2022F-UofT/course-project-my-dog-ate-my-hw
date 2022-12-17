@@ -1,7 +1,6 @@
 package ui;
 
 import controllers.PetShopUIController;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -168,7 +167,7 @@ public class PetShopUI extends JFrame {
     }
 
     /**
-     * Creates a popup to warn the user the have not selected a pet or name.
+     * Creates a popup to warn the user they have not selected a pet or name.
      */
     private void warningPopup(){
         PopupFactory factory = new PopupFactory();
