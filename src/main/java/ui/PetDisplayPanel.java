@@ -41,8 +41,6 @@ public class PetDisplayPanel extends JPanel{
         } else {
             path = "src/main/resources/petImages/" + formattedSkin + ".PNG";
         }
-        System.out.println(path);
-        //INSTANCE VARIABLES //
         JLabel petImage = makePetJLabel(getPetImage(path));
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -95,7 +93,6 @@ public class PetDisplayPanel extends JPanel{
         setBackground(UIFormat.BUTTON_PINK);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
-
     }
 
 }

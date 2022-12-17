@@ -4,7 +4,6 @@ import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 
@@ -24,6 +23,7 @@ public class RouletteUCTest {
                 , 29, 19, 30, 40), Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         user.setTodo(toDoList);
+        UserUC.declare(user);
     }
 
     /**
@@ -33,7 +33,8 @@ public class RouletteUCTest {
     @Test
     public void RouletteTest1() {
         RouletteUC rouletteUC = new RouletteUC();
-        Task task = rouletteUC.Roulette(user);
+        rouletteUC.roulette();
+        Task task = rouletteUC.getTask();
         Assertions.assertEquals(task.getName(), task1.getName());
     }
 
@@ -48,7 +49,8 @@ public class RouletteUCTest {
                 Priority.MEDIUM, AssignmentType.ESSAY);
         user.getToDo().addTask(task2);
         RouletteUC rouletteUC = new RouletteUC();
-        Task task = rouletteUC.Roulette(user);
+        rouletteUC.roulette();
+        Task task = rouletteUC.getTask();
         Assertions.assertTrue(task.getName().equals(task1.getName())
                 ||task.getName().equals(task2.getName()));
     }

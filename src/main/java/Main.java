@@ -24,7 +24,6 @@ public class Main {
             throw new RuntimeException(e);
         }
         String[] s = {"None", "Halo"};
-        String[] t = new String[0];
         MainViewUpdater m = new MainViewUpdater();
         UserUC.declareUI(m);
         mainUI = new MainUI2(0, 0, "", "", 0, s, "", false, null);

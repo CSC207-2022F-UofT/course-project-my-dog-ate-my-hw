@@ -45,7 +45,8 @@ public class CompleteTaskUCTest {
 
     @Test
     public void CompleteTaskTest1() throws AbsentTaskNameException {
-        CompleteTaskUC.completeTask("CompSci Assignment", user);
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC();
+        completeTaskUC.completeTask("CompSci Assignment", user);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
         Assertions.assertEquals(user.getDone().getTaskList().size(), 1);
         Assertions.assertEquals(user.getPoints(), 0);
@@ -53,7 +54,8 @@ public class CompleteTaskUCTest {
 
     @Test
     public void CompleteTaskTest2() throws AbsentTaskNameException {
-        CompleteTaskUC.completeTask("Math Midterm 1", user);
+        CompleteTaskUC completeTaskUC = new CompleteTaskUC();
+        completeTaskUC.completeTask("Math Midterm 1", user);
         Assertions.assertEquals(user.getPoints(), 3);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
         Assertions.assertEquals(user.getDone().getTaskList().size(), 1);

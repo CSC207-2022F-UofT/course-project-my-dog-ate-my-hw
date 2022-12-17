@@ -14,6 +14,7 @@ public class PetUIDS {
     public int points;
 
     public PetUIDS(entities.Pet pet){
+        name = pet.getName();
         points = 0; // Change to points from user
         MAX_HEALTH = Pet.getMaxHealth();
         currHealth = pet.getCurrHealth();

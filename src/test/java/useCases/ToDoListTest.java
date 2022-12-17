@@ -1,10 +1,11 @@
 package useCases;
+
+import entities.AssignmentType;
 import entities.Task;
 import entities.ToDoList;
 import entities.Priority;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 
@@ -25,17 +26,17 @@ import java.time.Month;
         public void TodoListTest() {
             ToDoList list = new ToDoList();
             Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
-                    , 29, 19, 30, 40), Priority.HIGH);
+                    , 29, 19, 30, 40), Priority.HIGH, AssignmentType.EXAM);
             Task two = new Task("two", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
-                    , 29, 19, 30, 40), Priority.MEDIUM);
+                    , 29, 19, 30, 40), Priority.MEDIUM, AssignmentType.EXAM);
             Task three = new Task("three", "CSC207", LocalDateTime.of(2022, Month.NOVEMBER
-                    , 29, 19, 30, 40), Priority.LOW);
+                    , 29, 19, 30, 40), Priority.LOW, AssignmentType.EXAM);
             list.addTask(one);
             list.addTask(two);
             list.addTask(three);
-            Assertions.assertEquals(list.pastDeadLineSum(), 8);
-
+            Assertions.assertEquals(list.pastDeadLineSum(), 6);
         }
+
         /**
          * Tests that Task.pastDeadline() runs correctly with tasks not overdue of different priority levels.
          *  Create a new TaskList (a list containing tasks)
@@ -50,16 +51,15 @@ import java.time.Month;
         public void ToDoListTestNotPastDeadline() {
             ToDoList list = new ToDoList();
             Task one = new Task("one", "CSC207", LocalDateTime.of(2022, Month.DECEMBER
-                    , 29, 19, 30, 40), Priority.HIGH);
+                    , 29, 19, 30, 40), Priority.HIGH, AssignmentType.EXAM);
             Task two = new Task("two", "CSC207", LocalDateTime.of(2022, Month.DECEMBER
-                    , 29, 19, 30, 40), Priority.MEDIUM);
+                    , 29, 19, 30, 40), Priority.MEDIUM, AssignmentType.EXAM);
             Task three = new Task("three", "CSC207", LocalDateTime.of(2022, Month.DECEMBER
-                    , 29, 19, 30, 40), Priority.LOW);
+                    , 29, 19, 30, 40), Priority.LOW, AssignmentType.EXAM);
             list.addTask(one);
             list.addTask(two);
             list.addTask(three);
             Assertions.assertEquals(list.pastDeadLineSum(), 0);
-
         }
 
     }

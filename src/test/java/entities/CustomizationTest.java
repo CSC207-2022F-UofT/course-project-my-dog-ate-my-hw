@@ -9,7 +9,7 @@ public class CustomizationTest {
      * create a customization object with a single unlocked item and verify that
      * the current equipment is item
      */
-     @Test
+    @Test
     public void TestCurrentEquipment(){
         Item item = new Item("hat", "cap", 5, true);
         Customization customization = new Customization(item);

@@ -13,6 +13,9 @@ public class RouletteUC implements RouletteInputBoundary{
      * @param user The user who performs the action
      */
     public void roulette(User user) {
+        if (user.getToDo() == null){
+            return;
+        }
         task = user.getToDo().randomTask();
     }
 

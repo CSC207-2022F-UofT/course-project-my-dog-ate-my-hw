@@ -46,11 +46,10 @@ public class Customization {
     // ==CLASS METHODS==
 
     public void addItem(Item item) {
+        if (customizations == null){
+            customizations = new ArrayList<>();
+        }
         customizations.add(item);
-    }
-
-    public void removeItem(Item item) {
-        customizations.remove(item);
     }
 
     public void dequip() {

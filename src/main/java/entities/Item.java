@@ -54,10 +54,7 @@ public class Item {
         this.price = price;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
+    public void setUnlocked(boolean unlocked){this.unlocked = unlocked; }
 
     // ==GETTERS==
 
@@ -86,10 +83,6 @@ public class Item {
 
     public void Unlock() {
         this.unlocked = true;
-    }
-
-    public void Lock() {
-        this.unlocked = false;
     }
 
 }

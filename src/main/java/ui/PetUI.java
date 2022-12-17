@@ -1,8 +1,6 @@
 package ui;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
 public class PetUI extends JPanel{
@@ -19,7 +17,6 @@ public class PetUI extends JPanel{
 
     public void createPetUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, boolean petAdopted, String currentEquipment){
         format();
-
         initializeComponents();
         healthPanel.createHealthBar(currHealth, maxHealth);
         petDisplayPanel.createPetPanel(skin, currentEquipment, currHealth, petAdopted);
@@ -27,7 +24,6 @@ public class PetUI extends JPanel{
         pointsPanel.createPointsPanel(points);
         toolPanel.createToolPanel(customizations);
         title.createTitle();
-
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(Box.createHorizontalGlue());
         add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
