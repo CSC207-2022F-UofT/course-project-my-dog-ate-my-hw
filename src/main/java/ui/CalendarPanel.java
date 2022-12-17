@@ -7,11 +7,12 @@ import org.jdatepicker.impl.UtilDateModel;
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Properties;
 
 public class CalendarPanel extends JFrame {
-    String date;
+    JDatePickerImpl datePicker;
     public JDatePickerImpl createCalendar(){
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
@@ -19,8 +20,7 @@ public class CalendarPanel extends JFrame {
         p.put("text.month", "Month");
         p.put("text.year", "Year");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-        date = datePicker.getJFormattedTextField().getText();
+        datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
         return datePicker;
     }
 

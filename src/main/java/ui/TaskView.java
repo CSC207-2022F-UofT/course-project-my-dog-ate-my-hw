@@ -6,6 +6,7 @@ import presenters.TaskVM;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -118,7 +119,10 @@ public class TaskView extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
         buttonSave.addActionListener(e -> {
-            LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+            LocalDateTime d = LocalDate.parse(calendarPanel.datePicker.getJFormattedTextField().getText(),
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
+
             if(newTask){
                 new CreateTaskController(d, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(),
