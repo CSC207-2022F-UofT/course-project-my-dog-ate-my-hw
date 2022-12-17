@@ -3,9 +3,11 @@ package ui;
 import controllers.CreateTaskController;
 import controllers.ModifyTaskController;
 import presenters.TaskVM;
+import useCases.DefaultValueData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -118,13 +120,14 @@ public class TaskView extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
         buttonSave.addActionListener(e -> {
-            LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate date = LocalDate.parse(calendarPanel.getDate(), DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
+            LocalDateTime dateTime = date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
             if(newTask){
-                new CreateTaskController(d, textName.getText(), textCourse.getText(),
+                new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(),
                         (String) assignmentTypeBox.getSelectedItem());
             } else {
-                new ModifyTaskController(d, textName.getText(), textCourse.getText(),
+                new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
             }
             dispose();

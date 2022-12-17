@@ -26,7 +26,7 @@ public class Main {
         }
         MainViewUpdater m = new MainViewUpdater();
         UserUC.declareUI(m);
-        mainUI = new MainUI2(PetUIDS.DEFAULT_HEALTH, Pet.getMaxHealth(), PetUIDS.DEFAULT_SKIN, PetUIDS.DEFAULT_NAME, PetUIDS.DEFAULT_POINTS, PetUIDS.DEFAULT_CUSTOMS, PetUIDS.DEFAULT_CURR_CUSTOM, false, null);
+        mainUI = new MainUI2(DefaultValueData.DEFAULT_HEALTH, Pet.getMaxHealth(), DefaultValueData.DEFAULT_SKIN, DefaultValueData.DEFAULT_NAME, DefaultValueData.DEFAULT_POINTS, DefaultValueData.DEFAULT_CUSTOMS, DefaultValueData.DEFAULT_CURR_CUSTOM, false, null);
         injectDepend();
         initializeUser();
     }

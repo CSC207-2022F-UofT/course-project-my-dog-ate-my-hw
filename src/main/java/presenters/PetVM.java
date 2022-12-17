@@ -1,5 +1,6 @@
 package presenters;
 
+import useCases.DefaultValueData;
 import useCases.PetUIDS;
 
 public class PetVM {
@@ -13,7 +14,7 @@ public class PetVM {
     public boolean adopted;
 
     public PetVM(PetUIDS pet){
-        boolean adopted = (pet.skin != null && !pet.skin.equals(PetUIDS.DEFAULT_SKIN));
+        boolean adopted = (pet.skin != null && !pet.skin.equals(DefaultValueData.DEFAULT_SKIN));
         this.currHealth = pet.currHealth;
         this.maxHealth = pet.MAX_HEALTH;
         this.name = pet.name;
