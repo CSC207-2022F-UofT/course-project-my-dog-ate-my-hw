@@ -31,15 +31,14 @@ public class PetDisplayPanel extends JPanel{
      */
     private void createPetDisplay(String skin, String currentEquipment, int currHealth){
         String path;
-        String formattedSkin = skin.substring(0, skin.length()-4);
         if(currHealth == 0){
             // get path if pet is dead
-            path = "src/main/resources/petImages/" + formattedSkin + "dead";
-        } else if(!currentEquipment.equals("None")){
+            path = "src/main/resources/petImages/" + skin + "dead" + ".PNG";
+        } else if(!currentEquipment.equals("None") && !currentEquipment.equals("")){
             // Get the string for customizations
-            path = "src/main/resources/petImages/" + formattedSkin + currentEquipment + ".PNG";
+            path = "src/main/resources/petImages/" + skin + currentEquipment + ".PNG";
         } else {
-            path = "src/main/resources/petImages/" + formattedSkin + ".PNG";
+            path = "src/main/resources/petImages/" + skin + ".PNG";
         }
         JLabel petImage = makePetJLabel(getPetImage(path));
         setLayout(new GridBagLayout());

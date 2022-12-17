@@ -36,6 +36,9 @@ public class ViewRefresher implements ViewRefresherBoundary{
     }
 
     public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String currCustomization, boolean petAdopted, presenters.TaskVM[] tasks){
-        mainUI.refresh(currHealth, maxHealth, skin, petName, points, customizations, currCustomization, petAdopted, tasks);
+        //mainUI.refresh(currHealth, maxHealth, skin, petName, points, customizations, currCustomization, petAdopted, tasks);
+        MainUI2 copy = mainUI.copy(currHealth, maxHealth, skin, petName, points, customizations, currCustomization, petAdopted, tasks);
+        mainUI.dispose();
+        mainUI = copy;
     }
 }

@@ -52,7 +52,7 @@ public class PetShopIconPanel extends JPanel{
         try {
             Image petImage = ImageIO.read(f);
             ImageIcon i = new ImageIcon(petImage.getScaledInstance(PET_ICON_WIDTH, PET_ICON_HEIGHT, Image.SCALE_SMOOTH));
-            i.setDescription(f.getName());
+            i.setDescription(f.getName().substring(0, (f.getName().length() - 4)));
             return i;
         } catch (IOException e) {
             throw new RuntimeException(e);
