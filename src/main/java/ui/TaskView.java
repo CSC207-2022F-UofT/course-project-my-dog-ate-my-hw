@@ -31,6 +31,7 @@ public class TaskView extends JFrame {
     private JComboBox<String> assignmentTypeBox;
     private boolean newTask;
     private String oldName;
+    private String oldDate;
 
     /**
      * Called if a new task is being created
@@ -48,11 +49,13 @@ public class TaskView extends JFrame {
     public void createTaskView(TaskVM task){
         newTask = false;
         oldName = task.name;
+        oldDate = task.deadline;
         layoutTaskView();
         textName.setText(task.name);
         textCourse.setText(task.course);
         setSelectedValue(priorityBox, task.priority);
-        setSelectedValue(assignmentTypeBox, task.assignenmentType);
+        setSelectedValue(assignmentTypeBox, task.assignmentType);
+        calendarPanel.setDate(task.deadline);
         display();
     }
 
@@ -120,17 +123,29 @@ public class TaskView extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
         buttonSave.addActionListener(e -> {
-            LocalDate date = LocalDate.parse(calendarPanel.getDate(), DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
-            LocalDateTime dateTime = date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+            String date = calendarPanel.getDate();
+            LocalDateTime dateTime;
             if(newTask){
-                new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
-                        (String) priorityBox.getSelectedItem(),
-                        (String) assignmentTypeBox.getSelectedItem());
+                try {
+                    dateTime = stringToDate(date);
+                    new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
+                            (String) priorityBox.getSelectedItem(),
+                            (String) assignmentTypeBox.getSelectedItem());
+                    dispose();
+                } catch (NullPointerException error) {
+                    //make user enter info
+                }
             } else {
-                new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
-                        (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
+                try {
+                    dateTime = stringToDate(date);
+                    new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
+                            (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
+                    dispose();
+                } catch (NullPointerException error) {
+                    //make user enter info
+                }
+
             }
-            dispose();
         });
 
         // add the panel to this frame
@@ -160,7 +175,7 @@ public class TaskView extends JFrame {
      * @param comboBox the combobox box being search in
      * @param value the value being searched for
      */
-    public void setSelectedValue(JComboBox comboBox, String value){
+    private void setSelectedValue(JComboBox comboBox, String value){
         String item;
         for (int i = 0; i < comboBox.getItemCount(); i++) {
             item = (String) comboBox.getItemAt(i);
@@ -170,4 +185,10 @@ public class TaskView extends JFrame {
             }
         }
     }
+
+    private LocalDateTime stringToDate(String textDate){
+        LocalDate date = LocalDate.parse(textDate, DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
+        return date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+    }
+
 }

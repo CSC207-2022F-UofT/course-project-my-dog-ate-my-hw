@@ -2,16 +2,19 @@ import controllers.*;
 import database.UserDB;
 import database.PetDB;
 import database.CustomizationDB;
-import entities.Pet;
-import entities.User;
+import entities.*;
 import presenters.MainViewUpdater;
 import presenters.PetUpdater;
+import presenters.TaskVM;
 import presenters.TasklistUpdater;
 import ui.MainUI2;
 import ui.ViewRefresher;
 import useCases.*;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -25,8 +28,14 @@ public class Main {
             throw new RuntimeException(e);
         }
         MainViewUpdater m = new MainViewUpdater();
+        //
+        LocalDate date = LocalDate.parse("2022-12-24", DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
+        LocalDateTime dateTime = date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+        TaskVM task = new TaskVM(new TaskUIDS(new Task("Test", "Course", dateTime, Priority.HIGH, AssignmentType.ESSAY)));
+        TaskVM[] tasks = {task};
+        //
         UserUC.declareUI(m);
-        mainUI = new MainUI2(DefaultValueData.DEFAULT_HEALTH, Pet.getMaxHealth(), DefaultValueData.DEFAULT_SKIN, DefaultValueData.DEFAULT_NAME, DefaultValueData.DEFAULT_POINTS, DefaultValueData.DEFAULT_CUSTOMS, DefaultValueData.DEFAULT_CURR_CUSTOM, false, null);
+        mainUI = new MainUI2(DefaultValueData.DEFAULT_HEALTH, Pet.getMaxHealth(), DefaultValueData.DEFAULT_SKIN, DefaultValueData.DEFAULT_NAME, DefaultValueData.DEFAULT_POINTS, DefaultValueData.DEFAULT_CUSTOMS, DefaultValueData.DEFAULT_CURR_CUSTOM, false, tasks);
         injectDepend();
         initializeUser();
     }

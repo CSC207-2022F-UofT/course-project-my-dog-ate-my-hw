@@ -16,10 +16,10 @@ public class MainUI2 extends JFrame{
         setVisible(true);
     }
 
-    private void showUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
+    private void showUI(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedItem, boolean petAdopted, TaskVM[] tasks){
         PetUI petUI = new PetUI();
         TaskUI taskUI = new TaskUI();
-        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedIteam);
+        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedItem);
         taskUI.createTaskUI(tasks);
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);

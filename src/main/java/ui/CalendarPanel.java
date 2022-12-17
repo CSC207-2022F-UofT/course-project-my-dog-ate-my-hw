@@ -27,6 +27,9 @@ public class CalendarPanel extends JFrame {
     public String getDate(){
         return datePicker.getJFormattedTextField().getText();
     }
+    public void setDate(String date){
+        datePicker.getJFormattedTextField().setText(date);
+    }
 
     public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
         private final SimpleDateFormat dateFormatter = new SimpleDateFormat(DefaultValueData.DATE_FORMAT);

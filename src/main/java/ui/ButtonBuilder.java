@@ -37,35 +37,31 @@ public class ButtonBuilder {
 
     public Button buildNewTaskButton(Color background, Color textColor, String label){
         Button b = new Button(background, textColor, createBevel(background), label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TaskView v = new TaskView();
-                v.createTaskView();
+        b.addActionListener(e -> {
+            TaskView v = new TaskView();
+            v.createTaskView();
 
-            }
         });
         return b;
     }
 
     public Button buildAdoptButton(Color background, Color textColor, String label){
         Button b = new Button(background, textColor, createBevel(background), label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PetShopDisplayerInterface shopDisplayer = new PetShopDisplayer();
-                shopDisplayer.createPetShop();
-                b.getParent().remove(b);
+        b.addActionListener(e -> {
+            PetShopDisplayerInterface shopDisplayer = new PetShopDisplayer();
+            shopDisplayer.createPetShop();
+            b.getParent().remove(b);
 
-            }
         });
         return b;
     }
 
     public Button buildEditButton(Color background, Color textColor, String label, TaskVM task) {
         Button b = new Button(background, textColor, createBevel(background), label, STANDARD_BUTTONS_SIZE, UIFormat.BUTTON_FONT);
-        TaskView v = new TaskView();
-        v.createTaskView(task);
+        b.addActionListener(e -> {
+            TaskView v = new TaskView();
+            v.createTaskView(task);
+        });
         return b;
     }
 

@@ -4,10 +4,7 @@ import controllers.CompleteTaskController;
 import presenters.TaskVM;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 
 public class TaskPanel extends JPanel {
 
@@ -58,7 +55,7 @@ public class TaskPanel extends JPanel {
         courseLabel.setFont(UIFormat.BUTTON_FONT);
         deadlineLabel = new JLabel(task.deadline.toString());
         deadlineLabel.setFont(UIFormat.BUTTON_FONT);
-        typeLabel = new JLabel(task.assignenmentType);
+        typeLabel = new JLabel(task.assignmentType);
         typeLabel.setFont(UIFormat.BUTTON_FONT);
         priorityLabel = new JLabel(task.priority);
         priorityLabel.setFont(UIFormat.BUTTON_FONT);
