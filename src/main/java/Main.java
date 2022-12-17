@@ -37,6 +37,7 @@ public class Main {
     }
     private static void injectDepend(){
         BuyHeartController.setUc(new BuyHeartUC());
+        BuyItemController.setUc(new BuyItemUC());
         CompleteTaskController.setUc(new CompleteTaskUC());
         CreateTaskController.setUc(new CreateTaskUC());
         ModifyTaskController.setUc(new ModifyTaskUC());

@@ -1,5 +1,7 @@
 package ui;
 
+import controllers.BuyItemController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,6 +30,7 @@ public class CustomizationBox extends JComboBox<String>{
      * @param evt the event that will call the ActionListener
      */
     private void customizationBoxActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        BuyItemController controller = new BuyItemController((String) getSelectedItem());
+        controller.performPurchase();
     }
 }

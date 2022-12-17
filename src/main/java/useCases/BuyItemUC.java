@@ -12,30 +12,34 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
-    public static void buyItem(User user, String itemName) throws AbsentItemNameException {
+    public void buyItem(User user, String itemName) {
         try {
-            Customization customization = user.getPet().getCustomization();
-            Item item = customization.getItem(itemName);
+            if (user.getPet() != null) {
+                Customization customization = user.getPet().getCustomizations();
+                Item item = customization.getItem(itemName);
 
-            if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
-                user.LosePoints(item.getPrice());
-                item.Unlock();
-                if (!customization.isCurrentlyEquipped()) {
-                    customization.equip(item);
-                } else {
-                    customization.dequip();
-                    customization.equip(item);
-                }
-            } else if (item.isUnlocked()) {
-                if (!customization.isCurrentlyEquipped()) {
-                    customization.equip(item);
-                } else {
-                    customization.dequip();
-                    customization.equip(item);
+                if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
+                    user.LosePoints(item.getPrice());
+                    item.Unlock();
+                    if (!customization.getIsCurrentlyEquipped()) {
+                        customization.equip(item);
+                    } else {
+                        customization.dequip();
+                        customization.equip(item);
+                    }
+                } else if (item.isUnlocked()) {
+                    if (!customization.getIsCurrentlyEquipped()) {
+                        customization.equip(item);
+                    } else {
+                        customization.dequip();
+                        customization.equip(item);
+                    }
                 }
             }
         } catch (AbsentItemNameException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Not in customization list", e);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Something was null", e);
         }
     }
 
@@ -43,7 +47,9 @@ public class BuyItemUC implements BuyItemInputBoundary{
      * Another version of buyItem method
      * @param itemName Name of the item to purchase.
      */
-    public static void buyItem(String itemName) throws AbsentItemNameException {buyItem(UserUC.u(), itemName);}
+    public void buyItem(String itemName) {
+        buyItem(UserUC.u(), itemName);
+    }
 
     /**
      * Refresh method that refreshes the UI

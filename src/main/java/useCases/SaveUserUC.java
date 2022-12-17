@@ -49,7 +49,7 @@ public class SaveUserUC {
         dl.makePet(pet.getCurrHealth(), pet.getName(), pet.getSkin());
 
         // Get and create the Customization object
-        ArrayList<entities.Item> customizations = pet.getCustomization().possibleCustomizations();
+        ArrayList<entities.Item> customizations = pet.getCustomizations().getPossibleCustomizations();
         for (entities.Item item : customizations){
             dl.addCustomization(
                     item.getName(),
@@ -87,8 +87,8 @@ public class SaveUserUC {
         }
 
         // Get and Equip the currentEquipment, if it exists
-        if (user.getPet().getCustomization().currentEquipment != null) {
-            entities.Item currentItem = user.getPet().getCustomization().currentEquipment;
+        if (user.getPet().getCustomizations().getCurrentEquipment() != null) {
+            entities.Item currentItem = user.getPet().getCustomizations().getCurrentEquipment();
             dl.setEquip(
                     currentItem.getName(),
                     currentItem.getType(),
