@@ -1,6 +1,11 @@
 package useCases;
 
+import entities.AssignmentType;
 import entities.Customization;
+import entities.Priority;
+import entities.Task;
+
+import java.time.LocalDateTime;
 
 public class DefaultValueData {
 
@@ -14,5 +19,7 @@ public class DefaultValueData {
     public static final String DEFAULT_SKIN = "";
     public static final String[] DEFAULT_CUSTOMS = {DEFAULT_CURR_CUSTOM};
     public static final int DEFAULT_POINTS = 0;
+
+    public static final Task EMPTY_TASK = new Task("No Task In List", "", LocalDateTime.now(), Priority.LOW, AssignmentType.ESSAY);
 
 }

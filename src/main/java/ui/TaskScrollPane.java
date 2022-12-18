@@ -19,9 +19,9 @@ public class TaskScrollPane extends JScrollPane {
      */
     public void createTaskScrollPane(TaskVM[] tasks){
         taskPanels = new LinkedList<>();
-        formatPane();
         makeTaskContainer(tasks);
         add(taskContainer);
+        formatPane();
     }
 
     /**

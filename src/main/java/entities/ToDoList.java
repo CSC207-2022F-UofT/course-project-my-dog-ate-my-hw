@@ -63,11 +63,17 @@ public class ToDoList extends Checklist {
 
     /**
      * Randomize a task in the list
-     * @return Task at random index in the taskList
+     * @return Task at random index in the taskList. Returns null if list is empty.
      */
     public Task randomTask() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, super.getTaskList().size());
-        return super.getTaskList().get(randomNum);
+        if (super.getTaskList().size() > 1) {
+            int randomNum = ThreadLocalRandom.current().nextInt(0, (super.getTaskList().size() - 1));
+            return super.getTaskList().get(randomNum);
+        } else if (super.getTaskList().size() == 1) {
+            return super.getTaskList().get(0);
+        } else {
+            return null;
+        }
     }
 
     /**
