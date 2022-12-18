@@ -20,6 +20,6 @@ public class DefaultValueData {
     public static final String[] DEFAULT_CUSTOMS = {DEFAULT_CURR_CUSTOM};
     public static final int DEFAULT_POINTS = 0;
 
-    public static final Task EMPTY_TASK = new Task("No Task In List", "", LocalDateTime.now(), Priority.LOW, AssignmentType.ESSAY);
+    public static final Task EMPTY_TASK = new Task("ERROR: NO TASK IN LIST", "  ", LocalDateTime.now(), Priority.LOW, AssignmentType.ESSAY);
 
 }

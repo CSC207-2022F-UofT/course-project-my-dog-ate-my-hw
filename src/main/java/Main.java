@@ -28,12 +28,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         MainViewUpdater m = new MainViewUpdater();
-        //
-        LocalDate date = LocalDate.parse("2022-12-24", DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
-        LocalDateTime dateTime = date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
-        TaskVM task = new TaskVM(new TaskUIDS(new Task("Test", "Course", dateTime, Priority.HIGH, AssignmentType.ESSAY)));
-        TaskVM[] tasks = {task};
-        //
+        TaskVM[] tasks = null;
         UserUC.declareUI(m);
         mainUI = new MainUI2(DefaultValueData.DEFAULT_HEALTH, Pet.getMaxHealth(), DefaultValueData.DEFAULT_SKIN, DefaultValueData.DEFAULT_NAME, DefaultValueData.DEFAULT_POINTS, DefaultValueData.DEFAULT_CUSTOMS, DefaultValueData.DEFAULT_CURR_CUSTOM, false, tasks);
         injectDepend();

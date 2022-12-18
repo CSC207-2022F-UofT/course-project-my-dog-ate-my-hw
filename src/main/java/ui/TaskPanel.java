@@ -2,6 +2,7 @@ package ui;
 
 import controllers.CompleteTaskController;
 import presenters.TaskVM;
+import useCases.DefaultValueData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,12 +22,17 @@ public class TaskPanel extends JPanel {
     public void createTaskPanel(TaskVM task) {
         this.task = task;
         format();
-        initalizeWithFormat(task);
-        setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-        if(task.completed){
-            createDonePanel(task);
+        if (task.name.equals(DefaultValueData.EMPTY_TASK.getName())) {
+            setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            add(new JLabel(task.name));
         } else {
-            createToDoPanel(task);
+            setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            initalizeWithFormat(task);
+            if (task.completed) {
+                createDonePanel(task);
+            } else {
+                createToDoPanel(task);
+            }
         }
     }
 
@@ -53,7 +59,7 @@ public class TaskPanel extends JPanel {
         nameLabel.setFont(UIFormat.BUTTON_FONT);
         courseLabel = new JLabel(task.course);
         courseLabel.setFont(UIFormat.BUTTON_FONT);
-        deadlineLabel = new JLabel(task.deadline.toString());
+        deadlineLabel = new JLabel(task.deadline);
         deadlineLabel.setFont(UIFormat.BUTTON_FONT);
         typeLabel = new JLabel(task.assignmentType);
         typeLabel.setFont(UIFormat.BUTTON_FONT);
