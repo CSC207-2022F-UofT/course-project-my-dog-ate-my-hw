@@ -3,6 +3,7 @@ package ui;
 import presenters.PetVM;
 import presenters.TaskVM;
 import presenters.ViewRefresherBoundary;
+import useCases.PetUIDS;
 
 public class ViewRefresher implements ViewRefresherBoundary{
 
@@ -14,7 +15,11 @@ public class ViewRefresher implements ViewRefresherBoundary{
     public static void setMainUI(MainUI2 main){mainUI = main;}
 
     public void refresh(PetVM pet, TaskVM[] tasks){
-        this.pet = pet;
+        if (pet != null) {
+            this.pet = pet;
+        } else {
+            pet = new PetVM(PetUIDS.makeDefaultPet());
+        }
         this.tasks = tasks;
         refresh(pet.currHealth,
                 pet.maxHealth,

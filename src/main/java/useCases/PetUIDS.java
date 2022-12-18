@@ -39,4 +39,18 @@ public class PetUIDS {
             customizations = DefaultValueData.DEFAULT_CUSTOMS;
         }
     }
+
+    private PetUIDS(){
+        currCustomization = DefaultValueData.DEFAULT_CURR_CUSTOM;
+        currHealth = DefaultValueData.DEFAULT_HEALTH;
+        skin = DefaultValueData.DEFAULT_SKIN;
+        name = DefaultValueData.DEFAULT_NAME;
+        customizations = DefaultValueData.DEFAULT_CUSTOMS;
+        MAX_HEALTH = Pet.getMaxHealth();
+        points = DefaultValueData.DEFAULT_POINTS;
+    }
+
+    public static PetUIDS makeDefaultPet(){
+        return new PetUIDS();
+    }
 }
