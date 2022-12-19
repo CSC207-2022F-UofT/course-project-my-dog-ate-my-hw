@@ -184,7 +184,7 @@ public class TaskView extends JFrame {
                 new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(),
                         (String) assignmentTypeBox.getSelectedItem());
-            } catch (NullPointerException error) {
+            } catch (NullPointerException | InvalidTaskInformationException error) {
                 createPopUp();
                 throw new RuntimeException("Task Info Not Entered", error);
             }
