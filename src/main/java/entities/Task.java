@@ -163,4 +163,12 @@ public class Task {
         return 0;
     }
 
+    /**
+     * Return a boolean for is the given deadline is a valid deadline
+     * @param deadline the deadline of the task being added/modified
+     * @return true if the deadline is valid (after the current datetime)
+     */
+    public static boolean deadlineisValid(LocalDateTime deadline){
+        return deadline.isAfter(LocalDateTime.now());
+    }
 }

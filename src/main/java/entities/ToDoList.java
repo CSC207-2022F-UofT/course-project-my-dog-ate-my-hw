@@ -54,7 +54,7 @@ public class ToDoList extends Checklist {
      * not have a unique name and needs a new name.
      */
      public boolean addTask(Task newTask) {
-         if (checkUniqueName(newTask)) {
+         if (checkUniqueName(newTask) && Task.deadlineisValid(newTask.getDeadline())) {
              super.addTask(newTask);
          }
          return false;

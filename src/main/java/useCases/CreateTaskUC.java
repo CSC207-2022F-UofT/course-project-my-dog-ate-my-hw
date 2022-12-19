@@ -1,7 +1,6 @@
 package useCases;
 
 import entities.*;
-import ui.EmptyTaskInformationException;
 
 import java.time.LocalDateTime;
 
@@ -26,7 +25,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
             task = new Task(name, course, deadline, convertPriority(priority), convertAssignment(assignmentType));
             this.addToTDL(task);
         } else {
-            throw new EmptyTaskInformationException();
+            throw new InvalidTaskInformationException();
         }
     }
 

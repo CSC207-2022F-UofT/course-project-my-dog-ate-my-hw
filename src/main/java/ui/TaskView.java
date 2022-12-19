@@ -4,10 +4,10 @@ import controllers.CreateTaskController;
 import controllers.ModifyTaskController;
 import presenters.TaskVM;
 import useCases.DefaultValueData;
+import useCases.InvalidTaskInformationException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -194,7 +194,7 @@ public class TaskView extends JFrame {
                 dispose();
                 new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
-            } catch (NullPointerException | EmptyTaskInformationException error) {
+            } catch (NullPointerException | InvalidTaskInformationException error) {
                 createPopUp();
                 throw new RuntimeException("Task Info Not Entered", error);
             }

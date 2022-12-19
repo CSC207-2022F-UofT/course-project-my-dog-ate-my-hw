@@ -1,7 +1,6 @@
 package useCases;
 
 import entities.*;
-import ui.EmptyTaskInformationException;
 
 import java.time.LocalDateTime;
 
@@ -62,7 +61,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         if (!newName.equals("") && todo.checkUniqueName(newName)) {
             task.setName(newName);
         } else {
-            throw new EmptyTaskInformationException();
+            throw new InvalidTaskInformationException();
         }
     }
     /**
@@ -74,7 +73,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         if (!course.equals("")) {
             task.setCourse(course);
         } else {
-            throw new EmptyTaskInformationException();
+            throw new InvalidTaskInformationException();
         }
 
     }
@@ -95,7 +94,11 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param date task's deadline
      */
     public void changeDeadline(LocalDateTime date) {
-        task.setDeadline(date);
+        if (Task.deadlineisValid(date)) {
+            task.setDeadline(date);
+        } else {
+            throw new InvalidTaskInformationException();
+        }
     }
 
     public void changeAssignmentType(String assignmentType){
