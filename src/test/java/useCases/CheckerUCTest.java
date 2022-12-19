@@ -32,10 +32,11 @@ public class CheckerUCTest {
      */
     @Test
     public void CheckerTest1() {
-        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
-                (2022, Month.OCTOBER, 29, 19, 30, 40),
+        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.now().plusHours(1),
                 Priority.MEDIUM, AssignmentType.ESSAY);
         todo.addTask(task1);
+        // Set deadlines to past (cant be added if deadline is past)
+        task1.setDeadline(task1.getDeadline().minusHours(2));
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
         Assertions.assertEquals(user.getPet().getCurrHealth(), 8);
@@ -47,10 +48,11 @@ public class CheckerUCTest {
      */
     @Test
     public void CheckerTest2() {
-        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
-                (2022, Month.OCTOBER, 29, 19, 30, 40),
+        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.now().plusHours(1),
                 Priority.HIGH, AssignmentType.ESSAY);
         todo.addTask(task1);
+        // Set deadlines to past (cant be added if deadline is past)
+        task1.setDeadline(task1.getDeadline().minusHours(2));
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
         Assertions.assertEquals(user.getPet().getCurrHealth(), 7);
@@ -62,8 +64,7 @@ public class CheckerUCTest {
      */
     @Test
     public void CheckerTest3() {
-        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
-                (2022, Month.DECEMBER, 29, 19, 30, 40),
+        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.now().plusDays(5),
                 Priority.HIGH, AssignmentType.ESSAY);
         todo.addTask(task1);
         CheckerUC checkerUC = new CheckerUC();
@@ -77,13 +78,15 @@ public class CheckerUCTest {
      */
     @Test
     public void CheckerTest4() {
-        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.of
-                (2022, Month.OCTOBER, 29, 19, 30, 40),
+        Task task1 = new Task("CompSci Assignment", "CSC236", LocalDateTime.now().plusHours(1),
                 Priority.HIGH, AssignmentType.ESSAY);
-        Task task2 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.SEPTEMBER
-                , 29, 19, 30, 40), Priority.MEDIUM, AssignmentType.ESSAY);
+        Task task2 = new Task("Math Midterm 1", "MAT137", LocalDateTime.now().plusHours(1),
+                Priority.MEDIUM, AssignmentType.ESSAY);
         todo.addTask(task1);
         todo.addTask(task2);
+        // Set deadlines to past (cant be added if deadline is past)
+        task1.setDeadline(task1.getDeadline().minusHours(2));
+        task2.setDeadline(task2.getDeadline().minusHours(2));
         CheckerUC checkerUC = new CheckerUC();
         checkerUC.checkLostHealth(user);
         Assertions.assertEquals(user.getPet().getCurrHealth(), 5);

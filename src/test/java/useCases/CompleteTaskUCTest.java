@@ -32,19 +32,20 @@ public class CompleteTaskUCTest {
     @BeforeEach
     public void Setup() {
         user = new User();
-        task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.DECEMBER
-                , 29, 19, 30, 40), Priority.HIGH, AssignmentType.ESSAY);
+        task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.now().plusDays(5),
+                Priority.HIGH, AssignmentType.ESSAY);
         task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.MEDIUM, AssignmentType.ESSAY);
+                LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         toDoList.addTask(task2);
         user.setTodo(toDoList);
         user.setDone(doneList);
+
     }
 
     @Test
-    public void CompleteTaskTest1() throws AbsentTaskNameException {
+    public void CompleteTaskTest2() {
+        task2.setDeadline(task2.getDeadline().minusHours(2));
         CompleteTaskUC completeTaskUC = new CompleteTaskUC();
         completeTaskUC.completeTask("CompSci Assignment", user);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
@@ -53,7 +54,7 @@ public class CompleteTaskUCTest {
     }
 
     @Test
-    public void CompleteTaskTest2() throws AbsentTaskNameException {
+    public void CompleteTaskTest1() {
         CompleteTaskUC completeTaskUC = new CompleteTaskUC();
         completeTaskUC.completeTask("Math Midterm 1", user);
         Assertions.assertEquals(user.getPoints(), 3);

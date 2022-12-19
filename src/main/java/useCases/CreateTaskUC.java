@@ -21,9 +21,14 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      */
     public void createTask(String name, String course, LocalDateTime deadline, String priority, String
             assignmentType) {
+        createTask(name, course, deadline, priority, assignmentType, UserUC.u());
+    }
+
+    public void createTask(String name, String course, LocalDateTime deadline, String priority, String
+            assignmentType, User user) {
         if (!name.equals("") && !course.equals("")) {
             task = new Task(name, course, deadline, convertPriority(priority), convertAssignment(assignmentType));
-            this.addToTDL(task);
+            this.addToTDL(task, user);
         } else {
             throw new InvalidTaskInformationException();
         }
@@ -34,8 +39,8 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      *
      * @param task the task to be added to the to do list
      */
-    private void addToTDL(Task task) {
-        todo = UserUC.u().getToDo();
+    private void addToTDL(Task task, User user) {
+        todo = user.getToDo();
         todo.addTask(task);
     }
 

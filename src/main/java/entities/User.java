@@ -13,6 +13,9 @@ public class User {
      */
     public User (int points) {
         this.points = points;
+        myPet = null;
+        todo = new ToDoList();
+        done = new DoneList();
     }
 
     /**
@@ -23,6 +26,8 @@ public class User {
     public User (int points, Pet pet) {
         this.points = points;
         this.myPet = pet;
+        todo = new ToDoList();
+        done = new DoneList();
     }
 
     /**
@@ -43,6 +48,10 @@ public class User {
      * Default constructor with 0 points and null pet
      */
     public User() {
+        points = 0;
+        myPet = null;
+        todo = new ToDoList();
+        done = new DoneList();
     }
 
     /**
