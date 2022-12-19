@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class TaskPanel extends JPanel {
 
-    private static final Dimension preferredSize = new Dimension(754, 50);
+    private static final Dimension preferredSize = new Dimension(754, 80);
     TaskVM task;
     JLabel nameLabel;
     JLabel courseLabel;
@@ -83,5 +83,6 @@ public class TaskPanel extends JPanel {
         setBackground(UIFormat.TASK_SCROLL);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
+        setMaximumSize(preferredSize);
     }
 }

@@ -202,7 +202,7 @@ public class TaskView extends JFrame {
     private void createPopUp() {
         // creates warning popup so that user understands error
         JFrame popup = new JFrame("Error");
-        popup.setLayout(new CardLayout(2, 2));
+        popup.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
         popup.add(new JLabel("Task information incorrectly, please try again"));
         popup.setBackground(Color.red.brighter());
         popup.pack();
