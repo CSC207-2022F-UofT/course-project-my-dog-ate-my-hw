@@ -4,8 +4,6 @@ import presenters.TaskVM;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class MainUI2 extends JFrame{
 
