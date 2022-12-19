@@ -5,7 +5,6 @@ import presenters.TaskVM;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
-import java.util.LinkedList;
 
 public class TaskScrollPane extends JScrollPane {
 
