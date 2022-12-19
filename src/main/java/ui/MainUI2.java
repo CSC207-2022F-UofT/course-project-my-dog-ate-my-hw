@@ -17,14 +17,6 @@ public class MainUI2 extends JFrame{
         format();
         showUI(currHealth, maxHealth, skin, petName, points, customizations, equippedItem, petAdopted, tasks);
         setVisible(true);
-
-        // Add listener that calls a controller to save user data on close
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent windowEvent) {
-                saveOnClose();
-            }
-        });
     }
 
     private void showUI(int currHealth, int maxHealth, String skin, String petName, int points,
@@ -56,10 +48,6 @@ public class MainUI2 extends JFrame{
     public MainUI2 copy(int currHealth, int maxHealth, String skin, String petName, int points,
                         String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
         return new MainUI2(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
-    }
-
-    private void saveOnClose(){
-        //TODO: Add call to controller here
     }
 
 }
