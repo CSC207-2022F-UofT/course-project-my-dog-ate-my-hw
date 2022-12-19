@@ -60,6 +60,7 @@ public class TaskScrollPane extends JScrollPane {
             taskContainer.add(panel);
         }}
 
+        taskContainer.add(Box.createVerticalGlue());
         // format container
         taskContainer.setMaximumSize(new Dimension(754, 32767));
         taskContainer.setMinimumSize(new Dimension(754, 100));

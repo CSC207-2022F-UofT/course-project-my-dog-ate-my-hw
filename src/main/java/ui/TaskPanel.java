@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class TaskPanel extends JPanel {
 
-    private static final Dimension preferredSize = new Dimension(754, 100);
+    private static final Dimension preferredSize = new Dimension(754, 50);
     TaskVM task;
     JLabel nameLabel;
     JLabel courseLabel;
@@ -29,14 +29,14 @@ public class TaskPanel extends JPanel {
             setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
             initalizeWithFormat(task);
             if (task.completed) {
-                createDonePanel(task);
+                createDonePanel();
             } else {
-                createToDoPanel(task);
+                createToDoPanel();
             }
         }
     }
 
-    public void createDonePanel(TaskVM task) {
+    public void createDonePanel() {
         add(nameLabel);
         add(courseLabel);
         add(typeLabel);
@@ -44,7 +44,9 @@ public class TaskPanel extends JPanel {
         add(priorityLabel);
     }
 
-    public void createToDoPanel(TaskVM task) {
+    public void createToDoPanel() {
+        createEditButton();
+        createCheckBox();
         add(checkBox);
         add(nameLabel);
         add(courseLabel);
@@ -65,8 +67,6 @@ public class TaskPanel extends JPanel {
         typeLabel.setFont(UIFormat.BUTTON_FONT);
         priorityLabel = new JLabel(task.priority);
         priorityLabel.setFont(UIFormat.BUTTON_FONT);
-        createEditButton();
-        createCheckBox();
     }
 
     private void createEditButton(){
