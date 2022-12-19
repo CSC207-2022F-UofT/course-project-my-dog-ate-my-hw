@@ -32,6 +32,21 @@ public class ToDoList extends Checklist {
         return true;
     }
 
+    /**
+     * Check if the inputted name is unique, meaning it does not match the name of any other task in the taskList.
+     *
+     * @param newName : The given name to be checked.
+     * @return : true if the given name is unique and false otherwise.
+     */
+    public boolean checkUniqueName(String newName) {
+        for (Task addedTask : this.getTaskList()) {
+            if (addedTask.getName().equals(newName)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     /** Add the given task to the taskList if it has a unique name.
      * @param newTask : the given task to add to the taskList.

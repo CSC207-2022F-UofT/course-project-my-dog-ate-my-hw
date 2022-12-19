@@ -7,9 +7,11 @@ import useCases.DefaultValueData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -163,33 +165,51 @@ public class TaskView extends JFrame {
     }
 
     private LocalDateTime stringToDate(String textDate){
-        LocalDate date = LocalDate.parse(textDate, DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
-        return date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+        try {
+            LocalDate date = LocalDate.parse(textDate, DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
+            return date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+        } catch (DateTimeParseException e) {
+            createPopUp();
+            throw new RuntimeException("Date not parsed", e);
+        }
     }
 
     private void callController() {
-        String date = calendarPanel.getDate();
-        LocalDateTime dateTime;
+        // Hands all necessary information to controller based on if window is newTask or not
+        // Shows user an error message if task info is entered incorrectly
         if(newTask){
             try {
-                dateTime = stringToDate(date);
+                LocalDateTime dateTime = stringToDate(calendarPanel.getDate());
                 dispose();
                 new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(),
                         (String) assignmentTypeBox.getSelectedItem());
             } catch (NullPointerException error) {
+                createPopUp();
                 throw new RuntimeException("Task Info Not Entered", error);
             }
         } else {
             try {
+                LocalDateTime dateTime = stringToDate(calendarPanel.getDate());
                 dispose();
-                dateTime = stringToDate(date);
                 new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
                         (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
-            } catch (NullPointerException error) {
+            } catch (NullPointerException | EmptyTaskInformationException error) {
+                createPopUp();
                 throw new RuntimeException("Task Info Not Entered", error);
             }
         }
+    }
+
+    private void createPopUp() {
+        // creates warning popup so that user understands error
+        JFrame popup = new JFrame("Error");
+        popup.setLayout(new CardLayout(2, 2));
+        popup.add(new JLabel("Task information incorrectly, please try again"));
+        popup.setBackground(Color.red.brighter());
+        popup.pack();
+        popup.setLocationRelativeTo(null);
+        popup.setVisible(true);
     }
 
 }

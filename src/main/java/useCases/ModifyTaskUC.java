@@ -1,6 +1,7 @@
 package useCases;
 
 import entities.*;
+import ui.EmptyTaskInformationException;
 
 import java.time.LocalDateTime;
 
@@ -38,13 +39,18 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         }
     }
 
-    public boolean findTask(String taskName) {
+    private boolean findTask(String taskName, User user) {
         try {
+            todo = user.getToDo();
             task = todo.searchFor(taskName);
             return true;
         } catch (AbsentTaskNameException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean findTask (String taskName) {
+        return findTask(taskName, UserUC.u());
     }
 
     /**
@@ -53,7 +59,11 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param newName task's new name
      */
     public void changeName(String newName) {
+        if (!newName.equals("") && todo.checkUniqueName(newName)) {
             task.setName(newName);
+        } else {
+            throw new EmptyTaskInformationException();
+        }
     }
     /**
      * Changes the task's associated course.
@@ -61,7 +71,12 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param course task's new course
      */
     public void changeCourse(String course) {
-        task.setCourse(course);
+        if (!course.equals("")) {
+            task.setCourse(course);
+        } else {
+            throw new EmptyTaskInformationException();
+        }
+
     }
 
     /**
@@ -83,7 +98,9 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         task.setDeadline(date);
     }
 
-    public void changeAssignmentType(String assignmentType){ task.setAssignmentType(AssignmentType.getAssignmentType(assignmentType));}
+    public void changeAssignmentType(String assignmentType){
+        task.setAssignmentType(AssignmentType.getAssignmentType(assignmentType));
+    }
 
     /**
      * Calls on factory to create a refresher.
