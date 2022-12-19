@@ -122,9 +122,7 @@ public class TaskView extends JFrame {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
-        buttonSave.addActionListener(e -> {
-            callController();
-        });
+        buttonSave.addActionListener(e -> callController());
 
         // add the panel to this frame
         add(newPanel);
@@ -153,10 +151,10 @@ public class TaskView extends JFrame {
      * @param comboBox the combobox box being search in
      * @param value the value being searched for
      */
-    private void setSelectedValue(JComboBox comboBox, String value){
+    private void setSelectedValue(JComboBox<String> comboBox, String value){
         String item;
         for (int i = 0; i < comboBox.getItemCount(); i++) {
-            item = (String) comboBox.getItemAt(i);
+            item = comboBox.getItemAt(i);
             if (item.equalsIgnoreCase(value)){
                 comboBox.setSelectedIndex(i);
                 break;
