@@ -31,7 +31,6 @@ public class TaskView extends JFrame {
     private JComboBox<String> assignmentTypeBox;
     private boolean newTask;
     private String oldName;
-    private String oldDate;
 
     /**
      * Called if a new task is being created
@@ -49,7 +48,6 @@ public class TaskView extends JFrame {
     public void createTaskView(TaskVM task){
         newTask = false;
         oldName = task.name;
-        oldDate = task.deadline;
         layoutTaskView();
         textName.setText(task.name);
         textCourse.setText(task.course);
@@ -123,29 +121,7 @@ public class TaskView extends JFrame {
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
         buttonSave.addActionListener(e -> {
-            String date = calendarPanel.getDate();
-            LocalDateTime dateTime;
-            if(newTask){
-                try {
-                    dateTime = stringToDate(date);
-                    new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
-                            (String) priorityBox.getSelectedItem(),
-                            (String) assignmentTypeBox.getSelectedItem());
-                    dispose();
-                } catch (NullPointerException error) {
-                    //make user enter info
-                }
-            } else {
-                try {
-                    dateTime = stringToDate(date);
-                    new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
-                            (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
-                    dispose();
-                } catch (NullPointerException error) {
-                    //make user enter info
-                }
-
-            }
+            callController();
         });
 
         // add the panel to this frame
@@ -189,6 +165,31 @@ public class TaskView extends JFrame {
     private LocalDateTime stringToDate(String textDate){
         LocalDate date = LocalDate.parse(textDate, DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
         return date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+    }
+
+    private void callController() {
+        String date = calendarPanel.getDate();
+        LocalDateTime dateTime;
+        if(newTask){
+            try {
+                dateTime = stringToDate(date);
+                dispose();
+                new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(),
+                        (String) assignmentTypeBox.getSelectedItem());
+            } catch (NullPointerException error) {
+                throw new RuntimeException("Task Info Not Entered", error);
+            }
+        } else {
+            try {
+                dispose();
+                dateTime = stringToDate(date);
+                new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
+            } catch (NullPointerException error) {
+                throw new RuntimeException("Task Info Not Entered", error);
+            }
+        }
     }
 
 }

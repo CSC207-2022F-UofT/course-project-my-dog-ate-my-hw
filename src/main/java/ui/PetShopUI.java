@@ -160,7 +160,7 @@ public class PetShopUI extends JFrame {
         if(petName.replaceAll("^[ \t]+|[ \t]+$", "").equals("") || selectedPetSkin == null) {
             warningPopup();
         } else {
-            setVisible(false);
+            dispose();
             controller.performPetAdoption(selectedPetSkin.getDescription(), petName);
         }
 
