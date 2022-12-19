@@ -3,14 +3,13 @@ package entities;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test cases for User entity
+ * Mainly test gain points and lose points methods
+ * Other properties (pet, checklists) will be tested in corresponding test classes
+ */
 public class UserTest {
-    
-    /**
-     * Test cases for User entity
-     * Mainly test gain points and lose points methods
-     * Other properties (pet, checklists) will be tested in corresponding test classes
-     */
-    
+
     /** 
      * create a default user and check for default values
      */

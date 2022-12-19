@@ -7,15 +7,13 @@ import java.util.ArrayList;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/** ToDoList is a public Class that contains a list of tasks that the user has yet to complete, it is a child class
+ *  of Checklist. In addition to the inherited methods from Checklist, the ToDoList can be sorted by the deadlines
+ *  of the task and the priorities of the task.
+ *  ====== Representation invariant ========
+ * 1) Every task in the taskList must have a unique name.
+ */
 public class ToDoList extends Checklist {
-    /** ToDoList is a public Class that contains a list of tasks that the user has yet to complete, it is a child class
-     *  of Checklist. In addition to the inherited methods from Checklist, the ToDoList can be sorted by the deadlines
-     *  of the task and the priorities of the task.
-     *  ====== Representation invariant ========
-     *
-     * 1) Every task in the taskList must have a unique name.
-     */
-     
 
     /**
      * Check if the task has a unique name, meaning it does not have the same name as any other tasks in the taskList.
@@ -47,12 +45,12 @@ public class ToDoList extends Checklist {
         return true;
     }
 
-    @Override
     /** Add the given task to the taskList if it has a unique name.
      * @param newTask : the given task to add to the taskList.
      * @return boolean : return true if the task was successfully added to the taskList. Return false if the task does
      * not have a unique name and needs a new name.
      */
+    @Override
      public boolean addTask(Task newTask) {
          if (checkUniqueName(newTask) && Task.deadlineisValid(newTask.getDeadline())) {
              super.addTask(newTask);

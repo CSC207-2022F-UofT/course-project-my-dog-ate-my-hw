@@ -10,8 +10,6 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Builds Buttons based on their type. Gives them the Action Listeners associated with their type.
