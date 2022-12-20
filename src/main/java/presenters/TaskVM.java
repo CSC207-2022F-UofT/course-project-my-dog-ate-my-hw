@@ -2,8 +2,6 @@ package presenters;
 
 import useCases.TaskUIDS;
 
-import java.time.LocalDateTime;
-
 public class TaskVM {
     public String deadline;
     public String name;
@@ -17,7 +15,7 @@ public class TaskVM {
         name = task.name;
         course = task.course;
         priority = task.priority;
-        assignmentType = task.assignenmentType;
+        assignmentType = task.assignmentType;
         completed = task.completed;
     }
 }

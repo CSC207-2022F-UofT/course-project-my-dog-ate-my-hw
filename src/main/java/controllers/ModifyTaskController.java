@@ -1,9 +1,6 @@
 package controllers;
 
 import useCases.ModifyTaskInputBoundary;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 public class ModifyTaskController {
@@ -12,17 +9,17 @@ public class ModifyTaskController {
     public String name;
     public String course;
     public String priority;
-    public String assignenmentType;
+    public String assignmentType;
     public String oldName;
 
     public static void setUc(ModifyTaskInputBoundary useCase){ uc = useCase; }
 
-    public ModifyTaskController(LocalDateTime deadline, String name, String course, String priority, String assignenmentType, String oldName){
+    public ModifyTaskController(LocalDateTime deadline, String name, String course, String priority, String assignmentType, String oldName){
         this.deadline = deadline;
         this.name = name.strip();
         this.course = course.strip();
         this.priority = priority;
-        this.assignenmentType = assignenmentType;
+        this.assignmentType = assignmentType;
         this.oldName = oldName.strip();
         modify();
         uc.refreshTask();
@@ -30,11 +27,7 @@ public class ModifyTaskController {
 
     public void modify(){
         if(uc.findTask(oldName)) {
-            uc.changeName(name);
-            uc.changeCourse(course);
-            uc.changeDeadline(deadline);
-            uc.changePriority(priority);
-            uc.changeAssignmentType(assignenmentType);
+            uc.modifyTask(name, course, deadline, priority, assignmentType);
         }
     }
 

@@ -1,9 +1,5 @@
 package useCases;
 
-import entities.AssignmentType;
-import entities.Priority;
-import entities.Task;
-
 import java.time.LocalDateTime;
 
 /**
@@ -11,38 +7,23 @@ import java.time.LocalDateTime;
  */
 public interface ModifyTaskInputBoundary {
 
+    /**
+     * Create a new task and delete the old one ("modify")
+     * @param name task name
+     * @param course task course
+     * @param deadline task deadline
+     * @param priority priority string
+     * @param assignmentType assignment type string
+     */
+    void modifyTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType);
 
+    /**
+     * Find and verify that the task exists
+     * @param taskName the name of the task to be modified
+     * @return whether the task was found or not (boolean)
+     */
     boolean findTask(String taskName);
-    /**
-     * Changes the task's name.
-     *
-     * @param newName task's new name
-     */
-    void changeName(String newName);
 
-    /**
-     * Changes the task's associated course.
-     *
-     * @param course task's new course
-     */
-    void changeCourse(String course);
-
-    /**
-     * Changes the task's priority.
-     *
-     * @param priority task's priority
-     */
-
-    void changePriority(String priority);
-
-    /**
-     * Changes the task's deadline
-     *
-     * @param date task's deadline
-     */
-    void changeDeadline(LocalDateTime date);
-
-    void changeAssignmentType(String assignmentType);
     /**
      * Refreshes the task to update.
      */

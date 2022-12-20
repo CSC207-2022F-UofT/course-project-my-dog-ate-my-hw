@@ -2,7 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-
 import presenters.TaskVM;
 
 public class TaskUI extends JPanel{
@@ -21,7 +20,6 @@ public class TaskUI extends JPanel{
         add(buttonsPanel);
         add(new Box.Filler(fillerDimensions, fillerDimensions, fillerDimensions));
         add(scrollPanel);
-
     }
 
     private void format(){

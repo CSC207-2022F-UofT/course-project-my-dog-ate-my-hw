@@ -2,7 +2,6 @@ package database;
 
 import databaseBoundaries.TaskDBBoundary;
 import databaseBoundaries.UserDBBoundary;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;

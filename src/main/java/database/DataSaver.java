@@ -15,11 +15,11 @@ public class DataSaver {
         File f = new File(fileName);
 
         // Check if file exists
-        if(!f.exists()){
+        if (!f.exists()) {
             try {
                 // Create new file
                 boolean createdNewFile = f.createNewFile();
-                if(!createdNewFile){
+                if (!createdNewFile) {
                     System.out.println("DataSaver: Could not make File.");
                     return;
                 }
@@ -31,7 +31,7 @@ public class DataSaver {
 
         try {
             // Write data into file
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, false));
             out.writeObject(user);
             out.close();
         } catch (FileNotFoundException not){

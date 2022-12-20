@@ -94,13 +94,13 @@ public class Customization {
         String[] array = new String[customizations.size()];
         for (int i = 0; i < array.length; i++){
             Item item =  customizations.get(i);
-            array[i] = item.getName() + getLockedSymbol(item.isUnlocked(), item.getName());
+            array[i] = item.getName() + getLockedSymbol(item.isUnlocked());
         }
         return array;
     }
 
     // helper for toStringArray()
-    private String getLockedSymbol(boolean unlocked, String name){
+    private String getLockedSymbol(boolean unlocked){
         if (!unlocked) {
             return "(LOCKED)";
         } else {

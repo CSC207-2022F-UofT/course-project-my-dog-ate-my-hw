@@ -8,12 +8,6 @@ import database.CustomizationDB;
 public interface PetDBBoundary {
 
     /**
-     * A Getter for the currentHealth
-     * @return currHealth
-     */
-    int getCurr();
-
-    /**
      * A Getter for the name
      * @return name
      */

@@ -2,7 +2,6 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
@@ -56,6 +55,5 @@ public class ToolPanel extends JPanel {
         setPreferredSize(preferredSize);
 
     }
-
 
 }

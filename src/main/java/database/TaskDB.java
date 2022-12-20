@@ -57,12 +57,6 @@ public class TaskDB implements Serializable, TaskDBBoundary {
     public String getPriority(){return this.priority;}
 
     /**
-     * A Getter for completion
-     * @return completion
-     */
-    public boolean getCompletion(){return this.completion;}
-
-    /**
      * A Getter for assignmentType
      * @return assignmentType
      */

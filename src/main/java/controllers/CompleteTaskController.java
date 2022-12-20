@@ -1,15 +1,13 @@
 package controllers;
 
 import useCases.CompleteTaskInputBoundary;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CompleteTaskController implements ActionListener {
 
     private static CompleteTaskInputBoundary uc;
-    private String taskName;
-
+    private final String taskName;
     public static void setUc(CompleteTaskInputBoundary useCase){
         uc = useCase;
     }

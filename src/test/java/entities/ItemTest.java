@@ -9,7 +9,7 @@ public class ItemTest {
      * create a default item
      */
     @Test
-    public void CreateItemDefaulTest() {
+    public void CreateItemDefaultTest() {
         Item item = new Item();
         Assertions.assertEquals(1, item.getPrice());
         Assertions.assertFalse(item.isUnlocked());

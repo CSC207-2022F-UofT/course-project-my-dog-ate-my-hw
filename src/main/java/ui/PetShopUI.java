@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-
 public class PetShopUI extends JFrame {
 
     /* INSTANCE VARIABLES */

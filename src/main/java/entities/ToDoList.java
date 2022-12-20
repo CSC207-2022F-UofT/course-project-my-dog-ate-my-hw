@@ -1,9 +1,4 @@
 package entities;
-/*
-
-import java.util.List;
-import java.util.ArrayList;
-*/
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -90,7 +85,7 @@ public class ToDoList extends Checklist {
     }
 
     /**
-     * Return the sum of the points lost due to tasks being incompleted past their deadline. The number
+     * Return the sum of the points lost due to tasks being uncompleted past their deadline. The number
      * of points a task will cause someone to lose is based on its priority (high = 3 points, medium = 2 points,
      * low = 1 point).
      * @return the sum of points lost by the user due to tasks uncompleted past their deadline.

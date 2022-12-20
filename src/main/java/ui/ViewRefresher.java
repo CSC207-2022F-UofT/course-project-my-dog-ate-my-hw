@@ -33,6 +33,7 @@ public class ViewRefresher implements ViewRefresherBoundary{
     }
 
     public void refresh(TaskVM[] tasks){
+        pet = new PetVM(PetUIDS.getCurrentPet());
         refresh(pet, tasks);
     }
 

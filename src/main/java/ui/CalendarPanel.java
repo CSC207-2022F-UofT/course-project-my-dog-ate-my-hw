@@ -4,7 +4,6 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import useCases.DefaultValueData;
-
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +30,7 @@ public class CalendarPanel extends JFrame {
         datePicker.getJFormattedTextField().setText(date);
     }
 
-    public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+    public static class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
         private final SimpleDateFormat dateFormatter = new SimpleDateFormat(DefaultValueData.DATE_FORMAT);
 
         @Override

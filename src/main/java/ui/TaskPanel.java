@@ -3,7 +3,6 @@ package ui;
 import controllers.CompleteTaskController;
 import presenters.TaskVM;
 import useCases.DefaultValueData;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,7 +26,7 @@ public class TaskPanel extends JPanel {
             add(new JLabel(task.name));
         } else {
             setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-            initalizeWithFormat(task);
+            initializeWithFormat(task);
             if (task.completed) {
                 createDonePanel();
             } else {
@@ -56,7 +55,7 @@ public class TaskPanel extends JPanel {
         add(editTask);
     }
 
-    private void initalizeWithFormat(TaskVM task){
+    private void initializeWithFormat(TaskVM task){
         nameLabel = new JLabel(task.name);
         nameLabel.setFont(UIFormat.BUTTON_FONT);
         courseLabel = new JLabel(task.course);

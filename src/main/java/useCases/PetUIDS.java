@@ -53,4 +53,10 @@ public class PetUIDS {
     public static PetUIDS makeDefaultPet(){
         return new PetUIDS();
     }
+
+    public static PetUIDS getCurrentPet(){
+        User user = UserUC.u();
+        Pet pet = user.getPet();
+        return new PetUIDS(pet, user);
+    }
 }

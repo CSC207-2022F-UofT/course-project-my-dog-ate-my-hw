@@ -7,7 +7,7 @@ public interface CompleteTaskInputBoundary {
     /**
      * The main method that handles a completed task
      *
-     * @param taskName
+     * @param taskName the name of the task
      */
     void completeTask(String taskName, User user);
 

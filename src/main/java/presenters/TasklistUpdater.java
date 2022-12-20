@@ -2,7 +2,6 @@ package presenters;
 
 import useCases.TaskUIDS;
 import useCases.TasklistOutputBoundary;
-
 import java.util.ArrayList;
 
 public class TasklistUpdater implements TasklistOutputBoundary {
