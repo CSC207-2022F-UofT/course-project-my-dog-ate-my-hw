@@ -12,7 +12,6 @@ public class Title extends JPanel{
         setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         add(titleLabel);
         add(Box.createHorizontalGlue());
-
         setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
     }
 }

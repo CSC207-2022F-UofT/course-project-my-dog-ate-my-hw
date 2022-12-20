@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 public class TaskViewTest {
 
-
     /**
      * Tester for making a task UI.
      */

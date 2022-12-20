@@ -5,7 +5,6 @@ import controllers.ModifyTaskController;
 import presenters.TaskVM;
 import useCases.DefaultValueData;
 import useCases.InvalidTaskInformationException;
-
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;

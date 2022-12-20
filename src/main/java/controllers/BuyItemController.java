@@ -1,14 +1,10 @@
 package controllers;
 
-import useCases.AdoptPetInputBoundary;
 import useCases.BuyItemInputBoundary;
-
-import java.util.regex.Pattern;
 
 public class BuyItemController {
     private static BuyItemInputBoundary uc;
-    private String itemName;
-
+    private final String itemName;
     public static void setUc(BuyItemInputBoundary useCase){
         uc = useCase;
     }

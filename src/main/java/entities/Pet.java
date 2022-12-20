@@ -2,7 +2,6 @@ package entities;
 
 public class Pet {
 
-
     // ==PRIVATE VARIABLES==
 
     // the maximum health of the pet
@@ -20,7 +19,6 @@ public class Pet {
     // the customization object which keeps track of all items,
     // the currently equipped item, and the equipment status
     private Customization customization;
-
 
     // ==CONSTRUCTORS==
 
@@ -45,7 +43,6 @@ public class Pet {
         this.customization = customization;
     }
 
-
     // ==GETTERS==
 
     public static int getMaxHealth() {
@@ -66,12 +63,7 @@ public class Pet {
 
     public Customization getCustomizations() { return customization; }
 
-
     // ==SETTERS==
-
-    public void setCurrHealth(int currHealth) {
-        this.currHealth = currHealth;
-    }
 
     public void setCustomization(Customization customization) {this.customization = customization;}
 

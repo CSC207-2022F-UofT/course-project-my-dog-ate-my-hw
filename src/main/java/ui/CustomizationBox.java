@@ -1,7 +1,6 @@
 package ui;
 
 import controllers.BuyItemController;
-
 import javax.swing.*;
 import java.awt.*;
 

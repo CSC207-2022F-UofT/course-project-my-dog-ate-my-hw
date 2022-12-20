@@ -1,6 +1,6 @@
 package useCases;
+
 import entities.AbsentTaskNameException;
-import entities.Priority;
 import entities.Task;
 import entities.User;
 
@@ -25,16 +25,4 @@ public class GainPointsUC {
         }
     }
 
-    /**
-     * Another version of the gain method that deals with the User use case
-     * @param taskName Name of the task that has been completed
-     */
-    public static void Gain(String taskName) { GainPointsUC.Gain(taskName, UserUC.u());}
-
-    /**
-     * The refresh method that refreshes view after changes being made
-     */
-    public void refreshPoints() {
-        new PetRefresher().refresh();
-    }
 }

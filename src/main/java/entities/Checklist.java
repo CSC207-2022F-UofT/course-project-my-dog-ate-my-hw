@@ -10,7 +10,7 @@ public abstract class Checklist {
      * viewing purposes.
      */
 
-    private List<Task> taskList;
+    private final List<Task> taskList;
 
     public Checklist() {
         this.taskList = new ArrayList<>();

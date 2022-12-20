@@ -35,12 +35,6 @@ public class PetDB implements Serializable, PetDBBoundary {
     }
 
     /**
-     * A Getter for currentHealth
-     * @return currHealth
-     */
-    public int getCurr(){return this.currHealth;}
-
-    /**
      * A Getter for name
      * @return name
      */

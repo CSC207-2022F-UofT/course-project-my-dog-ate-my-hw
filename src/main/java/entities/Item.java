@@ -14,7 +14,7 @@ public class Item {
     // a boolean representing whether the Item has been bought
     private boolean unlocked;
 
-    // an String representing the Item icon (clean architecture?)
+    // a String representing the Item icon (clean architecture?)
     private String icon;
 
 

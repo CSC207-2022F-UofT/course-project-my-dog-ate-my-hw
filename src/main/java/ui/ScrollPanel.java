@@ -1,7 +1,6 @@
 package ui;
 
 import presenters.TaskVM;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,11 +12,11 @@ public class ScrollPanel extends JPanel {
     private static final int borderSpace = 6;
     private static final Dimension preferredSize = new Dimension(754, 630);
     private static final Dimension maxSize = new Dimension(760, 636);
-    private TaskScrollPane scrollPane;
+
     public void createScrollPanel(TaskVM[] tasks){
         format();
 
-        scrollPane = new TaskScrollPane();
+        TaskScrollPane scrollPane = new TaskScrollPane();
         scrollPane.createTaskScrollPane(tasks);
 
         setLayout(new GridBagLayout());
