@@ -67,7 +67,11 @@ public class LoadUserUC {
         // Create a new ToDoList object
         ToDoList toDoList = new ToDoList();
 
-        // Loop through the loaded ToDoList
+        // Check whether TDL exists
+        if (udb.getToDo() == null){
+            return toDoList;
+        }
+
         for (TaskDBBoundary taskdb : udb.getToDo()) {
 
             // Create a Task object, with null Priority and AssignmentType
@@ -85,8 +89,11 @@ public class LoadUserUC {
             // Take the Assignment String and assign an enum
             setAssignmentType(task, taskdb.getAssignmentType());
 
-            // Add the Task object to the ToDoList
-            toDoList.addTask(task);
+            // Do not add a task if it is already in the task list
+            if (!toDoList.getTaskList().contains(task)) {
+                System.out.println("task not already in: " + task);
+                toDoList.addTask(task);
+            }
         }
 
         // Return the ToDoList
@@ -123,8 +130,10 @@ public class LoadUserUC {
             // Take the Assignment String and assign an enum
             setAssignmentType(task, taskdb.getAssignmentType());
 
-            // Add the Task object to the DoneList
-            doneList.addTask(task);
+            // Do not add a task if it is already in the task list
+            if (!doneList.getTaskList().contains(task)){
+                doneList.addTask(task);
+            }
         }
 
         // Return the DoneList
@@ -139,6 +148,10 @@ public class LoadUserUC {
      * @return The Loaded Pet object
      */
     public static Pet loadPet() {
+
+        if (pdb.getName() == null){
+            return null;
+        }
 
         // Create a new Customization object
         Customization customization = new Customization();

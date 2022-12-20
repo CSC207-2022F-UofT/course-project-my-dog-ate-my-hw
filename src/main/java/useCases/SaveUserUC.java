@@ -24,7 +24,7 @@ public class SaveUserUC {
      * If no User object is provided, saveUser will
      * call the UserUC for a User object
      */
-    public void saveUser(){
+    public static void saveUser(){
         saveUser(UserUC.u());
     }
 
