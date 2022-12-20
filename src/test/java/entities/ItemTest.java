@@ -3,16 +3,26 @@ package entities;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for the Item Entity class.
+ * Coverage: 100% class, 100% methods, 100% lines.
+ */
 public class ItemTest {
 
     /**
      * create a default item
      */
     @Test
-    public void CreateItemDefaulTest() {
+    public void CreateItemDefaultTest() {
         Item item = new Item();
         Assertions.assertEquals(1, item.getPrice());
         Assertions.assertFalse(item.isUnlocked());
+    }
+
+    @Test
+    public void CreateItemIconTest() {
+        Item item3 = new Item("headpiece", "crown", 3, "picture", false);
+        Assertions.assertEquals(item3.getIcon(), "picture");
     }
 
     /**
