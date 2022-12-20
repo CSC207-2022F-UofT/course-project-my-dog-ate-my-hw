@@ -13,7 +13,7 @@ public class PetTest {
         Customization customization = new Customization();
         Pet pet = new Pet("name", "skin", customization);
         Assertions.assertEquals("name", pet.getName());
-        Assertions.assertEquals(customization, pet.getCustomization());
+        Assertions.assertEquals(customization, pet.getCustomizations());
         Assertions.assertEquals(Pet.getMaxHealth(), pet.getCurrHealth());
     }
 

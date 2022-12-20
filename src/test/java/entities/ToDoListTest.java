@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 
 public class ToDoListTest {
     private ToDoList toDoList;
@@ -19,7 +18,7 @@ public class ToDoListTest {
     @BeforeEach
     public void Setup() {
         toDoList = new ToDoList();
-        time = LocalDateTime.of(2022, 12, 29, 11, 59);
+        time = LocalDateTime.now().plusDays(5);
         task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task1);
     }
@@ -81,9 +80,10 @@ public class ToDoListTest {
     @Test
     public void TestPastDeadlineSum() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.MEDIUM, AssignmentType.ESSAY);
+                LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task2);
+        // Set deadlines to past (cant be added if deadline is past)
+        task2.setDeadline(task2.getDeadline().minusHours(2));
         Assertions.assertEquals(toDoList.pastDeadLineSum(), 2);
     }
 
@@ -95,13 +95,14 @@ public class ToDoListTest {
     @Test
     public void TestPastDeadlineSum2() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.MEDIUM, AssignmentType.ESSAY);
+                LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         Task task3 = new Task("Problem Set", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.HIGH, AssignmentType.ESSAY);
+                LocalDateTime.now().plusHours(1), Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task2);
         toDoList.addTask(task3);
+        // Set deadlines to past (cant be added if deadline is past)
+        task2.setDeadline(task2.getDeadline().minusHours(2));
+        task3.setDeadline(task3.getDeadline().minusHours(2));
         Assertions.assertEquals(toDoList.pastDeadLineSum(), 5);
     }
 

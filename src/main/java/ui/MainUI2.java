@@ -9,18 +9,19 @@ public class MainUI2 extends JFrame{
 
     private static final Dimension fillerSizeSmall = new Dimension(15, 733);
     private static final Dimension fillerSizeMid = new Dimension(26, 733);
-    private TaskUI taskUI;
-    private PetUI petUI;
 
-    public MainUI2(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
-        refresh(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
+    public MainUI2(int currHealth, int maxHealth, String skin, String petName, int points,
+                   String[] customizations, String equippedItem, boolean petAdopted, TaskVM[] tasks){
+        format();
+        showUI(currHealth, maxHealth, skin, petName, points, customizations, equippedItem, petAdopted, tasks);
+        setVisible(true);
     }
 
-    public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
-        format();
-        petUI = new PetUI();
-        taskUI = new TaskUI();
-        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedIteam);
+    private void showUI(int currHealth, int maxHealth, String skin, String petName, int points,
+                        String[] customizations, String equippedItem, boolean petAdopted, TaskVM[] tasks){
+        PetUI petUI = new PetUI();
+        TaskUI taskUI = new TaskUI();
+        petUI.createPetUI(currHealth, maxHealth, skin, petName, points, customizations, petAdopted, equippedItem);
         taskUI.createTaskUI(tasks);
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(UIFormat.MAIN_PANEL_BACKGROUND);
@@ -32,7 +33,6 @@ public class MainUI2 extends JFrame{
         mainPanel.add(new Box.Filler(fillerSizeMid, fillerSizeMid, fillerSizeMid));
         add(mainPanel);
         mainPanel.setMinimumSize(new java.awt.Dimension(1288, 733));
-        setVisible(true);
     }
 
     private void format(){
@@ -41,6 +41,11 @@ public class MainUI2 extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+    }
+
+    public MainUI2 copy(int currHealth, int maxHealth, String skin, String petName, int points,
+                        String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
+        return new MainUI2(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
     }
 
 }

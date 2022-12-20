@@ -23,23 +23,17 @@ public class TaskTest {
     @BeforeEach
     public void setUp() {
 
-        task1 = new Task("test1", "bio",
-                LocalDateTime.of(2023, 12, 12, 11, 59), Priority.HIGH,
+        task1 = new Task("test1", "bio", LocalDateTime.now().plusYears(3), Priority.HIGH,
                 AssignmentType.ESSAY);
-        task2 = new Task("test2", "chm",
-                LocalDateTime.of(2023, 12, 10, 11, 59), Priority.MEDIUM,
+        task2 = new Task("test2", "chm", LocalDateTime.now().plusYears(2), Priority.MEDIUM,
                 AssignmentType.ESSAY);
-        task3 = new Task("test3", "chm",
-                LocalDateTime.of(2024, 12, 10, 11, 59), Priority.LOW,
+        task3 = new Task("test3", "chm", LocalDateTime.now().plusYears(1), Priority.LOW,
                 AssignmentType.ESSAY);
-        task4 = new Task("test4", "chm",
-                LocalDateTime.of(2022, 11, 10, 11, 59), Priority.HIGH,
+        task4 = new Task("test4", "chm", LocalDateTime.now().minusMonths(1), Priority.HIGH,
                 AssignmentType.ESSAY);
-        task5 = new Task("test5", "chm",
-                LocalDateTime.of(2022, 10, 10, 11, 59), Priority.MEDIUM,
+        task5 = new Task("test5", "chm", LocalDateTime.now().minusMonths(2), Priority.MEDIUM,
                 AssignmentType.ESSAY);
-        task6 = new Task("test6", "chm",
-                LocalDateTime.of(2022, 9, 10, 11, 59), Priority.LOW,
+        task6 = new Task("test6", "chm", LocalDateTime.now().minusMonths(3), Priority.LOW,
                 AssignmentType.ESSAY);
     }
 
@@ -52,38 +46,37 @@ public class TaskTest {
     @Test
     public void SetNameTest() {
         Task task = new Task("rough draft", "csc207",
-                LocalDateTime.of(2015, 12, 10, 11, 59),
-                Priority.HIGH, AssignmentType.PROJECT);
+                LocalDateTime.now().plusMonths(1), Priority.HIGH, AssignmentType.PROJECT);
         task.setName("final draft");
         Assertions.assertEquals("final draft", task.getName());
     }
 
     @Test
     public void GetCourseTest() {
-        Task task = new Task("rough draft", "SOC150", LocalDateTime.of(2015,
-                12, 10, 11, 59), Priority.HIGH, AssignmentType.PROJECT);
+        Task task = new Task("rough draft", "SOC150", LocalDateTime.now().plusMonths(1),
+                Priority.HIGH, AssignmentType.PROJECT);
         Assertions.assertEquals("SOC150", task.getCourse());
     }
 
     @Test
     public void SetCourseTest() {
-        Task task = new Task("rough draft", "csc207",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.HIGH, AssignmentType.PROJECT);
+        Task task = new Task("rough draft", "csc207", LocalDateTime.now().plusMonths(1),
+                Priority.HIGH, AssignmentType.PROJECT);
         task.setCourse("PSY100");
         Assertions.assertEquals("PSY100", task.getCourse());
     }
 
     @Test
     public void GetPriorityTest() {
-        Task task = new Task("rough draft", "SOC150",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.MEDIUM, AssignmentType.PROJECT);
+        Task task = new Task("rough draft", "SOC150", LocalDateTime.now().plusMonths(1),
+                Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertEquals("MEDIUM", task.getPriority().name());
     }
 
     @Test
     public void SetPriorityTest() {
         Task task = new Task("rough draft", "csc207",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.HIGH, AssignmentType.PROJECT);
+                LocalDateTime.now().plusMonths(1), Priority.HIGH, AssignmentType.PROJECT);
         task.setPriority(Priority.LOW);
         Assertions.assertEquals("LOW", task.getPriority().name());
     }
@@ -91,14 +84,14 @@ public class TaskTest {
     @Test
     public void GetAssignmentTypeTest() {
         Task task = new Task("rough draft", "SOC150",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.MEDIUM, AssignmentType.PROJECT);
+                LocalDateTime.now().plusMonths(1), Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertEquals("PROJECT", task.getAssignmentType().name());
     }
 
     @Test
     public void SetAssignmentTypeTest() {
         Task task = new Task("rough draft", "csc207",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.HIGH, AssignmentType.PROJECT);
+                LocalDateTime.now().plusMonths(1), Priority.HIGH, AssignmentType.PROJECT);
         task.setAssignmentType(AssignmentType.ESSAY);
         Assertions.assertEquals("ESSAY", task.getAssignmentType().name());
     }
@@ -106,7 +99,7 @@ public class TaskTest {
     @Test
     public void IsCompletionTest() {
         Task task = new Task("rough draft", "SOC150",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.MEDIUM, AssignmentType.PROJECT);
+                LocalDateTime.now().plusMonths(1), Priority.MEDIUM, AssignmentType.PROJECT);
         Assertions.assertFalse(task.isCompletion());
         task.setCompletion(true);
         Assertions.assertTrue(task.isCompletion());
@@ -117,9 +110,9 @@ public class TaskTest {
 
     @Test
     public void ToStringTest() {
-        Task task = new Task("testing", "csc207",
-                LocalDateTime.of(2015, 12, 10, 11, 59), Priority.HIGH, AssignmentType.PROJECT);
-        Assertions.assertEquals("testing csc207 2015-12-10T11:59 HIGH", task.toString());
+        LocalDateTime deadline = LocalDateTime.now().plusMonths(1);
+        Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
+        Assertions.assertEquals("testing csc207 " + deadline + " HIGH", task.toString());
     }
 
     @Test

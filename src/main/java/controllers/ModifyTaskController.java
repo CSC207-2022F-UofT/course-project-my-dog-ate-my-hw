@@ -19,12 +19,13 @@ public class ModifyTaskController {
 
     public ModifyTaskController(LocalDateTime deadline, String name, String course, String priority, String assignenmentType, String oldName){
         this.deadline = deadline;
-        this.name = name;
-        this.course = course;
+        this.name = name.strip();
+        this.course = course.strip();
         this.priority = priority;
         this.assignenmentType = assignenmentType;
-        this.oldName = oldName;
+        this.oldName = oldName.strip();
         modify();
+        uc.refreshTask();
     }
 
     public void modify(){

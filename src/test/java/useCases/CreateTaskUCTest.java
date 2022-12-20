@@ -13,18 +13,24 @@ public class CreateTaskUCTest {
      */
     @Test
     public void CreateTaskTest() throws AbsentTaskNameException {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDateTime.now().plusYears(5);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         entities.Pet pet = new Pet("Name", null);
         entities.User user = new User(10, pet);
         CreateTaskUC createTaskUC = new CreateTaskUC();
-        createTaskUC.createTask("testing", "csc207", deadline, "HIGH", "PROJECT");
-        Assertions.assertEquals(user.getToDo().searchFor("testing"), task);
+        createTaskUC.createTask("testing", "csc207", deadline, "HIGH", "PROJECT", user);
+        Task createdTask = user.getToDo().searchFor("testing");
+        // Testing that values are equal
+        Assertions.assertEquals(task.getName(), createdTask.getName());
+        Assertions.assertEquals(task.getCourse(), createdTask.getCourse());
+        Assertions.assertEquals(task.getDeadline(), createdTask.getDeadline());
+        Assertions.assertEquals(task.getPriority().toString(), createdTask.getPriority().toString());
+        Assertions.assertEquals(task.getAssignmentType().toString(), createdTask.getAssignmentType().toString());
     }
 
     @Test
     public void AddToTDLTest() throws AbsentTaskNameException {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDateTime.now().plusYears(5);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         entities.ToDoList todo = new ToDoList();
         todo.addTask(task);
@@ -33,9 +39,17 @@ public class CreateTaskUCTest {
 
     @Test
     public void GetTaskTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        User user = new User();
+        LocalDateTime deadline = LocalDateTime.now().plusYears(5);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         CreateTaskUC createTaskUC = new CreateTaskUC();
-        Assertions.assertEquals(task, createTaskUC.getTask());
+        createTaskUC.createTask(task.getName(), task.getCourse(), task.getDeadline(), task.getPriority().toString(),
+                task.getAssignmentType().toString(), user);
+        // Testing that values are equal
+        Assertions.assertEquals(task.getName(), createTaskUC.getTask().getName());
+        Assertions.assertEquals(task.getCourse(), createTaskUC.getTask().getCourse());
+        Assertions.assertEquals(task.getDeadline(), createTaskUC.getTask().getDeadline());
+        Assertions.assertEquals(task.getPriority().toString(), createTaskUC.getTask().getPriority().toString());
+        Assertions.assertEquals(task.getAssignmentType().toString(), createTaskUC.getTask().getAssignmentType().toString());
     }
 }

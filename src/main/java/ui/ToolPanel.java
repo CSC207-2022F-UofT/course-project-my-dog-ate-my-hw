@@ -19,10 +19,10 @@ public class ToolPanel extends JPanel {
     Button healButton;
 
     // METHODS
-    public void createToolPanel(String[] customizations){
+    public void createToolPanel(String[] customizations, String equippedItem){
         format();
         createHealButton();
-        createCustomizationBox(customizations);
+        createCustomizationBox(customizations, equippedItem);
         makeToolPanelLayout();
     }
     private void makeToolPanelLayout() {
@@ -44,9 +44,9 @@ public class ToolPanel extends JPanel {
     }
 
     // Creates a JComboBox that stores Customizations
-    private void createCustomizationBox(String[] customizations){
+    private void createCustomizationBox(String[] customizations, String equippedItem){
         customizationBox = new CustomizationBox();
-        customizationBox.createCustomizationBox(customizations);
+        customizationBox.createCustomizationBox(customizations, equippedItem);
     }
 
     private void format(){

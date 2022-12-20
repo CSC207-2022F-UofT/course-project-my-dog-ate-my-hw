@@ -5,11 +5,11 @@ import useCases.TaskUIDS;
 import java.time.LocalDateTime;
 
 public class TaskVM {
-    public LocalDateTime deadline;
+    public String deadline;
     public String name;
     public String course;
     public String priority;
-    public String assignenmentType;
+    public String assignmentType;
     public Boolean completed;
 
     public TaskVM(TaskUIDS task){
@@ -17,7 +17,7 @@ public class TaskVM {
         name = task.name;
         course = task.course;
         priority = task.priority;
-        assignenmentType = task.assignenmentType;
+        assignmentType = task.assignenmentType;
         completed = task.completed;
     }
 }

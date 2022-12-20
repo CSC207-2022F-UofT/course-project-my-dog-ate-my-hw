@@ -3,6 +3,7 @@ import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ModifyTaskUCTest {
@@ -13,48 +14,56 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangeNameTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
+        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.changeName("soc200");
-        Assertions.assertEquals("soc100", task.getName());
+        Assertions.assertEquals("soc200", task.getName());
     }
 
     @Test
     public void ChangePriorityTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
-        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
+        ToDoList todo = new ToDoList();
+        todo.addTask(task);
+        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.changePriority(Priority.LOW.toString());
         Assertions.assertEquals(Priority.LOW, task.getPriority());
     }
 
     @Test
     public void ChangeDeadlineTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
-        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
-        LocalDateTime deadline2 = LocalDateTime.parse("2025-12-19");
+        ToDoList todo = new ToDoList();
+        todo.addTask(task);
+        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
+        LocalDateTime deadline2 = LocalDate.parse("2025-12-19").atStartOfDay();
         modifyTaskUC.changeDeadline(deadline2);
         Assertions.assertEquals(deadline2, task.getDeadline());
     }
 
     @Test
     public void ChangeCourseTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
-        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
+        ToDoList todo = new ToDoList();
+        todo.addTask(task);
+        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.changeCourse("csc108");
         Assertions.assertEquals("csc108", task.getCourse());
     }
 
     @Test
     public void ChangeAssignmentTest() {
-        LocalDateTime deadline = LocalDateTime.parse("2025-12-30");
+        LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
-        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing");
+        ToDoList todo = new ToDoList();
+        todo.addTask(task);
+        ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.changeAssignmentType(AssignmentType.QUIZ.toString());
         Assertions.assertEquals(AssignmentType.QUIZ, task.getAssignmentType());
     }

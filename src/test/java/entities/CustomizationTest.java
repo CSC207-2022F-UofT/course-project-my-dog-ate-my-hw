@@ -9,14 +9,13 @@ public class CustomizationTest {
      * create a customization object with a single unlocked item and verify that
      * the current equipment is item
      */
-     @Test
+    @Test
     public void TestCurrentEquipment(){
         Item item = new Item("hat", "cap", 5, true);
         Customization customization = new Customization(item);
-        customization.addItem(item);
-        Assertions.assertEquals(customization.currentEquipment, item);
-        Assertions.assertTrue(customization.isCurrentlyEquipped);
-        Assertions.assertTrue(customization.possibleCustomizations().contains(item));
+        Assertions.assertEquals(customization.getCurrentEquipment(), item);
+        Assertions.assertTrue(customization.getIsCurrentlyEquipped());
+        Assertions.assertTrue(customization.getPossibleCustomizations().contains(item));
     }
 
     /**
@@ -27,8 +26,7 @@ public class CustomizationTest {
     public void TestIsCurrentlyEquipped(){
         Item item = new Item("hat", "cap", 5, true);
         Customization customization = new Customization(item);
-        customization.addItem(item);
-        Assertions.assertTrue(customization.isCurrentlyEquipped);
+        Assertions.assertTrue(customization.getIsCurrentlyEquipped());
     }
 
     /**
@@ -39,8 +37,7 @@ public class CustomizationTest {
     public void TestPossibleCustomizations(){
         Item item = new Item("hat", "cap", 5, true);
         Customization customization = new Customization(item);
-        customization.addItem(item);
-        Assertions.assertTrue(customization.possibleCustomizations().contains(item));
+        Assertions.assertTrue(customization.getPossibleCustomizations().contains(item));
     }
 
 }

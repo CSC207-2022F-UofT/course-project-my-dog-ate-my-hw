@@ -5,22 +5,20 @@ import presenters.TaskVM;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
-import java.util.LinkedList;
 
 public class TaskScrollPane extends JScrollPane {
 
     private static final Dimension preferredSize = new Dimension(754, 630);
     private JPanel taskContainer;
-    private LinkedList<JPanel> taskPanels;
 
     /**
      * Creates a TaskScrollPane
      * @param tasks the tasks that will be added to the scroll pane
      */
     public void createTaskScrollPane(TaskVM[] tasks){
-        formatPane();
         makeTaskContainer(tasks);
         add(taskContainer);
+        formatPane();
     }
 
     /**
@@ -49,15 +47,16 @@ public class TaskScrollPane extends JScrollPane {
     private void makeTaskContainer(TaskVM[] tasks){
         taskContainer = new JPanel();
         taskContainer.setLayout(new BoxLayout(taskContainer, BoxLayout.PAGE_AXIS));
+
         if(tasks != null){
         // load in all tasks as panels
         for(TaskVM task : tasks){
             TaskPanel panel = new TaskPanel();
             panel.createTaskPanel(task);
-            taskPanels.add(panel);
             taskContainer.add(panel);
         }}
 
+        taskContainer.add(Box.createVerticalGlue());
         // format container
         taskContainer.setMaximumSize(new Dimension(754, 32767));
         taskContainer.setMinimumSize(new Dimension(754, 100));

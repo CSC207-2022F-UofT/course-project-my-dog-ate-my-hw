@@ -3,6 +3,7 @@ package ui;
 import presenters.PetVM;
 import presenters.TaskVM;
 import presenters.ViewRefresherBoundary;
+import useCases.PetUIDS;
 
 public class ViewRefresher implements ViewRefresherBoundary{
 
@@ -11,17 +12,21 @@ public class ViewRefresher implements ViewRefresherBoundary{
 
     private static MainUI2 mainUI;
 
-    public static void setMainUI(MainUI2 main){ mainUI = main;}
+    public static void setMainUI(MainUI2 main){mainUI = main;}
 
     public void refresh(PetVM pet, TaskVM[] tasks){
-        this.pet = pet;
+        if (pet != null) {
+            this.pet = pet;
+        } else {
+            pet = new PetVM(PetUIDS.makeDefaultPet());
+        }
         this.tasks = tasks;
         refresh(pet.currHealth,
                 pet.maxHealth,
                 pet.skin,
                 pet.name,
                 pet.points,
-                pet.customizations ,
+                pet.customizations,
                 pet.currCustomization,
                 pet.adopted,
                 tasks);
@@ -36,6 +41,8 @@ public class ViewRefresher implements ViewRefresherBoundary{
     }
 
     public void refresh(int currHealth, int maxHealth, String skin, String petName, int points, String[] customizations, String currCustomization, boolean petAdopted, presenters.TaskVM[] tasks){
-        mainUI.refresh(currHealth, maxHealth, skin, petName, points, customizations, currCustomization, petAdopted, tasks);
+        MainUI2 copy = mainUI.copy(currHealth, maxHealth, skin, petName, points, customizations, currCustomization, petAdopted, tasks);
+        mainUI.dispose();
+        mainUI = copy;
     }
 }

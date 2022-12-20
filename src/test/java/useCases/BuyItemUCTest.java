@@ -43,25 +43,28 @@ public class BuyItemUCTest {
     }
 
     @Test
-    public void BuyItemTest1() throws AbsentItemNameException {
-        BuyItemUC.buyItem(user,"Straw Hat");
+    public void BuyItemTest1() {
+        BuyItemUC buyItemUC = new BuyItemUC();
+        buyItemUC.buyItem(user,"Straw Hat");
         Assertions.assertEquals(user.getPoints(), 1);
 
-        Assertions.assertEquals(user.getPet().getCustomization().currentEquipment().getName(), "Straw Hat");
+        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Straw Hat");
     }
 
     @Test
-    public void BuyItemTest2() throws AbsentItemNameException {
-        BuyItemUC.buyItem(user,"Cap");
+    public void BuyItemTest2() {
+        BuyItemUC buyItemUC = new BuyItemUC();
+        buyItemUC.buyItem(user,"Cap");
         Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertFalse(user.getPet().getCustomization().isCurrentlyEquipped());
+        Assertions.assertFalse(user.getPet().getCustomizations().getIsCurrentlyEquipped());
     }
 
     @Test
-    public void BuyItemTest3() throws AbsentItemNameException {
-        BuyItemUC.buyItem(user,"Baseball Cap");
+    public void BuyItemTest3() {
+        BuyItemUC buyItemUC = new BuyItemUC();
+        buyItemUC.buyItem(user,"Baseball Cap");
         Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertEquals(user.getPet().getCustomization().currentEquipment().getName(), "Baseball Cap");
+        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Baseball Cap");
     }
 
 

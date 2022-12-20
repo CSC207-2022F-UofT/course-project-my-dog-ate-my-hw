@@ -13,11 +13,8 @@ public class PetDisplayPanel extends JPanel{
     private static final Dimension petDimensions = new Dimension(410,410);
     private static final int imageBorderSpace = 15;
 
-    //INSTANCE VARIABLES //
-    private JLabel petImage;
-    private Button adoptButton;
-
     // METHODS //
+
     public void createPetPanel(String skin, String currentEquipment, int currHealth, boolean petAdopted) {
         format();
         if(petAdopted) {
@@ -30,21 +27,20 @@ public class PetDisplayPanel extends JPanel{
 
     /**
      * Displays the User's pet as a JLabel
-     * @param skin
+     * @param skin the skinID of the pet
      */
     private void createPetDisplay(String skin, String currentEquipment, int currHealth){
         String path;
         if(currHealth == 0){
             // get path if pet is dead
-            path = "src/main/resources/petIcons/" + skin + "dead" + ".PNG";
-        } else if(!currentEquipment.equals("None")){
+            path = "src/main/resources/petImages/" + skin + "dead" + ".PNG";
+        } else if(!currentEquipment.equals("None") && !currentEquipment.equals("")){
             // Get the string for customizations
-            path = "src/main/resources/petIcons/" + skin + currentEquipment + ".PNG";
+            path = "src/main/resources/petImages/" + skin + currentEquipment + ".PNG";
         } else {
-            path = "src/main/resources/petIcons/" + skin + ".PNG";
+            path = "src/main/resources/petImages/" + skin + ".PNG";
         }
-
-        petImage = makePetJLabel(getPetImage(path));
+        JLabel petImage = makePetJLabel(getPetImage(path));
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(imageBorderSpace, imageBorderSpace, imageBorderSpace, imageBorderSpace);
@@ -59,7 +55,7 @@ public class PetDisplayPanel extends JPanel{
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.CENTER;
         ButtonBuilder builder = new ButtonBuilder();
-        adoptButton = builder.buildAdoptButton(UIFormat.LIGHT_GREEN, Color.WHITE, "Adopt Pet");
+        Button adoptButton = builder.buildAdoptButton(UIFormat.LIGHT_GREEN, Color.WHITE, "Adopt Pet");
         this.add(adoptButton, c);
     }
 
@@ -96,7 +92,6 @@ public class PetDisplayPanel extends JPanel{
         setBackground(UIFormat.BUTTON_PINK);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
-
     }
 
 }

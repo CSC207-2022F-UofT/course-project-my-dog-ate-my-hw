@@ -4,9 +4,7 @@ import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
-import java.time.Month;
 
 public class RouletteUCTest {
     User user;
@@ -20,10 +18,11 @@ public class RouletteUCTest {
     public void Setup() {
         toDoList = new ToDoList();
         user = new User();
-        task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.of(2022, Month.DECEMBER
-                , 29, 19, 30, 40), Priority.HIGH, AssignmentType.ESSAY);
+        task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.now().plusDays(5),
+                Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         user.setTodo(toDoList);
+        UserUC.declare(user);
     }
 
     /**
@@ -33,7 +32,8 @@ public class RouletteUCTest {
     @Test
     public void RouletteTest1() {
         RouletteUC rouletteUC = new RouletteUC();
-        Task task = rouletteUC.Roulette(user);
+        rouletteUC.roulette();
+        Task task = rouletteUC.getTask();
         Assertions.assertEquals(task.getName(), task1.getName());
     }
 
@@ -44,11 +44,11 @@ public class RouletteUCTest {
     @Test
     public void RouletteTest2() {
         Task task2 = new Task ("CompSci Assignment", "CSC236",
-                LocalDateTime.of(2022, Month.OCTOBER, 29, 19, 30, 40),
-                Priority.MEDIUM, AssignmentType.ESSAY);
+                LocalDateTime.now().plusDays(5), Priority.MEDIUM, AssignmentType.ESSAY);
         user.getToDo().addTask(task2);
         RouletteUC rouletteUC = new RouletteUC();
-        Task task = rouletteUC.Roulette(user);
+        rouletteUC.roulette();
+        Task task = rouletteUC.getTask();
         Assertions.assertTrue(task.getName().equals(task1.getName())
                 ||task.getName().equals(task2.getName()));
     }

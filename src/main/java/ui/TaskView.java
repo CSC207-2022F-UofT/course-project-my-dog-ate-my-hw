@@ -3,15 +3,15 @@ package ui;
 import controllers.CreateTaskController;
 import controllers.ModifyTaskController;
 import presenters.TaskVM;
+import useCases.DefaultValueData;
+import useCases.InvalidTaskInformationException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 
 /**
  * Displays a window to change task's name, deadline, course, priority and assignment type.
@@ -19,15 +19,15 @@ import java.time.format.DateTimeFormatterBuilder;
 public class TaskView extends JFrame {
     private static final String[] priority = {"LOW", "MEDIUM","HIGH"};
     private static final String[] assignmentType = {"ESSAY", "PROJECT","EXAM", "QUIZ", "REFLECTION"};
-    private JLabel labelName = new JLabel("Enter name: ");
-    private JLabel labelCourse = new JLabel("Enter course: ");
+    private final JLabel labelName = new JLabel("Enter name: ");
+    private final JLabel labelCourse = new JLabel("Enter course: ");
 
-    private JLabel labelDeadline = new JLabel("Enter deadline: ");
-    private JLabel labelPriority = new JLabel("Enter Priority: ");
-    private JLabel labelAssignment = new JLabel("Enter Assignment Type: ");
-    private JButton buttonSave = new JButton("Save");
-    private JTextField textName = new JTextField(20);
-    private JTextField textCourse = new JTextField(20);
+    private final JLabel labelDeadline = new JLabel("Enter deadline: ");
+    private final JLabel labelPriority = new JLabel("Enter Priority: ");
+    private final JLabel labelAssignment = new JLabel("Enter Assignment Type: ");
+    private final JButton buttonSave = new JButton("Save");
+    private final JTextField textName = new JTextField(20);
+    private final JTextField textCourse = new JTextField(20);
     private CalendarPanel calendarPanel;
     private JComboBox<String> priorityBox;
     private JComboBox<String> assignmentTypeBox;
@@ -54,7 +54,8 @@ public class TaskView extends JFrame {
         textName.setText(task.name);
         textCourse.setText(task.course);
         setSelectedValue(priorityBox, task.priority);
-        setSelectedValue(assignmentTypeBox, task.assignenmentType);
+        setSelectedValue(assignmentTypeBox, task.assignmentType);
+        calendarPanel.setDate(task.deadline);
         display();
     }
 
@@ -106,7 +107,7 @@ public class TaskView extends JFrame {
         priorityBox.setBounds(80, 50, 140, 20);
         newPanel.add(priorityBox,constraints);
 
-        // add label assignment type and a assignment drop down
+        // add label assignment type and an assignment drop down
         constraints.gridx = 0;
         constraints.gridy = 4;
         newPanel.add(labelAssignment, constraints);
@@ -121,21 +122,7 @@ public class TaskView extends JFrame {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         newPanel.add(buttonSave, constraints);
-        buttonSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(newTask){
-                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    new CreateTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem(),
-                            (String) assignmentTypeBox.getSelectedItem());
-                } else{
-                    LocalDateTime d = LocalDateTime.parse(calendarPanel.date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    new ModifyTaskController(d, textName.getText(), textCourse.getText(), (String) priorityBox.getSelectedItem()
-                            , (String) assignmentTypeBox.getSelectedItem(), oldName);
-                }
-                dispose();
-            }
-        });
+        buttonSave.addActionListener(e -> callController());
 
         // add the panel to this frame
         add(newPanel);
@@ -151,13 +138,8 @@ public class TaskView extends JFrame {
         // set look and feel to the system look and feel
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
         setVisible(true);
@@ -169,14 +151,63 @@ public class TaskView extends JFrame {
      * @param comboBox the combobox box being search in
      * @param value the value being searched for
      */
-    public void setSelectedValue(JComboBox comboBox, String value){
+    private void setSelectedValue(JComboBox<String> comboBox, String value){
         String item;
         for (int i = 0; i < comboBox.getItemCount(); i++) {
-            item = (String) comboBox.getItemAt(i);
+            item = comboBox.getItemAt(i);
             if (item.equalsIgnoreCase(value)){
                 comboBox.setSelectedIndex(i);
                 break;
             }
         }
     }
+
+    private LocalDateTime stringToDate(String textDate){
+        try {
+            LocalDate date = LocalDate.parse(textDate, DateTimeFormatter.ofPattern(DefaultValueData.DATE_FORMAT));
+            return date.atTime(DefaultValueData.DEADLINE_HOUR, DefaultValueData.DEADLINE_MIN);
+        } catch (DateTimeParseException e) {
+            createPopUp();
+            throw new RuntimeException("Date not parsed", e);
+        }
+    }
+
+    private void callController() {
+        // Hands all necessary information to controller based on if window is newTask or not
+        // Shows user an error message if task info is entered incorrectly
+        if(newTask){
+            try {
+                LocalDateTime dateTime = stringToDate(calendarPanel.getDate());
+                dispose();
+                new CreateTaskController(dateTime, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(),
+                        (String) assignmentTypeBox.getSelectedItem());
+            } catch (NullPointerException | InvalidTaskInformationException error) {
+                createPopUp();
+                throw new RuntimeException("Task Info Not Entered", error);
+            }
+        } else {
+            try {
+                LocalDateTime dateTime = stringToDate(calendarPanel.getDate());
+                dispose();
+                new ModifyTaskController(dateTime, textName.getText(), textCourse.getText(),
+                        (String) priorityBox.getSelectedItem(), (String) assignmentTypeBox.getSelectedItem(), oldName);
+            } catch (NullPointerException | InvalidTaskInformationException error) {
+                createPopUp();
+                throw new RuntimeException("Task Info Not Entered", error);
+            }
+        }
+    }
+
+    private void createPopUp() {
+        // creates warning popup so that user understands error
+        JFrame popup = new JFrame("Error");
+        popup.setLayout(new FlowLayout(FlowLayout.CENTER, 2, 2));
+        popup.add(new JLabel("Task information incorrectly, please try again"));
+        popup.setBackground(Color.red.brighter());
+        popup.pack();
+        popup.setLocationRelativeTo(null);
+        popup.setVisible(true);
+    }
+
 }

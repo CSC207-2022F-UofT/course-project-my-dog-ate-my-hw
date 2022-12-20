@@ -2,9 +2,10 @@ import controllers.*;
 import database.UserDB;
 import database.PetDB;
 import database.CustomizationDB;
-import entities.User;
+import entities.*;
 import presenters.MainViewUpdater;
 import presenters.PetUpdater;
+import presenters.TaskVM;
 import presenters.TasklistUpdater;
 import ui.MainUI2;
 import ui.ViewRefresher;
@@ -23,11 +24,10 @@ public class Main {
                  ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String[] s = {"None", "Halo"};
-        String[] t = new String[0];
         MainViewUpdater m = new MainViewUpdater();
+        TaskVM[] tasks = null;
         UserUC.declareUI(m);
-        mainUI = new MainUI2(0, 0, "", "", 0, s, "", false, null);
+        mainUI = new MainUI2(DefaultValueData.DEFAULT_HEALTH, Pet.getMaxHealth(), DefaultValueData.DEFAULT_SKIN, DefaultValueData.DEFAULT_NAME, DefaultValueData.DEFAULT_POINTS, DefaultValueData.DEFAULT_CUSTOMS, DefaultValueData.DEFAULT_CURR_CUSTOM, false, tasks);
         injectDepend();
         initializeUser();
     }
@@ -38,6 +38,7 @@ public class Main {
     }
     private static void injectDepend(){
         BuyHeartController.setUc(new BuyHeartUC());
+        BuyItemController.setUc(new BuyItemUC());
         CompleteTaskController.setUc(new CompleteTaskUC());
         CreateTaskController.setUc(new CreateTaskUC());
         ModifyTaskController.setUc(new ModifyTaskUC());

@@ -1,6 +1,5 @@
 package useCases;
 
-import entities.Task;
 import entities.User;
 
 import java.util.ArrayList;
@@ -12,15 +11,18 @@ public class RouletteUC implements RouletteInputBoundary{
     /**
      * Returns a randomized task in the user's ToDoList
      * @param user The user who performs the action
-     * @return A randomized task from ToDoList
      */
     public void roulette(User user) {
-        task = user.getToDo().randomTask();
+        if (user.getToDo() != null){
+            task = user.getToDo().randomTask();
+            if (task == null) {
+                task = DefaultValueData.EMPTY_TASK;
+            }
+        }
     }
 
     /**
      * Another version of the roulette method
-     * @return A randomized task from ToDoList
      */
     public void roulette() {roulette(UserUC.u());}
 

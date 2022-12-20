@@ -6,8 +6,8 @@ import useCases.TasklistOutputBoundary;
 
 public class MainViewUpdater implements MainOutputBoundary {
 
-    private PetUpdater petUpdater;
-    private TasklistUpdater tasklistUpdater;
+    private final PetUpdater petUpdater;
+    private final TasklistUpdater tasklistUpdater;
 
     public MainViewUpdater(){
         petUpdater = new PetUpdater();
@@ -20,10 +20,6 @@ public class MainViewUpdater implements MainOutputBoundary {
     @Override
     public PetOutputBoundary getPetOutputBoundary() {
         return getPetUpdater();
-    }
-
-    public TasklistUpdater getTasklistUpdater() {
-        return tasklistUpdater;
     }
 
     public TasklistOutputBoundary getTasklistOutputBoundary(){

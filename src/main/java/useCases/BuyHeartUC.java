@@ -22,10 +22,6 @@ public class BuyHeartUC implements BuyHeartInputBoundary{
         }
     }
 
-    public void buyHeart(int hearts){
-        buyHeart(UserUC.u(), hearts);
-    }
-
     public void buyHeart(){
         buyHeart(UserUC.u(), 1);
     }

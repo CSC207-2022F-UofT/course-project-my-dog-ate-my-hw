@@ -15,8 +15,8 @@ public class CreateTaskController {
 
         public CreateTaskController(LocalDateTime deadline, String name, String course, String priority, String assignenmentType){
             this.deadline = deadline;
-            this.name = name;
-            this.course = course;
+            this.name = name.strip();
+            this.course = course.strip();
             this.priority = priority;
             this.assignenmentType = assignenmentType;
             create();

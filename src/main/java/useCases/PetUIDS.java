@@ -1,10 +1,11 @@
 package useCases;
 
 import entities.Pet;
-
-import java.util.ArrayList;
+import entities.User;
 
 public class PetUIDS {
+
+    // ==INSTANCE VARIABLES==
     public int MAX_HEALTH;
     public int currHealth;
     public String name;
@@ -13,26 +14,43 @@ public class PetUIDS {
     public String[] customizations;
     public int points;
 
-    public PetUIDS(entities.Pet pet){
-        points = 0; // Change to points from user
+    public PetUIDS(entities.Pet pet, User user) {
         MAX_HEALTH = Pet.getMaxHealth();
-        currHealth = pet.getCurrHealth();
-        skin = pet.getSkin();
-        if(pet.getCustomization().currentEquipment() != null) {
-            currCustomization = pet.getCustomization().currentEquipment().getName();
+        if (user != null) {
+            points = user.getPoints();
         } else {
-            currCustomization = "None";
+            points = DefaultValueData.DEFAULT_POINTS;
         }
-        ArrayList<String> cus = new ArrayList<>();
-        cus.add("None");
-        for(entities.Item i : pet.getCustomization().possibleCustomizations())
-            cus.add(i.getName());
-        Object[] temp = cus.toArray();
-        String[] temp2 = new String[temp.length];
-        for(int i = 0; i < temp.length; i++){
-            String y = temp[i].toString();
-            temp2[i] = y;
+        if (pet != null) {
+            currHealth = pet.getCurrHealth();
+            skin = pet.getSkin();
+            name = pet.getName();
+            customizations = pet.getCustomizations().toStringArray();
+            if (pet.getCustomizations().getCurrentEquipment() != null) {
+                currCustomization = pet.getCustomizations().getCurrentEquipment().getName();
+            } else {
+                currCustomization = DefaultValueData.DEFAULT_CURR_CUSTOM;
+            }
+        } else {
+            currCustomization = DefaultValueData.DEFAULT_CURR_CUSTOM;
+            currHealth = DefaultValueData.DEFAULT_HEALTH;
+            skin = DefaultValueData.DEFAULT_SKIN;
+            name = DefaultValueData.DEFAULT_NAME;
+            customizations = DefaultValueData.DEFAULT_CUSTOMS;
         }
-        customizations = temp2;
+    }
+
+    private PetUIDS(){
+        currCustomization = DefaultValueData.DEFAULT_CURR_CUSTOM;
+        currHealth = DefaultValueData.DEFAULT_HEALTH;
+        skin = DefaultValueData.DEFAULT_SKIN;
+        name = DefaultValueData.DEFAULT_NAME;
+        customizations = DefaultValueData.DEFAULT_CUSTOMS;
+        MAX_HEALTH = Pet.getMaxHealth();
+        points = DefaultValueData.DEFAULT_POINTS;
+    }
+
+    public static PetUIDS makeDefaultPet(){
+        return new PetUIDS();
     }
 }

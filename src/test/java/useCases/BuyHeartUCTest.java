@@ -2,10 +2,8 @@ package useCases;
 
 import entities.User;
 import entities.Pet;
-import entities.Customization;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import javax.swing.*;
 public class BuyHeartUCTest {
 
     /** Create a new pet and user

@@ -2,16 +2,14 @@ package ui;
 
 import controllers.CompleteTaskController;
 import presenters.TaskVM;
+import useCases.DefaultValueData;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 
 public class TaskPanel extends JPanel {
 
-    private static final Dimension preferredSize = new Dimension(754, 100);
+    private static final Dimension preferredSize = new Dimension(754, 80);
     TaskVM task;
     JLabel nameLabel;
     JLabel courseLabel;
@@ -24,16 +22,21 @@ public class TaskPanel extends JPanel {
     public void createTaskPanel(TaskVM task) {
         this.task = task;
         format();
-        initalizeWithFormat(task);
-        setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-        if(task.completed){
-            createDonePanel(task);
+        if (task.name.equals(DefaultValueData.EMPTY_TASK.getName())) {
+            setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            add(new JLabel(task.name));
         } else {
-            createToDoPanel(task);
+            setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+            initalizeWithFormat(task);
+            if (task.completed) {
+                createDonePanel();
+            } else {
+                createToDoPanel();
+            }
         }
     }
 
-    public void createDonePanel(TaskVM task) {
+    public void createDonePanel() {
         add(nameLabel);
         add(courseLabel);
         add(typeLabel);
@@ -41,7 +44,9 @@ public class TaskPanel extends JPanel {
         add(priorityLabel);
     }
 
-    public void createToDoPanel(TaskVM task) {
+    public void createToDoPanel() {
+        createEditButton();
+        createCheckBox();
         add(checkBox);
         add(nameLabel);
         add(courseLabel);
@@ -56,14 +61,12 @@ public class TaskPanel extends JPanel {
         nameLabel.setFont(UIFormat.BUTTON_FONT);
         courseLabel = new JLabel(task.course);
         courseLabel.setFont(UIFormat.BUTTON_FONT);
-        deadlineLabel = new JLabel(task.deadline.toString());
+        deadlineLabel = new JLabel(task.deadline);
         deadlineLabel.setFont(UIFormat.BUTTON_FONT);
-        typeLabel = new JLabel(task.assignenmentType);
+        typeLabel = new JLabel(task.assignmentType);
         typeLabel.setFont(UIFormat.BUTTON_FONT);
         priorityLabel = new JLabel(task.priority);
         priorityLabel.setFont(UIFormat.BUTTON_FONT);
-        createEditButton();
-        createCheckBox();
     }
 
     private void createEditButton(){
@@ -80,5 +83,6 @@ public class TaskPanel extends JPanel {
         setBackground(UIFormat.TASK_SCROLL);
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
+        setMaximumSize(preferredSize);
     }
 }
