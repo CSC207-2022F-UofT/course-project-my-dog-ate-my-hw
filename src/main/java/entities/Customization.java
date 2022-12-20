@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
+/**
+ * A class for all the customizations a pet can have. Customizations are of type Item, and they can be added or
+ * removed. A string array of all the items stored in customization can be returned.
+ */
 public class Customization {
-    /**
-     * A class for all the customizations a pet can have. Customizations are of type Item, and they can be added or
-     * removed.
-     */
 
-    // === Public Instance Attributes ===
+    // === Public Static Class Attributes ===
 
     //Index for the item when the pet has no customizations
     public static final int NO_ITEM_INDEX = 0;
@@ -19,6 +19,7 @@ public class Customization {
     public static final Item NO_ITEM = new Item("None", "None", 0, true);
 
     // === Private Instance Attributes ===
+
     //List of all possible items that can be equipped
     private List<Item> customizations;
 
@@ -123,11 +124,10 @@ public class Customization {
      * @return An item stored in customizations with a name corresponding to itemName.
      */
     public Item getItem(String itemName) throws AbsentItemNameException{
-        for (Item item : this.customizations) {
+        for (Item item : this.customizations)
             if (item.getName().equals(itemName)) {
                 return item;
             }
-        }
         throw new AbsentItemNameException();
     }
 
@@ -157,5 +157,4 @@ public class Customization {
             return "";
         }
     }
-
 }
