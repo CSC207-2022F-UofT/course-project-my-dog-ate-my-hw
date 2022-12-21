@@ -118,32 +118,32 @@ public class TaskTest {
     }
 
     @Test
-    public void TestBeforeDeadlineHigh() {
+    public void BeforeDeadlineHighTest() {
         Assertions.assertEquals(task1.pastDeadline(), 0);
     }
 
     @Test
-    public void TestBeforeDeadlineMedium() {
+    public void BeforeDeadlineMediumTest() {
         Assertions.assertEquals(task2.pastDeadline(), 0);
     }
 
     @Test
-    public void TestBeforeDeadlineLow() {
+    public void BeforeDeadlineLowTest() {
         Assertions.assertEquals(task3.pastDeadline(), 0);
     }
 
     @Test
-    public void TestAfterDeadlineHigh() {
+    public void AfterDeadlineHighTest() {
         Assertions.assertEquals(task4.pastDeadline(), 3);
     }
 
     @Test
-    public void TestAfterDeadlineMedium() {
+    public void AfterDeadlineMediumTest() {
         Assertions.assertEquals(task5.pastDeadline(), 2);
     }
 
     @Test
-    public void TestAfterDeadlineLow() {
+    public void AfterDeadlineLowTest() {
         Assertions.assertEquals(task6.pastDeadline(), 1);
     }
 }

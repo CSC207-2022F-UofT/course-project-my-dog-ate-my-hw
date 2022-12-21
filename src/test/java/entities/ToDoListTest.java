@@ -29,7 +29,7 @@ public class ToDoListTest {
      * Check that task1 is in the ToDoList
      */
     @Test
-    public void TestAddTask(){
+    public void AddTaskTest(){
         Assertions.assertTrue(toDoList.getTaskList().contains(task1));
     }
 
@@ -38,7 +38,7 @@ public class ToDoListTest {
      * that the task is not in the ToDoList
      */
     @Test
-    public void TestRemoveTask(){
+    public void RemoveTaskTest(){
         toDoList.removeTask(task1);
         Assertions.assertFalse(toDoList.getTaskList().contains(task1));
     }
@@ -48,7 +48,7 @@ public class ToDoListTest {
      * CheckUniqueName should return false
      */
     @Test
-    public void TestNonUniqueName() {
+    public void NonUniqueNameTest() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         Task task3 = new Task("Problem Set", "CSC236",
@@ -60,7 +60,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void TestUniqueName() {
+    public void UniqueNameTest() {
         Assertions.assertTrue(toDoList.checkUniqueName("task2"));
     }
 
@@ -70,7 +70,7 @@ public class ToDoListTest {
      * Should return task1
      */
     @Test
-    public void TestSearchTask() {
+    public void SearchTaskTest() {
         try {
             Assertions.assertEquals(toDoList.searchFor("task1"), task1);
         }
@@ -80,7 +80,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void TestSearchTaskException() {
+    public void SearchTaskExceptionTest() {
         try {
             toDoList.searchFor("task2");
             Assertions.fail();
@@ -96,19 +96,19 @@ public class ToDoListTest {
      * Since there is only one task in toDoList, it should be task1
      */
     @Test
-    public void TestRandomTask() {
+    public void RandomTaskTest() {
         Task task2 = toDoList.randomTask();
         Assertions.assertEquals(task2.getCourse(), "csc207");
     }
 
     @Test
-    public void TestRandomTaskNull() {
+    public void RandomTaskNullTest() {
         toDoList.removeTask(task1);
         Assertions.assertNull(toDoList.randomTask());
     }
 
     @Test
-    public void TestRandomTaskMoreThanOne() {
+    public void RandomTaskMoreThanOneTest() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         Task task3 = new Task("Problem Set", "CSC236",
@@ -124,7 +124,7 @@ public class ToDoListTest {
      * pastDeadlineSum should be 2
      */
     @Test
-    public void TestPastDeadlineSum() {
+    public void PastDeadlineSumTest() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task2);
@@ -138,7 +138,7 @@ public class ToDoListTest {
      * pastDeadlineSum should be 5
      */
     @Test
-    public void TestPastDeadlineSum2() {
+    public void PastDeadlineSum2Test() {
         Task task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         Task task3 = new Task("Problem Set", "CSC236",

@@ -11,7 +11,7 @@ public class DoneListTest {
      * that the task is in the DoneList
      */
     @Test
-    public void TestAddTask(){
+    public void AddTaskTest(){
         LocalDateTime time = LocalDateTime.now().plusMonths(1);
         Task task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         task1.setCompletion(true);
@@ -25,7 +25,7 @@ public class DoneListTest {
      * that the task is not in the DoneList
      */
     @Test
-    public void TestRemoveTask(){
+    public void RemoveTaskTest(){
         LocalDateTime time = LocalDateTime.now().plusMonths(1);
         Task task1 = new Task("task1", "csc207", time, Priority.HIGH, AssignmentType.ESSAY);
         DoneList doneList = new DoneList();
