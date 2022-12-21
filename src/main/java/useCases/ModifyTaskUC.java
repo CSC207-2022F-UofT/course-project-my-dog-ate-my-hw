@@ -40,6 +40,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         return findTask(taskName, UserUC.u());
     }
     
+     /**
      * Create a new task and delete the old one ("modify")
      * @param name task name
      * @param course task course
@@ -60,7 +61,7 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
      * @param priority priority string
      * @param assignmentType assignment type string
      */
-    public void modifyTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType, User user){
+     public void modifyTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType, User user){
         CreateTaskUC createTaskUC = new CreateTaskUC();
         todo.removeTask(task);
         createTaskUC.createTask(
