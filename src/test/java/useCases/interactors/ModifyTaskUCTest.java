@@ -3,7 +3,6 @@ package useCases.interactors;
 import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,7 +11,6 @@ public class ModifyTaskUCTest {
      * Create a new task and user
      * Change task's name, deadline, course, priority, and assignment types.
      */
-
     @Test
     public void ChangeNameTest() {
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
