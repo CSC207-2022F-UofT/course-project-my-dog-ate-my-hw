@@ -2,6 +2,11 @@ package useCases.inputBoundaries;
 
 import entities.User;
 
+/**
+ * The BuyItemInputBoundary interface is used for the use case in which the user can use the points they've gained from
+ * completing tasks to buy items to accessorize their adopted pet with. This class takes input from the
+ * BuyItemInputBoundary.
+ */
 public interface BuyItemInputBoundary {
     /**
      * Main methods that purchase an item

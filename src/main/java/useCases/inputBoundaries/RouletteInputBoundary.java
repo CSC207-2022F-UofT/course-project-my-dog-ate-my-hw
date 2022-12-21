@@ -2,6 +2,10 @@ package useCases.inputBoundaries;
 
 import entities.User;
 
+/**
+ * The RouletteInputBoundary is the input boundary for the use case of showing
+ * the user a random task from their toDoList.
+ */
 public interface RouletteInputBoundary {
 
     /**

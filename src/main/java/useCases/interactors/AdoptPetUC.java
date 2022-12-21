@@ -16,6 +16,7 @@ public class AdoptPetUC implements AdoptPetInputBoundary {
 
     /**
      * Creates a Pet object from the given petIcon and petName.
+     * @param user the user that adopts the pet
      * @param skin a string representing the selected pet's type
      * @param petName the pet's name
      */

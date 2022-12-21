@@ -15,11 +15,19 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary {
     private Task task;
     private ToDoList todo;
 
+    /**
+     * Default Constructor for the ModifyTaskUC.
+     */
     public ModifyTaskUC(){
         task = null;
         todo = null;
     }
 
+    /**
+     * Construct for the ModifyTaskUC.
+     * @param taskName The name of the task to be modified
+     * @param todo the ToDoList this task should be found in to be modified
+     */
     public ModifyTaskUC(String taskName, ToDoList todo) {
         this.todo = todo;
         try {
@@ -29,6 +37,12 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary {
         }
     }
 
+    /**
+     * Finds a task with the name taskName in the ToDo list of the given user.
+     * @param taskName The name of the task that should be searched for
+     * @param user The given user
+     * @return True if a task with name taskName is found
+     */
     private boolean findTask(String taskName, User user) {
         try {
             todo = user.getToDo();

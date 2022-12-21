@@ -45,6 +45,9 @@ public class BuyHeartUC implements BuyHeartInputBoundary {
        return COST_PET_HEART * hearts;
     }
 
+    /**
+     * Buys a singular heart for the singleton user, UserUC.
+     */
     public void buyHeart(){
         buyHeart(UserUC.u(), 1);
     }

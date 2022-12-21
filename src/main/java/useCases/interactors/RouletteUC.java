@@ -7,6 +7,9 @@ import useCases.refreshers.TasklistRefresher;
 
 import java.util.ArrayList;
 
+/**
+ * The RouletteUC implements the use case of showing the user a random task from their toDoList.
+ */
 public class RouletteUC implements RouletteInputBoundary {
 
     entities.Task task;

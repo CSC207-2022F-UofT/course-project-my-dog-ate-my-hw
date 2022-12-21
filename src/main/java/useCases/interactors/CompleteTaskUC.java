@@ -7,6 +7,10 @@ import useCases.inputBoundaries.CompleteTaskInputBoundary;
 import useCases.refreshers.PetRefresher;
 import useCases.refreshers.TasklistRefresher;
 
+/**
+ * The CompleteTaskUC class is the interactor for the use case in which the user can complete a task they have finished.
+ * This class takes input from the CompleteTaskInputBoundary.
+ */
 public class CompleteTaskUC implements CompleteTaskInputBoundary {
 
     /**

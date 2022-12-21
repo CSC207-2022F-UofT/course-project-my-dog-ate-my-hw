@@ -2,6 +2,10 @@ package useCases.inputBoundaries;
 
 import entities.User;
 
+/**
+ * The CompleteTaskInputBoundary interface is the input boundary for the use case in which the user can complete
+ * a task they have finished.
+ */
 public interface CompleteTaskInputBoundary {
 
     /**
