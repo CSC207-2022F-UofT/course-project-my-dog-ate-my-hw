@@ -1,6 +1,7 @@
-package useCases;
+package useCases.interactors;
 
 import entities.User;
+import useCases.outputBoundaries.MainOutputBoundary;
 
 /**
  * A User Use-Case Interactor

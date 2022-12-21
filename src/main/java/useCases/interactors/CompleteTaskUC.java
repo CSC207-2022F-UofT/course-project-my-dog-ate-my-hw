@@ -1,10 +1,13 @@
-package useCases;
+package useCases.interactors;
 
 import entities.AbsentTaskNameException;
 import entities.Task;
 import entities.User;
+import useCases.inputBoundaries.CompleteTaskInputBoundary;
+import useCases.refreshers.PetRefresher;
+import useCases.refreshers.TasklistRefresher;
 
-public class CompleteTaskUC implements CompleteTaskInputBoundary{
+public class CompleteTaskUC implements CompleteTaskInputBoundary {
 
     /**
      * Remove the task from ToDoList and add the task to DoneList

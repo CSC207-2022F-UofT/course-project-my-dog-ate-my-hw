@@ -1,11 +1,13 @@
-package useCases;
+package useCases.interactors;
 
 import entities.*;
+import useCases.inputBoundaries.BuyItemInputBoundary;
+import useCases.refreshers.PetRefresher;
 
-public class BuyItemUC implements BuyItemInputBoundary{
+public class BuyItemUC implements BuyItemInputBoundary {
 
     /**
-     * (For Testing) Allows the user to buy an item and updates their points and pet accordingly.
+     * Allows the user to buy an item and updates their points and pet accordingly.
      * @param user the User's name
      * @param itemName Name of the item the user wants to purchase
      */
@@ -19,22 +21,27 @@ public class BuyItemUC implements BuyItemInputBoundary{
                     item.setUnlocked(true);
                     if (!customization.getIsCurrentlyEquipped()) {
                         customization.equip(item);
-                    } else {
+                    }
+                    else {
                         customization.dequip();
                         customization.equip(item);
                     }
-                } else if (item.isUnlocked()) {
+                }
+                else if (item.isUnlocked()) {
                     if (!customization.getIsCurrentlyEquipped()) {
                         customization.equip(item);
-                    } else {
+                    }
+                    else {
                         customization.dequip();
                         customization.equip(item);
                     }
                 }
             }
-        } catch (AbsentItemNameException e) {
+        }
+        catch (AbsentItemNameException e) {
             throw new RuntimeException("Not in customization list", e);
-        } catch (NullPointerException e) {
+        }
+        catch (NullPointerException e) {
             throw new RuntimeException("Something was null", e);
         }
     }

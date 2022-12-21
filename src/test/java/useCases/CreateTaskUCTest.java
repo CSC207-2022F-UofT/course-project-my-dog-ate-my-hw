@@ -4,6 +4,8 @@ import entities.User;
 import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import useCases.interactors.CreateTaskUC;
+
 import java.time.LocalDateTime;
 
 public class CreateTaskUCTest {

@@ -1,9 +1,13 @@
-package useCases;
+package useCases.interactors;
 
 import entities.User;
+import useCases.DefaultValueData;
+import useCases.inputBoundaries.RouletteInputBoundary;
+import useCases.refreshers.TasklistRefresher;
+
 import java.util.ArrayList;
 
-public class RouletteUC implements RouletteInputBoundary{
+public class RouletteUC implements RouletteInputBoundary {
 
     entities.Task task;
 

@@ -1,8 +1,8 @@
 package presenters;
 
-import useCases.MainOutputBoundary;
-import useCases.PetOutputBoundary;
-import useCases.TasklistOutputBoundary;
+import useCases.outputBoundaries.MainOutputBoundary;
+import useCases.outputBoundaries.PetOutputBoundary;
+import useCases.outputBoundaries.TasklistOutputBoundary;
 
 public class MainViewUpdater implements MainOutputBoundary {
 

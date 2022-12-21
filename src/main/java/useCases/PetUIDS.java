@@ -2,6 +2,7 @@ package useCases;
 
 import entities.Pet;
 import entities.User;
+import useCases.interactors.UserUC;
 
 public class PetUIDS {
 

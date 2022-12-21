@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.ModifyTaskInputBoundary;
+import useCases.inputBoundaries.ModifyTaskInputBoundary;
 import java.time.LocalDateTime;
 
 public class ModifyTaskController {

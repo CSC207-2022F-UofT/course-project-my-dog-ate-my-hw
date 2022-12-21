@@ -6,6 +6,7 @@ import entities.User;
 import entities.Pet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import useCases.interactors.BuyHeartUC;
 
 public class BuyHeartUCTest {
 

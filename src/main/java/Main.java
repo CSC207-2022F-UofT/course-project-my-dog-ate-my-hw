@@ -11,6 +11,8 @@ import ui.MainUI2;
 import ui.ViewRefresher;
 import useCases.*;
 import database.DataLogger;
+import useCases.interactors.*;
+
 import javax.swing.*;
 import java.util.List;
 

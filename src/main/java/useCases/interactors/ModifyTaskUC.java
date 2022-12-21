@@ -1,13 +1,16 @@
-package useCases;
+package useCases.interactors;
 
 import entities.*;
+import useCases.inputBoundaries.ModifyTaskInputBoundary;
+import useCases.refreshers.TasklistRefresher;
+
 import java.time.LocalDateTime;
 
 /**
  * The modify-task use case takes in the task name, deadline, course, priority and assignment type
  * to change the task in the to-do list.
  */
-public class ModifyTaskUC implements ModifyTaskInputBoundary{
+public class ModifyTaskUC implements ModifyTaskInputBoundary {
 
     private Task task;
     private ToDoList todo;

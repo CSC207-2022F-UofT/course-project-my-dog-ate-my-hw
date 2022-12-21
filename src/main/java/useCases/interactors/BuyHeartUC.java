@@ -1,9 +1,11 @@
-package useCases;
+package useCases.interactors;
 
 import entities.User;
 import entities.Pet;
+import useCases.inputBoundaries.BuyHeartInputBoundary;
+import useCases.refreshers.PetRefresher;
 
-public class BuyHeartUC implements BuyHeartInputBoundary{
+public class BuyHeartUC implements BuyHeartInputBoundary {
 
     private static final int COST_PET_HEART = 1;
     private static final int REVIVE_COST = 20;

@@ -1,4 +1,4 @@
-package useCases;
+package useCases.interactors;
 
 import entities.AbsentTaskNameException;
 import entities.Task;

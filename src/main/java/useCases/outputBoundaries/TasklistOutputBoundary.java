@@ -1,4 +1,6 @@
-package useCases;
+package useCases.outputBoundaries;
+
+import useCases.TaskUIDS;
 
 import java.util.ArrayList;
 

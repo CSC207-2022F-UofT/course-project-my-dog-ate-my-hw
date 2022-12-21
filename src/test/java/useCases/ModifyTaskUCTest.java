@@ -3,6 +3,9 @@ package useCases;
 import entities.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import useCases.interactors.ModifyTaskUC;
+import useCases.interactors.UserUC;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,12 +17,11 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangeNameTest() {
-        User user = new User();
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        user.setTodo(todo);
+        User user = new User(10, new Pet("alex", "zebra"), todo, new DoneList());
         UserUC.declare(user);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.modifyTask(
@@ -34,12 +36,11 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangePriorityTest() {
-        User user = new User();
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        user.setTodo(todo);
+        User user = new User(10, new Pet("alex", "zebra"), todo, new DoneList());
         UserUC.declare(user);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.modifyTask(
@@ -54,12 +55,11 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangeDeadlineTest() {
-        User user = new User();
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        user.setTodo(todo);
+        User user = new User(10, new Pet("alex", "zebra"), todo, new DoneList());
         UserUC.declare(user);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         LocalDateTime deadline2 = LocalDate.parse("2025-12-19").atStartOfDay();
@@ -75,12 +75,11 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangeCourseTest() {
-        User user = new User();
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        user.setTodo(todo);
+        User user = new User(10, new Pet("alex", "zebra"), todo, new DoneList());
         UserUC.declare(user);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.modifyTask(
@@ -95,12 +94,11 @@ public class ModifyTaskUCTest {
 
     @Test
     public void ChangeAssignmentTest() {
-        User user = new User();
         LocalDateTime deadline = LocalDate.parse("2025-12-30").atStartOfDay();
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.EXAM);
         ToDoList todo = new ToDoList();
         todo.addTask(task);
-        user.setTodo(todo);
+        User user = new User(10, new Pet("alex", "zebra"), todo, new DoneList());
         UserUC.declare(user);
         ModifyTaskUC modifyTaskUC = new ModifyTaskUC("testing",todo);
         modifyTaskUC.modifyTask(

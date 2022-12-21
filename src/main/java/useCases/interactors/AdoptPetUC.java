@@ -1,9 +1,11 @@
-package useCases;
+package useCases.interactors;
 
 import entities.Pet;
 import entities.User;
+import useCases.inputBoundaries.AdoptPetInputBoundary;
+import useCases.refreshers.PetRefresher;
 
-public class AdoptPetUC implements AdoptPetInputBoundary{
+public class AdoptPetUC implements AdoptPetInputBoundary {
 
     Pet pet;
 

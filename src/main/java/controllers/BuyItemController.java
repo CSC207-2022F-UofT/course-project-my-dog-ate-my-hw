@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.BuyItemInputBoundary;
+import useCases.inputBoundaries.BuyItemInputBoundary;
 
 public class BuyItemController {
     private static BuyItemInputBoundary uc;

@@ -81,4 +81,10 @@ public class PetTest {
         pet.ouch(15);
         Assertions.assertEquals(pet.getCurrHealth(), 0);
     }
+
+    @Test
+    public void PetHealToFullTest() {
+        pet.healToFull();
+        Assertions.assertEquals(pet.getCurrHealth(), Pet.getMaxHealth());
+    }
 }

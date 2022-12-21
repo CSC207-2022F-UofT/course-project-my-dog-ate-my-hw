@@ -1,4 +1,4 @@
-package useCases;
+package useCases.inputBoundaries;
 
 import entities.User;
 

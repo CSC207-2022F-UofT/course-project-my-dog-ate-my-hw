@@ -2,8 +2,8 @@ package ui;
 
 import controllers.CreateTaskController;
 import controllers.ModifyTaskController;
-import useCases.CreateTaskInputBoundary;
-import useCases.ModifyTaskInputBoundary;
+import useCases.inputBoundaries.CreateTaskInputBoundary;
+import useCases.inputBoundaries.ModifyTaskInputBoundary;
 import java.time.LocalDateTime;
 
 public class TaskViewTest {

@@ -1,4 +1,8 @@
-package useCases;
+package useCases.refreshers;
+
+import useCases.PetUIDS;
+import useCases.interactors.UserUC;
+import useCases.outputBoundaries.MainOutputBoundary;
 
 public class PetRefresher{
 

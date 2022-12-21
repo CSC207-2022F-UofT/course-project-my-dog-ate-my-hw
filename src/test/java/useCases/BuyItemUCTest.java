@@ -5,6 +5,7 @@ import entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import useCases.interactors.BuyItemUC;
 
 /**
  * Test for BuyItemUC
@@ -29,7 +30,7 @@ public class BuyItemUCTest {
     @BeforeEach
     public void Setup() {
         customization = new Customization();
-        pet = new Pet("dog", "skin");
+        pet = new Pet("dog", null);
         item1 = new Item("Hat", "Straw Hat", 3, "", false);
         item2 = new Item("Hat", "Cap", 5, "", false);
         item3 = new Item("Hat", "Baseball Cap", 1, "", true);
@@ -37,7 +38,7 @@ public class BuyItemUCTest {
         customization.addItem(item2);
         customization.addItem(item3);
         pet.setCustomization(customization);
-        user = new User(10, pet, new ToDoList(), new DoneList());
+        user = new User(4, pet, new ToDoList(), new DoneList());
     }
 
     @Test
@@ -45,7 +46,6 @@ public class BuyItemUCTest {
         BuyItemUC buyItemUC = new BuyItemUC();
         buyItemUC.buyItem(user,"Straw Hat");
         Assertions.assertEquals(user.getPoints(), 1);
-
         Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Straw Hat");
     }
 
@@ -62,8 +62,7 @@ public class BuyItemUCTest {
         BuyItemUC buyItemUC = new BuyItemUC();
         buyItemUC.buyItem(user,"Baseball Cap");
         Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Baseball Cap");
+        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(),
+                "Baseball Cap");
     }
-
-
 }

@@ -28,11 +28,10 @@ public abstract class Checklist {
      * @return : true if the given name is unique and false otherwise.
      */
     public boolean checkUniqueName(String newName) {
-        for (Task addedTask : this.getTaskList()) {
+        for (Task addedTask : this.getTaskList())
             if (addedTask.getName().equals(newName)) {
                 return false;
             }
-        }
         return true;
     }
 
