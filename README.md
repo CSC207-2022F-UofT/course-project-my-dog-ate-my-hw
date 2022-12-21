@@ -11,6 +11,7 @@ Table of Contents:
 2) How to run the program
 3) Design patterns and SOLID
 4) Challenges and future implementations of the program
+5) Testing: Coverage and future implementations
 
 ## Features
 
@@ -45,3 +46,8 @@ Table of Contents:
 * One challenge that we faced was that we did not know how to identify the current which is the old task at hand - we came up the idea that we will look up the old task that is to be modified with the “task name” - however, due to duplication this was an issue - further we decided that we will add an additional checker that makes sure that each task’s name is unique and that is how we were successfully able to find out a way to implement our ModifyTask use case. In a future implementation, it will be useful to change the ToDoList to a dictionary with task names as the keys and tasks as the values. 
 * Also, many of the use case interactors call on either the petRefresher or the taskRefresher. These use case interactors therefore have the same method that results in redundant code between them. In the future, it may be useful to implement a interface with a default method that calls on the pet refresher or the task refresher, then each use case interactor can implement this interface and call on that method.
 * As of right now, the program lacks in terms of universal principles of design. Future implementations should make the program more adhering to the equitable use principle, perceptible information principle, and flexibility of use principle. Such additions can include different colour patterns for the pet and background, different sized fonts for the tasks and lists, and the use of text-to-speech and speech-to-text for users to interact with their To-Do list. 
+
+## Testing: Coverage and Future implementations
+* The tests file contains all of the tests for this program. In terms of coverage, each individual test file has its coverage documented, including the class it covers, the methods covered, and the lines covered. In cases where coverage is not 100% for methods or lines, the test class documentation includes a reasoning why certain methods were not tested. 
+* Mainly, the refresher methods of the use case interactors were not tested as they only call on the PetRefresher or TaskRefresher class to perform the refresh. Also, the methods using the static UserUC singleton were not tested as the UserUC singleton is not declared until the Main file of the program is running. Furthermore, these methods call on the tested methods, they just use the static User as the 'user' argument. 
+* Future tests should include the InvalidTaskInformation exception, as well as a few UI components. It may be helpful to create a 'fake' placement static UserUC singleton to test methods in the interactors.
