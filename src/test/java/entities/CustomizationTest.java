@@ -13,14 +13,12 @@ public class CustomizationTest {
     Item item;
     Item item2;
     Customization custom;
-    Customization custom2;
 
     @BeforeEach
     public void setUp() {
-        item = new Item("hat", "cap", 5, true);
-        item2 = new Item("crown", "princess", 2, false);
+        item = new Item("hat", "cap", 5, "", true);
+        item2 = new Item("crown", "princess", 2, "", false);
         custom = new Customization();
-        custom2 = new Customization(item2);
     }
 
     @Test
@@ -32,22 +30,15 @@ public class CustomizationTest {
 
     }
 
-    @Test
-    public void NonEmptyCustomizationConstructorTest() {
-        Customization nonEmpty = new Customization(item);
-        Assertions.assertEquals(nonEmpty.getCurrentEquipment(), item);
-        Assertions.assertTrue(nonEmpty.getIsCurrentlyEquipped());
-        Assertions.assertEquals(nonEmpty.getPossibleCustomizations().size(), 1);
-        Assertions.assertEquals(nonEmpty.getPossibleCustomizations().get(0), item);
-    }
-
     /**
      * create a customization object with a single unlocked item and verify that
      * the current equipment is item
      */
     @Test
     public void CurrentEquipmentTest() {
-        Customization customization = new Customization(item);
+        Customization customization = new Customization();
+        customization.addItem(item);
+        customization.equip(item);
         Assertions.assertEquals(customization.getCurrentEquipment(), item);
         Assertions.assertTrue(customization.getIsCurrentlyEquipped());
         Assertions.assertTrue(customization.getPossibleCustomizations().contains(item));
@@ -58,9 +49,10 @@ public class CustomizationTest {
      * the current equipment is currently equipped
      */
     @Test
-    public void TestIsCurrentlyEquipped() {
-        Customization customization = new Customization(item);
-        Assertions.assertTrue(customization.getIsCurrentlyEquipped());
+    public void IsCurrentlyEquippedTest() {
+        Customization customization = new Customization();
+        customization.addItem(item);
+        Assertions.assertFalse(customization.getIsCurrentlyEquipped());
     }
 
     /**
@@ -69,7 +61,8 @@ public class CustomizationTest {
      */
     @Test
     public void PossibleCustomizationsTest() {
-        Customization customization = new Customization(item);
+        Customization customization = new Customization();
+        customization.addItem(item);
         Assertions.assertTrue(customization.getPossibleCustomizations().contains(item));
     }
 
@@ -131,7 +124,6 @@ public class CustomizationTest {
     public void GetItemNoItemCustomizationTest() {
         try {
             custom.getItem("NonExistentItem");
-
             Assertions.fail();
         } catch (AbsentItemNameException ex) {
             Assertions.assertEquals("entities.AbsentItemNameException", ex.toString());
@@ -140,8 +132,9 @@ public class CustomizationTest {
 
     @Test
     public void GetItemCustomizationTest() {
+        custom.addItem(item2);
         try {
-            Assertions.assertEquals(custom2.getItem("princess"), item2);
+            Assertions.assertEquals(custom.getItem("princess"), item2);
         }
         catch (AbsentItemNameException ex) {
             Assertions.fail();
@@ -150,11 +143,12 @@ public class CustomizationTest {
 
     @Test
     public void ToStringArrayCustomizationTest() {
-        custom2.addItem(item);
+        custom.addItem(item);
+        custom.addItem(item2);
         String[] expected = new String[2];
-        expected[1] = "cap";
-        expected[0] = "princess(LOCKED)";
-        Assertions.assertArrayEquals(custom2.toStringArray(), expected);
+        expected[0] = "cap";
+        expected[1] = "princess(LOCKED)";
+        Assertions.assertArrayEquals(custom.toStringArray(), expected);
     }
 
     @Test

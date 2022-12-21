@@ -16,7 +16,7 @@ public class UserTest {
     DoneList done;
     @BeforeEach
     public void setUp() {
-        pet = new Pet("alex");
+        pet = new Pet("alex", "zebra" );
         toDo = new ToDoList();
         done = new DoneList();
         user = new User(10, pet, toDo, done);

@@ -29,10 +29,10 @@ public class BuyItemUCTest {
     @BeforeEach
     public void Setup() {
         customization = new Customization();
-        pet = new Pet("dog", null);
-        item1 = new Item("Hat", "Straw Hat", 3, false);
-        item2 = new Item("Hat", "Cap", 5, false);
-        item3 = new Item("Hat", "Baseball Cap", 1, true);
+        pet = new Pet("dog", "skin");
+        item1 = new Item("Hat", "Straw Hat", 3, "", false);
+        item2 = new Item("Hat", "Cap", 5, "", false);
+        item3 = new Item("Hat", "Baseball Cap", 1, "", true);
         customization.addItem(item1);
         customization.addItem(item2);
         customization.addItem(item3);

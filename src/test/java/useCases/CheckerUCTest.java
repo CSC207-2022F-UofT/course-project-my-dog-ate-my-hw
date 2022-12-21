@@ -18,7 +18,7 @@ public class CheckerUCTest {
      */
     @BeforeEach
     public void Setup() {
-        pet = new Pet("Cat", null);
+        pet = new Pet("Cat", "");
         todo = new ToDoList();
         user = new User(10, pet, todo, new DoneList());
     }

@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class Checklist {
 
     // === Private Instance Attributes ===
-    private List<Task> taskList;
+    private final List<Task> taskList;
 
     /**
      * Construct a checklist given no arguments.
@@ -19,7 +19,6 @@ public abstract class Checklist {
     public Checklist() {
         this.taskList = new ArrayList<>();
     }
-
 
     /**
      * Add the given task to taskList. Do not sort the taskList.
@@ -38,7 +37,6 @@ public abstract class Checklist {
     public void removeTask(Task task) {
         this.taskList.remove(task);
     }
-
 
     /**
      * Return the taskList.

@@ -2,7 +2,6 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 
 /**
  * A class for all the customizations a pet can have. Customizations are of type Item, and they can be added or
@@ -16,12 +15,12 @@ public class Customization {
     public static final int NO_ITEM_INDEX = 0;
 
     //Placement item for when the pet has no customizations
-    public static final Item NO_ITEM = new Item("None", "None", 0, true);
+    public static final Item NO_ITEM = new Item("None", "None", 0, "", true);
 
     // === Private Instance Attributes ===
 
     //List of all possible items that can be equipped
-    private List<Item> customizations;
+    private final List<Item> customizations;
 
     //Boolean which returns whether an item is currently equipped
     private boolean isCurrentlyEquipped;
@@ -39,17 +38,6 @@ public class Customization {
         this.currentEquipment = null;
         this.isCurrentlyEquipped = false;
         this.customizations = new ArrayList<>();
-    }
-
-    /**
-     * Construct a customization for the pet with the given item and equip the pet with the given item. Add the given
-     * item to the pet's customizations list.
-     * @param item : Item to be added to the pets customizations list
-     */
-    public Customization(Item item){
-        this.currentEquipment = item;
-        this.isCurrentlyEquipped = true;
-        this.customizations = new ArrayList<>(Arrays.asList(item));
     }
 
     /**
@@ -76,7 +64,6 @@ public class Customization {
         return customizations;
     }
 
-
     /**
      * Add the given item to the customization list.
      * @param item : Item to be added to the customizations list.
@@ -88,7 +75,7 @@ public class Customization {
     /**
      * Add a placement empty item for when the pet has no customizations.
      */
-    public void addEmptyItem(){
+    public void addEmptyItem() {
         customizations.add(NO_ITEM_INDEX, NO_ITEM);
         currentEquipment = NO_ITEM;
     }

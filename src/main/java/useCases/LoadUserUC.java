@@ -78,7 +78,6 @@ public class LoadUserUC {
                     null,
                     null
             );
-
             // Take the Priority String and assign an enum
             setPriority(task, taskdb.getPriority());
 
@@ -88,7 +87,6 @@ public class LoadUserUC {
             // Add the Task object to the ToDoList
             toDoList.addTask(task);
         }
-
         // Return the ToDoList
         return toDoList;
     }
@@ -173,11 +171,9 @@ public class LoadUserUC {
         }
 
         // Create a new Pet object
-        Customization custom = new Customization();
         Pet pet = new Pet(
                 pdb.getName(),
-                pdb.getSkin(),
-                custom
+                pdb.getSkin()
         );
 
         // Set the Pet Customization
@@ -227,5 +223,4 @@ public class LoadUserUC {
                 break;
         }
     }
-
 }

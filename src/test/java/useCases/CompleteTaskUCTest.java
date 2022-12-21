@@ -36,7 +36,7 @@ public class CompleteTaskUCTest {
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         toDoList.addTask(task2);
-        user = new User(10, new Pet("alex"), toDoList, doneList);
+        user = new User(10, new Pet("alex", "zebra"), toDoList, doneList);
     }
 
     @Test

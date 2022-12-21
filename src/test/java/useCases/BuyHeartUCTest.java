@@ -17,7 +17,7 @@ public class BuyHeartUCTest {
      */
     @Test
     public void BuyHeartTest() {
-        entities.Pet pet = new Pet("Name");
+        entities.Pet pet = new Pet("Name", "skin");
         User user = new User(10, pet, new ToDoList(), new DoneList());
         pet.ouch(5);
         BuyHeartUC uc = new BuyHeartUC();

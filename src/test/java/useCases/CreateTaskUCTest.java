@@ -15,7 +15,7 @@ public class CreateTaskUCTest {
     public void CreateTaskTest() throws AbsentTaskNameException {
         LocalDateTime deadline = LocalDateTime.now().plusYears(5);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
-        entities.Pet pet = new Pet("Name", null);
+        entities.Pet pet = new Pet("Name", "skin");
         entities.User user = new User(10, pet, new ToDoList(), new DoneList());
         CreateTaskUC createTaskUC = new CreateTaskUC();
         createTaskUC.createTask("testing", "csc207", deadline, "HIGH", "PROJECT", user);
@@ -39,7 +39,7 @@ public class CreateTaskUCTest {
 
     @Test
     public void GetTaskTest() {
-        User user = new User(10, new Pet("alex"), new ToDoList(), new DoneList());
+        User user = new User(10, new Pet("alex", "zebra"), new ToDoList(), new DoneList());
         LocalDateTime deadline = LocalDateTime.now().plusYears(5);
         Task task = new Task("testing", "csc207", deadline, Priority.HIGH, AssignmentType.PROJECT);
         CreateTaskUC createTaskUC = new CreateTaskUC();

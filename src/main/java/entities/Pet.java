@@ -26,40 +26,16 @@ public class Pet {
     private Customization customization;
 
     /**
-     * Construct a pet with the given name. Give it the maximum health and a default equipment list of customizations.
-     * @param name : The String representation of the given pet name.
-     */
-    public Pet(String name) {
-        this.name = name;
-        this.skin = "";
-        this.currHealth = MAX_HEALTH;
-        this.customization = getDefaultEquipmentList();
-    }
-
-    /**
      * Construct a pet with the given name and skin, set its health to the default maximum and set its customizations
      * the default equipment list.
      * @param name : A string representation of the name given to this pet
      * @param skin : A string representation of the skin given to this pet
      */
-    public Pet(String name, String skin){
+    public Pet(String name, String skin) {
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
         this.customization = getDefaultEquipmentList();
-    }
-
-    /**
-     * Construct a pet with the given name, skin, and customization. Set its health do the default maximum health.
-     * @param name : String of the given name
-     * @param skin : String of the given skin
-     * @param customization : Injection of the given customization
-     */
-    public Pet(String name, String skin, Customization customization){
-        this.name = name;
-        this.skin = skin;
-        this.currHealth = MAX_HEALTH;
-        this.customization = customization;
     }
 
     /**
@@ -108,18 +84,10 @@ public class Pet {
      */
     public Customization getDefaultEquipmentList(){
         customization = new Customization();
-        Item halo = new Item("Hat", "Halo", 1, false);
+        Item halo = new Item("Hat", "Halo", 1, "", false);
         customization.addEmptyItem();
         customization.addItem(halo);
         return customization;
-    }
-
-    /**
-     * Set this pet's health to the given health.
-     * @param currHealth : int to set the pet's health to
-     */
-    public void setCurrHealth(int currHealth) {
-        this.currHealth = currHealth;
     }
 
     /**

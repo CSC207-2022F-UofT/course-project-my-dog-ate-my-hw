@@ -12,12 +12,6 @@ public class ItemTest {
     /**
      * create a default item
      */
-    @Test
-    public void CreateItemDefaultTest() {
-        Item item = new Item();
-        Assertions.assertEquals(1, item.getPrice());
-        Assertions.assertFalse(item.isUnlocked());
-    }
 
     @Test
     public void CreateItemIconTest() {
@@ -30,7 +24,7 @@ public class ItemTest {
      */
     @Test
     public void CreateItemNameAndPriceAndTypeAndUnlockedTest() {
-        Item item = new Item("Hat", "Name", 10, true);
+        Item item = new Item("Hat", "Name", 10, "icon", true);
         Assertions.assertEquals("Hat", item.getType());
         Assertions.assertEquals("Name", item.getName());
         Assertions.assertEquals(10, item.getPrice());
@@ -42,7 +36,7 @@ public class ItemTest {
      */
     @Test
     public void UnlockTest() {
-        Item item = new Item();
+        Item item = new Item("hat", "crown", 10, "icon", false);
         item.setUnlocked(true);
         Assertions.assertTrue(item.isUnlocked());
     }
@@ -52,39 +46,8 @@ public class ItemTest {
      */
     @Test
     public void LockTest() {
-        Item item = new Item();
-        item.setUnlocked(true);
+        Item item = new Item("hat", "crowness", 10, "icon", true);
         item.setUnlocked(false);
         Assertions.assertFalse(item.isUnlocked());
-    }
-
-    /**
-     * check type setter
-     */
-    @Test
-    public void SetTypeTest() {
-        Item item = new Item();
-        item.setType("Hat");
-        Assertions.assertEquals("Hat", item.getType());
-    }
-
-    /**
-     * check name setter
-     */
-    @Test
-    public void SetNameTest() {
-        Item item = new Item();
-        item.setName("Name");
-        Assertions.assertEquals("Name", item.getName());
-    }
-
-    /**
-     * check price setter
-     */
-    @Test
-    public void SetPriceTest() {
-        Item item = new Item();
-        item.setPrice(10);
-        Assertions.assertEquals(10, item.getPrice());
     }
 }

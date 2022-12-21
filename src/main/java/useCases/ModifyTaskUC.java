@@ -56,7 +56,6 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     }
     /**
      * Changes the task's associated course.
-     *
      * @param course task's new course
      */
     public void changeCourse(String course) {
@@ -65,12 +64,10 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         } else {
             throw new InvalidTaskInformationException();
         }
-
     }
 
     /**
      * Changes the task's priority.
-     *
      * @param priority task's priority
      */
     public void changePriority(String priority) {
@@ -80,7 +77,6 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
 
     /**
      * Changes the task's deadline
-     *
      * @param date task's deadline
      */
     public void changeDeadline(LocalDateTime date) {

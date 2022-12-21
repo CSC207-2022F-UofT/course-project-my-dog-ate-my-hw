@@ -20,7 +20,7 @@ public class RouletteUCTest {
         task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.now().plusDays(5),
                 Priority.HIGH, AssignmentType.ESSAY);
         toDoList.addTask(task1);
-        user = new User(10, new Pet("alex)"), toDoList, new DoneList());
+        user = new User(10, new Pet("alex", "zebra"), toDoList, new DoneList());
         UserUC.declare(user);
     }
 
