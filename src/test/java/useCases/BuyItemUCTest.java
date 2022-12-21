@@ -28,7 +28,6 @@ public class BuyItemUCTest {
 
     @BeforeEach
     public void Setup() {
-        user = new User();
         customization = new Customization();
         pet = new Pet("dog", null);
         item1 = new Item("Hat", "Straw Hat", 3, false);
@@ -38,8 +37,7 @@ public class BuyItemUCTest {
         customization.addItem(item2);
         customization.addItem(item3);
         pet.setCustomization(customization);
-        user.setPoints(4);
-        user.setPet(pet);
+        user = new User(10, pet, new ToDoList(), new DoneList());
     }
 
     @Test

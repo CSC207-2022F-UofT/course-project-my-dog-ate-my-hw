@@ -1,6 +1,5 @@
 package useCases;
 import entities.AbsentTaskNameException;
-import entities.Priority;
 import entities.Task;
 import entities.User;
 
@@ -17,24 +16,11 @@ public class GainPointsUC {
         try {
             Task task = user.getToDo().searchFor(taskName);
             if (task.pastDeadline() == 0) {
-                user.GainPoints(task.getPriority().getValue());
+                user.gainPoints(task.getPriority().getValue());
             }
         }
         catch (AbsentTaskNameException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Another version of the gain method that deals with the User use case
-     * @param taskName Name of the task that has been completed
-     */
-    public static void Gain(String taskName) { GainPointsUC.Gain(taskName, UserUC.u());}
-
-    /**
-     * The refresh method that refreshes view after changes being made
-     */
-    public void refreshPoints() {
-        new PetRefresher().refresh();
     }
 }

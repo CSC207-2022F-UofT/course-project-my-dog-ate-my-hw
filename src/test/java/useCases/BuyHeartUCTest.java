@@ -1,5 +1,7 @@
 package useCases;
 
+import entities.DoneList;
+import entities.ToDoList;
 import entities.User;
 import entities.Pet;
 import org.junit.jupiter.api.Assertions;
@@ -16,7 +18,7 @@ public class BuyHeartUCTest {
     @Test
     public void BuyHeartTest() {
         entities.Pet pet = new Pet("Name");
-        User user = new User(10, pet);
+        User user = new User(10, pet, new ToDoList(), new DoneList());
         pet.ouch(5);
         BuyHeartUC uc = new BuyHeartUC();
         uc.buyHeart(user, 3);

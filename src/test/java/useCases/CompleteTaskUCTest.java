@@ -30,16 +30,13 @@ public class CompleteTaskUCTest {
      */
     @BeforeEach
     public void Setup() {
-        user = new User();
         task1 = new Task("Math Midterm 1", "MAT137", LocalDateTime.now().plusDays(5),
                 Priority.HIGH, AssignmentType.ESSAY);
         task2 = new Task("CompSci Assignment", "CSC236",
                 LocalDateTime.now().plusHours(1), Priority.MEDIUM, AssignmentType.ESSAY);
         toDoList.addTask(task1);
         toDoList.addTask(task2);
-        user.setTodo(toDoList);
-        user.setDone(doneList);
-
+        user = new User(10, new Pet("alex"), toDoList, doneList);
     }
 
     @Test

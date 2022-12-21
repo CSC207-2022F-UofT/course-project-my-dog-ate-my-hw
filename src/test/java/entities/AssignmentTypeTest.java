@@ -3,11 +3,11 @@ package entities;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing the getAssignmentType method of the AssignmentType Enum class.
+ * Code coverage for the AssignmentType class: 100% class, 100% methods, 100% lines
+ */
 public class AssignmentTypeTest {
-    /**
-     * Testing the getAssignmentType method of the AssignmentType Enum class.
-     * Code coverage for the AssignmentType class: 100% class, 100% methods, 100% lines
-     */
 
     @Test
     public void GetAssignmentQuizTest() {
@@ -26,7 +26,8 @@ public class AssignmentTypeTest {
 
     @Test
     public void GetAssignmentLabReportTest() {
-        Assertions.assertEquals(AssignmentType.getAssignmentType("LAB_REPORTS"), AssignmentType.LAB_REPORTS);
+        Assertions.assertEquals(AssignmentType.getAssignmentType("LAB_REPORTS"),
+                AssignmentType.LAB_REPORTS);
     }
 
     @Test

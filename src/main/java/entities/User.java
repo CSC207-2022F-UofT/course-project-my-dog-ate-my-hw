@@ -1,34 +1,23 @@
 package entities;
 
-//the user class stores all information needed for the user
+/**
+ * User entity class that stores all the information needed for the user of the program.
+ */
 public class User {
+
+    // === Private Instance Attributes ===
+
+    // The number of points this user has
     private int points;
+
+    // The pet that this user adopted
     private Pet myPet;
-    private ToDoList todo;
-    private DoneList done;
 
-    /**
-     * Constructor that takes in points as parameter
-     * @param points The points of the user
-     */
-    public User (int points) {
-        this.points = points;
-        myPet = null;
-        todo = new ToDoList();
-        done = new DoneList();
-    }
+    // The To-Do list for this user
+    private final ToDoList todo;
 
-    /**
-     * Constructor that takes in points and a pet as parameter
-     * @param points The points of the user
-     * @param pet The pet of the user
-     */
-    public User (int points, Pet pet) {
-        this.points = points;
-        this.myPet = pet;
-        todo = new ToDoList();
-        done = new DoneList();
-    }
+    // The Done list for this user
+    private final DoneList done;
 
     /**
      * Constructor that takes in points, pet and checklists of the user
@@ -42,16 +31,6 @@ public class User {
         this.myPet = pet;
         this.todo = todo;
         this.done = done;
-    }
-
-    /**
-     * Default constructor with 0 points and null pet
-     */
-    public User() {
-        points = 0;
-        myPet = null;
-        todo = new ToDoList();
-        done = new DoneList();
     }
 
     /**
@@ -90,7 +69,7 @@ public class User {
      * The user gains points
      * @param points Number of points to add
      */
-    public void GainPoints (int points) {
+    public void gainPoints (int points) {
         this.points += points;
     }
 
@@ -102,7 +81,7 @@ public class User {
      * @param points Points to lose
      * @return Boolean that represents whether the user has enough points to lose or not
      */
-    public boolean LosePoints (int points) {
+    public boolean losePoints(int points) {
         if (this.points < points) {
             return false;
         }
@@ -116,37 +95,5 @@ public class User {
      */
     public void setPet (Pet somePet) {
         this.myPet = somePet;
-    }
-
-    /**
-     * Setter for the points of the user
-     * @param points The points to set
-     */
-    public void setPoints (int points) {
-        this.points = points;
-    }
-
-    /**
-     * Setter for the todo list of the user
-     * @param todo The todolist to set
-     */
-    public void setTodo (ToDoList todo) {
-        this.todo = todo;
-    }
-
-    /**
-     * Setter for the done list of the user
-     * @param done the done list to set
-     */
-    public void setDone (DoneList done) {
-        this.done = done;
-    }
-
-    /**
-     * Turn the user into a string
-     * @return A String that contains the user's points and pet's name
-     */
-    public String toString () {
-        return "User with points: " + this.points + ", Pet: " + this.myPet.getName();
     }
 }

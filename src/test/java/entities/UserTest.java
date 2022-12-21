@@ -1,31 +1,33 @@
 package entities;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test cases for User entity
- * Mainly test gain points and lose points methods
- * Other properties (pet, checklists) will be tested in corresponding test classes
+ * Test cases for User entity.
+ * Coverage: 100% class, 100% methods, 100% lines.
  */
 public class UserTest {
 
-    /** 
-     * create a default user and check for default values
-     */
-    @Test
-    public void CreateUserDefaultTest() {
-        User user = new User();
-        Assertions.assertEquals(0, user.getPoints());
+    User user;
+    Pet pet;
+    ToDoList toDo;
+    DoneList done;
+    @BeforeEach
+    public void setUp() {
+        pet = new Pet("alex");
+        toDo = new ToDoList();
+        done = new DoneList();
+        user = new User(10, pet, toDo, done);
     }
 
-    /** 
-     * create a user with points and check that the getter works
-     */
     @Test
-    public void CreateUserPointsTest() {
-        User user = new User(5);
-        Assertions.assertEquals(5, user.getPoints());
+    public void ConstructorUserTest() {
+        Assertions.assertEquals(user.getPoints(), 10);
+        Assertions.assertEquals(user.getToDo(), toDo);
+        Assertions.assertEquals(user.getDone(), done);
+        Assertions.assertEquals(user.getPet(), pet);
     }
 
     /**
@@ -33,9 +35,8 @@ public class UserTest {
      */
     @Test
     public void GainPointsTest() {
-        User user = new User(3);
-        user.GainPoints(5);
-        Assertions.assertEquals(8, user.getPoints());
+        user.gainPoints(5);
+        Assertions.assertEquals(15, user.getPoints());
     }
 
     /** 
@@ -43,9 +44,8 @@ public class UserTest {
      */
     @Test
     public void LosePointsTest() {
-        User user = new User(3);
-        Assertions.assertTrue(user.LosePoints(1));
-        Assertions.assertEquals(2,user.getPoints());
+        Assertions.assertTrue(user.losePoints(5));
+        Assertions.assertEquals(user.getPoints(), 5);
     }
 
     /**
@@ -53,18 +53,13 @@ public class UserTest {
      */
     @Test
     public void LoseMorePointsTest() {
-        User user = new User(3);
-        Assertions.assertFalse(user.LosePoints(5));
-        Assertions.assertEquals(3,user.getPoints());
+        Assertions.assertFalse(user.losePoints(15));
+        Assertions.assertEquals(10,user.getPoints());
     }
 
-    /** 
-     * check that point setter works
-     */
     @Test
-    public void SetPointsTest() {
-        User user = new User(3);
-        user.setPoints(5);
-        Assertions.assertEquals(5, user.getPoints());
+    public void SetPetUserTest() {
+        user.setPet(pet);
+        Assertions.assertEquals(user.getPet(), pet);
     }
 }
