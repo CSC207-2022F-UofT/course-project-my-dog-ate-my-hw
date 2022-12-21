@@ -20,10 +20,10 @@ public class BuyHeartUC implements BuyHeartInputBoundary{
             if (user.getPoints() >= cost &&
                     pet.getCurrHealth() > 0 &&
                     pet.getCurrHealth() < Pet.getMaxHealth()) {
-                user.LosePoints(cost);
+                user.losePoints(cost);
                 pet.heal(hearts);
             } if (user.getPoints() >= REVIVE_COST && pet.getCurrHealth() == 0) {
-                user.LosePoints(REVIVE_COST);
+                user.losePoints(REVIVE_COST);
                 pet.healToFull();
             }
         }
