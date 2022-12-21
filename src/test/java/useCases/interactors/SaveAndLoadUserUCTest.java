@@ -1,4 +1,4 @@
-package useCases;
+package useCases.interactors;
 
 import database.ItemDB;
 import database.TaskDB;
@@ -35,9 +35,9 @@ public class SaveAndLoadUserUCTest {
         dataLogger = new DataLoggerFaker();
         customization = new Customization();
         pet = new Pet("dog", null);
-        item1 = new Item("Hat", "Straw Hat", 3, false);
-        item2 = new Item("Hat", "Cap", 5, false);
-        item3 = new Item("Hat", "Baseball Cap", 1, true);
+        item1 = new Item("Hat", "Straw Hat", 3, "icon",false);
+        item2 = new Item("Hat", "Cap", 5, "icon",false);
+        item3 = new Item("Hat", "Baseball Cap", 1, "icon",true);
         customization.addItem(item1);
         customization.addItem(item2);
         customization.addItem(item3);
