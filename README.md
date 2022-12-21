@@ -2,7 +2,7 @@
 
 <img src="https://media.discordapp.net/attachments/1023979792401453148/1044111298792783922/Screen_Shot_2022-11-20_at_11.44.02_PM.png?width=960&height=567" alt="The Dog Age My Homework Homescreen" title="Dog Ate My Homework">
 
-*This is a repository for a group project for CSC207 at UofT.*
+*This is a repository for a group project for CSC207: Software Design at the University of Toronto.*
 
 Dog Ate My Homework (DAMH) is a task manager with a twist. You begin by choosing a pet, who accompanies you as you accomplish various tasks. Win points to customize your pet, but be careful! If you miss a task deadline your pet will be damaged, requiring you to heal your pet. Miss too many tasks and your pet will die :(
 
@@ -42,7 +42,6 @@ Table of Contents:
 6) Open/Closed: Furthermore, the we committed to making the program more open to extension as the checklist declares its taskList as a List and and then instantiates it as an arraylist.
 
 ## Challenges and future implementations
-
     One challenge that we faced was that we did not know how to identify the current which is the old task at hand - we came up the idea that we will look up the old task that is to be modified with the “task name” - however, due to duplication this was an issue - further we decided that we will add an additional checker that makes sure that each task’s name is unique and that is how we were successfully able to find out a way to implement our ModifyTask use case. In a future implementation, it will be useful to change the ToDoList to a dictionary with task names as the keys and tasks as the values. 
      Also, many of the use case interactors call on either the petRefresher or the taskRefresher. These use case interactors therefore have the same method that results in redundant code between them. In the future, it may be useful to implement a interface with a default method that calls on the pet refresher or the task refresher, then each use case interactor can implement this interface and call on that method.
      As of right now, the program lacks in terms of universal principles of design. Future implementations should make the program more adhering to the equitable use principle, perceptible information principle, and flexibility of use principle. Such additions can include different colour patterns for the pet and background, different sized fonts for the tasks and lists, and the use of text-to-speech and speech-to-text for users to interact with their To-Do list. 
