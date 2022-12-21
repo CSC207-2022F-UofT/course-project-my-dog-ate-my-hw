@@ -4,7 +4,6 @@ import entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import useCases.inputBoundaries.CompleteTaskInputBoundary;
-
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 

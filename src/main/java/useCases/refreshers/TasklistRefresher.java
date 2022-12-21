@@ -3,11 +3,10 @@ package useCases.refreshers;
 import useCases.TaskUIDS;
 import useCases.interactors.UserUC;
 import useCases.outputBoundaries.MainOutputBoundary;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class TasklistRefresher{
+public class TasklistRefresher {
 
     public void refresh(List<entities.Task> tasks){
         MainOutputBoundary m = UserUC.UI();

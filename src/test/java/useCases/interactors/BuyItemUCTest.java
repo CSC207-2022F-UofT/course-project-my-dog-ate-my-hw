@@ -14,7 +14,8 @@ import org.junit.jupiter.api.Test;
  * the UserUC singleton as the user argument, and the UserUC singleton is not declared until Main is running.
  */
 public class BuyItemUCTest {
-    User user;
+    User user1;
+    User user2;
     Customization customization;
     Pet pet;
     Item item1;
@@ -33,67 +34,68 @@ public class BuyItemUCTest {
         customization.addItem(item2);
         customization.addItem(item3);
         pet.setCustomization(customization);
-        user = new User(4, pet, new ToDoList(), new DoneList());
+        user1 = new User(4, pet, new ToDoList(), new DoneList());
+        user2 = new User(1, null, new ToDoList(), new DoneList());
         uc = new BuyItemUC();
     }
 
     @Test
     public void BuyItemTest1() {
-        uc.buyItem(user,"Straw Hat");
-        Assertions.assertEquals(user.getPoints(), 1);
-        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Straw Hat");
+        uc.buyItem(user1,"Straw Hat");
+        Assertions.assertEquals(user1.getPoints(), 1);
+        Assertions.assertEquals(user1.getPet().getCustomizations().getCurrentEquipment().getName(), "Straw Hat");
     }
 
     @Test
     public void BuyItemTest2() {
-        uc.buyItem(user,"Cap");
-        Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertFalse(user.getPet().getCustomizations().getIsCurrentlyEquipped());
+        uc.buyItem(user1,"Cap");
+        Assertions.assertEquals(user1.getPoints(), 4);
+        Assertions.assertFalse(user1.getPet().getCustomizations().getIsCurrentlyEquipped());
     }
 
     @Test
     public void BuyItemTest3() {
-        uc.buyItem(user,"Baseball Cap");
-        Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(),
+        uc.buyItem(user1,"Baseball Cap");
+        Assertions.assertEquals(user1.getPoints(), 4);
+        Assertions.assertEquals(user1.getPet().getCustomizations().getCurrentEquipment().getName(),
                 "Baseball Cap");
     }
 
     @Test
     public void BuyItemTestDequipUnlocked() {
-        user.getPet().getCustomizations().equip(item1);
-        uc.buyItem(user, "Baseball Cap");
-        Assertions.assertEquals(user.getPoints(), 4);
-        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment(), item3);
+        user1.getPet().getCustomizations().equip(item1);
+        uc.buyItem(user1, "Baseball Cap");
+        Assertions.assertEquals(user1.getPoints(), 4);
+        Assertions.assertEquals(user1.getPet().getCustomizations().getCurrentEquipment(), item3);
     }
 
     @Test
     public void BuyItemTestDequipLocked() {
-        user.getPet().getCustomizations().equip(item3);
-        uc.buyItem(user, "Straw Hat");
-        Assertions.assertEquals(user.getPoints(), 1);
-        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment(), item1);
+        user1.getPet().getCustomizations().equip(item3);
+        uc.buyItem(user1, "Straw Hat");
+        Assertions.assertEquals(user1.getPoints(), 1);
+        Assertions.assertEquals(user1.getPet().getCustomizations().getCurrentEquipment(), item1);
     }
 
     @Test
     public void BuyItemNullPointerTest() {
         try {
-            uc.buyItem(UserUC.u(), "Straw Hat");
+            uc.buyItem(user2, "Straw Hat");
             Assertions.fail();
         }
         catch (RuntimeException ex) {
-            Assertions.assertTrue(ex.toString().contains("Something was null"));
+            Assertions.assertEquals("Something was null", ex.getMessage());
         }
     }
 
     @Test
     public void BuyItemAbsentItemTest() {
         try {
-            uc.buyItem(user, "Crown");
+            uc.buyItem(user1, "Crown");
             Assertions.fail();
         }
         catch (RuntimeException ex) {
-            Assertions.assertTrue(ex.toString().contains("Not in customization list"));
+            Assertions.assertEquals("Not in customization list", ex.getMessage());
         }
     }
 }

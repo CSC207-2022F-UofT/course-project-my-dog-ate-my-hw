@@ -13,6 +13,7 @@ public class MainViewUpdater implements MainOutputBoundary {
         petUpdater = new PetUpdater();
         tasklistUpdater = new TasklistUpdater();
     }
+
     public PetUpdater getPetUpdater() {
         return petUpdater;
     }

@@ -19,6 +19,7 @@ import java.util.List;
 public class Main {
 
     static MainUI2 mainUI;
+
     public static void main(String[] args) {
 
         try {

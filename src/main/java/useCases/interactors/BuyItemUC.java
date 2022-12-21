@@ -18,17 +18,15 @@ public class BuyItemUC implements BuyItemInputBoundary {
      */
     public void buyItem(User user, String itemName) {
         try {
-            if (user.getPet() != null) {
-                Customization customization = user.getPet().getCustomizations();
-                Item item = customization.getItem(itemName);
-                if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
-                    user.losePoints(item.getPrice());
-                    item.setUnlocked(true);
-                    dequipOrEquip(customization, item);
-                }
-                else if (item.isUnlocked()) {
-                    dequipOrEquip(customization, item);
-                }
+            Customization customization = user.getPet().getCustomizations();
+            Item item = customization.getItem(itemName);
+            if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
+                user.losePoints(item.getPrice());
+                item.setUnlocked(true);
+                dequipOrEquip(customization, item);
+            }
+            else if (item.isUnlocked()) {
+                dequipOrEquip(customization, item);
             }
         }
         catch (AbsentItemNameException e) {
