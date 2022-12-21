@@ -1,7 +1,6 @@
 package controllers;
 
 import useCases.RouletteInputBoundary;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

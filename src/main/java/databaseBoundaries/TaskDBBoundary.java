@@ -32,12 +32,6 @@ public interface TaskDBBoundary {
     String getPriority();
 
     /**
-     * A Getter for the completion
-     * @return completion
-     */
-    boolean getCompletion();
-
-    /**
      * A Getter for the assignmentTypeString
      * @return assignmentType
      */

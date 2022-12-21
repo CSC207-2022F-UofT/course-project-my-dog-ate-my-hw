@@ -1,17 +1,16 @@
 package useCases;
 
 import entities.*;
-
 import java.time.LocalDateTime;
 
 /**
- * The modify task use case takes in the task name, deadline, course, priority and assignment type
+ * The modify-task use case takes in the task name, deadline, course, priority and assignment type
  * to change the task in the to-do list.
  */
 public class ModifyTaskUC implements ModifyTaskInputBoundary{
+
     private Task task;
     private ToDoList todo;
-
 
     public ModifyTaskUC(){
         task = null;
@@ -40,55 +39,38 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     public boolean findTask (String taskName) {
         return findTask(taskName, UserUC.u());
     }
-
-    /**
-     * Changes the task's name.
-     *
-     * @param newName task's new name
+    
+     * Create a new task and delete the old one ("modify")
+     * @param name task name
+     * @param course task course
+     * @param deadline task deadline
+     * @param priority priority string
+     * @param assignmentType assignment type string
      */
-    public void changeName(String newName) {
-        if (!newName.equals("") && todo.checkUniqueName(newName)) {
-            task.setName(newName);
-        }
-        else {
-            throw new InvalidTaskInformationException();
-        }
-    }
-    /**
-     * Changes the task's associated course.
-     * @param course task's new course
-     */
-    public void changeCourse(String course) {
-        if (!course.equals("")) {
-            task.setCourse(course);
-        } else {
-            throw new InvalidTaskInformationException();
-        }
+    public void modifyTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType){
+        User user = UserUC.u();
+        modifyTask(name, course, deadline, priority, assignmentType, user);
     }
 
     /**
-     * Changes the task's priority.
-     * @param priority task's priority
+     * Create a new task and delete the old one ("modify")
+     * @param name task name
+     * @param course task course
+     * @param deadline task deadline
+     * @param priority priority string
+     * @param assignmentType assignment type string
      */
-    public void changePriority(String priority) {
-        Priority p = Priority.getPriority(priority);
-        task.setPriority(p);
-    }
-
-    /**
-     * Changes the task's deadline
-     * @param date task's deadline
-     */
-    public void changeDeadline(LocalDateTime date) {
-        if (Task.deadlineisValid(date)) {
-            task.setDeadline(date);
-        } else {
-            throw new InvalidTaskInformationException();
-        }
-    }
-
-    public void changeAssignmentType(String assignmentType){
-        task.setAssignmentType(AssignmentType.getAssignmentType(assignmentType));
+    public void modifyTask(String name, String course, LocalDateTime deadline, String priority, String assignmentType, User user){
+        CreateTaskUC createTaskUC = new CreateTaskUC();
+        todo.removeTask(task);
+        createTaskUC.createTask(
+                name,
+                course,
+                deadline,
+                priority,
+                assignmentType,
+                user
+        );
     }
 
     /**
@@ -97,4 +79,5 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     public void refreshTask() {
         new TasklistRefresher().refresh();
     }
+
 }

@@ -1,6 +1,5 @@
 package controllers;
 
-
 import useCases.AdoptPetInputBoundary;
 
 public class PetShopUIController {

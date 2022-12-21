@@ -7,7 +7,6 @@ public class PetUI extends JPanel{
 
     private static final Dimension fillerSizeSmall = new Dimension(0, 6);
     private static final Dimension fillerSizeMid = new Dimension(0, 12);
-
     private PetDisplayPanel petDisplayPanel;
     private HealthBarPanel healthPanel;
     private PetNamePanel petNamePanel;

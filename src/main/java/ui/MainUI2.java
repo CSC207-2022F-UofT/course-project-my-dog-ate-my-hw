@@ -1,7 +1,6 @@
 package ui;
 
 import presenters.TaskVM;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -44,8 +43,8 @@ public class MainUI2 extends JFrame{
     }
 
     public MainUI2 copy(int currHealth, int maxHealth, String skin, String petName, int points,
-                        String[] customizations, String equippedIteam, boolean petAdopted, TaskVM[] tasks){
-        return new MainUI2(currHealth, maxHealth, skin, petName, points, customizations, equippedIteam, petAdopted, tasks);
+                        String[] customizations, String equippedItem, boolean petAdopted, TaskVM[] tasks){
+        return new MainUI2(currHealth, maxHealth, skin, petName, points, customizations, equippedItem, petAdopted, tasks);
     }
 
 }

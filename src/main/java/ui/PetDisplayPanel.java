@@ -9,12 +9,12 @@ import java.io.IOException;
 public class PetDisplayPanel extends JPanel{
 
     // STATIC VARIABLES //
+
     private static final Dimension preferredSize = new Dimension(410, 422);
     private static final Dimension petDimensions = new Dimension(410,410);
     private static final int imageBorderSpace = 15;
 
     // METHODS //
-
     public void createPetPanel(String skin, String currentEquipment, int currHealth, boolean petAdopted) {
         format();
         if(petAdopted) {

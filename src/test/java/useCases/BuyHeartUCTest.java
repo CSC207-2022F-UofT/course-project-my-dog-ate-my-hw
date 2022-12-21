@@ -6,6 +6,7 @@ import entities.User;
 import entities.Pet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 public class BuyHeartUCTest {
 
     /** Create a new pet and user

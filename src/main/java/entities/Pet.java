@@ -31,7 +31,7 @@ public class Pet {
      * @param name : A string representation of the name given to this pet
      * @param skin : A string representation of the skin given to this pet
      */
-    public Pet(String name, String skin) {
+    public Pet(String name, String skin){
         this.name = name;
         this.skin = skin;
         this.currHealth = MAX_HEALTH;
@@ -119,5 +119,9 @@ public class Pet {
         if (currHealth < 0){
             currHealth = 0;
         }
+    }
+
+    public void healToFull(){
+        currHealth = MAX_HEALTH;
     }
 }

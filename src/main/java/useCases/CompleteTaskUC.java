@@ -4,7 +4,6 @@ import entities.AbsentTaskNameException;
 import entities.Task;
 import entities.User;
 
-
 public class CompleteTaskUC implements CompleteTaskInputBoundary{
 
     /**
@@ -34,7 +33,7 @@ public class CompleteTaskUC implements CompleteTaskInputBoundary{
     }
 
     /**
-     * Another version of the method that deals with the User user case
+     * Another version of the method that deals with the User use-case
      * @param taskName The name of the task that has been completed
      */
     public void completeTask(String taskName) { this.completeTask(taskName, UserUC.u());}

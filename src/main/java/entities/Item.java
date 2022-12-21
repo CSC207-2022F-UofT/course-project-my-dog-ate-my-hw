@@ -30,6 +30,24 @@ public class Item {
      * @param icon : A string representation of the Item's icon.
      * @param unlocked : True if the item is unlocked, false otherwise.
      */
+    // a String representing the Item icon (clean architecture?)
+    private String icon;
+
+
+    // ==CONSTRUCTORS==
+
+    public Item() {
+        this.price = 1;
+        this.unlocked = false;
+    }
+
+    public Item(String type, String name, int price, boolean unlocked) {
+        this.type = type;
+        this.name = name;
+        this.price = price;
+        this.unlocked = unlocked;
+    }
+
     public Item(String type, String name, int price, String icon, boolean unlocked) {
         this.type = type;
         this.name = name;

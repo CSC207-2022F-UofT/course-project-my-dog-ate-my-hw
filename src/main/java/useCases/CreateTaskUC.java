@@ -1,7 +1,6 @@
 package useCases;
 
 import entities.*;
-
 import java.time.LocalDateTime;
 
 /**
@@ -9,7 +8,6 @@ import java.time.LocalDateTime;
  */
 public class CreateTaskUC implements CreateTaskInputBoundary {
     private Task task;
-    private ToDoList todo;
 
     /**
      * Creates a task based on name, course, deadline and priority then add to to-do list.
@@ -40,7 +38,7 @@ public class CreateTaskUC implements CreateTaskInputBoundary {
      * @param task the task to be added to the to do list
      */
     private void addToTDL(Task task, User user) {
-        todo = user.getToDo();
+        ToDoList todo = user.getToDo();
         todo.addTask(task);
     }
 

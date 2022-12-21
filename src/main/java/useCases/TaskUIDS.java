@@ -7,7 +7,7 @@ public class TaskUIDS {
     public String name;
     public String course;
     public String priority;
-    public String assignenmentType;
+    public String assignmentType;
     public Boolean completed;
 
     public TaskUIDS(entities.Task task){
@@ -15,7 +15,7 @@ public class TaskUIDS {
         name = task.getName();
         course = task.getCourse();
         priority = task.getPriority().toString();
-        assignenmentType = task.getAssignmentType().toString();
+        assignmentType = task.getAssignmentType().toString();
         completed = task.isCompletion();
     }
 }
