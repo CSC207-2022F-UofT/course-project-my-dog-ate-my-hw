@@ -1,6 +1,6 @@
 # Dog Ate My Homework
 
-<img src="https://media.discordapp.net/attachments/1023979792401453148/1044111298792783922/Screen_Shot_2022-11-20_at_11.44.02_PM.png?width=960&height=567" alt="The Dog Age My Homework Homescreen" title="Dog Ate My Homework">
+<img src="https://cdn.discordapp.com/attachments/1023979792401453148/1055204119075364864/MY_DOG_ATE_MY_HW_COVER_IMAGE.png" alt="The Dog Age My Homework Homescreen" title="Dog Ate My Homework">
 
 *This is a repository for a group project for CSC207: Software Design at the University of Toronto.*
 
