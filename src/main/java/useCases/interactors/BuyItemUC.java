@@ -4,6 +4,11 @@ import entities.*;
 import useCases.inputBoundaries.BuyItemInputBoundary;
 import useCases.refreshers.PetRefresher;
 
+/**
+ * The BuyItemUC class is the interactor for the use case in which the user can use the points they've gained from
+ * completing tasks to buy items to accessorize their adopted pet with. This class takes input from the
+ * BuyItemInputBoundary.
+ */
 public class BuyItemUC implements BuyItemInputBoundary {
 
     /**
@@ -19,22 +24,10 @@ public class BuyItemUC implements BuyItemInputBoundary {
                 if (user.getPoints() >= item.getPrice() && !item.isUnlocked()) {
                     user.losePoints(item.getPrice());
                     item.setUnlocked(true);
-                    if (!customization.getIsCurrentlyEquipped()) {
-                        customization.equip(item);
-                    }
-                    else {
-                        customization.dequip();
-                        customization.equip(item);
-                    }
+                    dequipOrEquip(customization, item);
                 }
                 else if (item.isUnlocked()) {
-                    if (!customization.getIsCurrentlyEquipped()) {
-                        customization.equip(item);
-                    }
-                    else {
-                        customization.dequip();
-                        customization.equip(item);
-                    }
+                    dequipOrEquip(customization, item);
                 }
             }
         }
@@ -43,6 +36,16 @@ public class BuyItemUC implements BuyItemInputBoundary {
         }
         catch (NullPointerException e) {
             throw new RuntimeException("Something was null", e);
+        }
+    }
+
+    private void dequipOrEquip(Customization custom, Item item) {
+        if (!custom.getIsCurrentlyEquipped()) {
+            custom.equip(item);
+        }
+        else {
+            custom.dequip();
+            custom.equip(item);
         }
     }
 

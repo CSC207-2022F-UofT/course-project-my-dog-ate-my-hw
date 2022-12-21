@@ -8,15 +8,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test for BuyItemUC
- * First Test: Try to buy the hat "Straw Hat" with price 3 and points 4
- * The remaining points should be 1
- * Customization should have equipped item
- * Equips Straw Hat
- * Second Test: Try to buy the hat "Cap" with price too high
- * The purchase should be unsuccessful
- * Third Test: Try to buy the hat "Baseball Cap" which is already unlocked
- * The remaining points should be 4
- * Equips Baseball Cap
+ * Coverage: 100% class, 33% methods, 90% lines.
+ * The refreshPet method was not tested since it calls on the PetRefresher to perform the refresh.
+ * The buyItem method that does not take in a user entity was not tested because it calls on the buyItem method using
+ * the UserUC singleton as the user argument, and the UserUC singleton is not declared until Main is running.
  */
 public class BuyItemUCTest {
     User user;
@@ -25,6 +20,7 @@ public class BuyItemUCTest {
     Item item1;
     Item item2;
     Item item3;
+    BuyItemUC uc;
 
     @BeforeEach
     public void Setup() {
@@ -38,30 +34,66 @@ public class BuyItemUCTest {
         customization.addItem(item3);
         pet.setCustomization(customization);
         user = new User(4, pet, new ToDoList(), new DoneList());
+        uc = new BuyItemUC();
     }
 
     @Test
     public void BuyItemTest1() {
-        BuyItemUC buyItemUC = new BuyItemUC();
-        buyItemUC.buyItem(user,"Straw Hat");
+        uc.buyItem(user,"Straw Hat");
         Assertions.assertEquals(user.getPoints(), 1);
         Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(), "Straw Hat");
     }
 
     @Test
     public void BuyItemTest2() {
-        BuyItemUC buyItemUC = new BuyItemUC();
-        buyItemUC.buyItem(user,"Cap");
+        uc.buyItem(user,"Cap");
         Assertions.assertEquals(user.getPoints(), 4);
         Assertions.assertFalse(user.getPet().getCustomizations().getIsCurrentlyEquipped());
     }
 
     @Test
     public void BuyItemTest3() {
-        BuyItemUC buyItemUC = new BuyItemUC();
-        buyItemUC.buyItem(user,"Baseball Cap");
+        uc.buyItem(user,"Baseball Cap");
         Assertions.assertEquals(user.getPoints(), 4);
         Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment().getName(),
                 "Baseball Cap");
+    }
+
+    @Test
+    public void BuyItemTestDequipUnlocked() {
+        user.getPet().getCustomizations().equip(item1);
+        uc.buyItem(user, "Baseball Cap");
+        Assertions.assertEquals(user.getPoints(), 4);
+        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment(), item3);
+    }
+
+    @Test
+    public void BuyItemTestDequipLocked() {
+        user.getPet().getCustomizations().equip(item3);
+        uc.buyItem(user, "Straw Hat");
+        Assertions.assertEquals(user.getPoints(), 1);
+        Assertions.assertEquals(user.getPet().getCustomizations().getCurrentEquipment(), item1);
+    }
+
+    @Test
+    public void BuyItemNullPointerTest() {
+        try {
+            uc.buyItem(UserUC.u(), "Straw Hat");
+            Assertions.fail();
+        }
+        catch (RuntimeException ex) {
+            Assertions.assertTrue(ex.toString().contains("Something was null"));
+        }
+    }
+
+    @Test
+    public void BuyItemAbsentItemTest() {
+        try {
+            uc.buyItem(user, "Crown");
+            Assertions.fail();
+        }
+        catch (RuntimeException ex) {
+            Assertions.assertTrue(ex.toString().contains("Not in customization list"));
+        }
     }
 }
