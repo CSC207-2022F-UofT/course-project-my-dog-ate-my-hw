@@ -30,5 +30,4 @@ public class CheckerUC {
             user.getPet().ouch(pointsLost);
         }
     }
-
 }
