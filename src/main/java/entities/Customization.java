@@ -54,6 +54,9 @@ public class Customization {
         if (customizations == null){
             customizations = new ArrayList<>();
         }
+        if (customizations.contains(item)){
+            return;
+        }
         customizations.add(item);
     }
 

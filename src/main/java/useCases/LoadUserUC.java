@@ -2,6 +2,8 @@ package useCases;
 
 import databaseBoundaries.*;
 import entities.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * This UC loads the user
@@ -43,9 +45,15 @@ public class LoadUserUC {
      */
     public static entities.User loadUser(){
 
-        ToDoList toDoList = loadToDoList();
+        List<Object> tdlAndHarm = loadToDoList();
+
+        ToDoList toDoList = (ToDoList) tdlAndHarm.get(0);
         DoneList doneList = loadDoneList();
         Pet pet = loadPet();
+
+        if (pet != null) {
+            pet.ouch((int) tdlAndHarm.get(1));
+        }
 
         return new entities.User(
                 udb.getPoints(),
@@ -62,14 +70,15 @@ public class LoadUserUC {
      * before finally returning a ToDoList object
      * @return The Loaded ToDoList object
      */
-    public static ToDoList loadToDoList() {
+    public static List<Object> loadToDoList() {
 
         // Create a new ToDoList object
         ToDoList toDoList = new ToDoList();
+        int harm = 0;
 
         // Check whether TDL exists
         if (udb.getToDo() == null){
-            return toDoList;
+            return Arrays.asList(toDoList, harm);
         }
 
         for (TaskDBBoundary taskdb : udb.getToDo()) {
@@ -89,15 +98,18 @@ public class LoadUserUC {
             // Take the Assignment String and assign an enum
             setAssignmentType(task, taskdb.getAssignmentType());
 
+            if (task.pastDeadline() > 0){
+                harm += task.pastDeadline();
+            }
+
             // Do not add a task if it is already in the task list
             if (!toDoList.getTaskList().contains(task)) {
-                System.out.println("task not already in: " + task);
                 toDoList.addTask(task);
             }
         }
 
         // Return the ToDoList
-        return toDoList;
+        return Arrays.asList(toDoList, harm);
     }
 
     /**

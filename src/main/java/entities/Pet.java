@@ -83,6 +83,10 @@ public class Pet {
         }
     }
 
+    public void healToFull(){
+        currHealth = MAX_HEALTH;
+    }
+
     public Customization getDefaultEquipmentList(){
         customization = new Customization();
         Item halo = new Item("Hat", "Halo", 1, false);
