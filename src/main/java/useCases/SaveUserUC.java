@@ -2,7 +2,6 @@ package useCases;
 
 import databaseBoundaries.DataLoggerBoundary;
 import entities.Task;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,7 +48,7 @@ public class SaveUserUC {
         dl.makePet(pet.getCurrHealth(), pet.getName(), pet.getSkin());
 
         // Get and create the Customization object
-        ArrayList<entities.Item> customizations = pet.getCustomizations().getPossibleCustomizations();
+        List<entities.Item> customizations = pet.getCustomizations().getPossibleCustomizations();
         for (entities.Item item : customizations){
             dl.addCustomization(
                     item.getName(),
