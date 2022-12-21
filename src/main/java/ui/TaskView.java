@@ -20,7 +20,6 @@ public class TaskView extends JFrame {
     private static final String[] assignmentType = {"ESSAY", "PROJECT","EXAM", "QUIZ", "REFLECTION"};
     private final JLabel labelName = new JLabel("Enter name: ");
     private final JLabel labelCourse = new JLabel("Enter course: ");
-
     private final JLabel labelDeadline = new JLabel("Enter deadline: ");
     private final JLabel labelPriority = new JLabel("Enter Priority: ");
     private final JLabel labelAssignment = new JLabel("Enter Assignment Type: ");

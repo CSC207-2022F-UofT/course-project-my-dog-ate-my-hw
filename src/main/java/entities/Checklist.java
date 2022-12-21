@@ -3,15 +3,20 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from
+ * the task list. Tasks can also be searched from the tasklist. The task list can be returned for
+ * viewing purposes.
+ */
 public abstract class Checklist {
-    /**
-     * An abstract class containing a list of tasks that and can be manipulated. Tasks can be added or removed from
-     * the task list. Tasks can also be searched from the tasklist. The task list can be returned for
-     * viewing purposes.
-     */
 
+    // === Private Instance Attributes ===
+    
     private final List<Task> taskList;
 
+    /**
+     * Construct a checklist given no arguments.
+     */
     public Checklist() {
         this.taskList = new ArrayList<>();
     }
@@ -23,11 +28,10 @@ public abstract class Checklist {
      * @return : true if the given name is unique and false otherwise.
      */
     public boolean checkUniqueName(String newName) {
-        for (Task addedTask : this.getTaskList()) {
+        for (Task addedTask : this.getTaskList())
             if (addedTask.getName().equals(newName)) {
                 return false;
             }
-        }
         return true;
     }
 

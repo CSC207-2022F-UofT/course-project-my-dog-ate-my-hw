@@ -11,32 +11,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ToDoList extends Checklist {
 
     /**
-     * Check if the task has a unique name, meaning it does not have the same name as any other tasks in the taskList.
-     *
-     * @param newTask : The given task to be added to the taskList.
-     * @return : true if the given task has a unique name and false otherwise.
-     */
-    public boolean checkUniqueName(Task newTask) {
-        for (Task addedTask : this.getTaskList()) {
-            if (addedTask.getName().equals(newTask.getName())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * Check if the inputted name is unique, meaning it does not match the name of any other task in the taskList.
      *
      * @param newName : The given name to be checked.
      * @return : true if the given name is unique and false otherwise.
      */
     public boolean checkUniqueName(String newName) {
-        for (Task addedTask : this.getTaskList()) {
+        for (Task addedTask : this.getTaskList())
             if (addedTask.getName().equals(newName)) {
                 return false;
             }
-        }
         return true;
     }
 
@@ -47,7 +31,7 @@ public class ToDoList extends Checklist {
      */
     @Override
      public boolean addTask(Task newTask) {
-         if (checkUniqueName(newTask) && Task.deadlineisValid(newTask.getDeadline())) {
+         if (checkUniqueName(newTask.getName()) && Task.deadlineisValid(newTask.getDeadline())) {
              super.addTask(newTask);
          }
          return false;
@@ -74,13 +58,14 @@ public class ToDoList extends Checklist {
      * @return Task at random index in the taskList. Returns null if list is empty.
      */
     public Task randomTask() {
-        if (super.getTaskList().size() > 1) {
-            int randomNum = ThreadLocalRandom.current().nextInt(0, (super.getTaskList().size() - 1));
-            return super.getTaskList().get(randomNum);
-        } else if (super.getTaskList().size() == 1) {
-            return super.getTaskList().get(0);
-        } else {
-            return null;
+        switch (super.getTaskList().size()) {
+            case 1:
+                return super.getTaskList().get(0);
+            case 0:
+                return null;
+            default:
+                int randomNum = ThreadLocalRandom.current().nextInt(0, super.getTaskList().size());
+                return super.getTaskList().get(randomNum);
         }
     }
 
@@ -97,5 +82,4 @@ public class ToDoList extends Checklist {
         }
         return sumOfLate;
     }
-
 }

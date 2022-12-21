@@ -53,7 +53,6 @@ public class ToolPanel extends JPanel {
         setBorder(new SoftBevelBorder(BevelBorder.RAISED, getBackground().brighter(), UIFormat.BUTTON_PINK));
         setMinimumSize(preferredSize);
         setPreferredSize(preferredSize);
-
     }
 
 }

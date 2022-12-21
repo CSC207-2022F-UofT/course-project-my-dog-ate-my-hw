@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.CreateTaskInputBoundary;
+import useCases.inputBoundaries.CreateTaskInputBoundary;
 import java.time.LocalDateTime;
 
 public class CreateTaskController {

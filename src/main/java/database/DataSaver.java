@@ -44,6 +44,7 @@ public class DataSaver {
 
     public static UserDB loadUser(){
         File f = new File(fileName);
+
         // Check if file exists
         if(!f.exists()){
             return null;
@@ -51,7 +52,7 @@ public class DataSaver {
 
         try{
             // Read file data
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName)); {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(f)); {
             return (UserDB) in.readObject();
         }
         } catch (ClassNotFoundException | IOException e) {

@@ -2,6 +2,7 @@ package useCases;
 
 import entities.Pet;
 import entities.User;
+import useCases.interactors.UserUC;
 
 public class PetUIDS {
 
@@ -14,7 +15,7 @@ public class PetUIDS {
     public String[] customizations;
     public int points;
 
-    public PetUIDS(entities.Pet pet, User user) {
+    public PetUIDS(Pet pet, User user) {
         MAX_HEALTH = Pet.getMaxHealth();
         if (user != null) {
             points = user.getPoints();
@@ -28,7 +29,8 @@ public class PetUIDS {
             customizations = pet.getCustomizations().toStringArray();
             if (pet.getCustomizations().getCurrentEquipment() != null) {
                 currCustomization = pet.getCustomizations().getCurrentEquipment().getName();
-            } else {
+            }
+            else {
                 currCustomization = DefaultValueData.DEFAULT_CURR_CUSTOM;
             }
         } else {

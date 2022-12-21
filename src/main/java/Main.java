@@ -11,12 +11,15 @@ import ui.MainUI2;
 import ui.ViewRefresher;
 import useCases.*;
 import database.DataLogger;
+import useCases.interactors.*;
+
 import javax.swing.*;
 import java.util.List;
 
 public class Main {
 
     static MainUI2 mainUI;
+
     public static void main(String[] args) {
 
         try {

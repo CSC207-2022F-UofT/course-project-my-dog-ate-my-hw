@@ -1,6 +1,6 @@
 package presenters;
 
-import useCases.PetOutputBoundary;
+import useCases.outputBoundaries.PetOutputBoundary;
 import useCases.PetUIDS;
 
 public class PetUpdater implements PetOutputBoundary {

@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.BuyHeartInputBoundary;
+import useCases.inputBoundaries.BuyHeartInputBoundary;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

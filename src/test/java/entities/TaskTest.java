@@ -5,6 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
+/**
+ * Tests for the entity class Task.
+ * Coverage: 100% class, 100% methods, 100% lines.
+ */
 public class TaskTest {
 
     /**
@@ -36,7 +40,6 @@ public class TaskTest {
         task6 = new Task("test6", "chm", LocalDateTime.now().minusMonths(3), Priority.LOW,
                 AssignmentType.ESSAY);
     }
-
 
     @Test
     public void GetNameTest() {
@@ -107,7 +110,6 @@ public class TaskTest {
         Assertions.assertFalse(task.isCompletion());
     }
 
-
     @Test
     public void ToStringTest() {
         LocalDateTime deadline = LocalDateTime.now().plusMonths(1);
@@ -116,32 +118,32 @@ public class TaskTest {
     }
 
     @Test
-    public void TestBeforeDeadlineHigh() {
+    public void BeforeDeadlineHighTest() {
         Assertions.assertEquals(task1.pastDeadline(), 0);
     }
 
     @Test
-    public void TestBeforeDeadlineMedium() {
+    public void BeforeDeadlineMediumTest() {
         Assertions.assertEquals(task2.pastDeadline(), 0);
     }
 
     @Test
-    public void TestBeforeDeadlineLow() {
+    public void BeforeDeadlineLowTest() {
         Assertions.assertEquals(task3.pastDeadline(), 0);
     }
 
     @Test
-    public void TestAfterDeadlineHigh() {
+    public void AfterDeadlineHighTest() {
         Assertions.assertEquals(task4.pastDeadline(), 3);
     }
 
     @Test
-    public void TestAfterDeadlineMedium() {
+    public void AfterDeadlineMediumTest() {
         Assertions.assertEquals(task5.pastDeadline(), 2);
     }
 
     @Test
-    public void TestAfterDeadlineLow() {
+    public void AfterDeadlineLowTest() {
         Assertions.assertEquals(task6.pastDeadline(), 1);
     }
 }

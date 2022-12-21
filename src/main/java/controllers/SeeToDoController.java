@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.SeeToDoInputBoundary;
+import useCases.inputBoundaries.SeeToDoInputBoundary;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

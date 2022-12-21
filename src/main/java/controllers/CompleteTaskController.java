@@ -1,6 +1,6 @@
 package controllers;
 
-import useCases.CompleteTaskInputBoundary;
+import useCases.inputBoundaries.CompleteTaskInputBoundary;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
