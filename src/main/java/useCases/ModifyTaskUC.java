@@ -18,17 +18,6 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
         todo = null;
     }
 
-    /**
-     * This constructs the ModifyTaskUC by taking in the string of a task name then finding the task
-     * in the to-do list.
-     *
-     * @param taskName the task name
-     */
-    public ModifyTaskUC(String taskName){
-        new ModifyTaskUC(taskName, UserUC.u().getToDo());
-    }
-
-
     public ModifyTaskUC(String taskName, ToDoList todo) {
         this.todo = todo;
         try {
@@ -60,7 +49,8 @@ public class ModifyTaskUC implements ModifyTaskInputBoundary{
     public void changeName(String newName) {
         if (!newName.equals("") && todo.checkUniqueName(newName)) {
             task.setName(newName);
-        } else {
+        }
+        else {
             throw new InvalidTaskInformationException();
         }
     }

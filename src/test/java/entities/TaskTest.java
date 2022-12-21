@@ -5,6 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
+/**
+ * Tests for the entity class Task.
+ * Coverage: 100% class, 100% methods, 100% lines.
+ */
 public class TaskTest {
 
     /**
@@ -36,7 +40,6 @@ public class TaskTest {
         task6 = new Task("test6", "chm", LocalDateTime.now().minusMonths(3), Priority.LOW,
                 AssignmentType.ESSAY);
     }
-
 
     @Test
     public void GetNameTest() {
@@ -106,7 +109,6 @@ public class TaskTest {
         task.setCompletion(false);
         Assertions.assertFalse(task.isCompletion());
     }
-
 
     @Test
     public void ToStringTest() {
