@@ -5,9 +5,14 @@ import entities.User;
 import useCases.inputBoundaries.AdoptPetInputBoundary;
 import useCases.refreshers.PetRefresher;
 
+/**
+ * Use case interactor class for the use case of adopting a pet. The user may adopt a pet that they become responsible
+ * for. Their pet will lose or gain health depending on the user's To-Do list and points.
+ */
 public class AdoptPetUC implements AdoptPetInputBoundary {
 
-    Pet pet;
+    // The pet to be adopted by the user
+    public Pet pet;
 
     /**
      * Creates a Pet object from the given petIcon and petName.
@@ -19,15 +24,27 @@ public class AdoptPetUC implements AdoptPetInputBoundary {
         user.setPet(pet);
     }
 
+    /**
+     * Allow the User singleton to adopt a pet.
+     * @param skin : a string representation of this pet's skin
+     * @param petName : a string representation of this pet's name
+     */
     public void adoptPet(String skin, String petName){
         adoptPet(UserUC.u(), skin, petName);
     }
 
+    /**
+     * Return the pet to be adopted.
+     * @return : The pet to be adopted.
+     */
     public Pet getPet() {
         return pet;
     }
 
-    public void refreshPet(){
+    /**
+     * Call on the Pet Refresher to refresh the pet in the UI.
+     */
+    public void refreshPet() {
         new PetRefresher().refresh();
     }
 }
