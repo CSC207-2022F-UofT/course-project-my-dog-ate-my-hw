@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+/**
+ * Test case for CompleteTaskUC
+ * Code Coverage: 33% methods, 54% lines
+ * The refreshCompleteTask method was not tested since it calls on the PetRefresher to perform the refresh.
+ * The completeTask method that does not take in a user entity was not tested because it calls on the completeTask
+ * method using the UserUC singleton as the user argument, and the UserUC singleton is not declared until Main is running.
+ */
 public class CompleteTaskUCTest {
     User user;
     Task task1;
@@ -46,14 +53,14 @@ public class CompleteTaskUCTest {
         completeTaskUC.completeTask("CompSci Assignment", user);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
         Assertions.assertEquals(user.getDone().getTaskList().size(), 1);
-        Assertions.assertEquals(user.getPoints(), 0);
+        Assertions.assertEquals(user.getPoints(), 10);
     }
 
     @Test
     public void CompleteTaskTest1() {
         CompleteTaskUC completeTaskUC = new CompleteTaskUC();
         completeTaskUC.completeTask("Math Midterm 1", user);
-        Assertions.assertEquals(user.getPoints(), 3);
+        Assertions.assertEquals(user.getPoints(), 13);
         Assertions.assertEquals(user.getToDo().getTaskList().size(), 1);
         Assertions.assertEquals(user.getDone().getTaskList().size(), 1);
     }
