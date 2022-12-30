@@ -52,7 +52,6 @@ public class LoadUserUC {
         Pet pet = loadPet();
 
         if (pet != null) {
-            System.out.println(tdlAndHarm.get(1));
             pet.ouch((int) tdlAndHarm.get(1));
         }
 
